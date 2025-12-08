@@ -1,0 +1,178 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 0;
+  width: 100%;
+  min-height: 85vh; /* 增加高度，展示更多图片内容 */
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  /* Use CSS variables for mouse position, default to center */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('~@site/static/img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  /* 增加透明度到 1，完全展示原图色彩，减少灰度 */
+  opacity: 1; 
+  z-index: 0;
+  transition: transform 0.2s ease-out;
+}
+
+/* 动态光照层 - 增强灵动感 */
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* 使用 overlay 混合模式让光照更自然透亮 */
+  mix-blend-mode: overlay;
+  background: radial-gradient(
+    circle 800px at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.25) 0%, /* 增加中心亮度 */
+    rgba(255, 255, 255, 0.05) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* 科技网格层 */
+.heroGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(
+    circle 600px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 600px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* 内容容器 */
+.heroContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 左右布局 */
+  gap: 2rem;
+}
+
+/* 左侧文字区域面板 */
+.heroContent {
+  /* 调整为更深更通透的背景，增加对比度 */
+  background: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(20px); /* 增强毛玻璃 */
+  -webkit-backdrop-filter: blur(20px);
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  color: #fff;
+  text-align: left; /* 左对齐 */
+  max-width: 600px;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start; /* 按钮左对齐 */
+  gap: 1rem;
+}
+
+/* 移动端适配优化 */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    min-height: 70vh; /* 移动端不需要太高 */
+    padding: 2rem 0; /* 减少上下 padding */
+  }
+  
+  .heroContainer {
+    grid-template-columns: 1fr; /* 堆叠布局 */
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .heroContent {
+    margin: 0 auto;
+    text-align: center;
+    padding: 1.5rem; /* 减少内边距 */
+    /* 让背景更通透，减少遮挡感 */
+    background: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    /* 限制最大宽度，不要撑满屏幕 */
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .heroTitle {
+    font-size: 2rem; /* 减小标题字号 */
+    margin-bottom: 0.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem; /* 减小副标题字号 */
+    margin-bottom: 1.5rem;
+  }
+
+  .buttons {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  /* 调整按钮大小 */
+  .buttons :global(.button) {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

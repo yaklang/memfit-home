@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Memfit AI",
+    "description": "The title in the header"
+  },
+  "tagline": {
+    "message": "Memfit AI 的官方网站",
+    "description": "The tagline in the header"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "页面已崩溃",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.NotFound.title": {
+    "message": "找不到页面",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "我们找不到您要找的页面。",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "请联系原始链接来源网站的所有者，并告知他们链接已失效。",
+    "description": "The 2nd paragraph of the 404 page"
+  }
+}

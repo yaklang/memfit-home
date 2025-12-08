@@ -1,0 +1,130 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* 导航栏半透明毛玻璃效果 */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 页脚紧凑化处理 */
+.footer {
+  --ifm-footer-background-color: transparent;
+  background-color: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+  font-size: 0.85rem;
+}
+
+.footer__title {
+  margin-bottom: 0.25rem; 
+  font-size: 0.9rem;
+}
+
+.footer__item {
+  line-height: 1.4; 
+  min-height: auto;
+}
+
+.footer__copyright {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  text-align: center;
+}
+
+[data-theme='dark'] .footer {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 996px) {
+  .footer {
+    padding: 1rem 0;
+  }
+  
+  /* 让链接列表容器 flex 垂直居中排列 */
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem; /* 减小列之间的间距 */
+  }
+  
+  /* 每一列也居中 */
+  .footer__col {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0; /* 移除默认的 margin */
+  }
+  
+  .footer__title {
+    text-align: center;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+  }
+  
+  /* 链接列表（ul）居中 */
+  .footer__items {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem; /* 链接项之间的间距 */
+  }
+  
+  /* 每个链接项居中 */
+  .footer__item {
+    text-align: center;
+    margin: 0;
+    line-height: 1.3;
+  }
+  
+  /* 链接本身 */
+  .footer__link--external,
+  .footer__link {
+    display: inline-block;
+    font-size: 0.8rem;
+  }
+  
+  .footer__copyright {
+    margin-top: 0.5rem;
+  }
+}
