@@ -7,11 +7,19 @@ import Layout from '@theme/Layout';
 // Removed HomepageFeatures import as requested
 // import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
+import HeroDownload from '@site/src/components/HeroDownload';
 
 import styles from './index.module.css';
 
+const SLOGANS = {
+  en: 'A Persistent Knowledge Base, and an Execution Engine That Gets Things Done',
+  'zh-Hans': '记得住的知识库，跑得动的执行力',
+};
+
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const {siteConfig, i18n} = useDocusaurusContext();
+  const locale = i18n.currentLocale as 'en' | 'zh-Hans';
+  const slogan = SLOGANS[locale] || SLOGANS.en;
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -41,14 +49,8 @@ function HomepageHeader() {
           <Heading as="h1" className={styles.heroTitle}>
             {siteConfig.title}
           </Heading>
-          <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <Link
-              className="button button--primary button--lg"
-              to="/docs/architecture">
-              Memfit AI Arch & Features
-            </Link>
-          </div>
+          <p className={styles.heroSubtitle}>{slogan}</p>
+          <HeroDownload />
         </div>
         {/* Right side is intentionally empty to show the background image */}
         <div /> 

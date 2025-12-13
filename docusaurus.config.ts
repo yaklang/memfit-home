@@ -85,6 +85,11 @@ const config: Config = {
           label: 'Arch & Features',
         },
         {
+          to: '/downloads',
+          position: 'left',
+          label: 'Downloads',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
           dropdownItemsAfter: [],

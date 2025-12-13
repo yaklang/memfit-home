@@ -1,0 +1,155 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.version {
+  font-size: 1.2rem;
+  color: var(--ifm-font-color-base);
+  margin-top: 1rem;
+}
+
+.version strong {
+  color: #4a90e2;
+  font-weight: 600;
+}
+
+.loading,
+.error {
+  font-size: 1.1rem;
+  padding: 2rem;
+  color: var(--ifm-font-color-base);
+}
+
+.error {
+  color: #d32f2f;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  background: var(--ifm-background-surface-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: #fff;
+}
+
+.table th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--ifm-table-border-color);
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table td {
+  padding: 1.25rem 1.5rem;
+  color: var(--ifm-font-color-base);
+}
+
+.code {
+  background: var(--ifm-code-background);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9rem;
+  color: #4a90e2;
+}
+
+.downloadLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.downloadLink:hover {
+  background: linear-gradient(135deg, #5aa0f2 0%, #4580cd 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.downloadText {
+  line-height: 1;
+}
+
+.downloadIcon {
+  flex-shrink: 0;
+  display: inline-block;
+  color: currentColor;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .version {
+    font-size: 1rem;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem 1rem;
+  }
+
+  .table th {
+    font-size: 0.85rem;
+  }
+}
+
