@@ -6,203 +6,194 @@
 .heroBanner {
   padding: 0;
   width: 100%;
-  min-height: 85vh; /* 增加高度，展示更多图片内容 */
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: #ffffff; /* White background fallback */
   display: flex;
   align-items: center;
-  /* Use CSS variables for mouse position, default to center */
+  
+  /* Initial values for mouse variables */
   --mouse-x: 50%;
   --mouse-y: 50%;
+  --mouse-x-norm: 0;
+  --mouse-y-norm: 0;
 }
 
 .heroBackground {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('~@site/static/img/hero-bg.jpg');
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background-image: url('~@site/static/img/hero-bg.png');
+  /* 
+     Use cover to eliminate hard edges.
+     The image will cover the entire container, potentially cropping some parts,
+     but ensuring no whitespace borders.
+  */
   background-size: cover;
-  background-position: center center;
-  /* 增加透明度到 1，完全展示原图色彩，减少灰度 */
-  opacity: 1; 
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
-  transition: transform 0.2s ease-out;
+  
+  /* Parallax movement */
+  transform: translate(
+    calc(var(--mouse-x-norm) * 20px), 
+    calc(var(--mouse-y-norm) * 20px)
+  );
+  /* Ensure smooth transition */
+  transition: transform 0.1s ease-out;
 }
 
-/* 动态光照层 - 增强灵动感 */
+/* Optional: Add a subtle overlay if the image is too busy for text */
 .heroOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* Gentle gradient to ensure text readability on the far left */
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0) 50%);
   z-index: 1;
-  /* 使用 overlay 混合模式让光照更自然透亮 */
-  mix-blend-mode: overlay;
-  background: radial-gradient(
-    circle 800px at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.25) 0%, /* 增加中心亮度 */
-    rgba(255, 255, 255, 0.05) 40%,
-    transparent 70%
-  );
   pointer-events: none;
 }
 
-/* 科技网格层 */
-.heroGrid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mask-image: radial-gradient(
-    circle 600px at var(--mouse-x) var(--mouse-y),
-    black 0%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    circle 600px at var(--mouse-x) var(--mouse-y),
-    black 0%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
-
-/* 内容容器 */
 .heroContainer {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 4rem;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 左右布局 */
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  align-items: center;
 }
 
-/* 左侧文字区域面板 */
 .heroContent {
-  /* 调整为更深更通透的背景，增加对比度 */
-  background: rgba(0, 0, 0, 0.4); 
-  backdrop-filter: blur(20px); /* 增强毛玻璃 */
-  -webkit-backdrop-filter: blur(20px);
-  padding: 3rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  color: #fff;
-  text-align: left; /* 左对齐 */
-  max-width: 600px;
+  /* Clean, transparent look */
+  background: transparent;
+  padding: 2rem 0;
+  text-align: left;
+  max-width: 700px;
+  
+  /* Parallax movement */
+  transform: translate(
+    calc(var(--mouse-x-norm) * -30px), 
+    calc(var(--mouse-y-norm) * -30px)
+  );
+  transition: transform 0.1s ease-out;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-weight: 800;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  margin-bottom: 1.5rem;
+  /* Dark gradient text */
+  background: linear-gradient(120deg, #1a1a1a 0%, #4a5568 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 1.2;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .heroSubtitle {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.95);
-  line-height: 1.5;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  margin-bottom: 2rem;
+  color: #4a5568; /* Dark gray */
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 90%;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
 }
 
 .versionContainer {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  font-size: 0.95rem;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.versionContainer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .versionLabel {
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
+  color: #718096;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .versionValue {
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 600;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: #2d3748;
+  font-weight: 700;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+  font-size: 1rem;
 }
 
-.buttons {
-  display: flex;
-  justify-content: flex-start; /* 按钮左对齐 */
-  gap: 1rem;
-}
-
-/* 移动端适配优化 */
+/* Mobile Responsive */
 @media screen and (max-width: 996px) {
   .heroBanner {
-    min-height: 70vh; /* 移动端不需要太高 */
-    padding: 2rem 0; /* 减少上下 padding */
+    min-height: auto;
+    padding: 6rem 0 4rem;
   }
   
+  .heroBackground {
+    /* Reset scale for mobile to avoid issues */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transform: none !important; /* Disable parallax on mobile */
+  }
+
   .heroContainer {
-    grid-template-columns: 1fr; /* 堆叠布局 */
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 
   .heroContent {
+    transform: none !important; /* Disable parallax on mobile */
+    max-width: 100%;
     margin: 0 auto;
-    text-align: center;
-    padding: 1.5rem; /* 减少内边距 */
-    /* 让背景更通透，减少遮挡感 */
-    background: rgba(0, 0, 0, 0.3); 
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    /* 限制最大宽度，不要撑满屏幕 */
-    width: 90%;
-    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroOverlay {
+    /* Vertical gradient for mobile */
+    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.4) 100%);
   }
 
   .heroTitle {
-    font-size: 2rem; /* 减小标题字号 */
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 
   .heroSubtitle {
-    font-size: 1rem; /* 减小副标题字号 */
-    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
   }
 
   .versionContainer {
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.85rem;
-  }
-
-  .buttons {
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  
-  /* 调整按钮大小 */
-  .buttons :global(.button) {
-    padding: 0.5rem 1.5rem;
-    font-size: 0.9rem;
+    margin-bottom: 2rem;
   }
 }

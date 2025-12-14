@@ -75,7 +75,7 @@ const config: Config = {
       title: 'Memfit AI',
       logo: {
         alt: 'Memfit AI Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {

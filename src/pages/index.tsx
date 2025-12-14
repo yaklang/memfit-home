@@ -11,8 +11,8 @@ import HeroDownload from '@site/src/components/HeroDownload';
 import styles from './index.module.css';
 
 const SLOGANS = {
-  en: 'A Persistent Knowledge Base, and an Execution Engine That Gets Things Done',
-  'zh-Hans': '记得住的知识库，跑得动的执行力',
+  en: 'Persistent Knowledge, Visible Action',
+  'zh-Hans': '记得住的知识库，看得见的行动力',
 };
 
 const VERSION_LABELS = {
@@ -29,7 +29,7 @@ function HomepageHeader() {
   const slogan = SLOGANS[locale] || SLOGANS.en;
   const versionLabel = VERSION_LABELS[locale] || VERSION_LABELS.en;
   const headerRef = useRef<HTMLElement>(null);
-  const [version, setVersion] = useState<string>('');
+  const [version, setVersion] = useState<string>('Loading...');
 
   useEffect(() => {
     const header = headerRef.current;
@@ -39,8 +39,15 @@ function HomepageHeader() {
       const rect = header.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      
+      // Calculate normalized coordinates (-1 to 1) for easier parallax math
+      const xNorm = (x / rect.width) * 2 - 1;
+      const yNorm = (y / rect.height) * 2 - 1;
+
       header.style.setProperty('--mouse-x', `${x}px`);
       header.style.setProperty('--mouse-y', `${y}px`);
+      header.style.setProperty('--mouse-x-norm', xNorm.toFixed(4));
+      header.style.setProperty('--mouse-y-norm', yNorm.toFixed(4));
     };
 
     header.addEventListener('mousemove', handleMouseMove);
@@ -56,11 +63,16 @@ function HomepageHeader() {
         }
         const versionText = await response.text();
         const trimmedVersion = versionText.trim();
-        setVersion(trimmedVersion);
+        // If the version text is empty or invalid, fallback to loading/error state
+        if (!trimmedVersion) {
+             setVersion('Loading...');
+        } else {
+             setVersion(trimmedVersion);
+        }
       } catch (err) {
         console.error('Failed to fetch version:', err);
-        // Fallback to a default version if fetch fails
-        setVersion('1.0.0-1212');
+        // If fetch fails, keep showing Loading... as requested
+        setVersion('Loading...');
       }
     };
 
