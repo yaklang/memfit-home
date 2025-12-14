@@ -116,10 +116,34 @@
 
 .heroSubtitle {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.95);
   line-height: 1.5;
   text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.versionContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.versionLabel {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.versionValue {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 }
 
 .buttons {
@@ -162,7 +186,13 @@
 
   .heroSubtitle {
     font-size: 1rem; /* 减小副标题字号 */
+    margin-bottom: 0.75rem;
+  }
+
+  .versionContainer {
     margin-bottom: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
   }
 
   .buttons {

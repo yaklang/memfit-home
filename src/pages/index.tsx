@@ -1,6 +1,5 @@
 import type {ReactNode} from 'react';
-import {useEffect, useRef} from 'react';
-import clsx from 'clsx';
+import {useEffect, useRef, useState} from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -16,11 +15,21 @@ const SLOGANS = {
   'zh-Hans': '记得住的知识库，跑得动的执行力',
 };
 
+const VERSION_LABELS = {
+  en: 'Version',
+  'zh-Hans': '版本号',
+};
+
+const OSS_BASE_URL = 'https://oss-qn.yaklang.com';
+const VERSION_URL = `${OSS_BASE_URL}/memfit/latest/yakit-version.txt`;
+
 function HomepageHeader() {
   const {siteConfig, i18n} = useDocusaurusContext();
   const locale = i18n.currentLocale as 'en' | 'zh-Hans';
   const slogan = SLOGANS[locale] || SLOGANS.en;
+  const versionLabel = VERSION_LABELS[locale] || VERSION_LABELS.en;
   const headerRef = useRef<HTMLElement>(null);
+  const [version, setVersion] = useState<string>('');
 
   useEffect(() => {
     const header = headerRef.current;
@@ -38,6 +47,26 @@ function HomepageHeader() {
     return () => header.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    const fetchVersion = async () => {
+      try {
+        const response = await fetch(VERSION_URL);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch version: ${response.status}`);
+        }
+        const versionText = await response.text();
+        const trimmedVersion = versionText.trim();
+        setVersion(trimmedVersion);
+      } catch (err) {
+        console.error('Failed to fetch version:', err);
+        // Fallback to a default version if fetch fails
+        setVersion('1.0.0-1212');
+      }
+    };
+
+    fetchVersion();
+  }, []);
+
   return (
     <header ref={headerRef} className={styles.heroBanner}>
       <div className={styles.heroBackground} />
@@ -50,6 +79,12 @@ function HomepageHeader() {
             {siteConfig.title}
           </Heading>
           <p className={styles.heroSubtitle}>{slogan}</p>
+          {version && (
+            <div className={styles.versionContainer}>
+              <span className={styles.versionLabel}>{versionLabel}:</span>
+              <span className={styles.versionValue}>{version}</span>
+            </div>
+          )}
           <HeroDownload />
         </div>
         {/* Right side is intentionally empty to show the background image */}
