@@ -1,4 +1,28 @@
 {
+  "title": {
+    "message": "Memfit AI",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Memfit AI Logo",
+    "description": "The alt text of logo image"
+  },
+  "item.label.Product / Feature": {
+    "message": "产品 / 功能",
+    "description": "Navbar item with label Product / Feature"
+  },
+  "item.label.Docs / Help": {
+    "message": "文档 / 帮助",
+    "description": "Navbar item with label Docs / Help"
+  },
+  "item.label.Downloads": {
+    "message": "下载",
+    "description": "Navbar item with label Downloads"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
   "theme.ErrorPageContent.title": {
     "message": "页面已崩溃",
     "description": "The title of the fallback page when the page crashed"
@@ -20,4 +44,3 @@
     "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (used to navigate between categories)"
   }
 }
-

@@ -80,9 +80,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'productSidebar',
           position: 'left',
-          label: 'Arch & Features',
+          label: 'Product / Feature',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'helpSidebar',
+          position: 'left',
+          label: 'Docs / Help',
         },
         {
           to: '/downloads',
@@ -106,11 +112,32 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Product',
           items: [
             {
-              label: 'Arch & Features',
-              to: '/docs/architecture',
+              label: 'Overview',
+              to: '/docs/product/overview',
+            },
+            {
+              label: 'Architecture',
+              to: '/docs/product/architecture',
+            },
+            {
+              label: 'Features',
+              to: '/docs/product/features',
+            },
+          ],
+        },
+        {
+          title: 'Help',
+          items: [
+            {
+              label: 'Quick Start',
+              to: '/docs/help/quick-start',
+            },
+            {
+              label: 'Tutorials',
+              to: '/docs/help/tutorials',
             },
           ],
         },
