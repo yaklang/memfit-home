@@ -15,7 +15,7 @@ The **Recursive Dual-Engine** is Memfit AI's core architectural innovation. It i
 **The "Recursive" aspect means:**
 A ReAct Loop executing a leaf node task can decide, "This is too complex," and trigger the Plan Engine to generate a *sub-plan* for that specific node. This creates a fractal structure where tasks can be infinitely subdivided until they are solvable by atomic tools.
 
-![Recursive Fractal Structure](/img/recursive-dual-engine-fractal.jpg)
+![Recursive Dual-Engine Diagram](/img/recursive-engine-diagram.jpg)
 
 ## What Problems Does It Solve?
 
@@ -35,7 +35,12 @@ No single prompt can handle a task requiring 100+ tools.
 
 The system is layered to ensure separation of concerns:
 
-![Dual Engine Layering](/img/recursive-dual-engine-layering.jpg)
+> **[Image Placeholder]**
+> *Description:* A 3D "Layer Cake" architecture diagram showing the separation of concerns.
+> *   **Layer 1 (Top): The Coordinator.** Visualized as a command center or system bus. Labels: "Lifecycle Manager", "Shared Timeline", "User Interface".
+> *   **Layer 2 (Middle): The Plan Engine.** Visualized as a strategic map or flow chart generator. Labels: "Task Tree Gen", "Scheduler", "Dependency Control".
+> *   **Layer 3 (Bottom): The ReAct Runtime.** Visualized as an execution grid with multiple workers. Labels: "ReAct Loop 1", "ReAct Loop 2", "Tool Executor".
+> *   **Connection:** Vertical data pipes connecting the layers, with a special "Recursive Call" arrow looping from Layer 3 back up to Layer 1.
 
 ### Layer 1: The Coordinator (System Bus)
 *   **Role:** Lifecycle manager and context container.

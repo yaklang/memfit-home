@@ -15,7 +15,11 @@ title: 递归式双引擎
 **“递归”的含义是：**
 执行叶子节点任务的 ReAct Loop 可以决定“这个任务太复杂了”，并触发 Plan 引擎为该特定节点生成一个 *子计划*。这创造了一种分形结构，任务可以被无限细分，直到它们可以被原子工具解决。
 
+<<<<<<< HEAD
 ![Recursive Fractal Structure](/img/recursive-dual-engine-fractal.jpg)
+=======
+![递归双引擎图解](/img/recursive-engine-diagram.jpg)
+>>>>>>> db94469 (update docs)
 
 ## 解决了什么问题？
 
@@ -35,7 +39,16 @@ title: 递归式双引擎
 
 系统分层以确保关注点分离：
 
+<<<<<<< HEAD
 ![Dual Engine Layering](/img/recursive-dual-engine-layering.jpg)
+=======
+> **[图片占位符]**
+> *描述：* 一个 3D “千层蛋糕” 架构图展示关注点分离。
+> *   **层级 1 (顶层): 协调器 (Coordinator)。** 视觉化为指挥中心或系统总线。标签：“生命周期管理器”、“共享时间线”、“用户接口”。
+> *   **层级 2 (中层): Plan 引擎 (Plan Engine)。** 视觉化为战略地图或流程图生成器。标签：“任务树生成”、“调度器”、“依赖控制”。
+> *   **层级 3 (底层): ReAct 运行时 (ReAct Runtime)。** 视觉化为执行网格，有多个工人。标签：“ReAct Loop 1”、“ReAct Loop 2”、“工具执行器”。
+> *   **连接：** 连接各层的垂直数据管道，以及一个特殊的“递归调用”箭头，从层级 3 循环回层级 1。
+>>>>>>> db94469 (update docs)
 
 ### 层级 1：协调器 (Coordinator) - 系统总线
 *   **角色：** 生命周期管理器和上下文容器。
