@@ -120,11 +120,11 @@ const config: Config = {
             },
             {
               label: 'Architecture',
-              to: '/docs/product/architecture',
+              to: '/docs/product/architecture/recursive-dual-engine',
             },
             {
               label: 'Features',
-              to: '/docs/product/features',
+              to: '/docs/product/features/coordinator',
             },
           ],
         },
@@ -133,11 +133,11 @@ const config: Config = {
           items: [
             {
               label: 'Quick Start',
-              to: '/docs/help/quick-start',
+              to: '/docs/help/quick-start/installation',
             },
             {
               label: 'Tutorials',
-              to: '/docs/help/tutorials',
+              to: '/docs/help/tutorials/configuration',
             },
           ],
         },
