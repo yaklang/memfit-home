@@ -5,61 +5,91 @@ title: 递归式双引擎
 
 # 递归式双引擎架构
 
-Memfit AI 的核心创新在于 **Plan 引擎**（战略层）与 **ReAct 引擎**（战术层）之间的非线性嵌套关系。
+## 什么是递归式双引擎？
 
-## Plan 引擎（战略层）
+**递归式双引擎 (Recursive Dual-Engine)** 是 Memfit AI 的核心架构创新。它不仅仅是两种模式之间的简单切换，而是一种 **嵌套执行模型**，其中战略规划引擎可以作为战术执行循环中的一个原子动作被递归调用。
 
-Plan 引擎负责任务的宏观解构。面对复杂、模糊或长周期的用户意图，系统启动规划引擎：
+*   **Plan 引擎 (战略层)：** 将复杂目标解构为结构化的 **任务树 (Task Tree)**（有向无环图）。它处理依赖关系、并行性和全局状态。
+*   **ReAct 引擎 (战术层)：** 使用 **OODA 循环**（观察-调整-决策-行动）执行原子任务。它处理工具调用、错误恢复和动态推理。
 
-- 将顶层目标拆解为结构化的 **任务树**
-- 建立子任务之间的时序依赖关系
-- 定义逻辑关联和执行顺序
-- 为 Agent 提供全局视野与执行骨架
+**“递归”的含义是：**
+执行叶子节点任务的 ReAct Loop 可以决定“这个任务太复杂了”，并触发 Plan 引擎为该特定节点生成一个 *子计划*。这创造了一种分形结构，任务可以被无限细分，直到它们可以被原子工具解决。
 
-这防止了 Agent 在长链路操作中迷失方向。
+> **[图片占位符]**
+> *描述：* 一张详细的技术图表展示嵌套结构。左侧是一个 "ReAct Loop" 循环。循环中的一个 "Action" 节点被高亮显示，并向右展开（放大）成一个完整的 "Coordinator/Plan Engine" 结构，其中包含自己的子任务树。连接线表明“规划”只是 ReAct 循环中一个特殊的“动作”。
+> *标签：* 左侧："Parent ReAct Loop", "Action: RequestPlan"。右侧："Child Coordinator", "Sub-Task Tree"。
 
-## ReAct 引擎（战术层）
+## 解决了什么问题？
 
-ReAct 引擎负责原子任务的动态执行。针对每一个子任务，系统实例化独立的 **ReAct Loop**，通过以下闭环运行：
+### 1. “迷失方向”问题 (Lost in the Weeds)
+纯 ReAct Agent 往往在执行 10 步以上后忘记其高层目标。
+*   **解决方案：** Plan 引擎维护 **全局任务状态**。即使一个子任务需要 50 步，父级 Coordinator 也确切知道它在整体路线图中的位置。
 
-1. **观察 (Observation)** - 收集环境状态和反馈
-2. **推理 (Thought)** - 对当前情况进行推理
-3. **行动 (Action)** - 执行决定的操作
+### 2. “僵化”问题 (The "Rigidity" Problem)
+纯 Plan-Execute Agent 在初始计划有缺陷时会失败（例如，“扫描服务器 A”失败因为服务器 A 宕机）。
+*   **解决方案：** ReAct 引擎处理 **运行时适应**。它可以重试、修改参数，甚至触发 *重规划* 事件，而无需中止整个任务。
 
-这种闭环机制赋予了 Agent 应对非确定性环境的能力。
+### 3. “复杂度视界”问题 (The "Complexity Horizon" Problem)
+没有单一的 Prompt 可以处理需要 100+ 工具的任务。
+*   **解决方案：** **分形分解**。复杂任务被分解，直到它适应 LLM 的上下文窗口和推理能力。
 
-## 递归耦合机制
+## 工作原理：系统分层
 
-Memfit AI 的真正威力来自于这两个引擎之间的递归耦合：
+系统分层以确保关注点分离：
 
-- 当 ReAct 引擎遇到超出当前能力范畴的复杂子问题时，可动态触发 Plan 引擎进行 **次级规划**
-- Plan 引擎生成的每一个叶子节点任务均由 ReAct 引擎承接落地
-- 这种递归调用机制支持了任务的分形扩展
-- 系统可适应任意复杂度的业务场景
+### 层级 1：协调器 (Coordinator) - 系统总线
+*   **角色：** 生命周期管理器和上下文容器。
+*   **职责：**
+    *   初始化会话。
+    *   管理所有层级间的 **共享记忆 (Shared Memory)**（时间线）。
+    *   处理用户中断和审查。
 
-## 执行流程
+### 层级 2：Plan 引擎 (Plan Engine) - 战略家
+*   **角色：** 任务生成器和调度器。
+*   **职责：**
+    *   从用户意图生成 `AiTask` 树。
+    *   管理 **控制流**（顺序、并行、If-Else）。
+    *   将叶子任务分发给运行时。
 
+### 层级 3：ReAct 运行时 (ReAct Runtime) - 战术家
+*   **角色：** 工作单元。
+*   **职责：**
+    *   为每个叶子任务实例化 `ReActLoop`。
+    *   执行工具（`PortScan`, `ShellExec`）。
+    *   **关键点：** 可以调用 `RequestPlanExecution` 作为动作，回调至层级 1。
+
+## 核心实现技术
+
+基于 Yaklang 代码库分析，递归机制依赖于几个关键技术：
+
+### 1. 规划即动作 (Planning as an Action)
+在 `reactloop.go` 中，规划能力被注册为一个标准的工具动作：
+`AI_REACT_LOOP_ACTION_REQUEST_PLAN_EXECUTION`。
+这意味着对于 LLM 来说，“创建子计划”就像“读取文件”一样，只是一个工具。
+
+### 2. 上下文嵌套与镜像 (Context Nesting & Mirroring)
+当子计划被触发时 (`invoke_plan_and_execute.go`)：
+*   一个新的 `CoordinatorContext` 被创建，继承父级的 `Timeline`。
+*   **事件镜像 (Event Mirroring)：** `InputEventManager` 将父级的输入事件流桥接到子 Coordinator，允许用户无缝地与深层子任务交互。
+
+### 3. 任务树数据结构
+`AiTask` 结构支持递归定义：
+```go
+type AiTask struct {
+    Name     string
+    Subtasks []*AiTask  // 递归定义
+    Status   TaskStatus // Pending, Running, Completed, Failed
+    // ...
+}
 ```
-用户意图
-    ↓
-Coordinator
-    ↓
-Plan 引擎 → 任务树生成
-    ↓
-    ├── 子任务 1 → ReAct Loop
-    │       ↓
-    │   [复杂问题？] → 是 → 次级规划 (Plan 引擎)
-    │                → 否 → 继续执行
-    │
-    ├── 子任务 2 → ReAct Loop
-    │
-    └── 子任务 N → ReAct Loop
-```
+Coordinator 使用 DFS（深度优先搜索）策略遍历此树来调度 ReAct Loops。
 
-## 优势
+### 4. Forges 作为预编译计划
+**Forges** (AI Blueprints) 被实现为预定义的 Plan。当 ReAct Loop 调用 Forge（例如“Java 审计 Forge”）时，技术上它是在触发一个带有预设模板的递归 Plan Execution。
 
-1. **可扩展性** - 处理任意复杂度的任务
-2. **灵活性** - 在执行过程中适应变化的需求
-3. **可靠性** - 每个层级都有自己的错误处理和恢复机制
-4. **透明性** - 清晰的任务分解供用户审查
+## 参考资料
 
+*   **Yaklang 代码库：** `common/ai/aid/aireact/reactloops/reactloop.go` (循环逻辑)
+*   **Yaklang 代码库：** `common/ai/aid/coordinator.go` (任务调度)
+*   **论文：** *ReAct: Synergizing Reasoning and Acting in Language Models* (Yao et al., 2022) - 战术层的基础。
+*   **论文：** *Plan-and-Solve Prompting* (Wang et al., 2023) - 战略层的基础。
