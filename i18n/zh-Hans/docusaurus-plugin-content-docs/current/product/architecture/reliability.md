@@ -94,6 +94,8 @@ if operatorLevel != ReflectionLevel_None {
 }
 ```
 
+![反思级别决策树](/img/reliability-reflection-decision-tree.jpg)
+
 > **[图表占位符：反思决策树]**
 > *   **布局：** 自上而下的决策流程图
 > *   **节点：**
@@ -225,6 +227,8 @@ if len(reflections) > 3 {
 }
 r.Set("self_reflections", reflections)
 ```
+
+![记忆增强反思管道](/img/reliability-memory-augmented-pipeline.jpg)
 
 > **[图表占位符：反思管道]**
 > *   **布局：** 带并行分支的从左到右管道
@@ -464,6 +468,8 @@ func generateReflectionPrompt(record ModifyRecord, reason string) string {
         reason, record.StartLine, record.EndLine)
 }
 ```
+
+![SPIN 检测架构](/img/reliability-spin-detection.jpg)
 
 > **[图表占位符：多层 SPIN 检测架构]**
 > *   **布局：** 带升级箭头的分层架构
@@ -780,6 +786,8 @@ if isDone {
     }()
 }
 ```
+
+![执行 OODA 循环](/img/reliability-ooda-loop.jpg)
 
 > **[图表占位符：记忆恢复架构]**
 > *   **布局：** 带存储和检索路径的数据流图
