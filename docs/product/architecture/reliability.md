@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Reliability Assurance
+title: Agentic Reliability Assurance
 ---
 
 # Reliability Assurance
@@ -94,17 +94,7 @@ if operatorLevel != ReflectionLevel_None {
 }
 ```
 
-> **[Diagram Placeholder: Reflection Decision Tree]**
-> *   **Layout:** Top-down decision flowchart
-> *   **Nodes:**
->     1.  **Entry Point** (shouldTriggerReflection)
->     2.  **Check: Reflection Enabled?** → No → Return None
->     3.  **Check: Operator Override?** → Yes → Return Operator Level
->     4.  **Check: Action Failed?** → Yes → Return Critical
->     5.  **Check: Simple Action?** → Yes → Return Minimal
->     6.  **Check: Iteration > 5?** → Yes → Check SPIN → Standard/Minimal
->     7.  **Default** → Return Minimal
-> *   **Key Takeaway:** Shows the hierarchical priority of trigger conditions.
+![Reflection Level Decision Tree](/img/reliability-reflection-decision-tree.jpg)
 
 ### 1.3 The Reflection Execution Pipeline
 
@@ -226,17 +216,7 @@ if len(reflections) > 3 {
 r.Set("self_reflections", reflections)
 ```
 
-> **[Diagram Placeholder: The Reflection Pipeline]**
-> *   **Layout:** Left-to-right pipeline with parallel branches
-> *   **Stages:**
->     1.  **Data Collection** (ActionReflection snapshot)
->     2.  **Environmental Analysis** (EnvironmentalImpact computation)
->     3.  **Memory Search** (Vector database query)
->     4.  **AI Analysis** (LLM invocation with context)
->     5.  **Output Processing** (Suggestions extraction)
->     6.  **Timeline Injection** (High-priority context)
->     7.  **Cache Update** (Recent reflections store)
-> *   **Key Takeaway:** Demonstrates the comprehensive multi-stage reflection process.
+![Memory-Augmented Reflection Pipeline](/img/reliability-memory-augmented-pipeline.jpg)
 
 ## 2. Spin Detection & Anti-Looping
 
@@ -465,15 +445,7 @@ func generateReflectionPrompt(record ModifyRecord, reason string) string {
 }
 ```
 
-> **[Diagram Placeholder: Multi-Layer Spin Detection Architecture]**
-> *   **Layout:** Layered architecture with escalation arrows
-> *   **Layers:**
->     1.  **Layer 1: Heuristic Detection** (O(1) cost, action type matching)
->     2.  **Layer 2: Semantic Detection** (AI-powered, context analysis)
->     3.  **Layer 3: Domain-Specific** (specialized for code, file operations, etc.)
-> *   **Escalation Path:** Layer 1 → Layer 2 (on trigger) → Layer 3 (domain-specific)
-> *   **Intervention Points:** Timeline injection, prompt modification, forced reflection
-> *   **Key Takeaway:** Progressive detection depth with cost-appropriate escalation.
+![SPIN Detection Architecture](/img/reliability-spin-detection.jpg)
 
 ### 2.4 SPIN Warning Injection
 
@@ -781,19 +753,7 @@ if isDone {
 }
 ```
 
-> **[Diagram Placeholder: Memory Recovery Architecture]**
-> *   **Layout:** Data flow diagram with storage and retrieval paths
-> *   **Components:**
->     1.  **Timeline Differ** (Captures execution changes)
->     2.  **Memory Triage** (Processing and storage)
->     3.  **Vector Database** (Semantic storage)
->     4.  **Relational Database** (Structured metadata)
->     5.  **Search Pipeline** (Multi-strategy retrieval)
->     6.  **C.O.R.E. P.A.C.T. Ranker** (Relevance scoring)
-> *   **Data Flow:**
->     *   Write Path: Timeline → Differ → Triage → Dedup → Store
->     *   Read Path: Query → Tags + Semantics → Dedup → Rank → Select
-> *   **Key Takeaway:** Bidirectional flow between execution and memory.
+![Execution OODA Loop](/img/reliability-ooda-loop.jpg)
 
 ## 4. Reliability Metrics & Monitoring
 

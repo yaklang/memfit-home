@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: 数据流
+title: 数据流与人机交互
 ---
 
 # 数据流与交互控制
@@ -468,6 +468,8 @@ func (d *TimelineDiffer) Diff() (string, error) {
     return diff, nil
 }
 ```
+
+![时间线差异追踪](/img/data-flow-timeline-differ.jpg)
 
 > **[图表占位符：时间线数据结构]**
 > *   **布局：** 多层索引结构

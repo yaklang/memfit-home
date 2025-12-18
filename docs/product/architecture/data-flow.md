@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Data Flow
+title: Data Flow & Human Interaction
 ---
 
 # Data Flow and Interaction
@@ -114,26 +114,7 @@ func (p *AIInputEventProcessor) CallMirrorOfAIInputEvent(event *ypb.AIInputEvent
 }
 ```
 
-![Event Mirroring Mechanism](/img/data-flow-event-mirroring.jpg)
-
-> **[Diagram Placeholder: Event Mirroring & Dispatch]**
-> *   **Layout:** Top-down data flow with branching.
-> *   **Nodes:**
->     1.  **User Input Source** (Web UI / CLI / API)
->     2.  **AIInputEventProcessor** (Central Dispatcher)
->     3.  **SyncCallback Registry** (Request-Response handlers)
->     4.  **FreeInputCallback** (Free-text handler)
->     5.  **MirrorCallback Registry** (Child event replication)
->     6.  **Parent Agent Channel** (Coordinator, SessionID: A)
->     7.  **Child Agent Channel** (ReActLoop, SessionID: B)
-> *   **Connections:**
->     *   User Input → AIInputEventProcessor
->     *   AIInputEventProcessor → CallMirrorOfAIInputEvent → All Children
->     *   AIInputEventProcessor → processEvent → SyncCallback / FreeInputCallback
-> *   **Annotations:**
->     *   Show "Stop Signal" propagating to both Parent and Child instantly
->     *   Label goroutine spawning for async event delivery
-> *   **Key Takeaway:** Child agents receive real-time control signals through the Mirror mechanism without blocking parent execution.
+![Event Mirroring Architecture](/img/data-flow-event-mirroring.jpg)
 
 ### 1.4 Event Type Classification
 
@@ -469,19 +450,7 @@ func (d *TimelineDiffer) Diff() (string, error) {
 }
 ```
 
-> **[Diagram Placeholder: Timeline Data Structure]**
-> *   **Layout:** Multi-layer indexed structure
-> *   **Layers:**
->     1.  **Timestamp Index** (tsToTimelineItem) - Ordered by time
->     2.  **ID Index** (idToTimelineItem) - Direct access by ID
->     3.  **Summary Layer** (summary) - Compressed old items
->     4.  **Reducer Layer** (reducers) - Batch compression results
-> *   **Operations:**
->     *   **Push**: Add new item with timestamp and ID indexing
->     *   **Shrink**: Compress individual items exceeding size limit
->     *   **BatchCompress**: Compress oldest items when total exceeds limit
->     *   **CreateSubTimeline**: Create scoped view for specific IDs
-> *   **Key Takeaway:** Multiple indexing strategies enable efficient access patterns while compression mechanisms prevent unbounded growth.
+![Timeline Differ Architecture](/img/data-flow-timeline-differ.jpg)
 
 ## 3. Core Data Flow Loop
 
@@ -679,20 +648,7 @@ reactloops.WithOnPostIteraction(func(loop *reactloops.ReActLoop, iteration int,
 })
 ```
 
-![OODA Loop Execution](/img/data-flow-ooda-loop.jpg)
-
-> **[Diagram Placeholder: OODA Loop with Memory Integration]**
-> *   **Layout:** Circular flow with external memory connections
-> *   **Phases:**
->     1.  **Observe**: Collect Timeline diff, execution results
->     2.  **Orient**: Hydrate context with Timeline, LTM, RAG
->     3.  **Decide**: LLM generates action with SPIN checks
->     4.  **Act**: Tool dispatch (Local/MCP/Recursive)
-> *   **Memory Connections:**
->     *   Orient ← Short-Term Memory (Timeline)
->     *   Orient ← Long-Term Memory (MemoryTriage)
->     *   Observe → Asynchronous Learning (Timeline Diff)
-> *   **Key Takeaway:** Every phase has memory integration for context-aware execution.
+![OODA Loop Feedback](/img/data-flow-ooda-loop.jpg)
 
 ## 4. Recursive Data Flow (The "Call Stack")
 
@@ -852,22 +808,7 @@ func invokeTask(current *AiTask) error {
 }
 ```
 
-![Recursive Stack & Shared State](/img/data-flow-recursive-stack.jpg)
-
-> **[Diagram Placeholder: Recursive Stack & Shared State]**
-> *   **Layout:** Vertical Stack (representing depth) + Side Bar (representing shared state)
-> *   **Stack Layers:**
->     *   **Level 0 (Top):** Parent ReAct Loop. State: *[PAUSED / AWAITING]*
->     *   **Level 1 (Middle):** Child Coordinator. State: *[ACTIVE / SCHEDULING]*
->     *   **Level 2 (Bottom):** Leaf ReAct Loops. State: *[RUNNING TOOLS]*
-> *   **Side Bar:**
->     *   **Shared Timeline:** A vertical bar spanning all levels
->     *   **Event Mirror Chain:** Arrows showing event propagation
-> *   **Connections:**
->     *   **Down:** Level 0 calls `RequestPlanExecution` → Spawns Level 1
->     *   **Sideways:** All levels read/write to Shared Timeline
->     *   **Up:** Level 1 completes → Returns `Summary Report` → Resumes Level 0
-> *   **Key Takeaway:** Visualizes the "Function Call" model with shared Timeline ensuring data consistency across recursion levels.
+![Recursive Stack Architecture](/img/data-flow-recursive-stack.jpg)
 
 ## 5. Data Flow Metrics
 

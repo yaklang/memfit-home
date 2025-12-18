@@ -1,0 +1,31 @@
+{
+  "version.label": {
+    "message": "当前版本",
+    "description": "The label for version current"
+  },
+  "sidebar.productSidebar.category.Core Architecture Design": {
+    "message": "核心系统架构设计",
+    "description": "The label for category Core Architecture Design in sidebar productSidebar"
+  },
+  "sidebar.productSidebar.category.Pillar Components": {
+    "message": "支柱组件",
+    "description": "The label for category Pillar Components in sidebar productSidebar"
+  },
+  "sidebar.productSidebar.category.Use Cases": {
+    "message": "使用场景",
+    "description": "The label for category Use Cases in sidebar productSidebar"
+  },
+  "sidebar.productSidebar.doc.product/overview": {
+    "message": "Memfit AI 概览",
+    "description": "The label for the doc item product/overview in sidebar productSidebar"
+  },
+  "sidebar.helpSidebar.category.Quick Start": {
+    "message": "快速开始",
+    "description": "The label for category Quick Start in sidebar helpSidebar"
+  },
+  "sidebar.helpSidebar.category.Tutorials": {
+    "message": "教程",
+    "description": "The label for category Tutorials in sidebar helpSidebar"
+  }
+}
+
