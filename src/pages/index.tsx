@@ -7,7 +7,7 @@ import Layout from '@theme/Layout';
 // import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import HeroDownload from '@site/src/components/HeroDownload';
-
+import NewHome from "../components/NewHome";
 import styles from './index.module.css';
 
 const SLOGANS = {
@@ -106,7 +106,7 @@ function HomepageHeader() {
   );
 }
 
-export default function Home(): ReactNode {
+function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
@@ -119,3 +119,6 @@ export default function Home(): ReactNode {
     </Layout>
   );
 }
+
+//替换index输出
+export default NewHome;

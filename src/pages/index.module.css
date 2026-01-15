@@ -2,6 +2,10 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+ a:hover {
+  text-decoration: none;
+  color: #000;
+ }
 
 .heroBanner {
   padding: 0;
