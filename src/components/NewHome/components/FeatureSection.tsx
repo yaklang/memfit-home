@@ -107,19 +107,19 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
 
   // 背景图片映射
   const bgImages = [
-    "/newImg/bg-1.png", // Plan
-    "/newImg/bg-2.png", // ReAct
-    "/newImg/bg-3.png", // Tools
-    "/newImg/bg-4.png", // Memory
-    "/newImg/bg-5.png", // Knowledge
+    "/newImg/bg-1.jpg", // Plan
+    "/newImg/bg-2.jpg", // ReAct
+    "/newImg/bg-3.jpg", // Tools
+    "/newImg/bg-4.jpg", // Memory
+    "/newImg/bg-5.jpg", // Knowledge
   ];
 
   const bgBlackImages = [
-    "/newImg/bg-black-1.png", // Plan
-    "/newImg/bg-black-2.png", // ReAct
-    "/newImg/bg-black-3.png", // Tools
-    "/newImg/bg-black-4.png", // Memory
-    "/newImg/bg-black-5.png", // Knowledge
+    "/newImg/bg-black-1.jpg", // Plan
+    "/newImg/bg-black-2.jpg", // ReAct
+    "/newImg/bg-black-3.jpg", // Tools
+    "/newImg/bg-black-4.jpg", // Memory
+    "/newImg/bg-black-5.jpg", // Knowledge
   ];
 
   // 左侧装饰图片映射
@@ -201,7 +201,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                 className={`w-full  relative z-10 rounded-2xl overflow-hidden shadow-2xl `}
               >
                 <img
-                  src={`/newImg/content-${index + 1}.png`}
+                  src={`/newImg/content-${index + 1}.jpg`}
                   alt={section.title}
                   className="w-full h-auto"
                 />
@@ -263,7 +263,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                 className={`w-full  relative z-10 rounded-2xl overflow-hidden shadow-2xl `}
               >
                 <img
-                  src={`/newImg/content-${index + 1}.png`}
+                  src={`/newImg/content-${index + 1}.jpg`}
                   alt={section.title}
                   className="w-full h-auto"
                 />
@@ -338,7 +338,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                 className={`w-full  relative z-10  overflow-hidden `}
               >
                 <img
-                  src={theme === "light" ? `/newImg/content-${index + 1}.png` : `/newImg/content-black-${index + 1}.png`}
+                  src={theme === "light" ? `/newImg/content-${index + 1}.jpg` : `/newImg/content-black-${index + 1}.jpg`}
                   alt={section.title}
                   className="w-full h-auto"
                 />

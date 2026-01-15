@@ -53,7 +53,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
             <a
               href={downloadUrl}
               download
-              className="w-full h-[46px] flex-shrink-0  desktop:w-[171px] desktop:h-[36px] flex items-center justify-center gap-2 text-[#4373bb] bg-white  rounded-4 hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline hover:text-[#4373bb] text-[18px]  desktop:text-[14px]"
+              className="w-full h-[46px] flex-shrink-0  desktop:w-[171px] desktop:h-[36px] flex items-center justify-center gap-2 text-[#4373bb] bg-white  rounded-4 hover:brightness-110 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline hover:text-[#4373bb] text-[18px]  desktop:text-[14px] transition-all"
             >
               {buttonText}
               <DownloadIcon className="w-5 h-5 " />
@@ -61,7 +61,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
             {/* 次按钮 - 手机/iPad纯文字，PC有边框 */}
             <Link
               to="/downloads"
-              className="w-full h-[46px] flex-shrink-0 desktop:w-[117px] desktop:h-[36px] flex items-center justify-center rounded-4 text-white hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline hover:text-[#ffffff] text-[18px]  desktop:text-[14px]" style={{border: '1px solid #A1B9DD'}}
+              className="w-full h-[46px] flex-shrink-0 desktop:w-[117px] desktop:h-[36px] flex items-center justify-center rounded-4 text-white hover:bg-white/10 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline hover:text-[#ffffff] text-[18px]  desktop:text-[14px] transition-all" style={{border: '1px solid #A1B9DD'}}
             >
               {content.buttons.moreVersions}
             </Link>

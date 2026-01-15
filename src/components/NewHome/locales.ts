@@ -184,7 +184,7 @@ export const CONTENT: Record<Locale, LocaleContent> = {
     },
     whatIs: {
       title: "什么是 Memfit AI？",
-      description: "Memfit AI 是一个专为网络安全领域设计的智能代理系统，n 由 Yaklang 生态系统驱动。",
+      description: "Memfit AI 是一个专为网络安全领域设计的智能代理系统，\n 由 Yaklang 生态系统驱动。",
       textOne: "它超越了简单的聊天机器人",
       textTwo: "递归式双引擎架构 (Recursive Dual-Engine Architecture)",
       textThree: "，将宏观的战略规划与微观的战术执行完美结合。",
