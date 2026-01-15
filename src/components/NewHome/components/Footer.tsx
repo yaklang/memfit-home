@@ -52,7 +52,7 @@ export const Footer = ({ locale }: FooterProps) => {
               theme === "light" ? "text-[#4a4a6a]" : "text-white/50"
             }`}
           >
-            Copyright © 2025 Memfit AI. Built with Docusaurus.
+            Copyright ©  {new Date().getFullYear()} Memfit AI. Built with Docusaurus.
           </p>
         </div>
         <div className="grid grid-cols-2 tablet:grid-cols-4 gap-6 tablet:gap-8">

@@ -33,6 +33,16 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
     );
   };
 
+  // 处理描述中的换行符
+  const renderDescription = (text: string) => {
+    return text.split('\n').map((line, index, array) => (
+      <span key={index}>
+        {line}
+        {index < array.length - 1 && <br />}
+      </span>
+    ));
+  };
+
   // 卡片组件 - 带四角装饰
   const FeatureCard = ({ 
     title, 
@@ -252,7 +262,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
             <p className={`text-[18px] leading-relaxed text-right pl-28 ${
               theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
             }`}>
-              {whatIs.description}
+              {renderDescription(whatIs.description)}
             </p>
           </div>
 
