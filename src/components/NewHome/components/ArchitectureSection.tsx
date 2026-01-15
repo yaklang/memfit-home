@@ -24,7 +24,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
             className={`text-[28px] font-bold mb-3 ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "var(--font-pixel, monospace)" }}
+            style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
             {architecture.title}
           </h2>
@@ -48,7 +48,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           {/* 架构图 */}
           <div className="flex-1 flex items-center justify-center px-6 py-4" style={{
               backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
-              backgroundSize: '24px 24px',
+              backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
             }}>
             <img
@@ -68,7 +68,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
             className={`text-[32px] font-bold mb-4 ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "var(--font-pixel, monospace)" }}
+            style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
             {architecture.title}
           </h2>
@@ -92,7 +92,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           {/* 架构图 */}
           <div className="flex-1 flex items-center justify-center px-10 py-6" style={{
               backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
-              backgroundSize: '24px 24px',
+              backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
             }}>
             <img
@@ -114,7 +114,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
               className={`text-[36px] 2xl:text-[42px] font-bold flex-shrink-0 ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}
-              style={{ fontFamily: "var(--font-pixel, monospace)" }}
+              style={{ fontFamily: 'DotGothic16, sans-serif' }}
             >
               {architecture.title}
             </h2>
@@ -139,7 +139,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           {/* 架构图 - 居中显示 */}
           <div className="flex-1 flex items-center justify-center px-16 py-10" style={{
               backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
-              backgroundSize: '24px 24px',
+              backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
             }}>
             <img
