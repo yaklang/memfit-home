@@ -64,7 +64,7 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
             <a
               href={`#${tab.id}`}
               onClick={(e) => handleNavClick(e, tab.id)}
-                className={`relative border-0 ${idx === 0 ? 'border-l-0' : 'border-l'} border-solid flex items-center gap-2 px-3 tablet:px-4 py-2 tablet:py-2.5 no-underline transition-all hover:no-underline whitespace-nowrap ${
+                className={`relative border-0 ${idx === 0 ? 'border-l border-r' : 'border-r'}  border-solid flex items-center gap-2 px-3 tablet:px-4 py-2 tablet:py-2.5 no-underline transition-all hover:no-underline whitespace-nowrap ${
                   isActive
                     ? theme === "light"
                       ? "bg-[#E8F2FF] text-[#4373bb] border-[#E6E8ED]"
@@ -76,10 +76,10 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
                 style={{ fontFamily: 'DotGothic16, sans-serif' }}
               >
                 {/* 四个角的装饰 */}
-                <div className="absolute left-0 top-0 w-[6px] h-[6px]" style={{ borderLeft: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute right-0 top-0 w-[6px] h-[6px]" style={{ borderRight: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute left-0 bottom-0 w-[6px] h-[6px]" style={{ borderLeft: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute right-0 bottom-0 w-[6px] h-[6px]" style={{ borderRight: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `2px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute left-0 top-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute right-0 top-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute left-0 bottom-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute right-0 bottom-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
                 
                 <span className="text-[13px] tablet:text-[14px] font-medium">
                   {tab.title}({tab.subtitle})

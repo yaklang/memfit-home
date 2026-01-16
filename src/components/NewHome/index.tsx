@@ -34,10 +34,7 @@ export const NewHome = (): ReactNode => {
         const rect = navRef.current.getBoundingClientRect();
         const headerHeight = window.innerWidth >= 1440 ? 56 : 72;
         
-        // 提前触发：当导航栏距离目标位置还有一定距离时就开始固定
-        // rect.top 是导航栏当前距离视口顶部的距离
-        const triggerOffset = 100; // 提前100px触发，让过渡更自然
-        setIsNavSticky(rect.top <= headerHeight + triggerOffset);
+        setIsNavSticky(rect.top <= headerHeight - 20);
       }
     };
 
@@ -52,7 +49,7 @@ export const NewHome = (): ReactNode => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <Header locale={locale} onToggleLocale={handleToggleLocale} />
-      <main className={`overflow-x-hidden pt-[72px] desktop:pt-[56px] ${theme === "light" ? "bg-white" : "bg-[#0a0a14]"}`}>
+      <main className={`overflow-x-hidden pt-[72px] desktop:pt-[56px] ${theme === "light" ? "bg-white theme-light" : "bg-[#0a0a14] theme-dark"}`}>
        <HeroSection locale={locale} />
         <WhatIsSection locale={locale} />
         <ProblemSection locale={locale} />

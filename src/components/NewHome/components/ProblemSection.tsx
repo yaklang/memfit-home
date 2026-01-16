@@ -110,7 +110,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             </p>
 
             {/* 列表 */}
-            <ul className="space-y-2">
+            <ul className="space-y-2 pl-0">
               {traditionalItems.map((item, index) => (
                 <li
                   key={index}
@@ -118,7 +118,6 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
                     theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
                   }`}
                 >
-                  <span className="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
                   <span>
                     <span className="font-semibold">{item.bold}</span> {item.text}
                   </span>
@@ -264,7 +263,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
         <div className="min-h-[600px] py-16 2xl:py-20 max-w-[1400px] 2xl:max-w-[1600px] mx-auto flex flex-col">
           {/* 标题 - 居中 */}
           <div
-            className={`text-[36px] 2xl:text-[48px] flex justify-center items-center mb-10 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
+            className={`text-[48px] 2xl:text-[48px] flex justify-center items-center mb-10 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
             style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
             <AnimatedTitle title={problem.title} />

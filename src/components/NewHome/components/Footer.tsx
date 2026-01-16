@@ -29,8 +29,8 @@ export const Footer = ({ locale }: FooterProps) => {
       className="relative overflow-hidden px-4 tablet:px-6 desktop:px-12"
       style={{
         background: theme === "light"
-          ? 'linear-gradient(180deg, #F8F9FA 0%, #E3EBF5 50%, #D5E3F2 100%)'
-          : 'linear-gradient(180deg, #171717 0%, #1a2332 50%, #4373BB 100%)',
+          ? 'linear-gradient(180deg, #F8F9FA 0%, #A1B9DC 100%)'
+          : 'linear-gradient(180deg, #171717 0%, #2C4468 100%)',
       }}
     >
       <div className="grid grid-cols-1 desktop:grid-cols-[1fr_2fr] gap-8 desktop:gap-16 py-10 tablet:py-12 desktop:py-16 ">

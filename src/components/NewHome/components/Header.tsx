@@ -52,30 +52,30 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
           <nav className="hidden desktop:flex items-center gap-8 2xl:gap-12">
             <Link
               to="/docs/product/overview"
-              className={`text-[14px] font-medium transition-colors hover:no-underline whitespace-nowrap ${
+              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB] whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639] hover:text-[#353639]"
-                  : "text-[#C8D0DD] hover:text-[#C8D0DD]"
+                  ? "text-[#353639]"
+                  : "text-[#C8D0DD]"
               }`}
             >
               {content.nav.product}
             </Link>
             <Link
               to="/docs/help/quick-start/installation"
-              className={`text-[14px] font-medium transition-colors hover:no-underline whitespace-nowrap ${
+              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB]e whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639] hover:text-[#353639]"
-                  : "text-[#C8D0DD] hover:text-[#C8D0DD]"
+                  ? "text-[#353639]"
+                  : "text-[#C8D0DD]"
               }`}
             >
               {content.nav.docs}
             </Link>
             <Link
               to="/downloads"
-              className={`text-[14px] font-medium transition-colors hover:no-underline whitespace-nowrap ${
+              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB] whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639] hover:text-[#353639]"
-                  : "text-[#C8D0DD] hover:text-[#C8D0DD]"
+                  ? "text-[#353639]"
+                  : "text-[#C8D0DD]"
               }`}
             >
               {content.nav.download}
@@ -89,29 +89,29 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
             href="https://github.com/yaklang/memfit-home"
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-[14px] font-medium transition-colors no-underline hover:no-underline whitespace-nowrap flex items-center gap-1 ${
+            className={`text-[14px] font-medium transition-colors no-underline hover:text-[#4373BB] whitespace-nowrap flex items-center gap-1 ${
               theme === "light"
-                ? "text-[#353639] hover:text-[#353639]"
-                : "text-[#C8D0DD] hover:text-[#C8D0DD]"
+                ? "text-[#353639]"
+                : "text-[#C8D0DD]"
             }`}
           >
             {content.buttons.github}
-            <ExternalLinkIcon className="w-3 h-3 text-[#868C97]" />
+            <ExternalLinkIcon className="w-3 h-3" />
           </a>
 
           {/* 语言切换 */}
           <div className="relative">
             <button
-              className={`flex items-center gap-1 text-[14px] border-none font-medium bg-transparent transition-colors cursor-pointer whitespace-nowrap ${
+              className={`flex items-center gap-1 text-[14px] hover:text-[#4373BB] border-none font-medium bg-transparent transition-colors cursor-pointer whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639] hover:text-[#353639]"
-                  : "text-[#C8D0DD] hover:text-[#C8D0DD]"
+                  ? "text-[#353639]"
+                  : "text-[#C8D0DD]"
               }`}
               onClick={() => setShowLangMenu(!showLangMenu)}
               onBlur={() => setTimeout(() => setShowLangMenu(false), 150)}
             >
               {content.buttons.language}
-              <ChevronDownIcon className="w-4 h-4 text-[#868C97]" />
+              <ChevronDownIcon className="w-4 h-4" />
             </button>
             {showLangMenu && (
               <div
