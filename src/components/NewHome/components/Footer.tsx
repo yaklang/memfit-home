@@ -185,6 +185,7 @@ export const Footer = ({ locale }: FooterProps) => {
           className={`font-mono text-[100px] tablet:text-[140px] desktop:text-[180px] 2xl:text-[220px] font-extrabold whitespace-nowrap -tracking-[3px] tablet:-tracking-[5px] ${
             theme === "light" ? "text-[#1a1a2e]" : "text-white"
           }`}
+          style={{ fontFamily: 'DotGothic16, sans-serif', letterSpacing: '12px' }}
         >
           memfit::
         </div>

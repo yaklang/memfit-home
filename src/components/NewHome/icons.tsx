@@ -218,7 +218,7 @@ export const DownloadIcon: FC<IconProps> = ({ className }) => (
   </svg>
 );
 
-export const SunIcon: FC<IconProps> = ({ className }) => (
+export const SunIconActive: FC<IconProps> = ({ className }) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -227,6 +227,10 @@ export const SunIcon: FC<IconProps> = ({ className }) => (
     viewBox="0 0 24 24"
     fill="none"
   >
+    <path
+      d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
+      fill="white"
+    />
     <path
       d="M11.9996 5.6C12.4414 5.6 12.7996 5.95817 12.7996 6.4V7.2C12.7996 7.64183 12.4414 8 11.9996 8C11.5578 8 11.1996 7.64183 11.1996 7.2V6.4C11.1996 5.95817 11.5578 5.6 11.9996 5.6Z"
       fill="#4373BB"
@@ -262,6 +266,40 @@ export const SunIcon: FC<IconProps> = ({ className }) => (
     <path
       d="M7.19961 12.8C7.64144 12.8 7.99961 12.4418 7.99961 12C7.99961 11.5582 7.64144 11.2 7.19961 11.2H6.39961C5.95778 11.2 5.59961 11.5582 5.59961 12C5.59961 12.4418 5.95778 12.8 6.39961 12.8H7.19961Z"
       fill="#4373BB"
+    />
+  </svg>
+);
+
+export const SunIcon: FC<IconProps> = ({ className }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <path
+      d="M8 2V2.66667M8 13.3333V14M14 8H13.3333M2.66667 8H2M12.2426 12.2426L11.7712 11.7712M4.22876 4.22876L3.75736 3.75736M12.2427 3.75739L11.7713 4.2288M4.2288 11.7713L3.75739 12.2427M10.6667 8C10.6667 9.47276 9.47276 10.6667 8 10.6667C6.52724 10.6667 5.33333 9.47276 5.33333 8C5.33333 6.52724 6.52724 5.33333 8 5.33333C9.47276 5.33333 10.6667 6.52724 10.6667 8Z"
+      stroke="#A6AFBF"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const MoonIconActive: FC<IconProps> = ({ className }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M17.8339 14.6344C17.0305 14.9977 16.1387 15.1999 15.1996 15.1999C11.665 15.1999 8.79961 12.3345 8.79961 8.79992C8.79961 7.86074 9.00191 6.96882 9.3653 6.16533C7.14471 7.16953 5.59961 9.40421 5.59961 11.9998C5.59961 15.5344 8.46499 18.3998 11.9996 18.3998C14.5951 18.3998 16.8297 16.8548 17.8339 14.6344Z"
+      fill="#66A2EB"
     />
   </svg>
 );
@@ -772,9 +810,30 @@ export const ConcentricCircleIcon: FC<IconProps> = ({ className }) => (
     viewBox="0 0 60 60"
     fill="none"
   >
-    <circle cx="30" cy="30" r="28" stroke="#C8D0DD" strokeWidth="2" fill="none" />
-    <circle cx="30" cy="30" r="20" stroke="#C8D0DD" strokeWidth="2" fill="none" />
-    <circle cx="30" cy="30" r="12" stroke="#C8D0DD" strokeWidth="2" fill="none" />
+    <circle
+      cx="30"
+      cy="30"
+      r="28"
+      stroke="#C8D0DD"
+      strokeWidth="2"
+      fill="none"
+    />
+    <circle
+      cx="30"
+      cy="30"
+      r="20"
+      stroke="#C8D0DD"
+      strokeWidth="2"
+      fill="none"
+    />
+    <circle
+      cx="30"
+      cy="30"
+      r="12"
+      stroke="#C8D0DD"
+      strokeWidth="2"
+      fill="none"
+    />
   </svg>
 );
 
@@ -789,7 +848,14 @@ export const NetworkIcon: FC<IconProps> = ({ className }) => (
     fill="none"
   >
     {/* 中心节点 */}
-    <circle cx="30" cy="30" r="6" stroke="#868C97" strokeWidth="1.5" fill="none" />
+    <circle
+      cx="30"
+      cy="30"
+      r="6"
+      stroke="#868C97"
+      strokeWidth="1.5"
+      fill="none"
+    />
     {/* 连接线 */}
     <line x1="30" y1="24" x2="30" y2="12" stroke="#868C97" strokeWidth="1.5" />
     <line x1="35" y1="33" x2="46" y2="40" stroke="#868C97" strokeWidth="1.5" />
