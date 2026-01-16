@@ -22,7 +22,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
         <div className="min-h-[537px] py-10 flex flex-col">
           {/* 标题 */}
           <h2
-            className={`text-[28px] mb-3 font-medium ${
+            className={`text-[28px] mb-3 font-normal ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
             style={{ fontFamily: 'DotGothic16, sans-serif' }}
@@ -66,7 +66,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
         <div className="min-h-[683px] py-12 flex flex-col max-w-[650px] mx-auto">
           {/* 标题 */}
           <h2
-            className={`text-[32px] mb-4 font-medium  ${
+            className={`text-[32px] mb-4 font-normal ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
             style={{ fontFamily: 'DotGothic16, sans-serif' }}
@@ -112,7 +112,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           <div className="flex justify-between items-start mb-6">
             {/* 左上角标题 */}
             <h2
-              className={`text-[36px] 2xl:text-[42px] flex-shrink-0 font-medium ${
+              className={`text-[48px] 2xl:text-[42px] flex-shrink-0 font-normal ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}
               style={{ fontFamily: 'DotGothic16, sans-serif' }}

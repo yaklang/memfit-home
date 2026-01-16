@@ -95,7 +95,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           {/* 文字内容 */}
           <div className="flex flex-col gap-4 p-4" style={{
               backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
-              backgroundSize: '24px 24px',
+              backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
             }}>
           <p className={`text-[16px] leading-6 mb-2 ${
@@ -173,11 +173,11 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           {/* 文字内容 */}
           <div className="flex flex-col gap-4 p-4" style={{
               backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
-              backgroundSize: '24px 24px',
+              backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
             }}>
           <p className={`text-[16px] leading-7 mb-5 ${
-            theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
+            theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
           }`}>
             {whatIs.textOne}
             <span className="font-semibold">
@@ -187,7 +187,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           </p>
 
           <p className={`text-[16px] leading-7 mb-8 ${
-            theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
+            theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
           }`}>
             {whatIs.textFour}
           </p>
@@ -230,7 +230,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           {/* 顶部区域：左侧标题，右侧描述 */}
           <div className="flex justify-between items-start mb-6">
             {/* 左上角标题 */}
-            <div className={`flex-shrink-0 text-[36px] 2xl:text-[48px] ${
+            <div className={`flex-shrink-0 text-[36px] xl:text-[48px] ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`} style={{ fontFamily: 'DotGothic16, sans-serif' }}>
               <AnimatedTitle title={whatIs.title} highlightPattern={/(memfit|Memfit|MEMFIT)/gi} />
@@ -256,7 +256,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
             className="flex-1 grid grid-cols-[360px_1fr] 2xl:grid-cols-[420px_1fr] gap-10 2xl:gap-16 rounded-[4px] p-4"
             style={{
               backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
-              backgroundSize: '24px 24px',
+              backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
             }}
           >
@@ -264,7 +264,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
             <div className="flex flex-col">
               {/* 文字内容 */}
               <p className={`text-[16px] leading-7 mb-5 ${
-                theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
+                theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}>
                 {whatIs.textOne}
                 <span className="font-semibold">
@@ -274,7 +274,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               </p>
 
               <p className={`text-[16px] leading-7 ${
-                theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
+                theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}>
                 {whatIs.textFour}
               </p>

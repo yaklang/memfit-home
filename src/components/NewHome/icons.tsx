@@ -810,9 +810,9 @@ export const ConcentricCircleIcon: FC<IconProps> = ({ className }) => (
     viewBox="0 0 64 64"
     fill="none"
   >
-    <circle cx="32.25" cy="32" r="27.5" stroke="#9CA3B1" />
-    <circle cx="32.25" cy="32" r="19.5" stroke="#353639" />
-    <circle cx="32.25" cy="32" r="11.5" stroke="#9CA3B1" />
+    <circle cx="32.25" cy="32" r="27.5" stroke="var(--icon-stroke-secondary)" />
+    <circle cx="32.25" cy="32" r="19.5" stroke="var(--icon-stroke-primary)" />
+    <circle cx="32.25" cy="32" r="11.5" stroke="var(--icon-stroke-secondary)" />
   </svg>
 );
 
@@ -826,19 +826,19 @@ export const NetworkIcon: FC<IconProps> = ({ className }) => (
     viewBox="0 0 64 64"
     fill="none"
   >
-    <path d="M31.25 23V12.5" stroke="#353639" />
-    <path d="M21.75 33L10.75 33" stroke="#353639" />
-    <path d="M38.75 40L48.75 50" stroke="#353639" stroke-linecap="square" />
+    <path d="M31.25 23V12.5" stroke="var(--icon-stroke-primary)" />
+    <path d="M21.75 33L10.75 33" stroke="var(--icon-stroke-primary)" />
+    <path d="M38.75 40L48.75 50" stroke="var(--icon-stroke-primary)" strokeLinecap="square" />
     <path
       d="M41.3662 28.3689L41.3651 36.3743L35.7056 42.0349L27.7011 42.0341L22.0396 36.3742L22.0403 28.3697L27.7002 22.7082L35.7056 22.7094L41.3662 28.3689Z"
-      stroke="#353639"
+      stroke="var(--icon-stroke-primary)"
     />
-    <circle cx="30.75" cy="9" r="3.5" stroke="#353639" />
-    <circle cx="7.75" cy="33" r="3.5" stroke="#353639" />
-    <circle cx="51.125" cy="53" r="3.5" stroke="#353639" />
-    <circle cx="56.1875" cy="33" r="3.5" stroke="#9CA3B1" />
-    <circle cx="12.5938" cy="13" r="3.5" stroke="#9CA3B1" />
-    <circle cx="31.6719" cy="57" r="3.5" stroke="#9CA3B1" />
+    <circle cx="30.75" cy="9" r="3.5" stroke="var(--icon-stroke-primary)" />
+    <circle cx="7.75" cy="33" r="3.5" stroke="var(--icon-stroke-primary)" />
+    <circle cx="51.125" cy="53" r="3.5" stroke="var(--icon-stroke-primary)" />
+    <circle cx="56.1875" cy="33" r="3.5" stroke="var(--icon-stroke-secondary)" />
+    <circle cx="12.5938" cy="13" r="3.5" stroke="var(--icon-stroke-secondary)" />
+    <circle cx="31.6719" cy="57" r="3.5" stroke="var(--icon-stroke-secondary)" />
   </svg>
 );
 

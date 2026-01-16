@@ -33,6 +33,16 @@
   }
 }
 
+.theme-light {
+  --icon-stroke-primary: #353639;
+  --icon-stroke-secondary: #9CA3B1;
+}
+
+.theme-dark {
+  --icon-stroke-primary: #C8D0DD;
+  --icon-stroke-secondary: #868D9A;
+}
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to

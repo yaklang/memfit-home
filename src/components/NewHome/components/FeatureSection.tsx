@@ -144,7 +144,6 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
           {/* 内容块 */}
           <div className="flex flex-col gap-6 mb-8">
             {section.features.map((feature, idx) => {
-              console.log(feature.desc,'feature.desc');
               return (
                 <div key={idx} className="flex flex-col gap-2">
                   <h4
@@ -246,7 +245,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
 
       {/* PC端布局 - 高度约880px */}
       <div className="hidden desktop:block relative z-10">
-        <div className="h-[880px] px-12 py-20 2xl:max-w-[1600px] mx-auto">
+        <div className="h-[880px] py-20 px-12 mx-auto">
           <div className="flex justify-between items-center gap-12 2xl:gap-20 h-full">
             {/* 左侧内容 */}
             <div className="h-full flex flex-col">
@@ -254,12 +253,12 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
               <div className="flex items-center gap-4 mb-10 overflow-visible">
                 <NumberBox number={sectionNumber} size="lg" theme={theme} />
                 <h3
-                  className={`text-2xl 2xl:text-3xl font-bold m-0 ${
+                  className={`text-3xl m-0 ${
                     theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
                   }`}
                 >
                   {section.title}{" "}
-                  <span className={`${theme === "light" ? "text-[#9CA3B1]" : "text-[#868D9A]"}`}>({section.subtitle})</span>
+                  <span className={`font-normal text-3xl ${theme === "light" ? "text-[#9CA3B1]" : "text-[#868D9A]"}`}>({section.subtitle})</span>
                 </h3>
               </div>
 
