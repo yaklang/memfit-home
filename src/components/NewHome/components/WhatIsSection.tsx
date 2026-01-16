@@ -1,6 +1,7 @@
 import { CONTENT, type Locale } from "../locales";
 import { useTheme } from "../context/ThemeContext";
-import { WhatIsAITextEn, WhatIsAITextZh, DotIcon } from "../icons";
+import { DotIcon } from "../icons";
+import { AnimatedTitle } from "./AnimatedTitle";
 
 interface WhatIsSectionProps {
   locale: Locale;
@@ -9,29 +10,6 @@ interface WhatIsSectionProps {
 export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
   const { whatIs } = CONTENT[locale];
   const { theme } = useTheme();
-
-  // 处理标题中的 memfit，添加特殊颜色和空格
-  const renderTitle = (title: string) => {
-    const regex = /(memfit|Memfit|MEMFIT)/gi;
-    const parts = title.split(regex);
-    
-    return (
-      <>
-        {parts.map((part, index) => {
-          if (part.match(regex)) {
-            return (
-              <span key={index}>
-                {' '}
-                <span style={{ color: '#4373BB' }}>{part}</span>
-                {' '}
-              </span>
-            );
-          }
-          return part;
-        })}
-      </>
-    );
-  };
 
   // 处理描述中的换行符
   const renderDescription = (text: string) => {
@@ -53,7 +31,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
     description: string; 
     variant?: "default" | "alt";
   }) => (
-    <div className={`relative inline-block w-fit px-4 py-3 tablet:px-5 tablet:py-4 border-l-2 border-l-[#1890FF] ${
+    <div className={`relative inline-block w-fit px-3 py-3 border-l-2 border-l-[#1890FF] whitespace-nowrap ${
       variant === "default"
         ? theme === "light" 
           ? "bg-[#F8F9FA] border border-[#E6E8ED]" 
@@ -94,10 +72,10 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
       <div className="tablet:hidden">
         <div className="h-[1043px] py-10 flex flex-col">
           {/* 标题 */}
-          <div className={`mb-3 text-[28px] font-bold ${
+          <div className={`mb-3 text-[28px] ${
             theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
           }`} style={{ fontFamily: 'DotGothic16, sans-serif' }}>
-            {renderTitle(whatIs.title)}
+            <AnimatedTitle title={whatIs.title} highlightPattern={/(memfit|Memfit|MEMFIT)/gi} />
           </div>
           
           {/* 描述 */}
@@ -172,10 +150,10 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
       <div className="hidden tablet:block desktop:hidden">
         <div className="min-h-[1093px] py-12 flex flex-col max-w-[600px] mx-auto">
           {/* 标题 */}
-          <div className={`mb-4 text-[32px] font-bold ${
+          <div className={`mb-4 text-[32px] ${
             theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
           }`} style={{ fontFamily: 'DotGothic16, sans-serif' }}>
-            {renderTitle(whatIs.title)}
+            <AnimatedTitle title={whatIs.title} highlightPattern={/(memfit|Memfit|MEMFIT)/gi} />
           </div>
           
           {/* 描述 */}
@@ -252,10 +230,10 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           {/* 顶部区域：左侧标题，右侧描述 */}
           <div className="flex justify-between items-start mb-6">
             {/* 左上角标题 */}
-            <div className={`flex-shrink-0 text-[36px] 2xl:text-[48px] font-bold ${
+            <div className={`flex-shrink-0 text-[36px] 2xl:text-[48px] ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`} style={{ fontFamily: 'DotGothic16, sans-serif' }}>
-              {renderTitle(whatIs.title)}
+              <AnimatedTitle title={whatIs.title} highlightPattern={/(memfit|Memfit|MEMFIT)/gi} />
             </div>
             
             {/* 右上角描述文字 */}

@@ -171,10 +171,6 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
-
-  clientModules: [
-    require.resolve('./src/utils/lazyLoad.ts'),
-  ],
 };
 
 export default config;

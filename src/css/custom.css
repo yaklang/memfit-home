@@ -11,22 +11,6 @@
   font-display: swap;
 }
 
-/* 懒加载图片样式 */
-img[loading="lazy"] {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-img[loading="lazy"].loaded {
-  opacity: 1;
-}
-
-[data-lazy-bg] {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;

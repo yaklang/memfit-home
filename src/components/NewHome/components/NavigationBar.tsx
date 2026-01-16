@@ -50,7 +50,7 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
 
   return (
     <nav
-      className={`transition-all duration-200 ${
+      className={`hidden desktop:block transition-all duration-200 ${
         theme === "light"
           ? "bg-[#F8F9FA] border-[#E6E8ED]"
           : "border-[#474A4F]"
@@ -64,11 +64,11 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
             <a
               href={`#${tab.id}`}
               onClick={(e) => handleNavClick(e, tab.id)}
-                className={`relative border-r border-t border-b border-l flex items-center gap-2 px-3 tablet:px-4 py-2 tablet:py-2.5 no-underline transition-all hover:no-underline whitespace-nowrap ${
+                className={`relative border-0 ${idx === 0 ? 'border-l-0' : 'border-l'} border-solid flex items-center gap-2 px-3 tablet:px-4 py-2 tablet:py-2.5 no-underline transition-all hover:no-underline whitespace-nowrap ${
                   isActive
                     ? theme === "light"
-                      ? "bg-[#E8F2FF] text-[#4373bb] border-[#4373bb]"
-                      : "bg-[#1a2844] text-[#6fa8dc] hover:text-white border-[#6fa8dc]"
+                      ? "bg-[#E8F2FF] text-[#4373bb] border-[#E6E8ED]"
+                      : "bg-[#1a2844] text-[#6fa8dc] hover:text-white border-[#474A4F]"
                     : theme === "light"
                       ? "bg-transparent hover:bg-slate-50 text-[#5A5D64] border-[#E6E8ED]"
                       : "bg-transparent hover:bg-white/5 hover:text-white text-white/70 border-[#474A4F]"

@@ -1,6 +1,7 @@
 import { CONTENT, type Locale } from "../locales";
 import { useTheme } from "../context/ThemeContext";
 import { ConcentricCircleIcon, NetworkIcon, ProblemTitleTextZh } from "../icons";
+import { AnimatedTitle } from "./AnimatedTitle";
 
 interface ProblemSectionProps {
   locale: Locale;
@@ -73,12 +74,12 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
         <div className="min-h-[819px] py-10 flex flex-col">
           {/* 标题 */}
           <div
-            className={`text-[28px] font-bold mb-10 ${
+            className={`text-[28px] mb-10 ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
             style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
-            {problem.title}
+            <AnimatedTitle title={problem.title} />
           </div>
 
           {/* 传统 AI Agent 卡片 */}
@@ -168,12 +169,12 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
         <div className="min-h-[809px] py-12 flex flex-col max-w-[600px] mx-auto">
           {/* 标题 */}
           <div
-            className={`flex justify-center items-center text-[32px] font-bold mb-10 ${
+            className={`flex justify-center items-center text-[32px] mb-10 ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
             style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
-            {problem.title}
+            <AnimatedTitle title={problem.title} />
           </div>
 
           {/* 传统 AI Agent 卡片 */}
@@ -266,7 +267,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             className={`text-[36px] 2xl:text-[48px] flex justify-center items-center mb-10 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
             style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
-            {problem.title}
+            <AnimatedTitle title={problem.title} />
           </div>
           {/* 两栏布局 */}
           <div className="flex-1 grid grid-cols-2 gap-8 2xl:gap-16">
@@ -274,7 +275,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             <div className="flex flex-col items-center text-center">
               {/* 图标 */}
               <div className="mb-6">
-                <ConcentricCircleIcon className="w-12 h-12 2xl:w-14 2xl:h-14" />
+                <ConcentricCircleIcon className="w-14 h-14" />
               </div>
 
               {/* 标题 */}
@@ -308,7 +309,6 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
                         theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
                       }`}
                     >
-                      <span className="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
                       <span>
                         <span className="font-semibold">{item.bold}</span> {item.text}
                       </span>
