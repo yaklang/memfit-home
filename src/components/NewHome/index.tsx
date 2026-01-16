@@ -55,8 +55,8 @@ export const NewHome = (): ReactNode => {
       <main className={`overflow-x-hidden pt-[72px] desktop:pt-[56px] ${theme === "light" ? "bg-white" : "bg-[#0a0a14]"}`}>
        <HeroSection locale={locale} />
         <WhatIsSection locale={locale} />
-        <ArchitectureSection locale={locale} />
         <ProblemSection locale={locale} />
+        <ArchitectureSection locale={locale} />
         <div ref={navRef}>
           <div style={{ visibility: isNavSticky ? 'hidden' : 'visible' }}>
             <NavigationBar locale={locale} isSticky={false} />

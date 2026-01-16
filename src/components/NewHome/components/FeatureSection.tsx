@@ -55,17 +55,17 @@ const renderTechList = (desc: string, theme: string) => {
       {lines.map((line, i) => (
         <li
           key={i}
-          className={`text-sm tablet:text-[15px] leading-relaxed flex items-start ${
+          className={`text-sm leading-relaxed flex items-start ${
             theme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"
           }`}
         >
-          <span
-            className={`mr-2 flex-shrink-0 font-mono ${
-              theme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"
-            }`}
-          >
-            •
-          </span>
+          {lines.length > 1 && (
+            <span
+              className={`mr-2 flex-shrink-0 font-mono`}
+            >
+              •
+            </span>
+          )}
           <span>{line.trim()}</span>
         </li>
       ))}
@@ -73,30 +73,6 @@ const renderTechList = (desc: string, theme: string) => {
   );
 };
 
-// 渲染普通描述（带加粗支持）
-const renderDescription = (desc: string, theme: string) => {
-  // 支持 **text** 格式的加粗
-  const parts = desc.split(/(\*\*[^*]+\*\*)/g);
-
-  return (
-    <p
-      className={`text-sm tablet:text-[15px] leading-relaxed m-0 ${
-        theme === "light" ? "text-[#414245]" : "text-[#A6AFBF]"
-      }`}
-    >
-      {parts.map((part, i) => {
-        if (part.startsWith("**") && part.endsWith("**")) {
-          return (
-            <span key={i} className="font-semibold">
-              {part.slice(2, -2)}
-            </span>
-          );
-        }
-        return part;
-      })}
-    </p>
-  );
-};
 
 interface FeatureSectionProps {
   section: SectionData;
@@ -169,7 +145,6 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
           <div className="flex flex-col gap-6 mb-8">
             {section.features.map((feature, idx) => {
               console.log(feature.desc,'feature.desc');
-              const isTechArchitecture = ["技术架构","Technical Architecture"].includes(feature.title) || section.id === 'tools';
               return (
                 <div key={idx} className="flex flex-col gap-2">
                   <h4
@@ -179,16 +154,14 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                   >
                     {feature.title}
                   </h4>
-                  {isTechArchitecture
-                    ? renderTechList(feature.desc, theme)
-                    : renderDescription(feature.desc, theme)}
+                  {renderTechList(feature.desc, theme)}
                 </div>
               );
             })}
           </div>
 
           {/* 截图卡片 */}
-          <div className="flex h-[268px] items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full py-[10px] px-[20px]">
+          <div className="flex items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full py-[10px] px-[20px]">
               {/* 背景装饰图 */}
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -200,10 +173,10 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                 }}
               />
               <div
-                className={`w-full  relative z-10 rounded-2xl overflow-hidden shadow-2xl `}
+                className={`w-full relative z-10 overflow-hidden`}
               >
                 <img
-                  src={`/newImg/content-${index + 1}.jpg`}
+                  src={`/newImg/content-${index + 1}.png`}
                   alt={section.title}
                   className="w-full h-auto"
                 />
@@ -231,7 +204,6 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
           {/* 内容块 */}
           <div className="flex flex-col gap-8 mb-10">
             {section.features.map((feature, idx) => {
-              const isTechArchitecture = ["技术架构","Technical Architecture"].includes(feature.title) || section.id === 'tools';
               return (
                 <div key={idx} className="flex flex-col gap-2">
                   <h4
@@ -241,9 +213,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                   >
                     {feature.title}
                   </h4>
-                  {isTechArchitecture
-                    ? renderTechList(feature.desc, theme)
-                    : renderDescription(feature.desc, theme)}
+                  {renderTechList(feature.desc, theme)}
                 </div>
               );
             })}
@@ -262,10 +232,10 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                 }}
               />
               <div
-                className={`w-full  relative z-10 rounded-2xl overflow-hidden shadow-2xl `}
+                className={`w-full relative z-10 overflow-hidden`}
               >
                 <img
-                  src={`/newImg/content-${index + 1}.jpg`}
+                  src={`/newImg/content-${index + 1}.png`}
                   alt={section.title}
                   className="w-full h-auto"
                 />
@@ -296,7 +266,6 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
               {/* 内容块 */}
               <div className="flex flex-col gap-8 2xl:gap-10">
                 {section.features.map((feature, idx) => {
-                  const isTechArchitecture = ["技术架构","Technical Architecture"].includes(feature.title) || section.id === 'tools';
                   return (
                     <div key={idx} className="flex flex-col gap-2">
                       <h4
@@ -306,16 +275,14 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                       >
                         {feature.title}
                       </h4>
-                      {isTechArchitecture
-                        ? renderTechList(feature.desc, theme)
-                        : renderDescription(feature.desc, theme)}
+                      {renderTechList(feature.desc, theme)}
                     </div>
                   );
                 })}
               </div>
 
               {/* 左下角装饰图 */}
-              <div className="mt-auto pt-8">
+              <div className="my-auto">
                 <img
                   src={theme === "light" ? leftImages[index] : leftBlackImages[index] || leftBlackImages[0]}
                   alt="decoration"
@@ -325,7 +292,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
             </div>
 
             {/* 右侧截图卡片 */}
-            <div className="flex h-full items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full xl:w-[912px] 2xl:w-[1060px] py-[80px] px-[30px] 2xl:py-[90px] 2xl:px-[50px]">
+            <div className="flex items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full desktop:w-[696px] xl:w-[912px] 2xl:w-[1060px] py-[80px] px-[30px] 2xl:py-[90px] 2xl:px-[50px]" style={{ aspectRatio: '3/2' }}>
               {/* 背景装饰图 */}
               <div
                 className="absolute inset-0 pointer-events-none"

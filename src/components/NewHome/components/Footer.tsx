@@ -1,7 +1,7 @@
 import Link from "@docusaurus/Link";
 import { CONTENT, type Locale } from "../locales";
 import { useTheme } from "../context/ThemeContext";
-import { MemfitLogo, MemfitLogoDark } from "../icons";
+import { MemfitLogo, MemfitLogoDark, FooterTitleIcon, DownloadIcon } from "../icons";
 import { useDownload } from "../hooks/useDownload";
 
 const MemfitLogoSwitch: React.FC<{ className?: string }> = ({ className }) => {
@@ -26,14 +26,14 @@ export const Footer = ({ locale }: FooterProps) => {
 
   return (
     <footer
-      className="relative overflow-hidden min-h-[400px] tablet:min-h-[450px] desktop:min-h-[488px]"
+      className="relative overflow-hidden px-4 tablet:px-6 desktop:px-12"
       style={{
         background: theme === "light"
           ? 'linear-gradient(180deg, #F8F9FA 0%, #E3EBF5 50%, #D5E3F2 100%)'
           : 'linear-gradient(180deg, #171717 0%, #1a2332 50%, #4373BB 100%)',
       }}
     >
-      <div className="grid grid-cols-1 desktop:grid-cols-[1fr_2fr] gap-8 desktop:gap-16 px-4 tablet:px-6 desktop:px-12 2xl:px-16 py-10 tablet:py-12 desktop:py-16 max-w-[1400px] 2xl:max-w-[1600px] mx-auto">
+      <div className="grid grid-cols-1 desktop:grid-cols-[1fr_2fr] gap-8 desktop:gap-16 py-10 tablet:py-12 desktop:py-16 ">
         <div className="flex flex-col gap-4 tablet:gap-6">
           <MemfitLogoSwitch className="h-10 tablet:h-12 desktop:h-14 w-fit" />
           <a
@@ -46,6 +46,7 @@ export const Footer = ({ locale }: FooterProps) => {
             }`}
           >
             {buttonText}
+            <DownloadIcon className="ml-1 w-5 h-5" />
           </a>
           <p
             className={`text-xs tablet:text-sm m-0 ${
@@ -55,7 +56,7 @@ export const Footer = ({ locale }: FooterProps) => {
             Copyright ©  {new Date().getFullYear()} Memfit AI. Built with Docusaurus.
           </p>
         </div>
-        <div className="grid grid-cols-2 tablet:grid-cols-4 gap-6 tablet:gap-8">
+        <div className="hidden desktop:grid grid-cols-2 tablet:grid-cols-4 gap-6 tablet:gap-8">
           <div className="flex flex-col gap-2 tablet:gap-3">
             <h4
               className={`text-xs tablet:text-sm font-semibold uppercase tracking-wider mb-1 tablet:mb-2 ${
@@ -180,16 +181,7 @@ export const Footer = ({ locale }: FooterProps) => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-[-30px] tablet:bottom-[-50px] left-1/2 -translate-x-1/2 pointer-events-none opacity-[0.04]">
-        <div
-          className={`font-mono text-[100px] tablet:text-[140px] desktop:text-[180px] 2xl:text-[220px] font-extrabold whitespace-nowrap -tracking-[3px] tablet:-tracking-[5px] ${
-            theme === "light" ? "text-[#1a1a2e]" : "text-white"
-          }`}
-          style={{ fontFamily: 'DotGothic16, sans-serif', letterSpacing: '12px' }}
-        >
-          memfit::
-        </div>
-      </div>
+      <FooterTitleIcon className={`w-full h-auto`} />
     </footer>
   );
 };
