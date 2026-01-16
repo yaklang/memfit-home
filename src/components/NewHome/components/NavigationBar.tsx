@@ -59,6 +59,7 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
       <div className="flex justify-start px-4 tablet:px-6 desktop:px-12 overflow-x-auto scrollbar-hide">
         {sections.map((tab, idx) => {
           const isActive = activeSection === tab.id;
+          const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
           return (
             <div key={idx} className="flex-shrink-0 relative">
             <a
@@ -67,19 +68,19 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
                 className={`relative border-0 ${idx === 0 ? 'border-l border-r' : 'border-r'}  border-solid flex items-center gap-2 px-3 tablet:px-4 py-2 tablet:py-2.5 no-underline transition-all hover:no-underline whitespace-nowrap ${
                   isActive
                     ? theme === "light"
-                      ? "bg-[#E8F2FF] text-[#4373bb] border-[#E6E8ED]"
+                      ? "bg-[#E8F2FF] border-[#E6E8ED]"
                       : "bg-[#1a2844] text-[#6fa8dc] hover:text-white border-[#474A4F]"
                     : theme === "light"
                       ? "bg-transparent hover:bg-slate-50 text-[#5A5D64] border-[#E6E8ED]"
                       : "bg-transparent hover:bg-white/5 hover:text-white text-white/70 border-[#474A4F]"
                 }`}
-                style={{ fontFamily: 'DotGothic16, sans-serif' }}
+                style={{ fontFamily: 'DotGothic16, sans-serif', color: isActive && theme === "light" ? highlightColor : undefined }}
               >
                 {/* 四个角的装饰 */}
-                <div className="absolute left-0 top-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute right-0 top-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute left-0 bottom-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute right-0 bottom-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? '#4373bb' : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute left-0 top-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute right-0 top-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute left-0 bottom-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
+                <div className="absolute right-0 bottom-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
                 
                 <span className="text-[13px] tablet:text-[14px] font-medium">
                   {tab.title}({tab.subtitle})

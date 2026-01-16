@@ -107,7 +107,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
       {/* PC端布局 - 高度约1037px */}
       <div className="hidden desktop:block">
-        <div className="min-h-[1037px] py-16 2xl:py-20 max-w-[1400px] 2xl:max-w-[1600px] mx-auto flex flex-col">
+        <div className="min-h-[1037px] py-16 2xl:py-20 flex flex-col">
           {/* 顶部区域：左侧标题，右侧描述 */}
           <div className="flex justify-between items-start mb-6">
             {/* 左上角标题 */}

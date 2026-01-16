@@ -36,11 +36,15 @@
 .theme-light {
   --icon-stroke-primary: #353639;
   --icon-stroke-secondary: #9CA3B1;
+  --highlight-color: #4373BB;
+  --highlight-hover: #5a8fd0;
 }
 
 .theme-dark {
   --icon-stroke-primary: #C8D0DD;
   --icon-stroke-secondary: #868D9A;
+  --highlight-color: #66A2EB;
+  --highlight-hover: #7fb3f0;
 }
 
 /**

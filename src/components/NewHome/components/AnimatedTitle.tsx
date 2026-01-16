@@ -10,12 +10,12 @@ interface AnimatedTitleProps {
  * 带滚动触发动画的标题组件：每个字符按随机顺序出现
  * @param title - 标题文本
  * @param highlightPattern - 可选的高亮匹配正则（如 /(memfit|Memfit|MEMFIT)/gi）
- * @param highlightColor - 高亮颜色，默认为 #4373BB
+ * @param highlightColor - 高亮颜色，默认使用 CSS 变量 --highlight-color
  */
 export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
   title,
   highlightPattern,
-  highlightColor = "#4373BB",
+  highlightColor = "var(--highlight-color)",
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);

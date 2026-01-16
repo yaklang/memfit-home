@@ -13,10 +13,12 @@ const NumberBox = ({
   number,
   size = "md",
   theme,
+  highlightColor,
 }: {
   number: string;
   size?: "sm" | "md" | "lg";
   theme: string;
+  highlightColor: string;
 }) => {
 
   return (
@@ -26,16 +28,16 @@ const NumberBox = ({
         className="relative z-10 flex items-center justify-center w-[46px] h-[44px]"
       >
         {/* 四角装饰 */}
-        <div className="absolute -left-[2px] -top-[2px] w-2 h-2" style={{ borderLeft: '2px solid #4373bb', borderTop: '2px solid #4373bb' }} />
-        <div className="absolute -right-[2px] -top-[2px] w-2 h-2" style={{ borderRight: '2px solid #4373bb', borderTop: '2px solid #4373bb' }} />
-        <div className="absolute -left-[2px] -bottom-[2px] w-2 h-2" style={{ borderLeft: '2px solid #4373bb', borderBottom: '2px solid #4373bb' }} />
-        <div className="absolute -right-[2px] -bottom-[2px] w-2 h-2" style={{ borderRight: '2px solid #4373bb', borderBottom: '2px solid #4373bb' }} />
-        <div className={`w-[34px] h-[34px] flex items-center justify-center text-[24px] ${
-          theme === "light"
-            ? "bg-[#F2F3F5] text-[#4373bb]"
-            : "bg-[#1a1a2e] text-[#6fa8dc]"
-        }`}
-          style={{ fontFamily: 'DotGothic16, sans-serif' }}
+        <div className="absolute -left-[2px] -top-[2px] w-2 h-2" style={{ borderLeft: `2px solid ${highlightColor}`, borderTop: `2px solid ${highlightColor}` }} />
+        <div className="absolute -right-[2px] -top-[2px] w-2 h-2" style={{ borderRight: `2px solid ${highlightColor}`, borderTop: `2px solid ${highlightColor}` }} />
+        <div className="absolute -left-[2px] -bottom-[2px] w-2 h-2" style={{ borderLeft: `2px solid ${highlightColor}`, borderBottom: `2px solid ${highlightColor}` }} />
+        <div className="absolute -right-[2px] -bottom-[2px] w-2 h-2" style={{ borderRight: `2px solid ${highlightColor}`, borderBottom: `2px solid ${highlightColor}` }} />
+        <div className={`w-[34px] h-[34px] flex items-center justify-center text-[24px]`}
+          style={{ 
+            fontFamily: 'DotGothic16, sans-serif',
+            backgroundColor: theme === "light" ? "#F2F3F5" : "#1a1a2e",
+            color: highlightColor
+          }}
         >
         {number}
         </div>
@@ -81,6 +83,7 @@ interface FeatureSectionProps {
 
 export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
   const { theme } = useTheme();
+  const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
   const sectionNumber = String(index + 1).padStart(2, "0");
 
   // 背景图片映射
@@ -130,14 +133,14 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
         <div className="min-h-[754px] px-4 py-10 flex flex-col">
           {/* 标题区 */}
           <div className="flex items-center gap-3 mb-8 overflow-visible">
-            <NumberBox number={sectionNumber} size="sm" theme={theme} />
+            <NumberBox number={sectionNumber} size="sm" theme={theme} highlightColor={highlightColor} />
             <h3
               className={`text-xl font-bold m-0 ${
                 theme === "light" ? "text-[#353639]" : "text-white"
               }`}
             >
               {section.title}{" "}
-              <span className="text-[#4373bb]">({section.subtitle})</span>
+              <span style={{ color: highlightColor }}>({section.subtitle})</span>
             </h3>
           </div>
 
@@ -189,14 +192,14 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
         <div className="min-h-[1062px] px-6 py-12 flex flex-col max-w-[696px] mx-auto items-center">
           {/* 标题区 */}
           <div className="flex items-center gap-4 mb-10 overflow-visible">
-            <NumberBox number={sectionNumber} size="md" theme={theme} />
+            <NumberBox number={sectionNumber} size="md" theme={theme} highlightColor={highlightColor} />
             <h3
               className={`text-2xl font-bold m-0 ${
                 theme === "light" ? "text-[#353639]" : "text-white"
               }`}
             >
               {section.title}{" "}
-              <span className="text-[#4373bb]">({section.subtitle})</span>
+              <span style={{ color: highlightColor }}>({section.subtitle})</span>
             </h3>
           </div>
 
@@ -251,7 +254,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
             <div className="h-full flex flex-col">
               {/* 标题区 */}
               <div className="flex items-center gap-4 mb-10 overflow-visible">
-                <NumberBox number={sectionNumber} size="lg" theme={theme} />
+                <NumberBox number={sectionNumber} size="lg" theme={theme} highlightColor={highlightColor} />
                 <h3
                   className={`text-3xl m-0 ${
                     theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"

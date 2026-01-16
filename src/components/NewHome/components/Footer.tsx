@@ -19,6 +19,7 @@ interface FooterProps {
 
 export const Footer = ({ locale }: FooterProps) => {
   const { theme } = useTheme();
+  const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
   const content = CONTENT[locale];
   const { downloadUrl, buttonText } = useDownload(locale);
 
@@ -39,11 +40,17 @@ export const Footer = ({ locale }: FooterProps) => {
           <a
             href={downloadUrl}
             download
-            className={`inline-flex items-center justify-center px-5 tablet:px-7 py-2 tablet:py-3.5 text-sm tablet:text-[15px] font-semibold rounded-4 no-underline transition-all max-w-fit hover:-translate-y-0.5 hover:no-underline ${
-              theme === "light"
-                ? "bg-[#4373bb] text-white hover:bg-[#5a8fd0] hover:text-white"
-                : "bg-[#4373bb] text-white hover:bg-[#5a8fd0] hover:text-white"
-            }`}
+            className="inline-flex items-center justify-center px-5 tablet:px-7 py-2 tablet:py-3.5 text-sm tablet:text-[15px] font-semibold rounded-4 no-underline transition-all max-w-fit hover:-translate-y-0.5 hover:no-underline"
+            style={{
+              backgroundColor: highlightColor,
+              color: 'white'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = theme === "light" ? "#5a8fd0" : "#7ab8f5";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = highlightColor;
+            }}
           >
             {buttonText}
             <DownloadIcon className="ml-1 w-5 h-5" />
@@ -69,9 +76,18 @@ export const Footer = ({ locale }: FooterProps) => {
               to="/docs/product/overview"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              style={{
+                '--hover-color': theme === "light" ? highlightColor : 'white'
+              } as React.CSSProperties}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               Overview
             </Link>
@@ -79,9 +95,15 @@ export const Footer = ({ locale }: FooterProps) => {
               to="/docs/product/architecture/recursive-dual-engine"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               Architecture
             </Link>
@@ -89,9 +111,15 @@ export const Footer = ({ locale }: FooterProps) => {
               to="/docs/product/features/react-loop"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               Features
             </Link>
@@ -108,9 +136,15 @@ export const Footer = ({ locale }: FooterProps) => {
               to="/docs/help/quick-start/installation"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               Quick Start
             </Link>
@@ -118,9 +152,15 @@ export const Footer = ({ locale }: FooterProps) => {
               to="/docs/help/tutorials/configuration"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               Tutorials
             </Link>
@@ -139,9 +179,15 @@ export const Footer = ({ locale }: FooterProps) => {
               rel="noopener noreferrer"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               Yaklang
             </a>
@@ -151,9 +197,15 @@ export const Footer = ({ locale }: FooterProps) => {
               rel="noopener noreferrer"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               SSA
             </a>
@@ -172,9 +224,15 @@ export const Footer = ({ locale }: FooterProps) => {
               rel="noopener noreferrer"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
-                  ? "text-[#4a4a6a] hover:text-[#4373bb]"
+                  ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
+              onMouseEnter={(e) => {
+                if (theme === "light") e.currentTarget.style.color = highlightColor;
+              }}
+              onMouseLeave={(e) => {
+                if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
+              }}
             >
               GitHub
             </a>
