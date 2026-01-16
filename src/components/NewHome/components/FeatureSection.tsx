@@ -23,18 +23,20 @@ const NumberBox = ({
     <div className="relative z-10 flex-shrink-0 overflow-visible p-1">
       {/* 数字框 */}
       <div
-        className="relative z-10 flex items-center justify-center font-mono w-[46px] h-[44px]"
+        className="relative z-10 flex items-center justify-center w-[46px] h-[44px]"
       >
         {/* 四角装饰 */}
-        <div className="absolute -left-[2px] -top-[2px] w-3 h-3" style={{ borderLeft: '2px solid #4373bb', borderTop: '2px solid #4373bb' }} />
-        <div className="absolute -right-[2px] -top-[2px] w-3 h-3" style={{ borderRight: '2px solid #4373bb', borderTop: '2px solid #4373bb' }} />
-        <div className="absolute -left-[2px] -bottom-[2px] w-3 h-3" style={{ borderLeft: '2px solid #4373bb', borderBottom: '2px solid #4373bb' }} />
-        <div className="absolute -right-[2px] -bottom-[2px] w-3 h-3" style={{ borderRight: '2px solid #4373bb', borderBottom: '2px solid #4373bb' }} />
-        <div className={`w-[34px] h-[34px] flex items-center justify-center ${
+        <div className="absolute -left-[2px] -top-[2px] w-2 h-2" style={{ borderLeft: '2px solid #4373bb', borderTop: '2px solid #4373bb' }} />
+        <div className="absolute -right-[2px] -top-[2px] w-2 h-2" style={{ borderRight: '2px solid #4373bb', borderTop: '2px solid #4373bb' }} />
+        <div className="absolute -left-[2px] -bottom-[2px] w-2 h-2" style={{ borderLeft: '2px solid #4373bb', borderBottom: '2px solid #4373bb' }} />
+        <div className="absolute -right-[2px] -bottom-[2px] w-2 h-2" style={{ borderRight: '2px solid #4373bb', borderBottom: '2px solid #4373bb' }} />
+        <div className={`w-[34px] h-[34px] flex items-center justify-center text-[24px] ${
           theme === "light"
             ? "bg-[#F2F3F5] text-[#4373bb]"
             : "bg-[#1a1a2e] text-[#6fa8dc]"
-        }`}>
+        }`}
+          style={{ fontFamily: 'DotGothic16, sans-serif' }}
+        >
         {number}
         </div>
         
@@ -338,7 +340,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                 className={`w-full  relative z-10  overflow-hidden `}
               >
                 <img
-                  src={theme === "light" ? `/newImg/content-${index + 1}.jpg` : `/newImg/content-black-${index + 1}.jpg`}
+                  src={theme === "light" ? `/newImg/content-${index + 1}.png` : `/newImg/content-black-${index + 1}.png`}
                   alt={section.title}
                   className="w-full h-auto"
                 />

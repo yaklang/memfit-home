@@ -76,7 +76,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             className={`text-[28px] font-bold mb-10 ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "var(--font-pixel, monospace)" }}
+            style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
             {problem.title}
           </div>
@@ -171,7 +171,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             className={`flex justify-center items-center text-[32px] font-bold mb-10 ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "var(--font-pixel, monospace)" }}
+            style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
             {problem.title}
           </div>
@@ -264,7 +264,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
           {/* 标题 - 居中 */}
           <div
             className={`text-[36px] 2xl:text-[48px] flex justify-center items-center mb-10 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
-            style={{ fontFamily: "var(--font-pixel, monospace)" }}
+            style={{ fontFamily: 'DotGothic16, sans-serif' }}
           >
             {problem.title}
           </div>
