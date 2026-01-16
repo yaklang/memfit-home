@@ -260,7 +260,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
 
       {/* PC端布局 - 高度约600px */}
       <div className="hidden desktop:block">
-        <div className="min-h-[600px] py-16 2xl:py-20 max-w-[1400px] 2xl:max-w-[1600px] mx-auto flex flex-col">
+        <div className="min-h-[600px] py-16 2xl:py-20 flex flex-col">
           {/* 标题 - 居中 */}
           <div
             className={`text-[48px] 2xl:text-[48px] flex justify-center items-center mb-10 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}

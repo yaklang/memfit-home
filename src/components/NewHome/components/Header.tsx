@@ -62,7 +62,7 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
             </Link>
             <Link
               to="/docs/help/quick-start/installation"
-              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB]e whitespace-nowrap ${
+              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB] whitespace-nowrap ${
                 theme === "light"
                   ? "text-[#353639]"
                   : "text-[#C8D0DD]"

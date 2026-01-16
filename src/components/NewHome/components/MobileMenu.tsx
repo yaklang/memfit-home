@@ -39,6 +39,7 @@ export const MobileMenu = ({
 }: MobileMenuProps) => {
   const content = CONTENT[locale];
   const { theme, toggleTheme } = useTheme();
+  const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
 
   if (!isOpen) return null;
 
@@ -127,7 +128,7 @@ export const MobileMenu = ({
                   theme === "light" ? "bg-white shadow-sm" : "bg-transparent"
                 }`}
               >
-                <SunIcon className={`w-4 h-4 ${theme === "light" ? "text-[#4373bb]" : "text-white/60"}`} />
+                <SunIcon className="w-4 h-4" style={{ color: theme === "light" ? highlightColor : "rgba(255, 255, 255, 0.6)" }} />
               </button>
               <button
                 onClick={() => theme === "light" && toggleTheme()}

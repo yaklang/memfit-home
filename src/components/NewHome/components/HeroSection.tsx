@@ -2,6 +2,7 @@ import Link from "@docusaurus/Link";
 import { CONTENT, type Locale } from "../locales";
 import { DownloadIcon, MemfitWhiteText } from "../icons";
 import { useDownload } from "../hooks/useDownload";
+import { useTheme } from "../context/ThemeContext";
 
 interface HeroSectionProps {
   locale: Locale;
@@ -10,6 +11,8 @@ interface HeroSectionProps {
 export const HeroSection = ({ locale }: HeroSectionProps) => {
   const content = CONTENT[locale];
   const { downloadUrl, buttonText } = useDownload(locale);
+  const { theme } = useTheme();
+  const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
 
   // - 手机端（393px）: 852px
   // - iPad（744px）: 852px  
@@ -53,7 +56,8 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
             <a
               href={downloadUrl}
               download
-              className="w-full h-[46px] flex-shrink-0  desktop:w-[171px] desktop:h-[36px] flex items-center justify-center gap-2 text-[#4373bb] bg-white  rounded-4 hover:brightness-110 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline hover:text-[#4373bb] text-[18px]  desktop:text-[14px] transition-all"
+              className="w-full h-[46px] flex-shrink-0  desktop:w-[171px] desktop:h-[36px] flex items-center justify-center gap-2 bg-white rounded-4 hover:brightness-110 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline text-[18px]  desktop:text-[14px] transition-all"
+              style={{ color: highlightColor }}
             >
               {buttonText}
               <DownloadIcon className="w-5 h-5 " />
