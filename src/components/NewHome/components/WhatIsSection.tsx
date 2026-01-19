@@ -31,7 +31,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
     description: string; 
     variant?: "default" | "alt";
   }) => (
-    <div className={`relative inline-block w-fit px-3 py-3 border-l-2 border-l-[#1890FF] whitespace-nowrap ${
+    <div className={`relative inline-block w-fit px-3 py-3 border-l-2 border-l-[#1890FF] desktop:whitespace-nowrap ${
       variant === "default"
         ? theme === "light" 
           ? "bg-[#F8F9FA] border border-[#E6E8ED]" 
@@ -42,13 +42,13 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
     }`}>
       {/* 四角装饰 - 在卡片边框外侧 */}
       {/* 左上角 */}
-      <div className="absolute -left-[2px] -top-[2px] w-[10px] h-[10px]" style={{ borderLeft: '2px solid #868C97', borderTop: '2px solid #868C97' }} />
+      <div className="absolute -left-[2px] -top-[2px] w-[10px] h-[10px]" style={{ borderLeft: '1px solid #868C97', borderTop: '1px solid #868C97' }} />
       {/* 右上角 */}
-      <div className="absolute -right-[2px] -top-[2px] w-[10px] h-[10px]" style={{ borderRight: '2px solid #868C97', borderTop: '2px solid #868C97' }} />
+      <div className="absolute -right-[2px] -top-[2px] w-[10px] h-[10px]" style={{ borderRight: '1px solid #868C97', borderTop: '1px solid #868C97' }} />
       {/* 左下角 */}
-      <div className="absolute -left-[2px] -bottom-[2px] w-[10px] h-[10px]" style={{ borderLeft: '2px solid #868C97', borderBottom: '2px solid #868C97' }} />
+      <div className="absolute -left-[2px] -bottom-[2px] w-[10px] h-[10px]" style={{ borderLeft: '1px solid #868C97', borderBottom: '1px solid #868C97' }} />
       {/* 右下角 */}
-      <div className="absolute -right-[2px] -bottom-[2px] w-[10px] h-[10px]" style={{ borderRight: '2px solid #868C97', borderBottom: '2px solid #868C97' }} />
+      <div className="absolute -right-[2px] -bottom-[2px] w-[10px] h-[10px]" style={{ borderRight: '1px solid #868C97', borderBottom: '1px solid #868C97' }} />
       
       {/* 卡片内容 */}
       <span className={`text-sm tablet:text-[15px] desktop:text-sm 2xl:text-[15px] ${
@@ -120,6 +120,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               src={theme === 'light' ? '/newImg/whatIs-content.png' : '/newImg/whatIs-content-black.png'}
               alt="Memfit AI Overview"
               className="w-full max-w-[380px] h-auto"
+              loading="lazy"
             />
           </div>
 
@@ -198,6 +199,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               src={theme === 'light' ? '/newImg/whatIs-content.png' : '/newImg/whatIs-content-black.png'}
               alt="Memfit AI Overview"
               className="w-full max-w-[520px] h-auto"
+              loading="lazy"
             />
           </div>
 
@@ -308,6 +310,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
                 src={theme === 'light' ? '/newImg/whatIs-content.png' : '/newImg/whatIs-content-black.png'}  
                 alt="Memfit AI Overview"
                 className="w-full max-w-[680px] 2xl:max-w-[870px] h-auto"
+                loading="lazy"
               />
             </div>
           </div>

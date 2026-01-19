@@ -56,6 +56,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
               src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -100,7 +101,8 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
               src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
-            />
+              loading="lazy"
+              />
           </div>
         </div>
       </div>

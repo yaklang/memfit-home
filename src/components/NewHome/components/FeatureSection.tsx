@@ -1,4 +1,5 @@
 import { useTheme } from "../context/ThemeContext";
+import { useEffect, useRef, useState } from "react";
 
 export interface SectionData {
   id: string;
@@ -28,10 +29,10 @@ const NumberBox = ({
         className="relative z-10 flex items-center justify-center w-[46px] h-[44px]"
       >
         {/* 四角装饰 */}
-        <div className="absolute -left-[2px] -top-[2px] w-2 h-2" style={{ borderLeft: `2px solid ${highlightColor}`, borderTop: `2px solid ${highlightColor}` }} />
-        <div className="absolute -right-[2px] -top-[2px] w-2 h-2" style={{ borderRight: `2px solid ${highlightColor}`, borderTop: `2px solid ${highlightColor}` }} />
-        <div className="absolute -left-[2px] -bottom-[2px] w-2 h-2" style={{ borderLeft: `2px solid ${highlightColor}`, borderBottom: `2px solid ${highlightColor}` }} />
-        <div className="absolute -right-[2px] -bottom-[2px] w-2 h-2" style={{ borderRight: `2px solid ${highlightColor}`, borderBottom: `2px solid ${highlightColor}` }} />
+        <div className="absolute -left-[2px] -top-[2px] w-2 h-2" style={{ borderLeft: `1px solid ${highlightColor}`, borderTop: `1px solid ${highlightColor}` }} />
+        <div className="absolute -right-[2px] -top-[2px] w-2 h-2" style={{ borderRight: `1px solid ${highlightColor}`, borderTop: `1px solid ${highlightColor}` }} />
+        <div className="absolute -left-[2px] -bottom-[2px] w-2 h-2" style={{ borderLeft: `1px solid ${highlightColor}`, borderBottom: `1px solid ${highlightColor}` }} />
+        <div className="absolute -right-[2px] -bottom-[2px] w-2 h-2" style={{ borderRight: `1px solid ${highlightColor}`, borderBottom: `1px solid ${highlightColor}` }} />
         <div className={`w-[34px] h-[34px] flex items-center justify-center text-[24px]`}
           style={{ 
             fontFamily: 'DotGothic16, sans-serif',
@@ -79,12 +80,53 @@ const renderTechList = (desc: string, theme: string) => {
 interface FeatureSectionProps {
   section: SectionData;
   index: number;
+  totalSections?: number;
+  isFirst?: boolean;
 }
 
-export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
+export const FeatureSection = ({ section, index, totalSections = 0, isFirst = false }: FeatureSectionProps) => {
   const { theme } = useTheme();
   const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
   const sectionNumber = String(index + 1).padStart(2, "0");
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isFixed, setIsFixed] = useState(false);
+  const [fixedTop, setFixedTop] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 只在桌面端（宽度大于1440px）启用折叠效果
+      if (window.innerWidth < 1440) {
+        setIsFixed(false);
+        return;
+      }
+
+      if (!sectionRef.current) return;
+
+      const headerHeight = 56; // 桌面端header高度
+      const sectionContainer = sectionRef.current.parentElement;
+
+      if (!sectionContainer) return;
+
+      const containerRect = sectionContainer.getBoundingClientRect();
+
+      // 最后一个section不需要fixed，直接跟随滚动
+      if (index === totalSections - 1) {
+        setIsFixed(false);
+        return;
+      }
+
+      // 其他section：只要容器顶部已经滚动到header下方，就应该fixed
+      const shouldBeFixed = containerRect.top <= headerHeight && containerRect.bottom > headerHeight;
+
+      setIsFixed(shouldBeFixed);
+      setFixedTop(headerHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [index, totalSections]);
 
   // 背景图片映射
   const bgImages = [
@@ -121,16 +163,21 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
   ];
 
   return (
-    <section
+    <div
+      ref={sectionRef}
+      className={`w-full transition-all duration-300 ease-in-out ${theme === "light" ? "bg-[#F8F9FA]" : "bg-[#0f0f1a]"}`}
+      style={{
+        zIndex: index + 1,
+        position: isFixed ? 'fixed' : 'relative',
+        top: isFixed ? `${fixedTop}px` : 'auto',
+        height: isFixed ? 'calc(100vh - 56px)' : 'auto',
+      }}
       id={section.id}
-      className={` overflow-hidden ${
-        theme === "light" ? "bg-[#F8F9FA]" : "bg-[#0f0f1a]"
-      }`}
     >
 
       {/* 移动端布局 - 高度约954px */}
-      <div className="tablet:hidden relative z-10">
-        <div className="min-h-[754px] px-4 py-10 flex flex-col">
+      <div className="tablet:hidden relative z-10 h-auto">
+        <div className="px-4 py-10 flex flex-col">
           {/* 标题区 */}
           <div className="flex items-center gap-3 mb-8 overflow-visible">
             <NumberBox number={sectionNumber} size="sm" theme={theme} highlightColor={highlightColor} />
@@ -188,8 +235,8 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
       </div>
 
       {/* 平板端布局 - 高度约1062px */}
-      <div className="hidden tablet:block desktop:hidden relative z-10">
-        <div className="min-h-[1062px] px-6 py-12 flex flex-col max-w-[696px] mx-auto items-center">
+      <div className="hidden tablet:block desktop:hidden relative z-10 h-auto">
+        <div className="px-6 py-12 flex flex-col max-w-[696px] mx-auto items-center">
           {/* 标题区 */}
           <div className="flex items-center gap-4 mb-10 overflow-visible">
             <NumberBox number={sectionNumber} size="md" theme={theme} highlightColor={highlightColor} />
@@ -240,6 +287,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                   src={`/newImg/content-${index + 1}.png`}
                   alt={section.title}
                   className="w-full h-auto"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -247,8 +295,8 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
       </div>
 
       {/* PC端布局 - 高度约880px */}
-      <div className="hidden desktop:block relative z-10">
-        <div className="h-[880px] py-20 px-12 mx-auto">
+      <div className="hidden desktop:block relative z-10 h-full">
+        <div className="py-20 px-12 mx-auto">
           <div className="flex justify-between items-center gap-12 2xl:gap-20 h-full">
             {/* 左侧内容 */}
             <div className="h-full flex flex-col">
@@ -289,6 +337,7 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                   src={theme === "light" ? leftImages[index] : leftBlackImages[index] || leftBlackImages[0]}
                   alt="decoration"
                   className="w-32 2xl:w-40 h-auto opacity-80"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -312,12 +361,13 @@ export const FeatureSection = ({ section, index }: FeatureSectionProps) => {
                   src={theme === "light" ? `/newImg/content-${index + 1}.png` : `/newImg/content-black-${index + 1}.png`}
                   alt={section.title}
                   className="w-full h-auto"
+                  loading="lazy"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
