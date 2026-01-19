@@ -2,6 +2,7 @@ import { CONTENT, type Locale } from "../locales";
 import { useTheme } from "../context/ThemeContext";
 import { DotIcon } from "../icons";
 import { AnimatedTitle } from "./AnimatedTitle";
+import { LazyBackgroundImage } from "@site/src/components/LazyImage";
 
 interface ArchitectureSectionProps {
   locale: Locale;
@@ -47,18 +48,22 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           </div>
 
           {/* 架构图 */}
-          <div className="flex-1 flex items-center justify-center px-6 py-4" style={{
-              backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
+          <LazyBackgroundImage
+            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
+            className="flex-1 flex items-center justify-center px-6 py-4"
+            style={{
               backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
-            }}>
+            }}
+          >
             <img
               src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
               loading="lazy"
+              decoding="async"
             />
-          </div>
+          </LazyBackgroundImage>
         </div>
       </div>
 
@@ -92,23 +97,27 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           </div>
 
           {/* 架构图 */}
-          <div className="flex-1 flex items-center justify-center px-10 py-6" style={{
-              backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
+          <LazyBackgroundImage
+            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
+            className="flex-1 flex items-center justify-center px-10 py-6"
+            style={{
               backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
-            }}>
+            }}
+          >
             <img
               src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
               loading="lazy"
+              decoding="async"
               />
-          </div>
+          </LazyBackgroundImage>
         </div>
       </div>
 
       {/* PC端布局 - 高度约1037px */}
-      <div className="hidden desktop:block">
+      <div className="hidden desktop:block max-w-[1600px] mx-auto">
         <div className="min-h-[1037px] py-16 2xl:py-20 flex flex-col">
           {/* 顶部区域：左侧标题，右侧描述 */}
           <div className="flex justify-between items-start mb-6">
@@ -140,17 +149,22 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           </div>
 
           {/* 架构图 - 居中显示 */}
-          <div className="flex-1 flex items-center justify-center px-16 py-10" style={{
-              backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
+          <LazyBackgroundImage
+            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
+            className="flex-1 flex items-center justify-center px-16 py-10"
+            style={{
               backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
-            }}>
+            }}
+          >
             <img
               src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}  
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
-          </div>
+          </LazyBackgroundImage>
         </div>
       </div>
     </section>

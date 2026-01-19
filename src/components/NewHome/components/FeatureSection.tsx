@@ -1,5 +1,6 @@
 import { useTheme } from "../context/ThemeContext";
 import { useEffect, useRef, useState } from "react";
+import { LazyBackgroundImage } from "@site/src/components/LazyImage";
 
 export interface SectionData {
   id: string;
@@ -174,7 +175,6 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
       }}
       id={section.id}
     >
-
       {/* 移动端布局 - 高度约954px */}
       <div className="tablet:hidden relative z-10 h-auto">
         <div className="px-4 py-10 flex flex-col">
@@ -211,11 +211,11 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
 
           {/* 截图卡片 */}
           <div className="flex items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full py-[10px] px-[20px]">
-              {/* 背景装饰图 */}
-              <div
+              {/* 背景装饰图 - 懒加载 */}
+              <LazyBackgroundImage
+                imageUrl={theme === "light" ? bgImages[index] : bgBlackImages[index] || bgBlackImages[0]}
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  backgroundImage: `url(${theme === "light" ? bgImages[index] : bgBlackImages[index] || bgBlackImages[0]})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -228,6 +228,8 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
                   src={`/newImg/content-${index + 1}.png`}
                   alt={section.title}
                   className="w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -270,11 +272,11 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
 
           {/* 截图卡片 */}
           <div className="flex h-[468px] items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full py-[80px] px-[30px]">
-              {/* 背景装饰图 */}
-              <div
+              {/* 背景装饰图 - 懒加载 */}
+              <LazyBackgroundImage
+                imageUrl={bgImages[index] || bgImages[0]}
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  backgroundImage: `url(${bgImages[index] || bgImages[0]})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -288,6 +290,7 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
                   alt={section.title}
                   className="w-full h-auto"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -295,8 +298,8 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
       </div>
 
       {/* PC端布局 - 高度约880px */}
-      <div className="hidden desktop:block relative z-10 h-full">
-        <div className="py-20 px-12 mx-auto">
+      <div className="hidden desktop:block relative z-10 h-full max-w-[1600px] mx-auto">
+        <div className="py-20 mx-auto">
           <div className="flex justify-between items-center gap-12 2xl:gap-20 h-full">
             {/* 左侧内容 */}
             <div className="h-full flex flex-col">
@@ -338,17 +341,18 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
                   alt="decoration"
                   className="w-32 2xl:w-40 h-auto opacity-80"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
 
             {/* 右侧截图卡片 */}
             <div className="flex items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full desktop:w-[696px] xl:w-[912px] 2xl:w-[1060px] py-[80px] px-[30px] 2xl:py-[90px] 2xl:px-[50px]" style={{ aspectRatio: '3/2' }}>
-              {/* 背景装饰图 */}
-              <div
+              {/* 背景装饰图 - 懒加载 */}
+              <LazyBackgroundImage
+                imageUrl={theme === "light" ? bgImages[index] : bgBlackImages[index] || bgBlackImages[0]}
                 className="absolute inset-0 pointer-events-none"
-                style={{  
-                  backgroundImage: `url(${theme === "light" ? bgImages[index] : bgBlackImages[index] || bgBlackImages[0]})`,
+                style={{
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -362,6 +366,7 @@ export const FeatureSection = ({ section, index, totalSections = 0, isFirst = fa
                   alt={section.title}
                   className="w-full h-auto"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

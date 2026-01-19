@@ -21,19 +21,21 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
 
   return (
     <section className="relative h-[852px] desktop:h-[976px] 2xl:h-[1152px] 3xl:h-[1300px] flex flex-col overflow-hidden">
-      {/* 背景图 - 蓝色渐变条纹背景 */}
+      {/* 背景图 - 蓝色渐变条纹背景 - 首屏关键资源，立即加载 */}
       <div className="absolute inset-0 z-0">
         <img
           src="/newImg/header-bg.png"
           alt=""
           className="w-full h-full object-cover object-center"
-          loading="lazy"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
       </div>
       
       {/* 内容区域 - 垂直居中 */}
-      <div className="flex-1 w-full flex items-center justify-center relative z-10 px-4 tablet:px-6 desktop:px-12 2xl:px-16 " >
-        <div className="text-center w-full ">
+      <div className="flex-1 w-full flex items-center justify-center relative z-10 px-4 tablet:px-6 desktop:px-12 2xl:px-16" >
+        <div className="text-center w-full max-w-[1600px] mx-auto">
       
           <div 
             className="mb-2"
