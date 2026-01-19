@@ -16,7 +16,14 @@ import {
 export const NewHome = (): ReactNode => {
   const { i18n } = useDocusaurusContext();
   const [locale, setLocale] = useState<Locale>("zh-Hans");
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(() => {
+    // 从 sessionStorage 读取主题，默认为 light
+    if (typeof window !== 'undefined') {
+      const savedTheme = sessionStorage.getItem('theme');
+      return (savedTheme === 'dark' || savedTheme === 'light') ? savedTheme : 'light';
+    }
+    return 'light';
+  });
   const [isNavSticky, setIsNavSticky] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +32,14 @@ export const NewHome = (): ReactNode => {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => {
+      const newTheme = prev === "light" ? "dark" : "light";
+      // 保存到 sessionStorage
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('theme', newTheme);
+      }
+      return newTheme;
+    });
   }, []);
 
   useEffect(() => {
@@ -49,34 +63,48 @@ export const NewHome = (): ReactNode => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <Header locale={locale} onToggleLocale={handleToggleLocale} />
-      <main className={`overflow-x-hidden pt-[72px] desktop:pt-[56px] ${theme === "light" ? "bg-white theme-light" : "bg-[#0a0a14] theme-dark"}`}>
-       <HeroSection locale={locale} />
-        <WhatIsSection locale={locale} />
-        <ProblemSection locale={locale} />
-        <ArchitectureSection locale={locale} />
-        <div ref={navRef}>
-          <div style={{ visibility: isNavSticky ? 'hidden' : 'visible' }}>
-            <NavigationBar locale={locale} isSticky={false} />
+      <div className={`${theme === "light" ? "bg-white theme-light" : "bg-[#0a0a14] theme-dark"}`}>
+        <main className="pt-[72px] desktop:pt-[56px] overflow-x-hidden">
+          <HeroSection locale={locale} />
+          <WhatIsSection locale={locale} />
+          <ProblemSection locale={locale} />
+          <ArchitectureSection locale={locale} />
+          <div ref={navRef}>
+            <div style={{ visibility: isNavSticky ? 'hidden' : 'visible' }}>
+              <NavigationBar locale={locale} isSticky={false} />
+            </div>
           </div>
-        </div>
-        {isNavSticky && (
-          <div 
-            className={`fixed left-0 right-0 z-50 top-[72px] desktop:top-[56px]  ${theme === "light" ? "bg-white" : "bg-[#0f0f1a]/95"}  `}
-            style={{
-              animation: 'fadeIn 0.2s ease-in',
-            }}
-          >
-            <NavigationBar locale={locale} isSticky={true} />
-          </div>
+          {isNavSticky && (
+            <div
+              className={`fixed left-0 right-0 z-50 top-[72px] desktop:top-[56px]  ${theme === "light" ? "bg-white" : "bg-[#0f0f1a]/95"}  `}
+              style={{
+                animation: 'fadeIn 0.2s ease-in',
+              }}
+            >
+              <NavigationBar locale={locale} isSticky={true} />
+            </div>
         )}
-        <div>
-          {content.sections.map((section, idx) => (
-            <FeatureSection key={section.id} section={section} index={idx} />
-          ))}
+        <div className="relative">
+          {content.sections.map((section, idx) => {
+            const isLast = idx === content.sections.length - 1;
+            return (
+              <div
+                key={section.id}
+                className={`sticky-container ${isLast ? 'h-auto' : 'h-auto desktop:h-[100vh]'}`}
+                style={{
+                  position: 'relative',
+                  marginBottom: 0
+                }}
+              >
+                <FeatureSection section={section} index={idx} totalSections={content.sections.length} />
+              </div>
+            );
+          })}
         </div>
 
         <Footer locale={locale} />
       </main>
+    </div>
     </ThemeContext.Provider>
   );
 };

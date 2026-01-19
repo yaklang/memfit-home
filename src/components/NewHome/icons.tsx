@@ -274,13 +274,13 @@ export const SunIcon: FC<IconProps> = ({ className }) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
     fill="none"
   >
     <path
-      d="M8 2V2.66667M8 13.3333V14M14 8H13.3333M2.66667 8H2M12.2426 12.2426L11.7712 11.7712M4.22876 4.22876L3.75736 3.75736M12.2427 3.75739L11.7713 4.2288M4.2288 11.7713L3.75739 12.2427M10.6667 8C10.6667 9.47276 9.47276 10.6667 8 10.6667C6.52724 10.6667 5.33333 9.47276 5.33333 8C5.33333 6.52724 6.52724 5.33333 8 5.33333C9.47276 5.33333 10.6667 6.52724 10.6667 8Z"
+      d="M12 6V6.66667M12 17.3333V18M18 12H17.3333M6.66667 12H6M16.2426 16.2426L15.7712 15.7712M8.22876 8.22876L7.75736 7.75736M16.2427 7.75739L15.7713 8.2288M8.2288 15.7713L7.75739 16.2427M14.6667 12C14.6667 13.4728 13.4728 14.6667 12 14.6667C10.5272 14.6667 9.33333 13.4728 9.33333 12C9.33333 10.5272 10.5272 9.33333 12 9.33333C13.4728 9.33333 14.6667 10.5272 14.6667 12Z"
       stroke="#A6AFBF"
       stroke-linecap="round"
       stroke-linejoin="round"
@@ -828,7 +828,11 @@ export const NetworkIcon: FC<IconProps> = ({ className }) => (
   >
     <path d="M31.25 23V12.5" stroke="var(--icon-stroke-primary)" />
     <path d="M21.75 33L10.75 33" stroke="var(--icon-stroke-primary)" />
-    <path d="M38.75 40L48.75 50" stroke="var(--icon-stroke-primary)" strokeLinecap="square" />
+    <path
+      d="M38.75 40L48.75 50"
+      stroke="var(--icon-stroke-primary)"
+      strokeLinecap="square"
+    />
     <path
       d="M41.3662 28.3689L41.3651 36.3743L35.7056 42.0349L27.7011 42.0341L22.0396 36.3742L22.0403 28.3697L27.7002 22.7082L35.7056 22.7094L41.3662 28.3689Z"
       stroke="var(--icon-stroke-primary)"
@@ -836,9 +840,24 @@ export const NetworkIcon: FC<IconProps> = ({ className }) => (
     <circle cx="30.75" cy="9" r="3.5" stroke="var(--icon-stroke-primary)" />
     <circle cx="7.75" cy="33" r="3.5" stroke="var(--icon-stroke-primary)" />
     <circle cx="51.125" cy="53" r="3.5" stroke="var(--icon-stroke-primary)" />
-    <circle cx="56.1875" cy="33" r="3.5" stroke="var(--icon-stroke-secondary)" />
-    <circle cx="12.5938" cy="13" r="3.5" stroke="var(--icon-stroke-secondary)" />
-    <circle cx="31.6719" cy="57" r="3.5" stroke="var(--icon-stroke-secondary)" />
+    <circle
+      cx="56.1875"
+      cy="33"
+      r="3.5"
+      stroke="var(--icon-stroke-secondary)"
+    />
+    <circle
+      cx="12.5938"
+      cy="13"
+      r="3.5"
+      stroke="var(--icon-stroke-secondary)"
+    />
+    <circle
+      cx="31.6719"
+      cy="57"
+      r="3.5"
+      stroke="var(--icon-stroke-secondary)"
+    />
   </svg>
 );
 

@@ -14,19 +14,36 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sectionElements = sections.map(s => document.getElementById(s.id));
-      const scrollPosition = window.scrollY + 150;
+      const headerHeight = window.innerWidth >= 1440 ? 56 : 72;
+      const scrollY = window.scrollY;
 
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const section = sectionElements[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id);
-          break;
+      // 获取所有section容器
+      const containers = document.querySelectorAll('.sticky-container') || document.querySelectorAll('[style*="height: 100vh"]');
+      if (containers.length === 0) return;
+
+      // 找到当前在视口范围内的section容器
+      let activeId = sections[0]?.id || '';
+      let maxVisibleArea = 0;
+
+      for (let i = 0; i < containers.length; i++) {
+        const container = containers[i];
+        const rect = container.getBoundingClientRect();
+
+        // 计算section在视口中的可见区域
+        const visibleTop = Math.max(0, rect.top - headerHeight);
+        const visibleBottom = Math.min(window.innerHeight - headerHeight, rect.bottom - headerHeight);
+        const visibleArea = Math.max(0, visibleBottom - visibleTop);
+
+        if (visibleArea > maxVisibleArea) {
+          maxVisibleArea = visibleArea;
+          activeId = sections[i].id;
         }
       }
+
+      setActiveSection(activeId);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sections]);
