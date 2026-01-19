@@ -2,6 +2,7 @@ import { CONTENT, type Locale } from "../locales";
 import { useTheme } from "../context/ThemeContext";
 import { DotIcon } from "../icons";
 import { AnimatedTitle } from "./AnimatedTitle";
+import { LazyBackgroundImage } from "@site/src/components/LazyImage";
 
 interface WhatIsSectionProps {
   locale: Locale;
@@ -64,7 +65,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
 
   return (
     <section
-      className={`px-4 tablet:px-6 desktop:px-12 2xl:px-16 ${
+      className={`max-w-[1600px] mx-auto ${
         theme === "light" ? "bg-white" : "bg-[#0f0f1a]"
       }`}
     >
@@ -93,11 +94,15 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           </div>
 
           {/* 文字内容 */}
-          <div className="flex flex-col gap-4 p-4" style={{
-              backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
+          <LazyBackgroundImage
+            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
+            className="flex flex-col gap-4 p-4"
+            style={{
               backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
-            }}>
+            }}
+            priority={true}
+          >
           <p className={`text-[16px] leading-6 mb-2 ${
             theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
           }`}>
@@ -121,6 +126,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               alt="Memfit AI Overview"
               className="w-full max-w-[380px] h-auto"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -143,7 +149,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               variant="alt"
             />
           </div>
-          </div>
+          </LazyBackgroundImage>
         </div>
       </div>
 
@@ -172,11 +178,15 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           </div>
 
           {/* 文字内容 */}
-          <div className="flex flex-col gap-4 p-4" style={{
-              backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
+          <LazyBackgroundImage
+            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
+            className="flex flex-col gap-4 p-4"
+            style={{
               backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
-            }}>
+            }}
+            priority={true}
+          >
           <p className={`text-[16px] leading-7 mb-5 ${
             theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
           }`}>
@@ -200,6 +210,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               alt="Memfit AI Overview"
               className="w-full max-w-[520px] h-auto"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -222,7 +233,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               variant="alt"
             />
           </div>
-          </div>
+          </LazyBackgroundImage>
         </div>
       </div>
 
@@ -254,13 +265,14 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           </div>
 
           {/* 主内容区：左右两栏 */}
-          <div 
+          <LazyBackgroundImage
+            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
             className="flex-1 grid grid-cols-[360px_1fr] 2xl:grid-cols-[420px_1fr] gap-10 2xl:gap-16 rounded-[4px] p-4"
             style={{
-              backgroundImage: theme === 'light' ? 'url(/newImg/content-bg.png)' : 'url(/newImg/content-bg-black.png)',
               backgroundSize: '16px 16px',
               backgroundRepeat: 'repeat'
             }}
+            priority={true}
           >
             {/* 左侧内容 */}
             <div className="flex flex-col">
@@ -311,9 +323,10 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
                 alt="Memfit AI Overview"
                 className="w-full max-w-[680px] 2xl:max-w-[870px] h-auto"
                 loading="lazy"
+                decoding="async"
               />
             </div>
-          </div>
+          </LazyBackgroundImage>
         </div>
       </div>
     </section>

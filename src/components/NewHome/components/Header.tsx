@@ -39,12 +39,13 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-4 tablet:px-6 desktop:px-12 2xl:px-16 h-[72px] desktop:h-[56px] backdrop-blur-md border-b transition-all ${
+        className={`fixed top-0 left-0 right-0 z-[100] backdrop-blur-md border-b transition-all ${
           theme === "light"
             ? "bg-white/90 border-black/5"
             : "bg-[#0a0a14]/90 border-white/10"
         }`}
       >
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between h-[72px] desktop:h-[56px]"> 
         <div className="flex items-center gap-4 tablet:gap-6 desktop:gap-12">
           <Link to="/" className="flex items-center gap-2">
             <MemfitLogoSwitch className="h-8 desktop:h-7" />
@@ -177,6 +178,7 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
         >
           <MenuIcon className={`w-6 h-6 ${theme === "light" ? "text-[#1a1a2e]" : "text-white"}`} />
         </button>
+        </div>
       </header>
 
       <MobileMenu

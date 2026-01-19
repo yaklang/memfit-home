@@ -27,14 +27,14 @@ export const Footer = ({ locale }: FooterProps) => {
 
   return (
     <footer
-      className="relative overflow-hidden px-4 tablet:px-6 desktop:px-12"
+      className="relative flex-col flex items-center"
       style={{
         background: theme === "light"
           ? 'linear-gradient(180deg, #F8F9FA 0%, #A1B9DC 100%)'
           : 'linear-gradient(180deg, #171717 0%, #2C4468 100%)',
       }}
     >
-      <div className="grid grid-cols-1 desktop:grid-cols-[1fr_2fr] gap-8 desktop:gap-16 py-10 tablet:py-12 desktop:py-16 ">
+      <div className="max-w-[1600px] w-full grid grid-cols-1 desktop:grid-cols-[1fr_2fr] gap-8 desktop:gap-16 py-10 tablet:py-12 desktop:py-16 ">
         <div className="flex flex-col gap-4 tablet:gap-6">
           <MemfitLogoSwitch className="h-10 tablet:h-12 desktop:h-14 w-fit" />
           <a
@@ -239,7 +239,7 @@ export const Footer = ({ locale }: FooterProps) => {
           </div>
         </div>
       </div>
-      <FooterTitleIcon className={`w-full h-auto`} />
+      <FooterTitleIcon className={`max-w-[1600px]`} />
     </footer>
   );
 };

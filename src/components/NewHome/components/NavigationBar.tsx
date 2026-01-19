@@ -52,14 +52,19 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerOffset = isSticky ? 120 : 72;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      // 获取包含该section的容器（可能是fixed的section或者它的父容器）
+      const container = element.closest('.sticky-container') || element.parentElement;
+      
+      if (container) {
+        const headerOffset = window.innerWidth >= 1440 ? 120 : 72;
+        const containerPosition = container.getBoundingClientRect().top;
+        const offsetPosition = containerPosition + window.pageYOffset - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 
@@ -73,7 +78,7 @@ export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
           : "border-[#474A4F]"
       } border-b border-t backdrop-blur-md border-l-0 border-r-0 border-solid`}
     >
-      <div className="flex justify-start px-4 tablet:px-6 desktop:px-12 overflow-x-auto scrollbar-hide">
+      <div className="flex justify-start scrollbar-hide max-w-[1600px] mx-auto">
         {sections.map((tab, idx) => {
           const isActive = activeSection === tab.id;
           const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
