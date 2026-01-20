@@ -53,30 +53,30 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
           <nav className="hidden desktop:flex items-center gap-8 2xl:gap-12">
             <Link
               to="/docs/product/overview"
-              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB] whitespace-nowrap ${
+              className={`text-[14px] font-medium transition-colors whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639]"
-                  : "text-[#C8D0DD]"
+                  ? "text-[#353639] hover:text-[#4373BB]"
+                  : "text-[#C8D0DD] hover:text-[#66A2EB]"
               }`}
             >
               {content.nav.product}
             </Link>
             <Link
               to="/docs/help/quick-start/installation"
-              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB] whitespace-nowrap ${
+              className={`text-[14px] font-medium transition-colors whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639]"
-                  : "text-[#C8D0DD]"
+                  ? "text-[#353639] hover:text-[#4373BB]"
+                  : "text-[#C8D0DD] hover:text-[#66A2EB]"
               }`}
             >
               {content.nav.docs}
             </Link>
             <Link
               to="/downloads"
-              className={`text-[14px] font-medium transition-colors hover:text-[#4373BB] whitespace-nowrap ${
+              className={`text-[14px] font-medium transition-colors whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639]"
-                  : "text-[#C8D0DD]"
+                  ? "text-[#353639] hover:text-[#4373BB]"
+                  : "text-[#C8D0DD] hover:text-[#66A2EB]"
               }`}
             >
               {content.nav.download}

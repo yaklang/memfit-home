@@ -32,7 +32,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
     description: string; 
     variant?: "default" | "alt";
   }) => (
-    <div className={`relative inline-block w-fit px-3 py-3 border-l-2 border-l-[#1890FF] desktop:whitespace-nowrap ${
+    <div className={`relative inline-block w-fit px-3 py-[6px] border-l-2 border-l-[#1890FF] desktop:whitespace-nowrap ${
       variant === "default"
         ? theme === "light" 
           ? "bg-[#F8F9FA] border border-[#E6E8ED]" 
