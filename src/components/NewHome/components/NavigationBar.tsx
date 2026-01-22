@@ -1,117 +1,49 @@
 import { useState, useEffect } from "react";
 import { CONTENT, type Locale } from "../locales";
 import { useTheme } from "../context/ThemeContext";
+import { DotIcon } from "../icons";
+import { AnimatedTitle } from "./AnimatedTitle";
 
 interface NavigationBarProps {
   locale: Locale;
-  isSticky: boolean;
 }
 
-export const NavigationBar = ({ locale, isSticky }: NavigationBarProps) => {
-  const { sections } = CONTENT[locale];
+export const NavigationBar = ({ locale }: NavigationBarProps) => {
+  const { navigation } = CONTENT[locale];
   const { theme } = useTheme();
-  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const headerHeight = window.innerWidth >= 1440 ? 56 : 72;
-      const scrollY = window.scrollY;
-
-      // 获取所有section容器
-      const containers = document.querySelectorAll('.sticky-container') || document.querySelectorAll('[style*="height: 100vh"]');
-      if (containers.length === 0) return;
-
-      // 找到当前在视口范围内的section容器
-      let activeId = sections[0]?.id || '';
-      let maxVisibleArea = 0;
-
-      for (let i = 0; i < containers.length; i++) {
-        const container = containers[i];
-        const rect = container.getBoundingClientRect();
-
-        // 计算section在视口中的可见区域
-        const visibleTop = Math.max(0, rect.top - headerHeight);
-        const visibleBottom = Math.min(window.innerHeight - headerHeight, rect.bottom - headerHeight);
-        const visibleArea = Math.max(0, visibleBottom - visibleTop);
-
-        if (visibleArea > maxVisibleArea) {
-          maxVisibleArea = visibleArea;
-          activeId = sections[i].id;
-        }
-      }
-
-      setActiveSection(activeId);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // 获取包含该section的容器（可能是fixed的section或者它的父容器）
-      const container = element.closest('.sticky-container') || element.parentElement;
-      
-      if (container) {
-        const headerOffset = window.innerWidth >= 1440 ? 120 : 72;
-        const containerPosition = container.getBoundingClientRect().top;
-        const offsetPosition = containerPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }
-  };
-
-  // 断点: 默认(393) / tablet(744) / desktop(1440) / 2xl(1920)
 
   return (
-    <nav
-      className={`hidden desktop:block transition-all duration-200 ${
-        theme === "light"
-          ? "bg-[#F8F9FA] border-[#E6E8ED]"
-          : "border-[#474A4F]"
-      } border-b border-t backdrop-blur-md border-l-0 border-r-0 border-solid`}
+    <div
+      className={`w-full ${theme === "light" ? "bg-[#F8F9FA]" : "bg-[#0a0a14]"}`}
     >
-      <div className="flex justify-start scrollbar-hide max-w-[1600px] mx-auto">
-        {sections.map((tab, idx) => {
-          const isActive = activeSection === tab.id;
-          const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
-          return (
-            <div key={idx} className="flex-shrink-0 relative">
-            <a
-              href={`#${tab.id}`}
-              onClick={(e) => handleNavClick(e, tab.id)}
-                className={`relative border-0 ${idx === 0 ? 'border-l border-r' : 'border-r'}  border-solid flex items-center gap-2 px-3 tablet:px-4 py-2 tablet:py-2.5 no-underline transition-all hover:no-underline whitespace-nowrap ${
-                  isActive
-                    ? theme === "light"
-                      ? "bg-[#E8F2FF] border-[#E6E8ED]"
-                      : "bg-[#1a2844] text-[#6fa8dc] hover:text-white border-[#474A4F]"
-                    : theme === "light"
-                      ? "bg-transparent hover:bg-slate-50 text-[#5A5D64] border-[#E6E8ED]"
-                      : "bg-transparent hover:bg-white/5 hover:text-white text-white/70 border-[#474A4F]"
-                }`}
-                style={{ fontFamily: 'DotGothic16, sans-serif', color: isActive && theme === "light" ? highlightColor : undefined }}
-              >
-                {/* 四个角的装饰 */}
-                <div className="absolute left-0 top-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute right-0 top-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderTop: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute left-0 bottom-0 w-[6px] h-[6px]" style={{ borderLeft: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                <div className="absolute right-0 bottom-0 w-[6px] h-[6px]" style={{ borderRight: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}`, borderBottom: `1px solid ${isActive ? highlightColor : theme === 'light' ? '#E6E8ED' : '#474A4F'}` }} />
-                
-                <span className="text-[13px] tablet:text-[14px] font-medium">
-                  {tab.title}({tab.subtitle})
-                </span>
-            </a>
-            </div>
-          );
-        })}
+      <div className="max-w-[1600px] mx-auto pt-[40px] px-6">
+        <div className="desktop:flex justify-between items-start mb-6">
+          {/* 左上角标题 */}
+          <h2
+            className={`text-[48px] flex-shrink-0 font-normal ${
+              theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
+            }`}
+            style={{ fontFamily: "DotGothic16, sans-serif" }}
+          >
+            <AnimatedTitle title={navigation.title} />
+          </h2>
+
+          {/* 右上角描述文字 */}
+          <p
+            className={`text-[18px] leading-relaxed desktop:text-right desktop:max-w-[528px] ${
+              theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
+            }`}
+          >
+            {navigation.description}
+          </p>
+        </div>
+        {/* 点阵 - 全宽 */}
+        <div className="flex overflow-hidden gap-2">
+          {Array.from({ length: 200 }).map((_, i) => (
+            <DotIcon key={i} className="flex-shrink-0" />
+          ))}
+        </div>
       </div>
-    </nav>
+    </div>
   );
 };

@@ -1,7 +1,12 @@
 import Link from "@docusaurus/Link";
 import { CONTENT, type Locale } from "../locales";
 import { useTheme } from "../context/ThemeContext";
-import { MemfitLogo, MemfitLogoDark, FooterTitleIcon, DownloadIcon } from "../icons";
+import {
+  MemfitLogo,
+  MemfitLogoDark,
+  FooterTitleIcon,
+  DownloadIcon,
+} from "../icons";
 import { useDownload } from "../hooks/useDownload";
 
 const MemfitLogoSwitch: React.FC<{ className?: string }> = ({ className }) => {
@@ -20,33 +25,34 @@ interface FooterProps {
 export const Footer = ({ locale }: FooterProps) => {
   const { theme } = useTheme();
   const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
-  const content = CONTENT[locale];
   const { downloadUrl, buttonText } = useDownload(locale);
 
   // 断点: 默认(393) / tablet(744) / desktop(1440) / 2xl(1920)
 
   return (
     <footer
-      className="relative flex-col flex items-center"
+      className="relative flex-col flex desktop:items-center px-6"
       style={{
-        background: theme === "light"
-          ? 'linear-gradient(180deg, #F8F9FA 0%, #A1B9DC 100%)'
-          : 'linear-gradient(180deg, #171717 0%, #2C4468 100%)',
+        background:
+          theme === "light"
+            ? "linear-gradient(180deg, #F8F9FA 0%, #A1B9DC 100%)"
+            : "linear-gradient(180deg, #171717 0%, #2C4468 100%)",
       }}
     >
-      <div className="max-w-[1600px] w-full grid grid-cols-1 desktop:grid-cols-[1fr_2fr] gap-8 desktop:gap-16 py-10 tablet:py-12 desktop:py-16 ">
+      <div className="max-w-[1600px] w-full grid grid-cols-1 desktop:grid-cols-[1fr_2fr] gap-8 desktop:gap-16 pt-10 tablet:py-12 desktop:py-16 ">
         <div className="flex flex-col gap-4 tablet:gap-6">
-          <MemfitLogoSwitch className="h-10 tablet:h-12 desktop:h-14 w-fit" />
+          <MemfitLogoSwitch className="h-[56px] tablet:h-12 desktop:h-14 w-fit" />
           <a
             href={downloadUrl}
             download
-            className="inline-flex items-center justify-center px-5 tablet:px-7 py-2 tablet:py-3.5 text-sm tablet:text-[15px] font-semibold rounded-4 no-underline transition-all max-w-fit hover:-translate-y-0.5 hover:no-underline"
+            className="w-full desktop:max-w-fit inline-flex items-center justify-center px-5 tablet:px-7 py-2 tablet:py-3.5 text-sm tablet:text-[15px] font-semibold rounded-4 transition-all hover:-translate-y-0.5"
             style={{
               backgroundColor: highlightColor,
-              color: 'white'
+              color: "#EEF3F9",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = theme === "light" ? "#5a8fd0" : "#7ab8f5";
+              e.currentTarget.style.backgroundColor =
+                theme === "light" ? "#5a8fd0" : "#7ab8f5";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = highlightColor;
@@ -55,13 +61,13 @@ export const Footer = ({ locale }: FooterProps) => {
             {buttonText}
             <DownloadIcon className="ml-1 w-5 h-5" />
           </a>
-          <p
-            className={`text-xs tablet:text-sm m-0 ${
-              theme === "light" ? "text-[#4a4a6a]" : "text-white/50"
+          <div
+            className={`text-sm ${
+              theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
           >
-            Copyright ©  {new Date().getFullYear()} Memfit AI. Built with Docusaurus.
-          </p>
+            Copyright © {new Date().getFullYear()} Memfit AI. Built with Docusaurus.
+          </div>
         </div>
         <div className="hidden desktop:grid grid-cols-2 tablet:grid-cols-4 gap-6 tablet:gap-8">
           <div className="flex flex-col gap-2 tablet:gap-3">
@@ -79,11 +85,14 @@ export const Footer = ({ locale }: FooterProps) => {
                   ? "text-[#4a4a6a]"
                   : "text-white/80 hover:text-white"
               }`}
-              style={{
-                '--hover-color': theme === "light" ? highlightColor : 'white'
-              } as React.CSSProperties}
+              style={
+                {
+                  "--hover-color": theme === "light" ? highlightColor : "white",
+                } as React.CSSProperties
+              }
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -99,7 +108,8 @@ export const Footer = ({ locale }: FooterProps) => {
                   : "text-white/80 hover:text-white"
               }`}
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -115,7 +125,8 @@ export const Footer = ({ locale }: FooterProps) => {
                   : "text-white/80 hover:text-white"
               }`}
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -140,7 +151,8 @@ export const Footer = ({ locale }: FooterProps) => {
                   : "text-white/80 hover:text-white"
               }`}
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -156,7 +168,8 @@ export const Footer = ({ locale }: FooterProps) => {
                   : "text-white/80 hover:text-white"
               }`}
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -183,7 +196,8 @@ export const Footer = ({ locale }: FooterProps) => {
                   : "text-white/80 hover:text-white"
               }`}
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -201,7 +215,8 @@ export const Footer = ({ locale }: FooterProps) => {
                   : "text-white/80 hover:text-white"
               }`}
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -228,7 +243,8 @@ export const Footer = ({ locale }: FooterProps) => {
                   : "text-white/80 hover:text-white"
               }`}
               onMouseEnter={(e) => {
-                if (theme === "light") e.currentTarget.style.color = highlightColor;
+                if (theme === "light")
+                  e.currentTarget.style.color = highlightColor;
               }}
               onMouseLeave={(e) => {
                 if (theme === "light") e.currentTarget.style.color = "#4a4a6a";
@@ -239,7 +255,7 @@ export const Footer = ({ locale }: FooterProps) => {
           </div>
         </div>
       </div>
-      <FooterTitleIcon className={`max-w-[1600px]`} />
+      <FooterTitleIcon className={`max-w-[1600px] w-full h-auto tablet:w-1/2 desktop:w-full`} />
     </footer>
   );
 };
