@@ -26,7 +26,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
             className={`text-[28px] mb-3 font-normal ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: 'DotGothic16, sans-serif' }}
+            style={{ fontFamily: "DotGothic16, sans-serif" }}
           >
             <AnimatedTitle title={architecture.title} />
           </h2>
@@ -49,15 +49,23 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
           {/* 架构图 */}
           <LazyBackgroundImage
-            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
+            imageUrl={
+              theme === "light"
+                ? "/newImg/content-bg.png"
+                : "/newImg/content-bg-black.png"
+            }
             className="flex-1 flex items-center justify-center px-6 py-4"
             style={{
-              backgroundSize: '16px 16px',
-              backgroundRepeat: 'repeat'
+              backgroundSize: "16px 16px",
+              backgroundRepeat: "repeat",
             }}
           >
             <img
-              src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}
+              src={
+                theme === "light"
+                  ? "/newImg/architecture-content.png"
+                  : "/newImg/architecture-content-black.png"
+              }
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -69,13 +77,13 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
       {/* 平板端布局 - 高度约683px */}
       <div className="hidden tablet:block desktop:hidden">
-        <div className="min-h-[683px] py-12 flex flex-col max-w-[650px] mx-auto">
+        <div className="py-12 flex flex-col mx-auto">
           {/* 标题 */}
           <h2
             className={`text-[32px] mb-4 font-normal ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: 'DotGothic16, sans-serif' }}
+            style={{ fontFamily: "DotGothic16, sans-serif" }}
           >
             <AnimatedTitle title={architecture.title} />
           </h2>
@@ -90,7 +98,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           </p>
 
           {/* 点阵 */}
-          <div className="flex overflow-hidden gap-1 mb-8">
+          <div className="flex overflow-hidden gap-2 mb-8">
             {Array.from({ length: 60 }).map((_, i) => (
               <DotIcon key={i} className="flex-shrink-0" />
             ))}
@@ -98,20 +106,28 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
           {/* 架构图 */}
           <LazyBackgroundImage
-            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
+            imageUrl={
+              theme === "light"
+                ? "/newImg/content-bg.png"
+                : "/newImg/content-bg-black.png"
+            }
             className="flex-1 flex items-center justify-center px-10 py-6"
             style={{
-              backgroundSize: '16px 16px',
-              backgroundRepeat: 'repeat'
+              backgroundSize: "16px 16px",
+              backgroundRepeat: "repeat",
             }}
           >
             <img
-              src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}
+              src={
+                theme === "light"
+                  ? "/newImg/architecture-content.png"
+                  : "/newImg/architecture-content-black.png"
+              }
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
               loading="lazy"
               decoding="async"
-              />
+            />
           </LazyBackgroundImage>
         </div>
       </div>
@@ -126,14 +142,14 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
               className={`text-[48px] 2xl:text-[42px] flex-shrink-0 font-normal ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}
-              style={{ fontFamily: 'DotGothic16, sans-serif' }}
+              style={{ fontFamily: "DotGothic16, sans-serif" }}
             >
               <AnimatedTitle title={architecture.title} />
             </h2>
 
             {/* 右上角描述文字 */}
             <p
-              className={`text-[18px] leading-relaxed text-right pl-28 ${
+              className={`text-[18px] w-[528px] leading-relaxed text-right ${
                 theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
               }`}
             >
@@ -150,15 +166,78 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
           {/* 架构图 - 居中显示 */}
           <LazyBackgroundImage
-            imageUrl={theme === 'light' ? '/newImg/content-bg.png' : '/newImg/content-bg-black.png'}
-            className="flex-1 flex items-center justify-center px-16 py-10"
+            imageUrl={
+              theme === "light"
+                ? "/newImg/content-bg.png"
+                : "/newImg/content-bg-black.png"
+            }
+            className="relative flex-1 flex items-center justify-center px-16 py-10"
             style={{
-              backgroundSize: '16px 16px',
-              backgroundRepeat: 'repeat'
+              backgroundSize: "16px 16px",
+              backgroundRepeat: "repeat",
             }}
           >
+            {/* 左上 */}
+            <div
+              className="absolute left-0 -translate-x-1/2 -top-[6px] w-[1px] h-3"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
+            <div
+              className="absolute left-0 -translate-x-1/2 top-0 w-3 h-[1px]"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
+
+            {/* 右上 */}
+            <div
+              className="absolute right-0 translate-x-1/2 -top-[6px] w-[1px] h-3"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
+            <div
+              className="absolute right-0 translate-x-1/2 top-0 w-3 h-[1px]"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
+
+            {/* 左下 */}
+            <div
+              className="absolute left-0 -translate-x-1/2 -bottom-[6px] w-[1px] h-3"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
+            <div
+              className="absolute left-0 -translate-x-1/2 bottom-0 w-3 h-[1px]"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
+
+            {/* 右下 */}
+            <div
+              className="absolute right-0 translate-x-1/2 -bottom-[6px] w-[1px] h-3"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
+            <div
+              className="absolute right-0 translate-x-1/2 bottom-0 w-3 h-[1px]"
+              style={{
+                backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF",
+              }}
+            />
             <img
-              src={theme === 'light' ? '/newImg/architecture-content.png' : '/newImg/architecture-content-black.png'}  
+              src={
+                theme === "light"
+                  ? "/newImg/architecture-content.png"
+                  : "/newImg/architecture-content-black.png"
+              }
               alt="Architecture Diagram"
               className="w-full h-full object-cover"
               loading="lazy"

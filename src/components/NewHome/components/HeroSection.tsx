@@ -40,11 +40,11 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
           <div 
             className="mb-2"
           >
-            <MemfitWhiteText/>
+            <MemfitWhiteText className="w-full h-auto"/>
           </div>
 
           <p 
-            className="text-[18px] tablet:text-[22px] desktop:text-[28px] 2xl:text-[32px] font-normal text-[#EEF3F9] mb-10 tablet:mb-12 desktop:mb-14 2xl:mb-16"
+            className="text-[36px] font-normal text-[#EEF3F9] mb-10 tablet:mb-12 desktop:mb-14 2xl:mb-16"
             style={{
               textShadow: '0 2px 16px rgba(0, 0, 0, 0.2)',
               lineHeight: '1.5',

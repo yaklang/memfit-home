@@ -41,8 +41,8 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
       <header
         className={`fixed top-0 left-0 right-0 z-[100] backdrop-blur-md border-b transition-all ${
           theme === "light"
-            ? "bg-white/90 border-black/5"
-            : "bg-[#0a0a14]/90 border-white/10"
+            ? "bg-white border-black/5"
+            : "bg-[#0a0a14] border-white/10"
         }`}
       >
         <div className="max-w-[1600px] mx-auto flex items-center justify-between h-[72px] desktop:h-[56px]"> 

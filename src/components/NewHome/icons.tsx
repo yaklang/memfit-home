@@ -3,6 +3,7 @@ import type { FC } from "react";
 
 interface IconProps {
   className?: string;
+  stroke?: string;
 }
 
 export const MemfitLogo: FC<IconProps> = ({ className }) => (
@@ -353,130 +354,99 @@ export const MenuIcon: FC<IconProps> = ({ className }) => (
   </svg>
 );
 
-export const BrainIcon: FC<IconProps> = ({ className }) => (
+export const BrainIcon: FC<IconProps> = ({ className, stroke }) => (
   <svg
     className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0-1.32 4.24 3 3 0 0 0 .34 5.58 2.5 2.5 0 0 0 2.96 3.08 2.5 2.5 0 0 0 4.91.05L12 20V4.5z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M12 4.5a2.5 2.5 0 0 1 4.96-.46 2.5 2.5 0 0 1 1.98 3 2.5 2.5 0 0 1 1.32 4.24 3 3 0 0 1-.34 5.58 2.5 2.5 0 0 1-2.96 3.08A2.5 2.5 0 0 1 12 20"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M12 8v12"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M11.9999 5.00132C12.0011 4.60144 11.9223 4.20536 11.7681 3.83638C11.614 3.4674 11.3876 3.13297 11.1023 2.85275C10.8169 2.57254 10.4785 2.35219 10.1067 2.20469C9.73501 2.05718 9.33753 1.98548 8.93768 1.99382C8.53783 2.00215 8.14369 2.09034 7.77843 2.25321C7.41317 2.41608 7.08417 2.65033 6.81078 2.94219C6.53739 3.23405 6.32513 3.57763 6.18648 3.95271C6.04784 4.32779 5.9856 4.72681 6.00345 5.12629M11.9999 5.00132V17.9983M11.9999 5.00132C11.9987 4.60144 12.0777 4.20536 12.2319 3.83638C12.386 3.4674 12.6124 3.13297 12.8977 2.85275C13.1831 2.57254 13.5215 2.35219 13.8933 2.20469C14.265 2.05718 14.6625 1.98548 15.0623 1.99382C15.4622 2.00215 15.8563 2.09034 16.2216 2.25321C16.5868 2.41608 16.9158 2.65033 17.1892 2.94219C17.4626 3.23405 17.6749 3.57763 17.8135 3.95271C17.9522 4.32779 18.0144 4.72681 17.9966 5.12629C18.5843 5.27739 19.1299 5.56024 19.5922 5.95341C20.0544 6.34658 20.4211 6.83977 20.6645 7.39562C20.9078 7.95146 21.0215 8.5554 20.9969 9.16168C20.9723 9.76796 20.81 10.3607 20.5223 10.895M6.00345 5.12629C5.4157 5.27739 4.87005 5.56024 4.40782 5.95341C3.94559 6.34658 3.5789 6.83977 3.33553 7.39562C3.09216 7.95146 2.97848 8.5554 3.00311 9.16168C3.02773 9.76796 3.19002 10.3607 3.47767 10.895M6.00345 5.12629C6.02322 5.60991 6.15986 6.08151 6.40151 6.50092M3.47767 10.895C2.9719 11.3058 2.57418 11.834 2.31912 12.4336C2.06405 13.0331 1.95937 13.6859 2.01417 14.3352C2.06897 14.9844 2.2816 15.6104 2.63356 16.1588C2.98551 16.7071 3.46614 17.1612 4.03362 17.4815M3.47767 10.895C3.6606 10.746 3.85656 10.6145 4.06284 10.5M4.03362 17.4815C3.96355 18.0236 4.00537 18.5743 4.1565 19.0996C4.30763 19.6249 4.56487 20.1137 4.91233 20.5357C5.25979 20.9577 5.69009 21.3041 6.17665 21.5533C6.66322 21.8025 7.19572 21.9494 7.74127 21.9848C8.28682 22.0202 8.83383 21.9434 9.34853 21.7591C9.86323 21.5748 10.3347 21.287 10.7338 20.9134C11.1329 20.5399 11.4511 20.0884 11.6689 19.587C11.8867 19.0857 11.9993 18.545 11.9999 17.9983M4.03362 17.4815C4.63384 17.82 5.31171 17.9985 6.00082 17.9982M11.9999 17.9983C12.0005 18.545 12.1133 19.0857 12.3311 19.587C12.5489 20.0884 12.8671 20.5399 13.2662 20.9134C13.6653 21.287 14.1368 21.5748 14.6515 21.7591C15.1662 21.9434 15.7132 22.0202 16.2587 21.9848C16.8043 21.9494 17.3368 21.8025 17.8233 21.5533C18.3099 21.3041 18.7402 20.9577 19.0877 20.5357C19.4351 20.1137 19.6924 19.6249 19.8435 19.0996C19.9946 18.5743 20.0365 18.0236 19.9664 17.4815M20.5223 10.895C21.0281 11.3058 21.4258 11.834 21.6809 12.4336C21.9359 13.0331 22.0406 13.6859 21.9858 14.3352C21.931 14.9844 21.7184 15.6104 21.3664 16.1588C21.0145 16.7071 20.5339 17.1612 19.9664 17.4815M20.5223 10.895C20.3394 10.746 20.1436 10.6145 19.9374 10.5M19.9664 17.4815C19.3662 17.82 18.6886 17.9985 17.9995 17.9982M14.9998 12.9994C14.1603 12.7042 13.4273 12.1666 12.8933 11.4548C12.3594 10.743 12.0485 9.88882 12.0001 9.00035C11.9516 9.88882 11.6408 10.743 11.1068 11.4548C10.5729 12.1666 9.83983 12.7042 9.00035 12.9994M17.5987 6.50092C17.8407 6.0816 17.9776 5.60994 17.9977 5.12624"
+      stroke={stroke}
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
 
-export const ListTodoIcon: FC<IconProps> = ({ className }) => (
+export const ListTodoIcon: FC<IconProps> = ({ className, stroke }) => (
   <svg
-    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
-    <rect
-      x="3"
-      y="5"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
     <path
-      d="M3 17l2 2 4-4"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M13 6h8M13 12h8M13 18h8"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
+      d="M3 17L5 19L9 15M13 6H21M13 12H21M13 18H21M4 5H8C8.55228 5 9 5.44772 9 6V10C9 10.5523 8.55228 11 8 11H4C3.44772 11 3 10.5523 3 10V6C3 5.44772 3.44772 5 4 5Z"
+      stroke={stroke}
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
 
-export const RefreshIcon: FC<IconProps> = ({ className }) => (
+export const RefreshIcon: FC<IconProps> = ({ className, stroke }) => (
   <svg
     className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M21 3v5h-5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M4 4V9H4.58152M19.9381 11C19.446 7.05369 16.0796 4 12 4C8.64262 4 5.76829 6.06817 4.58152 9M4.58152 9H9M20 20V15H19.4185M19.4185 15C18.2317 17.9318 15.3574 20 12 20C7.92038 20 4.55399 16.9463 4.06189 13M19.4185 15H15"
+      stroke={stroke}
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
 
-export const WrenchIcon: FC<IconProps> = ({ className }) => (
+export const WrenchIcon: FC<IconProps> = ({ className, stroke }) => (
   <svg
     className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <g clip-path="url(#clip0_2233_63311)">
+      <path
+        d="M7.38322 8.88155L10.6829 12.1812M15.0789 16.5772L12.5619 14.0602M18.4322 4.43176C16.8911 3.62731 14.9447 3.87227 13.6503 5.16665C12.3559 6.46102 12.111 8.40742 12.9154 9.94859L4.9195 17.9445C4.52897 18.335 4.52897 18.9682 4.9195 19.3587L5.23974 19.679C5.63026 20.0695 6.26343 20.0695 6.65395 19.679L14.6499 11.683C16.191 12.4875 18.1374 12.2425 19.4318 10.9482C20.7262 9.65378 20.9712 7.70738 20.1667 6.16621L17.9864 8.34648C17.6671 8.66578 17.1494 8.66578 16.8301 8.34648L16.252 7.76833C15.9327 7.44902 15.9327 6.93133 16.252 6.61202L18.4322 4.43176ZM18.0699 17.8338L16.6532 16.4171C16.2627 16.0266 15.6296 16.0266 15.239 16.4171L14.9188 16.7374C14.5283 17.1279 14.5283 17.7611 14.9188 18.1516L16.3354 19.5682C16.7259 19.9587 17.3591 19.9587 17.7496 19.5682L18.0699 19.248C18.4604 18.8574 18.4604 18.2243 18.0699 17.8338ZM3.52503 7.33596L5.51981 9.33075C5.91034 9.72127 6.5435 9.72127 6.93403 9.33075L7.83242 8.43236C8.22294 8.04183 8.22294 7.40867 7.83242 7.01815L5.83763 5.02336C5.44711 4.63284 4.81394 4.63284 4.42342 5.02336L3.52503 5.92175C3.1345 6.31228 3.1345 6.94544 3.52503 7.33596Z"
+        stroke={stroke}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_2233_63311">
+        <rect width="24" height="24" fill="white" />
+      </clipPath>
+    </defs>
   </svg>
 );
 
-export const BookOpenIcon: FC<IconProps> = ({ className }) => (
+export const BookOpenIcon: FC<IconProps> = ({ className, stroke }) => (
   <svg
     className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M12 7C12 5.93913 11.5786 4.92172 10.8284 4.17157C10.0783 3.42143 9.06087 3 8 3H2V18H9C9.79565 18 10.5587 18.3161 11.1213 18.8787C11.6839 19.4413 12 20.2044 12 21M12 7V21M12 7C12 5.93913 12.4214 4.92172 13.1716 4.17157C13.9217 3.42143 14.9391 3 16 3H22V18H15C14.2044 18 13.4413 18.3161 12.8787 18.8787C12.3161 19.4413 12 20.2044 12 21M6 8H8M6 12H8M16 8H18M16 12H18"
+      stroke={stroke}
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
@@ -1004,6 +974,42 @@ export const FooterTitleIcon: FC<IconProps> = ({ className }) => (
       d="M513.277 53.3525H362.28V80.0286H513.277V53.3525Z"
       fill="#F0F3F8"
       fill-opacity="0.15"
+    />
+  </svg>
+);
+
+export const ThumbUpIcon: FC<IconProps> = ({ className, stroke }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <path
+      d="M9.33333 6.66667H12.5093C13.5005 6.66667 14.1451 7.70975 13.7019 8.59629L11.3685 13.263C11.1427 13.7147 10.681 14 10.176 14H7.49747C7.38846 14 7.27985 13.9866 7.17409 13.9602L4.66667 13.3333M9.33333 6.66667V3.33333C9.33333 2.59695 8.73638 2 8 2H7.93635C7.60331 2 7.33333 2.26998 7.33333 2.60302C7.33333 3.07922 7.19238 3.54477 6.92823 3.94099L4.66667 7.33333V13.3333M9.33333 6.66667H8M4.66667 13.3333H3.33333C2.59695 13.3333 2 12.7364 2 12V8C2 7.26362 2.59695 6.66667 3.33333 6.66667H5"
+      stroke={stroke}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const EmojiSadIcon: FC<IconProps> = ({ className, stroke }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+  >
+    <path
+      d="M9.88558 10.7811C8.84418 9.73969 7.15574 9.73969 6.11434 10.7811M10 6.66667H9.99333M6 6.66667H5.99333M2 8C2 11.3137 4.68629 14 8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8Z"
+      stroke={stroke}
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
