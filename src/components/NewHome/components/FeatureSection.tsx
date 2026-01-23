@@ -197,7 +197,7 @@ export const FeatureSection = ({
       </div>
 
       {/* 平板端布局 - 高度约1062px */}
-      <div className="hidden tablet:block desktop:hidden relative z-10 h-auto">
+      <div className={`hidden tablet:block desktop:hidden relative z-10 h-auto ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]" }`}>
         <div className="px-6 py-12">
           {/* 标题区 */}
           <div className="flex items-center gap-2 ">

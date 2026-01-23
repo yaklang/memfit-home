@@ -14,7 +14,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
   return (
     <section
-      className={`px-4 tablet:px-6 desktop:px-12`}
+      className={`px-4 tablet:px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]"}`}
     >
       {/* 移动端布局 - 高度约537px */}
       <div className="tablet:hidden">
