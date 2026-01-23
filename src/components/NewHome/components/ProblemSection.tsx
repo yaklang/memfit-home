@@ -16,7 +16,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
 
   return (
     <section
-      className={`px-4 tablet:px-6 desktop:px-12`}
+      className={`px-4 tablet:px-6 desktop:px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]"}`}
     >
       <div className="py-10 tablet:py-12 desktop:py-16 2xl:py-20 flex flex-col max-w-[1600px] mx-auto">
         {/* 标题 - 居中 */}

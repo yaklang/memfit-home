@@ -31,7 +31,7 @@ export const Footer = ({ locale }: FooterProps) => {
 
   return (
     <footer
-      className="relative flex-col flex desktop:items-center px-6 desktop:px-12"
+      className="relative flex-col flex desktop:items-center px-6"
       style={{
         background:
           theme === "light"

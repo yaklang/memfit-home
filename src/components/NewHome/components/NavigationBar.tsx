@@ -89,7 +89,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
           <li
             key={i}
             className={`text-sm leading-relaxed flex items-start ${
-              currentTheme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"
+              currentTheme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
           >
             {lines.length > 1 && (
@@ -389,7 +389,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
   return (
     <div
       id="navigation-bar-container"
-      className={`w-full px-6`}
+      className={`w-full px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]"}`}
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="desktop:flex justify-between items-start mb-6">
@@ -400,7 +400,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
             }`}
             style={{ fontFamily: "DotGothic16, sans-serif" }}
           >
-            <AnimatedTitle title={architecture.title} />
+            <AnimatedTitle title={navigation.title} />
           </h2>
 
           {/* 右上角描述文字 */}
@@ -432,7 +432,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
                   return (
                     <div
                       key={item.id}
-                      className={`cursor-pointer relative transition-all duration-300 ease-in-out ${idx !== 0 ? "mt-[-1px]" : ""}`}
+                      className={`cursor-pointer relative transition-all duration-300 ease-in-out ${idx !== 0 ? "mt-[-1px]" : ""} ${isActive ? theme === 'light' ? "bg-[#e6ecf6]": "bg-[#253241]" : ''}`}
                       onClick={() => {
                         setActiveIndex(idx);
                       }}
@@ -555,7 +555,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
                     : `/newImg/content-black-${activeIndex + 1}.png`
                 }
                 alt={sections[activeIndex]?.title || "Section"}
-                className="2xl:h-[540px] h-auto z-10 animate-slide-up-fade-content"
+                className="smallScreen:h-[680px] h-auto z-10 animate-slide-up-fade-content"
                 loading="lazy"
                 decoding="async"
               />

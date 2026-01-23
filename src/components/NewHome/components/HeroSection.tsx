@@ -20,7 +20,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
   // - 1920 设计稿: 1152px
 
   return (
-    <section className="relative h-[780px] desktop:h-[766px] 2xl:h-[1152px] flex flex-col overflow-hidden">
+    <section className={`relative h-[780px] desktop:h-[766px] xl:h-[1152px] flex flex-col overflow-hidden ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]" }`}>
       {/* 背景图 - 蓝色渐变条纹背景 - 首屏关键资源，立即加载 */}
       <div className="absolute inset-0 z-0">
         <img
@@ -34,13 +34,13 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
       </div>
       
       {/* 内容区域 - 垂直居中 */}
-      <div className="flex-1 w-full flex items-center justify-center relative z-10 px-4 tablet:px-6 desktop:px-12 2xl:px-16" >
+      <div className="flex-1 w-full flex items-center justify-center relative z-10 px-4 tablet:px-6" >
         <div className="text-center w-full max-w-[1600px] mx-auto">
       
           <div 
             className="mb-2"
           >
-            <MemfitWhiteText className="w-full tablet:w-[361px] desktop:w-[436px] h-auto"/>
+            <MemfitWhiteText className="w-full tablet:w-[361px] desktop:w-[436px] xl:w-[650px] h-auto"/>
           </div>
 
           <p 
