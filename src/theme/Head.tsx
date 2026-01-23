@@ -13,15 +13,6 @@ export default function CustomHead() {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet" />
 
-      {/* 预加载本地字体作为备用 */}
-      <link
-        rel="preload"
-        href="/fonts/DotGothic16-Regular.ttf"
-        as="font"
-        type="font/ttf"
-        crossOrigin="anonymous"
-      />
-
       {/* 预加载首屏背景图 - Hero Section */}
       <link
         rel="preload"

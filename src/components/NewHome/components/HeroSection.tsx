@@ -35,7 +35,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
       
       {/* 内容区域 - 垂直居中 */}
       <div className="flex-1 w-full flex items-center justify-center relative z-10 px-4 tablet:px-6" >
-        <div className="text-center w-full max-w-[1600px] mx-auto -translate-y-12">
+        <div className="text-center w-full max-w-[1600px] mx-auto desktop:-translate-y-12">
       
           <div 
             className="mb-2"
@@ -54,7 +54,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
           </p>
           
       
-          <div className="flex flex-col items-center mt-[280px] desktop:mt-[0px]  justify-center gap-4 tablet:gap-5 desktop:flex-row desktop:gap-6">
+          <div className="flex flex-col items-center mt-[100px] desktop:mt-[0px]  justify-center gap-4 tablet:gap-5 desktop:flex-row desktop:gap-6">
             {/* 主按钮 - 白色实心 */}
             <a
               href={downloadUrl}

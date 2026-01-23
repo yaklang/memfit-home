@@ -137,7 +137,7 @@ export const FeatureSection = ({
       id={section.id}
     >
       {/* 移动端布局 - 高度约954px */}
-      <div className="tablet:hidden relative z-10 h-auto">
+      <div className={`tablet:hidden relative z-10 h-auto ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]" }`}>
         <div className="px-4 py-10 flex flex-col">
           {/* 标题区 */}
           <div className="flex items-center gap-2 ">
