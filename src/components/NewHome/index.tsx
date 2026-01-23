@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef, type ReactNode } from "react";
+import { useState, useCallback, type ReactNode } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { CONTENT, type Locale } from "./locales";
 import { ThemeContext, type Theme } from "./context/ThemeContext";
@@ -51,13 +51,13 @@ export const NewHome = (): ReactNode => {
           <WhatIsSection locale={locale} />
           <ProblemSection locale={locale} />
           <ArchitectureSection locale={locale} />
-          <NavigationBar locale={locale}  />
+          <NavigationBar locale={locale} allSections={content.sections}/>
             {content.sections.map((section, idx) => {
               const isLast = idx === content.sections.length - 1;
               return (
                 <div
                   key={section.id}
-                  className={`sticky-container ${isLast ? 'h-auto' : 'h-auto desktop:h-[100vh]'}`}
+                  className={`sticky-container desktop:hidden ${isLast ? 'h-auto' : 'h-auto desktop:h-[100vh]'}`}
                   style={{
                     position: 'relative',
                     marginBottom: 0

@@ -14,9 +14,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
   return (
     <section
-      className={`px-4 tablet:px-6 desktop:px-12 2xl:px-16 ${
-        theme === "light" ? "bg-[#F8F9FA]" : "bg-[#0a0a14]"
-      }`}
+      className={`px-4 tablet:px-6 desktop:px-12`}
     >
       {/* 移动端布局 - 高度约537px */}
       <div className="tablet:hidden">
@@ -54,7 +52,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
                 ? "/newImg/content-bg.png"
                 : "/newImg/content-bg-black.png"
             }
-            className="flex-1 flex items-center justify-center px-6 py-4"
+            className={`flex-1 flex items-center justify-center px-6 py-4 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
             style={{
               backgroundSize: "16px 16px",
               backgroundRepeat: "repeat",
@@ -111,7 +109,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
                 ? "/newImg/content-bg.png"
                 : "/newImg/content-bg-black.png"
             }
-            className="flex-1 flex items-center justify-center px-10 py-6"
+            className={`flex-1 flex items-center justify-center px-10 py-6 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
             style={{
               backgroundSize: "16px 16px",
               backgroundRepeat: "repeat",
@@ -171,7 +169,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
                 ? "/newImg/content-bg.png"
                 : "/newImg/content-bg-black.png"
             }
-            className="relative flex-1 flex items-center justify-center px-16 py-10"
+            className={`relative flex-1 flex items-center justify-center px-16 py-10 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
             style={{
               backgroundSize: "16px 16px",
               backgroundRepeat: "repeat",

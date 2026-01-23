@@ -34,11 +34,11 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
       className={`relative inline-block w-fit px-3 py-[6px] border-l-2 border-l-[#1890FF] desktop:whitespace-nowrap ${
         variant === "default"
           ? theme === "light"
-            ? "bg-[#F8F9FA] border border-[#E6E8ED]"
-            : "bg-[#0f1724] border border-white/10"
+            ? "border border-[#E6E8ED]"
+            : "border border-white/10"
           : theme === "light"
-            ? "bg-white border border-[#E6E8ED]"
-            : "bg-[#071022] border border-white/10"
+            ? "border border-[#E6E8ED]"
+            : "border border-white/10"
       }`}
     >
       {/* 四角装饰 - 在卡片边框外侧 */}
@@ -115,9 +115,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
 
   return (
     <section
-      className={`max-w-[1600px] mx-auto px-6 ${
-        theme === "light" ? "bg-[#f8f9fa]" : "bg-[#0f0f1a]"
-      }`}
+      className={`max-w-[1600px] mx-auto px-6 desktop:px-12`}
     >
       {/* 移动端布局 - 高度约1063px */}
       <div className="tablet:hidden">
@@ -158,7 +156,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
                 ? "/newImg/content-bg.png"
                 : "/newImg/content-bg-black.png"
             }
-            className="flex flex-col gap-4 p-4"
+            className={`flex flex-col gap-4 p-4 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
             style={{
               backgroundSize: "16px 16px",
               backgroundRepeat: "repeat",
@@ -259,7 +257,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
                 ? "/newImg/content-bg.png"
                 : "/newImg/content-bg-black.png"
             }
-            className="flex flex-col gap-4 p-4"
+            className={`flex flex-col gap-4 p-4 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
             style={{
               backgroundSize: "16px 16px",
               backgroundRepeat: "repeat",
@@ -363,7 +361,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
                 ? "/newImg/content-bg.png"
                 : "/newImg/content-bg-black.png"
             }
-            className="relative flex-1 grid grid-cols-[372px_1fr] 2xl:grid-cols-[530px_1fr] 2xl:gap-16 rounded-[4px] p-5"
+            className={`relative flex-1 grid grid-cols-[372px_1fr] 2xl:grid-cols-[530px_1fr] 2xl:gap-16 rounded-[4px] p-5 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
             style={{
               backgroundSize: "16px 16px",
               backgroundRepeat: "repeat",
