@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 自定义字体 */
+/* 自定义字体 - 本地备用 + Google Fonts CDN */
 @font-face {
   font-family: 'DotGothic16';
   src: url('/fonts/DotGothic16-Regular.ttf') format('truetype');
