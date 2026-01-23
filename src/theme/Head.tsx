@@ -16,9 +16,9 @@ export default function CustomHead() {
       {/* 预加载本地字体作为备用 */}
       <link
         rel="preload"
-        href="/fonts/DotGothic16-Regular.woff2"
+        href="/fonts/DotGothic16-Regular.ttf"
         as="font"
-        type="font/woff2"
+        type="font/ttf"
         crossOrigin="anonymous"
       />
 

@@ -5,7 +5,7 @@
 /* 自定义字体 - 本地备用 + Google Fonts CDN */
 @font-face {
   font-family: 'DotGothic16';
-  src: url('../../static/fonts/DotGothic16-Regular.ttf') format('truetype');
+  src: url('/fonts/DotGothic16-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
