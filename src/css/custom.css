@@ -33,21 +33,6 @@
   }
 }
 
-/* 从下往上滚动淡入动画 */
-@keyframes slideUpFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  60% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .theme-light {
   --icon-stroke-primary: #353639;
   --icon-stroke-secondary: #9CA3B1;

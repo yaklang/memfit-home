@@ -506,16 +506,14 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
                         {/* 左侧装饰图 */}
                         {isActive ? (
                           <img
+                            key={`left-${idx}`}
                             src={
                               theme === "light"
                                 ? leftImages[idx]
                                 : leftBlackImages[idx]
                             }
                             alt={item.title}
-                            className="object-contain w-[150px] absolute top-[-75px] right-0"
-                            style={{
-                              animation: 'slideUpFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                            }}
+                            className="object-contain w-[150px] absolute top-[-75px] right-0 animate-slide-up-fade-left"
                           />
                         ) : null}
                       </div>
@@ -557,10 +555,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
                     : `/newImg/content-black-${activeIndex + 1}.png`
                 }
                 alt={sections[activeIndex]?.title || "Section"}
-                className="2xl:h-[540px] h-auto z-10"
-                style={{
-                  animation: 'slideUpFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                }}
+                className="2xl:h-[540px] h-auto z-10 animate-slide-up-fade-content"
                 loading="lazy"
                 decoding="async"
               />

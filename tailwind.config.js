@@ -123,6 +123,22 @@ module.exports = {
         '724': '724px',
         '852': '852px',
       },
+      keyframes: {
+        slideUpFadeIn: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(50px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        'slide-up-fade-left': 'slideUpFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'slide-up-fade-content': 'slideUpFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+      },
     },
   },
   plugins: [],
