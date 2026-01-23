@@ -11,19 +11,24 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
   const { problem, comparisonData } = CONTENT[locale];
   const { theme } = useTheme();
 
+  // 获取高亮颜色
+  const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
+
   return (
     <section
-      className={`px-4 tablet:px-6 desktop:px-12 2xl:px-16 ${
-        theme === "light" ? "bg-[#F8F9FA]" : "bg-[#0a0a14]"
-      }`}
+      className={`px-4 tablet:px-6 desktop:px-12`}
     >
-      <div className="py-10 tablet:py-12 desktop:py-16 2xl:py-20 flex flex-col">
+      <div className="py-10 tablet:py-12 desktop:py-16 2xl:py-20 flex flex-col max-w-[1600px] mx-auto">
         {/* 标题 - 居中 */}
         <div
           className={`text-2xl tablet:text-[32px] desktop:text-[48px] flex justify-center items-center mb-4 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
           style={{ fontFamily: "DotGothic16, sans-serif" }}
         >
-          <AnimatedTitle title={problem.title} />
+          <AnimatedTitle
+            title={problem.title}
+            highlightPattern={/vs/gi}
+            highlightColor={highlightColor}
+          />
         </div>
 
         {/* 副标题 */}
@@ -54,8 +59,8 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             <div
               className={`p-3 desktop:px-6 text-xs tablet:text-sm desktop:text-base border-l border-r border-0 border-solid ${
                 theme === "light"
-                  ? "bg-[#E3F2FD] text-[#1976D2] border-[#C0C6D1]"
-                  : "bg-[#0a1929] text-[#42A5F5] border-[#5F636B]"
+                  ? "bg-[#e6ecf6] text-[#1976D2] border-[#C0C6D1]"
+                  : "bg-[#253241] text-[#42A5F5] border-[#5F636B]"
               }`}
             >
               <div
@@ -87,8 +92,8 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             <div
               className={`p-3 desktop:px-6 ${
                 theme === "light"
-                  ? "bg-[#F5F5F5] text-[#5A5D64]"
-                  : "bg-[#1a1a2e] text-[#A6AFBF]"
+                  ? "text-[#5A5D64]"
+                  : "text-[#A6AFBF]"
               }`}
             >
               <div
@@ -137,8 +142,8 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
               <div
                 className={`flex items-center p-3 border-0 border-l border-r border-solid ${
                   theme === "light"
-                    ? "text-[#353639] border-[#C0C6D1]"
-                    : "text-[#C8D0DD] border-[#5F636B]"
+                    ? "bg-[#e6ecf6] text-[#353639] border-[#C0C6D1]"
+                    : "bg-[#253241] text-[#C8D0DD] border-[#5F636B]"
                 }`}
               >
                 <ThumbUpIcon className="hidden tablet:block mr-1 " stroke={theme === "light" ? "#4373BB": "#66A2EB"} />

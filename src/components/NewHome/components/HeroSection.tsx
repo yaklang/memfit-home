@@ -20,7 +20,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
   // - 1920 设计稿: 1152px
 
   return (
-    <section className="relative h-[852px] desktop:h-[976px] 2xl:h-[1152px] 3xl:h-[1300px] flex flex-col overflow-hidden">
+    <section className="relative h-[780px] desktop:h-[766px] 2xl:h-[1152px] flex flex-col overflow-hidden">
       {/* 背景图 - 蓝色渐变条纹背景 - 首屏关键资源，立即加载 */}
       <div className="absolute inset-0 z-0">
         <img
@@ -40,7 +40,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
           <div 
             className="mb-2"
           >
-            <MemfitWhiteText className="w-full h-auto"/>
+            <MemfitWhiteText className="w-full tablet:w-[361px] desktop:w-[436px] h-auto"/>
           </div>
 
           <p 

@@ -41,11 +41,11 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
       <header
         className={`fixed top-0 left-0 right-0 z-[100] backdrop-blur-md border-b transition-all ${
           theme === "light"
-            ? "bg-white border-black/5"
+            ? "bg-[#f8f9fa] border-black/5"
             : "bg-[#0a0a14] border-white/10"
         }`}
       >
-        <div className="max-w-[1600px] mx-auto flex items-center justify-between h-[72px] desktop:h-[56px]"> 
+        <div className="max-w-[1600px] px-2 mx-auto flex items-center justify-between h-[72px] desktop:h-[56px]"> 
         <div className="flex items-center gap-4 tablet:gap-6 desktop:gap-12">
           <Link to="/" className="flex items-center gap-2">
             <MemfitLogoSwitch className="h-8 desktop:h-7" />
