@@ -14,14 +14,14 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
 
   return (
     <section
-      className={`px-4 tablet:px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]"}`}
+      className={`px-4 tablet:px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]"}`}
     >
       {/* 移动端布局 - 高度约537px */}
       <div className="tablet:hidden">
         <div className="min-h-[537px] py-10 flex flex-col">
           {/* 标题 */}
           <h2
-            className={`text-[28px] mb-3 font-normal ${
+            className={`text-[32px] mb-3 font-normal ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
             style={{ fontFamily: "DotGothic16, sans-serif" }}
@@ -78,7 +78,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
         <div className="py-12 flex flex-col mx-auto">
           {/* 标题 */}
           <h2
-            className={`text-[32px] mb-4 font-normal ${
+            className={`text-[48px] mb-4 font-normal ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
             style={{ fontFamily: "DotGothic16, sans-serif" }}
@@ -169,7 +169,7 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
                 ? "/newImg/content-bg.png"
                 : "/newImg/content-bg-black.png"
             }
-            className={`relative flex-1 flex items-center justify-center px-16 py-10 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
+            className={`relative flex-1 flex items-center justify-center px-32 py-10 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
             style={{
               backgroundSize: "16px 16px",
               backgroundRepeat: "repeat",

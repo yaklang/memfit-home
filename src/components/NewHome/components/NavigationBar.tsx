@@ -389,13 +389,13 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
   return (
     <div
       id="navigation-bar-container"
-      className={`w-full px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]"}`}
+      className={`w-full px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]"}`}
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="desktop:flex justify-between items-start mb-6">
           {/* 左上角标题 */}
           <h2
-            className={`text-[48px] flex-shrink-0 font-normal ${
+            className={`text-[32px] tablet:text-[48px] flex-shrink-0 font-normal ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
             style={{ fontFamily: "DotGothic16, sans-serif" }}
@@ -432,7 +432,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
                   return (
                     <div
                       key={item.id}
-                      className={`cursor-pointer relative transition-all duration-300 ease-in-out ${idx !== 0 ? "mt-[-1px]" : ""} ${isActive ? theme === 'light' ? "bg-[#e6ecf6]": "bg-[#253241]" : ''}`}
+                      className={`cursor-pointer border border-solid ${theme === "light" ? "border-[#e6e8ed]": "border-[#474a4f]"} relative transition-all duration-300 ease-in-out ${idx !== 0 ? "mt-[-1px]" : ""} ${isActive ? theme === 'light' ? "bg-[#e6ecf6]": "bg-[#253241]" : ''}`}
                       onClick={() => {
                         setActiveIndex(idx);
                       }}
