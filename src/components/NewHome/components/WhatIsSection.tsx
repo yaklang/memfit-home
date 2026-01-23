@@ -115,7 +115,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
 
   return (
     <section
-      className={`px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]"}`}
+      className={`px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]"}`}
     >
       <div className="max-w-[1600px] mx-auto">
       {/* 移动端布局 - 高度约1063px */}
@@ -461,7 +461,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
                     : "/newImg/whatIs-content-black.png"
                 }
                 alt="Memfit AI Overview"
-                className="w-full max-w-[680px] 2xl:max-w-[870px] h-auto"
+                className="w-full max-w-[680px] xl:max-w-[870px] h-auto"
                 loading="lazy"
                 decoding="async"
               />

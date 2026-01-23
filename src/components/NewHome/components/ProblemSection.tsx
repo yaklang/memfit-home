@@ -16,12 +16,12 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
 
   return (
     <section
-      className={`px-4 tablet:px-6 desktop:px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#0a0a14]"}`}
+      className={`px-4 tablet:px-6 desktop:px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]"}`}
     >
       <div className="py-10 tablet:py-12 desktop:py-16 2xl:py-20 flex flex-col max-w-[1600px] mx-auto">
         {/* 标题 - 居中 */}
         <div
-          className={`text-2xl tablet:text-[32px] desktop:text-[48px] flex justify-center items-center mb-4 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
+          className={`text-[32px] tablet:text-[48px] flex justify-center items-center mb-1 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
           style={{ fontFamily: "DotGothic16, sans-serif" }}
         >
           <AnimatedTitle

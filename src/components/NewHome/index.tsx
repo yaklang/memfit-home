@@ -1,3 +1,11 @@
+/*
+ * @Author: HJH 75428400+hjhke@users.noreply.github.com
+ * @Date: 2026-01-15 14:24:48
+ * @LastEditors: HJH 75428400+hjhke@users.noreply.github.com
+ * @LastEditTime: 2026-01-23 16:19:19
+ * @FilePath: \memfit-home\src\components\NewHome\index.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { useState, useCallback, type ReactNode } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { CONTENT, type Locale } from "./locales";
@@ -45,7 +53,7 @@ export const NewHome = (): ReactNode => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <Header locale={locale} onToggleLocale={handleToggleLocale} />
-      <div className={`${theme === "light" ? "bg-white theme-light" : "bg-[#0a0a14] theme-dark"}`}>
+      <div className={`${theme === "light" ? "bg-white theme-light" : "bg-[#171717] theme-dark"}`}>
         <main className="pt-[72px] desktop:pt-[56px] overflow-x-hidden">
           <HeroSection locale={locale} />
           <WhatIsSection locale={locale} />
