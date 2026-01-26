@@ -54,7 +54,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
           </p>
           
       
-          <div className="flex flex-col items-center mt-[100px] desktop:mt-[0px]  justify-center gap-4 tablet:gap-5 desktop:flex-row desktop:gap-6">
+          <div className="flex flex-col items-center mt-[100px] desktop:mt-[0px] justify-center gap-4 desktop:flex-row">
             {/* 主按钮 - 白色实心 */}
             <a
               href={downloadUrl}
