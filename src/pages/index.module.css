@@ -12,20 +12,6 @@
   font-display: swap; /* 使用swap确保文字先显示，字体加载后再替换 */
 }
 
-/* 全局字体应用 */
-:global(html) {
-  font-family: 'DotGothic16', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
-}
-
-:global(body) {
-  font-family: 'DotGothic16', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
-}
-
-/* 备用：如果DotGothic16加载失败，使用系统字体 */
-:global(.font-dotgothic) {
-  font-family: 'DotGothic16', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif !important;
-}
-
 a:hover {
   text-decoration: none;
   color: #000;
