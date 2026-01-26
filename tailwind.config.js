@@ -12,7 +12,7 @@ module.exports = {
       'md': '768px',
       'lg': '1024px',
       'desktop': '1024px', 
-      'smallScreen': '1440px', 
+      'smallScreen': '1441px', 
       'xl': '1280px',
       '2xl': '1920px',
       '3xl': '2560px',
