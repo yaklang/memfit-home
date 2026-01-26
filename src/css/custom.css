@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 自定义字体 - 本地字体 */
-@font-face {
-  font-family: 'DotGothic16';
-  src: url('/fonts/DotGothic16-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
 
 @layer utilities {
   .scrollbar-hide {
