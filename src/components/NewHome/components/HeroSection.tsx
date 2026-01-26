@@ -44,7 +44,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
           </div>
 
           <p 
-            className="text-[36px] font-normal text-[#EEF3F9] mb-10 tablet:mb-12 desktop:mb-14 2xl:mb-16"
+            className="text-[36px] font-normal text-[#EEF3F9] mb-10 tablet:mb-12 desktop:mb-14 2xl:mb-16 font-dotgothic"
             style={{
               textShadow: '0 2px 16px rgba(0, 0, 0, 0.2)',
               lineHeight: '1.5',

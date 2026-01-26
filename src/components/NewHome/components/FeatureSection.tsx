@@ -149,10 +149,9 @@ export const FeatureSection = ({
               {leftIcon[index]}
             </span>
             <span
-              className={`text-xl ${
+              className={`text-xl font-dotgothic ${
                 theme === "light" ? "text-[#4373BB]" : "text-[#66A2EB]"
               }`}
-              style={{ fontFamily: "DotGothic16, sans-serif" }}
             >
               {section.title} （{section.subtitle}）
             </span>
@@ -185,7 +184,7 @@ export const FeatureSection = ({
             />
             <div className={`w-full relative z-10 overflow-hidden`}>
               <img
-                src={`/newImg/content-${index + 1}.png`}
+                src={theme === "light" ? `/newImg/content-${index + 1}.png`  : `/newImg/content-black-${index + 1}.png`}
                 alt={section.title}
                 className="w-full h-auto"
                 loading="lazy"
@@ -209,10 +208,9 @@ export const FeatureSection = ({
               {leftIcon[index]}
             </span>
             <span
-              className={`text-xl ${
+              className={`text-xl font-dotgothic ${
                 theme === "light" ? "text-[#4373BB]" : "text-[#66A2EB]"
               }`}
-              style={{ fontFamily: "DotGothic16, sans-serif" }}
             >
               {section.title} （{section.subtitle}）
             </span>
@@ -241,7 +239,7 @@ export const FeatureSection = ({
             />
             <div className={`w-full relative z-10 overflow-hidden`}>
               <img
-                src={`/newImg/content-${index + 1}.png`}
+                src={theme === "light" ? `/newImg/content-${index + 1}.png`  : `/newImg/content-black-${index + 1}.png`}
                 alt={section.title}
                 className="w-full h-auto"
                 loading="lazy"

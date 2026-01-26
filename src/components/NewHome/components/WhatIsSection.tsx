@@ -123,10 +123,9 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
         <div className="py-10 flex flex-col">
           {/* 标题 */}
           <div
-            className={`mb-3 text-5xl ${
+            className={`mb-3 text-5xl font-dotgothic ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "DotGothic16, sans-serif" }}
           >
             <AnimatedTitle
               title={whatIs.title}
@@ -136,7 +135,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
 
           {/* 描述 */}
           <p
-            className={`text-[18px] leading-relaxed mb-5 ${
+            className={`text-[18px] leading-relaxed mb-5 font-dotgothic ${
               theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
             }`}
           >
@@ -167,8 +166,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
             <div
               className={`text-[32px] ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-              }`}
-              style={{ fontFamily: "DotGothic16, sans-serif" }}
+              } font-dotgothic`}
             >
               {whatIs.textOne}
             </div>
@@ -224,10 +222,9 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
         <div className="min-h-[1093px] py-12 flex flex-col px-6 mx-auto">
           {/* 标题 */}
           <div
-            className={`mb-4 text-[48px] ${
+            className={`mb-4 text-[48px] font-dotgothic ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "DotGothic16, sans-serif" }}
           >
             <AnimatedTitle
               title={whatIs.title}
@@ -239,7 +236,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           <p
             className={`text-[18px] leading-relaxed mb-6 ${
               theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
-            }`}
+            } font-dotgothic`}
           >
             {whatIs.description}
           </p>
@@ -268,8 +265,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
             <div
               className={`text-[32px] ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-              }`}
-              style={{ fontFamily: "DotGothic16, sans-serif" }}
+              } font-dotgothic`}
             >
               {whatIs.textOne}
             </div>
@@ -327,10 +323,9 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
           <div className="flex justify-between items-start mb-6">
             {/* 左上角标题 */}
             <div
-              className={`flex-shrink-0 text-[48px] ${
+              className={`flex-shrink-0 text-[48px] font-dotgothic ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}
-              style={{ fontFamily: "DotGothic16, sans-serif" }}
             >
               <AnimatedTitle
                 title={whatIs.title}
@@ -342,7 +337,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
             <p
               className={`max-w-[528px] text-[18px] text-right ${
                 theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
-              }`}
+              } font-dotgothic`}
             >
               {renderDescription(whatIs.description)}
             </p>
@@ -415,8 +410,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               <div
                 className={`text-[32px] ${
                   theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-                }`}
-                style={{ fontFamily: "DotGothic16, sans-serif" }}
+                } font-dotgothic`}
               >
                 {whatIs.textOne}
               </div>

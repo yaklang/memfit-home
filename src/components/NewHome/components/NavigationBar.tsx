@@ -393,15 +393,14 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="desktop:flex justify-between items-start mb-6">
-          {/* 左上角标题 */}
-          <h2
-            className={`text-[32px] tablet:text-[48px] flex-shrink-0 font-normal ${
-              theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-            }`}
-            style={{ fontFamily: "DotGothic16, sans-serif" }}
-          >
-            <AnimatedTitle title={navigation.title} />
-          </h2>
+        {/* 左上角标题 */}
+        <h2
+          className={`text-[32px] tablet:text-[48px] flex-shrink-0 font-normal font-dotgothic ${
+            theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
+          }`}
+        >
+          <AnimatedTitle title={navigation.title} />
+        </h2>
 
           {/* 右上角描述文字 */}
           <p
@@ -424,7 +423,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
         <div className="py-20 max-w-[1600px] mx-auto">
           <div className="flex justify-between gap-5 h-full">
             {/* 左侧内容 */}
-            <div className="w-[460px] xl:h-[520px]">
+            <div className="w-[520px] xl:h-[520px]">
               {/* 导航卡片列表 */}
               <div className="flex flex-col">
                 {sections.map((item, idx) => {
@@ -484,7 +483,7 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
                             {leftIcon[idx]}
                           </span>
                           <span
-                            className={`text-xl transition-all duration-300 ease-in-out ${
+                            className={`text-xl transition-all duration-300 ease-in-out font-dotgothic ${
                               isActive
                                 ? theme === "light"
                                   ? "text-[#4373BB]"
@@ -493,7 +492,6 @@ export const NavigationBar = ({ locale, allSections }: NavigationBarProps) => {
                                   ? "text-[#353639]"
                                   : "text-[#C8D0DD]"
                             }`}
-                            style={{ fontFamily: "DotGothic16, sans-serif" }}
                           >
                             {item.title} （{item.subtitle}）
                           </span>

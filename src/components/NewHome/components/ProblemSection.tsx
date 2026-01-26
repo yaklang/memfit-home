@@ -21,8 +21,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
       <div className="py-10 tablet:py-12 desktop:py-16 2xl:py-20 flex flex-col max-w-[1600px] mx-auto">
         {/* 标题 - 居中 */}
         <div
-          className={`text-[32px] tablet:text-[48px] flex justify-center items-center mb-1 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
-          style={{ fontFamily: "DotGothic16, sans-serif" }}
+          className={`text-[32px] tablet:text-[48px] flex justify-center items-center mb-1 font-dotgothic ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
         >
           <AnimatedTitle
             title={problem.title}
@@ -33,7 +32,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
 
         {/* 副标题 */}
         <p
-          className={`text-center text-sm tablet:text-base desktop:text-lg mb-6 tablet:mb-8 desktop:mb-10 ${
+          className={`text-center text-lg mb-6 tablet:mb-8 desktop:mb-10 font-dotgothic ${
             theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
           }`}
         >
@@ -49,10 +48,9 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
             }`}
           >
             <div
-              className={`p-3 desktop:px-6 text-2xl tablet:text-[32px] flex items-center ${
+              className={`p-3 desktop:px-6 text-2xl tablet:text-[32px] flex items-center font-dotgothic ${
                 theme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"
               }`}
-              style={{ fontFamily: "DotGothic16, sans-serif" }}
             >
               {problem.dimensionLabel}
             </div>
@@ -67,8 +65,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
                 className={`text-2xl desktop:text-[32px] desktop:flex items-center ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
               >
                 <div
-                  className={`text-2xl desktop:text-[32px] mr-2  ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
-                  style={{ fontFamily: "DotGothic16, sans-serif" }}
+                  className={`text-2xl desktop:text-[32px] mr-2 font-dotgothic ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
                 >
                   {problem.memfitLabel}
                 </div>
@@ -100,8 +97,7 @@ export const ProblemSection = ({ locale }: ProblemSectionProps) => {
                 className={`text-2xl desktop:text-[32px] desktop:flex items-center ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
               >
                 <div
-                  className={`text-2xl desktop:text-[32px] mr-2 ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
-                  style={{ fontFamily: "DotGothic16, sans-serif" }}
+                  className={`text-2xl desktop:text-[32px] mr-2 font-dotgothic ${theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"}`}
                 >
                   {problem.traditionalLabel}
                 </div>

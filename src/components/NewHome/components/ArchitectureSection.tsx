@@ -21,10 +21,9 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
         <div className="min-h-[537px] py-10 flex flex-col">
           {/* 标题 */}
           <h2
-            className={`text-[32px] mb-3 font-normal ${
+            className={`text-[32px] mb-3 font-normal font-dotgothic ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "DotGothic16, sans-serif" }}
           >
             <AnimatedTitle title={architecture.title} />
           </h2>
@@ -78,10 +77,9 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
         <div className="py-12 flex flex-col mx-auto">
           {/* 标题 */}
           <h2
-            className={`text-[48px] mb-4 font-normal ${
+            className={`text-[48px] mb-4 font-normal font-dotgothic ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
-            style={{ fontFamily: "DotGothic16, sans-serif" }}
           >
             <AnimatedTitle title={architecture.title} />
           </h2>
@@ -137,10 +135,9 @@ export const ArchitectureSection = ({ locale }: ArchitectureSectionProps) => {
           <div className="flex justify-between items-start mb-6">
             {/* 左上角标题 */}
             <h2
-              className={`text-[48px] 2xl:text-[42px] flex-shrink-0 font-normal ${
+              className={`text-[48px] 2xl:text-[42px] flex-shrink-0 font-normal font-dotgothic ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}
-              style={{ fontFamily: "DotGothic16, sans-serif" }}
             >
               <AnimatedTitle title={architecture.title} />
             </h2>

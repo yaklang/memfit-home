@@ -70,6 +70,9 @@ module.exports = {
       full: '9999px',
     },
     extend: {
+      fontFamily: {
+        dotgothic: ['DotGothic16', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Microsoft YaHei', 'sans-serif'],
+      },
       fontSize: {
         '12px': '12px',
         '14px': '14px',
