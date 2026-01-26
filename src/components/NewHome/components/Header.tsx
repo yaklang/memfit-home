@@ -90,10 +90,11 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
             href="https://github.com/yaklang/memfit-home"
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-[14px] font-medium transition-colors no-underline hover:text-[#4373BB] whitespace-nowrap flex items-center gap-1 ${
+
+            className={`text-[14px] font-medium transition-colors no-underline whitespace-nowrap flex items-center gap-1 ${
               theme === "light"
-                ? "text-[#353639]"
-                : "text-[#C8D0DD]"
+                ? "text-[#353639] hover:text-[#4373BB]"
+                : "text-[#C8D0DD] hover:text-[#66A2EB]"
             }`}
           >
             {content.buttons.github}
@@ -103,10 +104,10 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
           {/* 语言切换 */}
           <div className="relative">
             <button
-              className={`flex items-center gap-1 text-[14px] hover:text-[#4373BB] border-none font-medium bg-transparent transition-colors cursor-pointer whitespace-nowrap ${
+              className={`flex items-center gap-1 text-[14px]  border-none font-medium bg-transparent transition-colors cursor-pointer whitespace-nowrap ${
                 theme === "light"
-                  ? "text-[#353639]"
-                  : "text-[#C8D0DD]"
+                  ? "text-[#353639] hover:text-[#4373BB]"
+                  : "text-[#C8D0DD] hover:text-[#66A2EB]"
               }`}
               onClick={() => setShowLangMenu(!showLangMenu)}
               onBlur={() => setTimeout(() => setShowLangMenu(false), 150)}
