@@ -47,6 +47,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  --ifm-navbar-height: 72px;
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -56,6 +57,12 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --ifm-navbar-height: 56px;
+  }
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -70,7 +77,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* navbar 已被 swizzle 替换为自定义组件，占位元素由内联样式控制 */
+/* navbar 已被 swizzle 替换为自定义组件，占位元素恢复 sticky 定位由 --ifm-navbar-height 控制高度 */
 
 /* 页脚紧凑化处理 */
 .footer {

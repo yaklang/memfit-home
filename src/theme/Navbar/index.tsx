@@ -203,8 +203,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar navbar--fixed-top" style={{
-        position: 'fixed', top: 0, left: 0, right: 0,
-        height: 0, minHeight: 0, padding: 0, margin: 0,
+        padding: 0, margin: 0,
         overflow: 'hidden', border: 'none', background: 'none',
         boxShadow: 'none', visibility: 'hidden', pointerEvents: 'none',
       }} aria-hidden="true" />
