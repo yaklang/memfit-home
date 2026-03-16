@@ -32,16 +32,16 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'zh-Hans'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans', 'en'],
     localeConfigs: {
-      en: {
-        label: 'English',
-        htmlLang: 'en-US',
-      },
       'zh-Hans': {
         label: '简体中文',
         htmlLang: 'zh-CN',
+      },
+      en: {
+        label: 'English',
+        htmlLang: 'en-US',
       },
     },
   },
@@ -82,18 +82,18 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'productSidebar',
           position: 'left',
-          label: 'Product / Feature',
+          label: '技术架构',
         },
         {
           type: 'docSidebar',
           sidebarId: 'helpSidebar',
           position: 'left',
-          label: 'Docs / Help',
+          label: '使用手册',
         },
         {
           to: '/downloads',
           position: 'left',
-          label: 'Downloads',
+          label: '下载',
         },
         {
           type: 'localeDropdown',
@@ -112,37 +112,37 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Product',
+          title: '产品',
           items: [
             {
-              label: 'Overview',
+              label: '概览',
               to: '/docs/product/overview',
             },
             {
-              label: 'Architecture',
+              label: '架构设计',
               to: '/docs/product/architecture/recursive-dual-engine',
             },
             {
-              label: 'Features',
+              label: '核心功能',
               to: '/docs/product/features/coordinator',
             },
           ],
         },
         {
-          title: 'Help',
+          title: '帮助',
           items: [
             {
-              label: 'Quick Start',
+              label: '快速开始',
               to: '/docs/help/quick-start/installation',
             },
             {
-              label: 'Tutorials',
+              label: '教程',
               to: '/docs/help/tutorials/configuration',
             },
           ],
         },
         {
-          title: 'Community',
+          title: '社区',
           items: [
             {
               label: 'Yaklang',
@@ -155,7 +155,7 @@ const config: Config = {
           ],
         },
         {
-          title: 'More',
+          title: '更多',
           items: [
             {
               label: 'GitHub',

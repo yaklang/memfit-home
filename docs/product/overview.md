@@ -1,96 +1,96 @@
 ---
 sidebar_position: 1
-title: Overview
+title: 概览
 ---
 
-# Memfit AI Overview
+# Memfit AI 概览
 
-## What is Memfit AI?
+## 什么是 Memfit AI？
 
-Memfit AI is an intelligent agent system designed for the cybersecurity domain, powered by the **Yaklang** ecosystem. It goes beyond simple chatbots by implementing a **Recursive Dual-Engine Architecture** that combines strategic planning with tactical execution.
+Memfit AI 是一个专为网络安全领域设计的智能代理系统，由 **Yaklang** 生态系统驱动。它超越了简单的聊天机器人，实现了一种 **递归式双引擎架构 (Recursive Dual-Engine Architecture)**，将宏观的战略规划与微观的战术执行完美结合。
 
-At its core, Memfit AI is a bridge between high-level human intent ("Audit this website") and low-level security operations (port scanning, vulnerability analysis). It achieves this by organically fusing:
-*   **Determinism:** Structured planning for complex workflows.
-*   **Flexibility:** Adaptive execution for dynamic environments.
+Memfit AI 的核心是作为高层人类意图（如“审计此网站”）与底层安全操作（如端口扫描、漏洞分析）之间的桥梁。它通过有机融合以下两点来实现这一目标：
+*   **确定性 (Determinism)：** 针对复杂工作流的结构化规划。
+*   **灵活性 (Flexibility)：** 针对动态环境的自适应执行。
 
 ![Memfit AI Concept](/img/memfit-ai-concept.jpg)
 
-## What Problems Does It Solve?
+## 解决了什么问题？
 
-Traditional AI agents often face the "Single Paradigm Dilemma":
-*   **Pure ReAct Agents** easily get lost in long-horizon tasks, losing track of the original goal after many steps.
-*   **Pure Plan-Execute Agents** are too rigid, failing when the initial plan encounters unexpected obstacles or new information.
+传统的 AI Agent 通常面临“单一范式困境”：
+*   **纯 ReAct Agent** 容易在长链路任务中迷失方向，在多步操作后忘记最初的目标。
+*   **纯 Plan-Execute Agent** 过于僵化，当初步计划遇到意外障碍或新信息时往往会失败。
 
-Memfit AI solves this by **recursively coupling** these two paradigms. It creates a plan, executes it, and if a sub-task becomes too complex, it recursively triggers a new planning phase. This allows it to handle tasks of arbitrary complexity while adapting to real-time feedback.
+Memfit AI 通过 **递归耦合** 这两种范式解决了这个问题。它制定计划，执行计划，如果某个子任务变得过于复杂，它会递归地触发一个新的规划阶段。这使得它能够处理任意复杂度的任务，同时适应实时反馈。
 
 ---
 
-## Core Architecture: The 5 Pillars
+## 核心架构：五大支柱
 
-Memfit AI is built around five key components that work in concert to deliver intelligent security capabilities.
+Memfit AI 围绕五个关键组件构建，它们协同工作以提供智能安全能力。
 
 ![Memfit AI Architecture Pillars](/img/memfit-5-pillars.jpg)
 
-### 1. Plan Engine (Strategic Layer)
+### 1. Plan 引擎 (战略层)
 
-**The Problem:**
-Complex security tasks (e.g., "Penetration Test") cannot be solved in a single step. They require a roadmap to ensure coverage and logical progression.
+**要解决的问题：**
+复杂的安全任务（如“渗透测试”）无法一步完成。它们需要一个路线图来确保覆盖范围和逻辑推进。
 
-**The Solution:**
-The Plan Engine acts as the strategist. It breaks down vague, top-level user goals into a structured **Task Tree**. It anticipates dependencies (e.g., "Scan ports before identifying services") and sets the execution order.
+**解决方案：**
+Plan 引擎充当战略家。它将模糊的顶层用户目标拆解为结构化的 **任务树 (Task Tree)**。它预测依赖关系（例如，“在识别服务之前先扫描端口”）并设定执行顺序。
 
-**Technical Architecture:**
-*   **Task Tree Generation:** Deconstructs goals into hierarchical subtasks.
-*   **Dependency Management:** Enforces temporal and logical execution order.
-*   **Recursive Triggering:** Can be invoked by the ReAct engine when a subtask is too complex.
+**技术架构：**
+*   **任务树生成：** 将目标解构为分层子任务。
+*   **依赖管理：** 强制执行时序和逻辑顺序。
+*   **递归触发：** 当子任务过于复杂时，可由 ReAct 引擎反向调用。
 
-### 2. ReAct Engine (Tactical Layer)
+### 2. ReAct 引擎 (战术层)
 
-**The Problem:**
-The real world is non-deterministic. A scanner might time out, a port might be closed, or a new vulnerability might be discovered. A static script cannot adapt to these changes.
+**要解决的问题：**
+现实世界是非确定性的。扫描器可能会超时，端口可能会关闭，或者可能会发现新的漏洞。静态脚本无法适应这些变化。
 
-**The Solution:**
-The ReAct Engine handles the "Last Mile" of execution. For each atomic task in the plan, it spins up an independent loop of **Observation-Thought-Action**. It perceives the environment, reasons about the current state, and chooses the next best action.
+**解决方案：**
+ReAct 引擎处理执行的“最后一公里”。对于计划中的每个原子任务，它启动一个独立的 **观察-思考-行动 (Observation-Thought-Action)** 循环。它感知环境，推理当前状态，并选择最佳的下一步行动。
 
-**Technical Architecture:**
-*   **LoopEngine:** Manages the OODA (Observe-Orient-Decide-Act) cycle.
-*   **Spin Detection:** Prevents the agent from getting stuck in infinite loops (e.g., retrying a failed command endlessly).
-*   **Self-Reflection:** Analyzes failures to generate correction plans automatically.
+**技术架构：**
+*   **LoopEngine：** 管理 OODA (观察-调整-决策-行动) 循环。
+*   **自旋检测 (Spin Detection)：** 防止 Agent 陷入死循环（例如，无休止地重试失败的命令）。
+*   **自我反思 (Self-Reflection)：** 分析失败原因并自动生成修正计划。
 
-### 3. Tools & Forges (Capability Layer)
+### 3. 工具与 Forges (能力层)
 
-**The Problem:**
-An AI model is a "Brain in a Vat"—it cannot touch the network or files system directly. It needs specialized interfaces to interact with the cybersecurity world.
+**要解决的问题：**
+AI 模型是“缸中之脑”——它无法直接接触网络或文件系统。它需要专门的接口来与网络安全世界交互。
 
-**The Solution:**
-*   **Tools:** Standardized atomic capabilities (e.g., `PortScan`, `ReadFile`, `HttpReq`).
-*   **Forges:** Scenario-based "Blueprints" that package specific prompts, tools, and logic for a domain (e.g., "Java Code Audit Forge").
+**解决方案：**
+*   **工具 (Tools)：** 标准化的原子能力（例如 `PortScan`、`ReadFile`、`HttpReq`）。
+*   **Forges：** 场景化的“蓝图”，打包了特定领域的提示词、工具和逻辑（例如“Java 代码审计 Forge”）。
 
-**Technical Architecture:**
-*   **Yaklang Integration:** Natively leverages Yaklang's powerful security libraries.
-*   **MCP Support:** Compatible with the Model Context Protocol for extensibility.
-*   **Focus Mode:** Allows instantiating specialized environments for specific subtasks.
+**技术架构：**
+*   **Yaklang 集成：** 原生利用 Yaklang 强大的安全库。
+*   **MCP 支持：** 兼容 Model Context Protocol 以实现扩展性。
+*   **专注模式 (Focus Mode)：** 允许为特定子任务实例化专门的环境。
 
-### 4. Knowledge (RAG System)
+### 4. 知识 (RAG 系统)
 
-**The Problem:**
-LLMs have a training cutoff and lack private or highly specific domain knowledge (e.g., the latest CVE details or internal API docs).
+**要解决的问题：**
+LLM 有训练截止日期，且缺乏私有或高度特定的领域知识（例如，最新的 CVE 详情或内部 API 文档）。
 
-**The Solution:**
-The RAG (Retrieval-Augmented Generation) System serves as an active "External Brain." It retrieves relevant documentation, past reports, and security knowledge to ground the AI's reasoning in fact.
+**解决方案：**
+RAG（检索增强生成）系统充当主动的“外脑”。它检索相关的文档、过往报告和安全知识，使 AI 的推理基于事实。
 
-**Technical Architecture:**
-*   **Hybrid Indexing:** Combines vector search (semantic) with keyword search (precision).
-*   **Agentic Retrieval:** The system actively decides *when* and *what* to search for, rather than just passively retrieving context.
+**技术架构：**
+*   **混合索引：** 结合向量搜索（语义）和关键词搜索（精确）。
+*   **代理化检索：** 系统主动决定 *何时* 以及 *搜索什么*，而不仅仅是被动地检索上下文。
 
-### 5. Memory (Context Layer)
+### 5. 记忆 (上下文层)
 
-**The Problem:**
-Standard LLM sessions are stateless. The agent forgets what happened in the previous audit or what the user's preferences are, leading to repetitive mistakes.
+**要解决的问题：**
+标准的 LLM 会话是无状态的。Agent 会忘记之前的审计中发生了什么，或者用户的偏好是什么，导致重复性错误。
 
-**The Solution:**
-The Memory System acts as an "Intelligent Hippocampus." It doesn't just store logs; it evaluates, scores, and indexes experiences. Successful strategies are remembered; failures are stored as "lessons learned."
+**解决方案：**
+记忆系统充当“智能海马体”。它不仅存储日志；它还评估、评分和索引经历。成功的策略被记住；失败被存储为“吸取的教训”。
 
-**Technical Architecture:**
-*   **C.O.R.E. P.A.C.T. Framework:** A scoring system to determine which memories are worth keeping (Connectivity, Relevance, Actionability, etc.).
-*   **Vector Database:** Persists high-value memories for long-term recall across sessions.
+**技术架构：**
+*   **C.O.R.E. P.A.C.T. 框架：** 一个评分系统，用于确定哪些记忆值得保留（关联度、相关性、可操作性等）。
+*   **向量数据库：** 持久化高价值记忆，以便跨会话长期调用。

@@ -1,182 +1,182 @@
 ---
 sidebar_position: 3
-title: Security Automation
+title: 安全自动化
 ---
 
-# Security Automation Use Case
+# 安全自动化使用场景
 
-Memfit AI enables intelligent security automation, combining AI-driven decision making with Yaklang's powerful scripting capabilities.
+Memfit AI 实现智能安全自动化，将 AI 驱动的决策与 Yaklang 强大的脚本能力相结合。
 
-## Overview
+## 概述
 
-Security automation challenges:
-- Complex workflow orchestration
-- Dynamic response to findings
-- Tool integration and coordination
-- Intelligent decision making
+安全自动化挑战：
+- 复杂的工作流编排
+- 对发现的动态响应
+- 工具集成和协调
+- 智能决策
 
-Memfit AI addresses these through its adaptive architecture.
+Memfit AI 通过其自适应架构解决这些问题。
 
-## Automation Patterns
+## 自动化模式
 
-### Continuous Security Monitoring
+### 持续安全监控
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│              Continuous Monitoring Loop              │
+│                持续监控循环                          │
 ├─────────────────────────────────────────────────────┤
 │                                                      │
-│   Schedule Trigger → ReAct Loop → Analysis          │
-│         ↓                           ↓               │
-│   Asset Discovery            Finding Detection       │
-│         ↓                           ↓               │
-│   Vulnerability Scan         Alert Generation        │
-│         ↓                           ↓               │
-│   Report Generation          Memory Storage          │
+│   定时触发 → ReAct Loop → 分析                       │
+│       ↓                     ↓                       │
+│   资产发现              发现检测                     │
+│       ↓                     ↓                       │
+│   漏洞扫描              告警生成                     │
+│       ↓                     ↓                       │
+│   报告生成              记忆存储                     │
 │                                                      │
 └─────────────────────────────────────────────────────┘
 ```
 
-### Incident Response Automation
+### 事件响应自动化
 
-When security events occur:
-1. **Detection** - Event triggers Memfit AI
-2. **Analysis** - Automatic context gathering
-3. **Planning** - Response plan generation
-4. **Execution** - Automated containment actions
-5. **Documentation** - Incident report creation
+当安全事件发生时：
+1. **检测** - 事件触发 Memfit AI
+2. **分析** - 自动收集上下文
+3. **规划** - 生成响应计划
+4. **执行** - 自动化遏制操作
+5. **文档** - 创建事件报告
 
-## Key Capabilities
+## 关键能力
 
-### Script Generation
+### 脚本生成
 
-Memfit AI can generate Yaklang scripts:
-- Custom scanning scripts
-- Data processing pipelines
-- Integration connectors
-- Report generators
+Memfit AI 可以生成 Yaklang 脚本：
+- 自定义扫描脚本
+- 数据处理管道
+- 集成连接器
+- 报告生成器
 
-### Tool Orchestration
+### 工具编排
 
-Coordinate multiple security tools:
-- Scanners (Nuclei, custom)
-- Analyzers (SSA, SyntaxFlow)
-- Reporters (PDF, JSON)
-- Notifiers (Slack, Email)
+协调多个安全工具：
+- 扫描器（Nuclei、自定义）
+- 分析器（SSA、SyntaxFlow）
+- 报告器（PDF、JSON）
+- 通知器（Slack、Email）
 
-### Adaptive Workflows
+### 自适应工作流
 
-Workflows adapt based on:
-- Previous run results
-- Environmental changes
-- New threat intelligence
-- User feedback
+工作流基于以下进行适应：
+- 之前的运行结果
+- 环境变化
+- 新的威胁情报
+- 用户反馈
 
-## Example Automations
+## 自动化示例
 
-### Daily Security Scan
+### 每日安全扫描
 
 ```
-User: Set up daily security scanning for our infrastructure
+用户: 为我们的基础设施设置每日安全扫描
 
-Memfit AI: I'll create an automated daily scan workflow.
+Memfit AI: 我将创建一个自动化的每日扫描工作流。
 
-Generated Workflow:
-1. Asset Discovery (00:00)
-   - Network enumeration
-   - Service identification
+生成的工作流:
+1. 资产发现 (00:00)
+   - 网络枚举
+   - 服务识别
    
-2. Vulnerability Scanning (01:00)
-   - Nuclei vulnerability check
-   - Port service validation
+2. 漏洞扫描 (01:00)
+   - Nuclei 漏洞检查
+   - 端口服务验证
    
-3. Change Detection (03:00)
-   - Compare with previous scan
-   - Flag new exposures
-   
-4. Report Generation (04:00)
-   - Summary dashboard update
-   - Email notification
+3. 变更检测 (03:00)
+   - 与上次扫描比较
+   - 标记新暴露
 
-5. Memory Update
-   - Store findings for trend analysis
-   - Update risk baseline
+4. 报告生成 (04:00)
+   - 摘要仪表板更新
+   - 邮件通知
 
-Schedule created. First run: Tonight at 00:00
+5. 记忆更新
+   - 存储发现用于趋势分析
+   - 更新风险基线
+
+计划已创建。首次运行: 今晚 00:00
 ```
 
-### Compliance Checking
+### 合规性检查
 
 ```
-User: Check our AWS infrastructure against CIS benchmarks
+用户: 根据 CIS 基准检查我们的 AWS 基础设施
 
-Memfit AI: I'll perform a CIS benchmark compliance check.
+Memfit AI: 我将执行 CIS 基准合规性检查。
 
-[Executing compliance checks via ReAct loops]
+[通过 ReAct loops 执行合规性检查]
 
-Compliance Report:
-- Total Checks: 142
-- Passed: 118 (83%)
-- Failed: 24 (17%)
+合规性报告:
+- 总检查项: 142
+- 通过: 118 (83%)
+- 失败: 24 (17%)
 
-Critical Failures:
-1. Root account MFA not enabled
-2. S3 buckets with public access
-3. Security groups with 0.0.0.0/0 access
+关键失败:
+1. Root 账户未启用 MFA
+2. S3 存储桶有公开访问
+3. 安全组有 0.0.0.0/0 访问
 
-Generating remediation scripts...
+正在生成修复脚本...
 ```
 
-### Threat Intelligence Integration
+### 威胁情报集成
 
 ```
-User: Monitor for new CVEs affecting our technology stack
+用户: 监控影响我们技术栈的新 CVE
 
-Memfit AI: I'll set up CVE monitoring for your stack.
+Memfit AI: 我将为您的技术栈设置 CVE 监控。
 
-Detected Technologies:
+检测到的技术:
 - nginx 1.21.0
 - PostgreSQL 14.2
 - Node.js 18.0
 - React 18.2
 
-Monitoring configured. I'll alert you when:
-- New CVEs are published
-- Severity is HIGH or CRITICAL
-- Exploits become available
+监控已配置。当以下情况时我会提醒您:
+- 新 CVE 发布
+- 严重性为高危或严重
+- 有可用利用代码
 
-Memory: Stored technology fingerprints for future reference
+记忆: 已存储技术指纹供未来参考
 ```
 
-## Yaklang Integration
+## Yaklang 集成
 
-### Native Script Execution
+### 原生脚本执行
 
-Execute Yaklang scripts directly:
+直接执行 Yaklang 脚本：
 
 ```yaklang
-// Example: Custom port scanner
+// 示例: 自定义端口扫描器
 result = servicescan.Scan("192.168.1.0/24", "22,80,443,8080")~
 for fingerprint in result {
     println(fingerprint.String())
 }
 ```
 
-### API Access
+### API 访问
 
-Full access to Yaklang libraries:
-- Network operations
-- File handling
-- Data processing
-- Security tools
+完整访问 Yaklang 库：
+- 网络操作
+- 文件处理
+- 数据处理
+- 安全工具
 
-## Benefits
+## 优势
 
-| Aspect | Benefit |
-|--------|---------|
-| Efficiency | Automated routine tasks |
-| Consistency | Standardized execution |
-| Intelligence | AI-driven adaptation |
-| Integration | Yaklang ecosystem access |
-| Scalability | Handle large environments |
+| 方面 | 优势 |
+|------|------|
+| 效率 | 自动化例行任务 |
+| 一致性 | 标准化执行 |
+| 智能 | AI 驱动的适应 |
+| 集成 | 访问 Yaklang 生态系统 |
+| 可扩展性 | 处理大规模环境 |
 

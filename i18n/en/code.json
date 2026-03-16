@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Memfit AI",
+    "description": "The title in the header"
+  },
+  "tagline": {
+    "message": "Official website of Memfit AI",
+    "description": "The tagline in the header"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "This page crashed",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.NotFound.title": {
+    "message": "Page Not Found",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "We could not find what you were looking for.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Please contact the owner of the site that linked you to the original URL and let them know their link is broken.",
+    "description": "The 2nd paragraph of the 404 page"
+  }
+}

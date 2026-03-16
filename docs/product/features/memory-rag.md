@@ -1,131 +1,129 @@
 ---
 sidebar_position: 4
-title: Memory & RAG
+title: 记忆与 RAG
 ---
 
-# Memory Triage & RAG System
+# 记忆层与 RAG 系统
 
-Memfit AI's intelligence is enhanced by sophisticated memory management and knowledge retrieval systems.
+Memfit AI 的智能通过复杂的记忆管理和知识检索系统得到增强。
 
-## Memory Triage (Intelligent Hippocampus)
+## Memory Triage（智能海马体）
 
-Memory Triage acts as the system's intelligent hippocampus, managing long-term memory persistence and retrieval.
+Memory Triage 充当系统的智能海马体，管理长期记忆的持久化和检索。
 
-### C.O.R.E. P.A.C.T. Framework
+### C.O.R.E. P.A.C.T. 框架
 
-Memory fragments are assessed and scored across multiple dimensions:
+记忆片段通过多个维度进行评估和评分：
 
-| Dimension | Description | Weight |
-|-----------|-------------|--------|
-| **C**onnectivity | Links to other memories | High |
-| **O**rigin | Source reliability | Medium |
-| **R**elevance | Task applicability | High |
-| **E**motion | User sentiment signals | Low |
-| **P**reference | User preferences | Medium |
-| **A**ctionability | Practical utility | High |
-| **C**ompleteness | Information wholeness | Medium |
-| **T**emporality | Time relevance | Medium |
+| 维度 | 描述 | 权重 |
+|------|------|------|
+| **C**onnectivity（关联度） | 与其他记忆的链接 | 高 |
+| **O**rigin（来源） | 来源可靠性 | 中 |
+| **R**elevance（相关性） | 任务适用性 | 高 |
+| **E**motion（情感） | 用户情感信号 | 低 |
+| **P**reference（偏好） | 用户偏好 | 中 |
+| **A**ctionability（可操作性） | 实用性 | 高 |
+| **C**ompleteness（完整性） | 信息完整度 | 中 |
+| **T**emporality（时效性） | 时间相关性 | 中 |
 
-### Memory Lifecycle
+### 记忆生命周期
 
 ```
-Input → Scoring → Threshold Check → Persistence
-                       ↓
-              Below Threshold → Discard
-                       ↓
-              Above Threshold → Index → Vector DB
+输入 → 评分 → 阈值检查 → 持久化
+                 ↓
+        低于阈值 → 丢弃
+                 ↓
+        高于阈值 → 索引 → 向量数据库
 ```
 
-### Potential Questions Index
+### 潜在问题索引
 
-High-score memories are indexed with:
-- Predicted future queries
-- Semantic associations
-- Contextual tags
-- Usage patterns
+高分记忆通过以下方式建立索引：
+- 预测的未来查询
+- 语义关联
+- 上下文标签
+- 使用模式
 
-## RAG System (External Brain)
+## RAG 系统（外脑）
 
-The RAG (Retrieval-Augmented Generation) system serves as an active, agentic knowledge service.
+RAG（检索增强生成）系统作为主动式、代理化的知识服务。
 
-### Hybrid Indexing
+### 混合索引
 
-The RAG system uses multiple indexing strategies:
+RAG 系统使用多种索引策略：
 
-#### Vector Indexing
-- Semantic similarity search
-- Embedding-based retrieval
-- Fuzzy matching
+#### 向量索引
+- 语义相似性搜索
+- 基于嵌入的检索
+- 模糊匹配
 
-#### Keyword Indexing
-- Exact term matching
-- Technical terminology
-- Identifier search
+#### 关键词索引
+- 精确词匹配
+- 技术术语
+- 标识符搜索
 
-### Retrieval Capabilities
+### 检索能力
 
-#### Scalar Filtering
-- Filter by metadata
-- Time-based filtering
-- Source filtering
-- Type filtering
+#### 标量过滤
+- 按元数据过滤
+- 基于时间过滤
+- 来源过滤
+- 类型过滤
 
-#### Multi-hop Retrieval
-- Follow knowledge chains
-- Aggregate related information
-- Build comprehensive context
+#### 多跳检索
+- 跟踪知识链
+- 聚合相关信息
+- 构建全面上下文
 
-### Knowledge Sources
+### 知识来源
 
-The RAG system fuses multiple knowledge sources:
+RAG 系统融合多个知识来源：
 
 ```
 ┌─────────────────────────────────────────────┐
-│              RAG Knowledge Base              │
+│               RAG 知识库                     │
 ├─────────────────────────────────────────────┤
 │  ┌─────────────┐  ┌─────────────────────┐   │
-│  │   Domain    │  │    Tools & Forges   │   │
-│  │  Knowledge  │  │    Documentation    │   │
+│  │   领域知识   │  │  工具与 Forges 文档  │   │
 │  └─────────────┘  └─────────────────────┘   │
 │  ┌─────────────┐  ┌─────────────────────┐   │
-│  │  Historical │  │     External        │   │
-│  │   Memories  │  │    Knowledge        │   │
+│  │   历史记忆   │  │     外部知识        │   │
 │  └─────────────┘  └─────────────────────┘   │
 └─────────────────────────────────────────────┘
 ```
 
-### Integration with Execution
+### 与执行的集成
 
-#### Context Enhancement
+#### 上下文增强
 
-Before each decision:
-1. Query formulation based on current state
-2. Memory retrieval for relevant history
-3. Knowledge retrieval for domain expertise
-4. Context assembly for LLM
+在每次决策之前：
+1. 基于当前状态形成查询
+2. 检索相关历史记忆
+3. 检索领域专业知识
+4. 为 LLM 组装上下文
 
-#### Active Knowledge Service
+#### 主动知识服务
 
-The RAG system is not passive:
-- Proactively suggests relevant information
-- Updates knowledge during execution
-- Learns from successful interactions
+RAG 系统不是被动的：
+- 主动建议相关信息
+- 在执行过程中更新知识
+- 从成功交互中学习
 
-## Configuration
+## 配置
 
-### Memory Settings
+### 记忆设置
 
-| Setting | Description | Default |
-|---------|-------------|---------|
-| `scoreThreshold` | Minimum score for persistence | 0.6 |
-| `maxMemories` | Maximum stored memories | 10000 |
-| `decayRate` | Time-based relevance decay | 0.1 |
+| 设置 | 描述 | 默认值 |
+|------|------|--------|
+| `scoreThreshold` | 持久化的最低分数 | 0.6 |
+| `maxMemories` | 最大存储记忆数 | 10000 |
+| `decayRate` | 基于时间的相关性衰减 | 0.1 |
 
-### RAG Settings
+### RAG 设置
 
-| Setting | Description | Default |
-|---------|-------------|---------|
-| `topK` | Number of results to retrieve | 5 |
-| `minSimilarity` | Minimum similarity threshold | 0.7 |
-| `multiHopDepth` | Maximum retrieval depth | 2 |
+| 设置 | 描述 | 默认值 |
+|------|------|--------|
+| `topK` | 检索结果数量 | 5 |
+| `minSimilarity` | 最低相似度阈值 | 0.7 |
+| `multiHopDepth` | 最大检索深度 | 2 |
 

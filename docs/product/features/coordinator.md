@@ -1,96 +1,96 @@
 ---
 sidebar_position: 1
-title: Coordinator
+title: 协调器
 ---
 
-# Coordinator
+# 协调器 (Coordinator)
 
-The Coordinator is the central hub of Memfit AI, acting as the system bus and lifecycle manager.
+Coordinator 是 Memfit AI 的核心枢纽，充当系统总线和生命周期管理器。
 
-## Core Responsibilities
+## 核心职责
 
-### Session Context Management
+### 会话上下文管理
 
-The Coordinator manages all aspects of the session:
-- Maintains conversation history
-- Tracks task state and progress
-- Manages user preferences and settings
-- Coordinates between components
+Coordinator 管理会话的所有方面：
+- 维护对话历史
+- 跟踪任务状态和进度
+- 管理用户偏好和设置
+- 协调各组件之间的通信
 
-### Configuration Loading
+### 配置加载
 
-The Coordinator handles system configuration:
-- Loads tool configurations
-- Initializes Forge modules
-- Sets up memory and RAG systems
-- Configures reliability mechanisms
+Coordinator 处理系统配置：
+- 加载工具配置
+- 初始化 Forge 模块
+- 设置记忆和 RAG 系统
+- 配置可靠性机制
 
-### User Intent Bridge
+### 用户意图桥梁
 
-Acts as the bridge between user intent and system execution:
-- Interprets user requests
-- Routes to appropriate execution mode
-- Manages human-in-the-loop interactions
-- Handles interrupts and cancellations
+作为用户意图与系统执行之间的桥梁：
+- 解释用户请求
+- 路由到适当的执行模式
+- 管理人机协作交互
+- 处理中断和取消
 
-## Task State Machine
+## 任务状态机
 
-The Coordinator maintains a global task state machine:
+Coordinator 维护全局任务状态机：
 
 ```
 ┌─────────┐     ┌──────────┐     ┌───────────┐
-│ Pending │ ──→ │ Planning │ ──→ │ Reviewing │
+│  待处理  │ ──→ │   规划中  │ ──→ │   审查中   │
 └─────────┘     └──────────┘     └─────┬─────┘
                                        ↓
 ┌──────────┐     ┌───────────┐     ┌───────────┐
-│ Completed│ ←── │ Executing │ ←── │ Approved  │
+│  已完成   │ ←── │   执行中   │ ←── │   已批准   │
 └──────────┘     └───────────┘     └───────────┘
 ```
 
-### States
+### 状态说明
 
-| State | Description |
-|-------|-------------|
-| Pending | Task received, awaiting processing |
-| Planning | Plan Engine generating task tree |
-| Reviewing | Human-in-the-loop review phase |
-| Approved | Plan approved, ready for execution |
-| Executing | ReAct loops actively running |
-| Completed | All subtasks finished |
+| 状态 | 描述 |
+|------|------|
+| 待处理 | 任务已接收，等待处理 |
+| 规划中 | Plan 引擎正在生成任务树 |
+| 审查中 | 人工审查阶段 |
+| 已批准 | 计划已批准，准备执行 |
+| 执行中 | ReAct loops 正在运行 |
+| 已完成 | 所有子任务完成 |
 
-## Subtask Monitoring
+## 子任务监控
 
-The Coordinator monitors all subtask execution:
-- Tracks individual subtask progress
-- Detects failures and triggers recovery
-- Manages resource allocation
-- Reports status to user interface
+Coordinator 监控所有子任务执行：
+- 跟踪各子任务进度
+- 检测失败并触发恢复
+- 管理资源分配
+- 向用户界面报告状态
 
-## Interaction Patterns
+## 交互模式
 
-### Plan-Execute Mode
+### Plan-Execute 模式
 
-1. Receive complex user intent
-2. Initialize Plan Engine
-3. Generate task tree
-4. Present for user review
-5. Upon approval, dispatch to ReAct loops
-6. Monitor execution
-7. Report results
+1. 接收复杂用户意图
+2. 初始化 Plan 引擎
+3. 生成任务树
+4. 呈现供用户审查
+5. 批准后分发到 ReAct loops
+6. 监控执行
+7. 报告结果
 
-### Instant Execution Mode
+### 即时执行模式
 
-1. Receive atomic instruction
-2. Direct dispatch to ReAct loop
-3. Monitor execution
-4. Return results immediately
+1. 接收原子化指令
+2. 直接分发到 ReAct loop
+3. 监控执行
+4. 立即返回结果
 
-## Integration Points
+## 集成点
 
-The Coordinator integrates with all major components:
-- **Plan Engine** - Task decomposition
-- **ReAct Loops** - Task execution
-- **Memory Triage** - Context enhancement
-- **RAG System** - Knowledge retrieval
-- **Tools & Forges** - Capability access
+Coordinator 与所有主要组件集成：
+- **Plan 引擎** - 任务分解
+- **ReAct Loops** - 任务执行
+- **Memory Triage** - 上下文增强
+- **RAG System** - 知识检索
+- **Tools & Forges** - 能力访问
 

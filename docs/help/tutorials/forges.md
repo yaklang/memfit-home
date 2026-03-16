@@ -1,121 +1,121 @@
 ---
 sidebar_position: 3
-title: Working with Forges
+title: 使用 Forges
 ---
 
-# Working with Forges
+# 使用 Forges
 
-Learn how to use and create Forges - scenario-based AI blueprints.
+学习如何使用和创建 Forges - 场景化 AI 蓝图。
 
-## What are Forges?
+## 什么是 Forges？
 
-Forges are packaged capability modules that combine:
-- **Specialized prompts** - Domain-specific instructions
-- **Curated tools** - Relevant capabilities
-- **Workflow logic** - Execution patterns
-- **Best practices** - Accumulated expertise
+Forges 是打包的能力模组，组合了：
+- **专门提示词** - 领域特定指令
+- **精选工具** - 相关能力
+- **工作流逻辑** - 执行模式
+- **最佳实践** - 积累的专业知识
 
-## Built-in Forges
+## 内置 Forges
 
-### Web Security Forge
+### Web 安全 Forge
 
-Focused on web application security testing.
+专注于 Web 应用安全测试。
 
-**Capabilities:**
-- OWASP Top 10 detection
-- XSS/SQLi testing
-- Authentication analysis
-- Session management review
+**能力:**
+- OWASP Top 10 检测
+- XSS/SQLi 测试
+- 认证分析
+- 会话管理审查
 
-**Usage:**
+**使用:**
 ```
-Analyze the web security of https://example.com using the web security forge
-```
-
-### Java Code Audit Forge
-
-Specialized for Java application security review.
-
-**Capabilities:**
-- Spring Security analysis
-- Deserialization detection
-- SQL injection patterns
-- Hardcoded secrets scan
-
-**Usage:**
-```
-Audit the Java code in /project/src for security vulnerabilities
+使用 web security forge 分析 https://example.com 的 Web 安全
 ```
 
-### Infrastructure Audit Forge
+### Java 代码审计 Forge
 
-For infrastructure and configuration review.
+专门用于 Java 应用安全审查。
 
-**Capabilities:**
-- Cloud configuration analysis
-- Compliance checking
-- Hardening recommendations
-- Inventory management
+**能力:**
+- Spring Security 分析
+- 反序列化检测
+- SQL 注入模式
+- 硬编码密钥扫描
 
-**Usage:**
+**使用:**
 ```
-Check our AWS infrastructure security configuration
-```
-
-## Using Forges
-
-### Automatic Selection
-
-Memfit AI automatically selects appropriate Forges based on your request:
-
-```
-User: Review the PHP code for vulnerabilities
-
-Memfit AI: [Selecting PHP Audit Forge]
-I'll use the PHP Code Audit Forge for this analysis...
+审计 /project/src 中的 Java 代码的安全漏洞
 ```
 
-### Explicit Selection
+### 基础设施审计 Forge
 
-You can explicitly request a Forge:
+用于基础设施和配置审查。
 
+**能力:**
+- 云配置分析
+- 合规性检查
+- 加固建议
+- 资产管理
+
+**使用:**
 ```
-User: Use the web security forge to test https://example.com
-```
-
-### Forge Stacking
-
-Multiple Forges can work together:
-
-```
-User: Perform a full security assessment of the Java web application
-
-Memfit AI: I'll use both the Web Security Forge and Java Code Audit Forge
-for comprehensive coverage...
+检查我们的 AWS 基础设施安全配置
 ```
 
-## Creating Custom Forges
+## 使用 Forges
 
-### Forge Structure
+### 自动选择
+
+Memfit AI 根据您的请求自动选择合适的 Forges：
+
+```
+用户: 审查 PHP 代码的漏洞
+
+Memfit AI: [选择 PHP 审计 Forge]
+我将使用 PHP 代码审计 Forge 进行此分析...
+```
+
+### 显式选择
+
+您可以明确请求一个 Forge：
+
+```
+用户: 使用 web security forge 测试 https://example.com
+```
+
+### Forge 堆叠
+
+多个 Forges 可以协同工作：
+
+```
+用户: 对 Java Web 应用进行全面安全评估
+
+Memfit AI: 我将同时使用 Web 安全 Forge 和 Java 代码审计 Forge
+以实现全面覆盖...
+```
+
+## 创建自定义 Forges
+
+### Forge 结构
 
 ```
 my-forge/
-├── forge.yaml          # Configuration
+├── forge.yaml          # 配置
 ├── prompts/
-│   ├── system.md       # System prompt
-│   └── templates/      # Prompt templates
+│   ├── system.md       # 系统提示词
+│   └── templates/      # 提示词模板
 ├── tools/
-│   └── custom_tool.yak # Custom tools
+│   └── custom_tool.yak # 自定义工具
 └── rules/
-    └── patterns.sf     # SyntaxFlow patterns
+    └── patterns.sf     # SyntaxFlow 模式
 ```
 
-### forge.yaml Example
+### forge.yaml 示例
 
 ```yaml
 name: my-custom-forge
 version: 1.0.0
-description: Custom security assessment forge
+description: 自定义安全评估 forge
 
 domain: security
 languages:
@@ -133,48 +133,48 @@ rules:
   - rules/patterns.sf
 
 dependencies:
-  - web-security-forge  # Can extend other forges
+  - web-security-forge  # 可以扩展其他 forges
 ```
 
-### System Prompt Template
+### 系统提示词模板
 
 ```markdown
-# My Custom Security Forge
+# 我的自定义安全 Forge
 
-You are a security analyst specialized in [domain].
+您是专门从事 [领域] 的安全分析师。
 
-## Expertise
-- [Specific knowledge area 1]
-- [Specific knowledge area 2]
+## 专业知识
+- [特定知识领域 1]
+- [特定知识领域 2]
 
-## Methodology
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
+## 方法论
+1. [步骤 1]
+2. [步骤 2]
+3. [步骤 3]
 
-## Rules
-- Always check for [pattern]
-- Never ignore [condition]
-- Prioritize [criteria]
+## 规则
+- 始终检查 [模式]
+- 永不忽略 [条件]
+- 优先考虑 [标准]
 ```
 
-### Custom Tool Definition
+### 自定义工具定义
 
 ```yaklang
 // tools/custom_tool.yak
 
 registerTool("CustomScanner", {
-    description: "Custom security scanner for specific patterns",
+    description: "针对特定模式的自定义安全扫描器",
     
     parameters: {
         target: {
             type: "string",
-            description: "Target to scan",
+            description: "要扫描的目标",
             required: true
         },
         depth: {
             type: "number",
-            description: "Scan depth",
+            description: "扫描深度",
             required: false,
             default: 3
         }
@@ -184,10 +184,10 @@ registerTool("CustomScanner", {
         target = params.target
         depth = params.depth
         
-        // Implementation
+        // 实现
         results = []
         
-        // ... scanning logic ...
+        // ... 扫描逻辑 ...
         
         return {
             findings: results,
@@ -197,49 +197,49 @@ registerTool("CustomScanner", {
 })
 ```
 
-### SyntaxFlow Rules
+### SyntaxFlow 规则
 
 ```syntaxflow
 // rules/patterns.sf
 
-// Detect hardcoded passwords
-desc: "Hardcoded password detected"
+// 检测硬编码密码
+desc: "检测到硬编码密码"
 severity: HIGH
 *?{opcode: const && <typeName>?{have: string}}?{<name>?{have: password}} as $sink
 
-// Detect SQL injection
-desc: "Potential SQL injection"
+// 检测 SQL 注入
+desc: "潜在的 SQL 注入"
 severity: CRITICAL
 db.query($param) && $param?{<dataflow(*)>?{have: request}}
 ```
 
-## Installing Forges
+## 安装 Forges
 
-### From Repository
+### 从仓库安装
 
 ```bash
 yak forge install https://github.com/org/my-forge
 ```
 
-### From Local Path
+### 从本地路径安装
 
 ```bash
 yak forge install /path/to/my-forge
 ```
 
-### List Installed Forges
+### 列出已安装的 Forges
 
 ```bash
 yak forge list
 ```
 
-## Forge Best Practices
+## Forge 最佳实践
 
-| Practice | Description |
-|----------|-------------|
-| Single Responsibility | Each Forge should focus on one domain |
-| Reusable Components | Share common patterns across Forges |
-| Version Control | Track Forge changes with version numbers |
-| Documentation | Include usage examples and limitations |
-| Testing | Validate Forge against known scenarios |
+| 实践 | 描述 |
+|------|------|
+| 单一职责 | 每个 Forge 应专注于一个领域 |
+| 可复用组件 | 跨 Forges 共享通用模式 |
+| 版本控制 | 用版本号跟踪 Forge 变更 |
+| 文档 | 包含使用示例和限制 |
+| 测试 | 根据已知场景验证 Forge |
 

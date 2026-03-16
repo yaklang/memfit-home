@@ -1,92 +1,88 @@
 ---
 sidebar_position: 1
-title: Installation
+title: 认识与安装 Memfit
 ---
 
-# Installation Guide
+# 认识与安装 Memfit
 
-Get started with Memfit AI by installing the required components.
+## 什么是 Memfit
 
-## Prerequisites
+Memfit 是一个通用 AI Agent 平台，赋予 AI 真正的行动力。它不只是对话，而是能够理解任务、制定计划、调用工具并交付结果的智能体系统。
 
-Before installing Memfit AI, ensure you have:
+Memfit 针对网络安全、代码审计等专业工业场景进行了深度优化，同时保持了通用 Agent 的灵活性，能够适应各类复杂任务。
 
-- **Operating System**: macOS, Linux, or Windows
-- **Yaklang Engine**: The underlying runtime for Memfit AI
-- **Yakit** (Optional): GUI interface for visual interaction
+### 三大核心系统
 
-## Installing Yaklang
+| 系统 | 说明 |
+|------|------|
+| **AI Agent 执行引擎** | Memfit 的核心驱动力。通过 ReAct 循环和任务规划，让 AI 能够自主思考、调用工具、执行多步骤任务 |
+| **知识库系统** | 为 AI 提供领域专业知识。支持导入自定义知识数据，让 AI 在特定领域中具备专家级理解 |
+| **记忆库系统** | AI 的长期记忆能力。记录交互历史和学习成果，让 AI 越用越聪明，越来越理解你的需求 |
 
-Memfit AI is powered by Yaklang. First, install the Yaklang engine.
+### 适用场景
 
-### macOS / Linux
+Memfit 在以下场景中表现出色：
 
-Open your terminal and run:
+- **网络安全**: 漏洞扫描、渗透测试、安全审计
+- **代码审计**: 代码质量分析、安全缺陷检测
+- **数据分析**: 结构化数据处理、报告生成
+- **自动化运维**: 系统巡检、配置管理
+- **通用任务**: 任何需要 AI 理解、规划和执行的复杂工作
 
-```bash
-bash <(curl -sS -L http://oss.yaklang.io/install-latest-yak.sh)
-```
+## 开源与产品更新
 
-### Windows
+Memfit 基于 [Yaklang](https://github.com/yaklang/yaklang) 开源引擎构建。Yaklang 是一个活跃维护的开源项目，提供了强大的安全工具链和 DSL 能力。
 
-Open PowerShell and run:
+- **引擎开源**: Yaklang 引擎完全开源，社区驱动
+- **持续更新**: Memfit 客户端和 Yaklang 引擎均保持活跃更新，不断引入新功能和优化
+- **生态丰富**: 内置大量安全工具、协议支持和分析能力
 
-```powershell
-powershell (new-object System.Net.WebClient).DownloadFile('https://yaklang.oss-cn-beijing.aliyuncs.com/yak/latest/yak_windows_amd64.exe','yak_windows_amd64.exe') && yak_windows_amd64.exe install && del /f yak_windows_amd64.exe
-```
+## 下载与安装 Memfit
 
-## Verifying Installation
+### 获取 Memfit
 
-After installation, verify Yaklang is working:
+访问 Memfit 官方网站，下载适合您操作系统的安装包。
 
-```bash
-yak version
-```
+![image-20260316123157042](/img/help/image-20260316123157042.png)
 
-You should see the version information displayed.
+### 平台支持
 
-## Installing Yakit (Recommended)
+| 平台 | 安装包格式 |
+|------|-----------|
+| macOS (Intel) | `.dmg` |
+| macOS (Apple Silicon) | `.dmg` |
+| Windows | `.exe` |
+| Linux | `.AppImage` |
 
-Yakit provides a graphical interface for Memfit AI.
+### 安装步骤
 
-### Download Yakit
+1. 从官网下载对应平台的安装包
+2. 运行安装程序，按照提示完成安装
+3. 启动 Memfit
 
-Visit [https://github.com/yaklang/yakit/releases](https://github.com/yaklang/yakit/releases) and download the appropriate version for your operating system.
+### 首次启动
 
-### Platforms
+首次启动 Memfit 时，系统会自动进行初始化，包括检查运行环境和配置基础设置。
 
-| Platform | Download |
-|----------|----------|
-| macOS (Intel) | `Yakit-darwin-x64.dmg` |
-| macOS (Apple Silicon) | `Yakit-darwin-arm64.dmg` |
-| Windows | `Yakit-win32-x64.exe` |
-| Linux | `Yakit-linux-x64.AppImage` |
+![image-20260316123236292](/img/help/image-20260316123236292.png)
 
-## Configuration
+## Yaklang 引擎
 
-### First-time Setup
+Memfit 使用 Yaklang 引擎作为底层运行时，负责执行工具调用、安全扫描、协议交互等核心操作。
 
-1. Launch Yakit
-2. Configure the Yaklang engine path (usually auto-detected)
-3. Set up your preferred AI provider
-4. Configure any proxy settings if needed
+### 引擎管理
 
-### AI Provider Configuration
+在 Memfit 中，您可以方便地管理 Yaklang 引擎：
 
-Memfit AI supports multiple AI providers:
+- **自动安装**: 首次启动时，Memfit 会引导您安装 Yaklang 引擎
+- **版本更新**: 当有新版本可用时，Memfit 会提示您更新引擎
+- **状态检查**: 在 Memfit 界面中可以查看引擎的连接状态和版本信息
 
-- OpenAI (GPT-4, GPT-3.5)
-- Anthropic (Claude)
-- Local models
-- Custom API endpoints
+![image-20260316123300909](/img/help/image-20260316123300909.png)
 
-Configure in Settings → AI Configuration.
+## 下一步
 
-## Next Steps
+安装完成后，继续以下步骤：
 
-After installation:
-
-1. [Your First Task](/docs/help/quick-start/first-task) - Run your first AI-assisted task
-2. [Basic Concepts](/docs/help/quick-start/basic-concepts) - Understand core concepts
-3. [Configuration Guide](/docs/help/tutorials/configuration) - Advanced setup options
-
+1. [配置分级 AI](/docs/help/quick-start/tier-ai) - 为 Memfit 配置 AI 模型
+2. [你好，Memfit！](/docs/help/quick-start/hello-memfit) - 开始你的第一次 AI Agent 体验

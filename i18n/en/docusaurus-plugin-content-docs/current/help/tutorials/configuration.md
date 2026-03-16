@@ -1,38 +1,38 @@
 ---
 sidebar_position: 1
-title: 配置指南
+title: Configuration
 ---
 
-# 配置指南
+# Configuration Guide
 
-配置 Memfit AI 以满足您的需求。
+Configure Memfit AI to suit your needs.
 
-## AI 提供商设置
+## AI Provider Settings
 
-### 支持的提供商
+### Supported Providers
 
-| 提供商 | 模型 | 特点 |
-|--------|------|------|
-| OpenAI | GPT-4, GPT-3.5-turbo | 最佳推理 |
-| Anthropic | Claude 3, Claude 2 | 长上下文 |
-| 本地 | Ollama, LMStudio | 隐私 |
-| 自定义 | 任何 OpenAI 兼容 | 灵活性 |
+| Provider | Models | Features |
+|----------|--------|----------|
+| OpenAI | GPT-4, GPT-3.5-turbo | Best reasoning |
+| Anthropic | Claude 3, Claude 2 | Long context |
+| Local | Ollama, LMStudio | Privacy |
+| Custom | Any OpenAI-compatible | Flexibility |
 
-### 配置
+### Configuration
 
 ```yaml
 ai:
   provider: openai
   model: gpt-4
   api_key: sk-xxxxx
-  base_url: https://api.openai.com/v1  # 可选
+  base_url: https://api.openai.com/v1  # Optional
   temperature: 0.7
   max_tokens: 4096
 ```
 
-### 使用代理
+### Using Proxy
 
-对于网络限制：
+For network restrictions:
 
 ```yaml
 ai:
@@ -41,30 +41,30 @@ ai:
   proxy: http://127.0.0.1:7890
 ```
 
-## 执行设置
+## Execution Settings
 
-### ReAct 循环
+### ReAct Loop
 
 ```yaml
 react:
-  max_steps: 20          # 最大迭代次数
-  spin_threshold: 3       # 自旋检测前的步数
+  max_steps: 20          # Maximum iterations
+  spin_threshold: 3       # Steps before spin detection
   reflection_on_error: true
-  timeout: 300            # 秒
+  timeout: 300            # Seconds
 ```
 
-### Plan 引擎
+### Plan Engine
 
 ```yaml
 plan:
-  max_depth: 5            # 最大任务树深度
+  max_depth: 5            # Maximum task tree depth
   parallel_execution: true
-  require_approval: true   # 需要人工审查
+  require_approval: true   # Human review required
 ```
 
-## 记忆配置
+## Memory Configuration
 
-### 短期记忆
+### Short-term Memory
 
 ```yaml
 memory:
@@ -73,7 +73,7 @@ memory:
     include_system: true
 ```
 
-### 长期记忆
+### Long-term Memory
 
 ```yaml
 memory:
@@ -81,10 +81,10 @@ memory:
     enabled: true
     score_threshold: 0.6
     max_entries: 10000
-    vector_db: sqlite       # 或 postgres, qdrant
+    vector_db: sqlite       # or postgres, qdrant
 ```
 
-## RAG 配置
+## RAG Configuration
 
 ```yaml
 rag:
@@ -98,9 +98,9 @@ rag:
       url: https://docs.example.com
 ```
 
-## 工具配置
+## Tool Configuration
 
-### 启用工具
+### Enabling Tools
 
 ```yaml
 tools:
@@ -121,20 +121,20 @@ tools:
       - "192.168.1.*"
 ```
 
-### 工具权限
+### Tool Permissions
 
 ```yaml
 permissions:
   read: true
-  write: true        # 需要确认
-  execute: true      # 需要确认
+  write: true        # Requires confirmation
+  execute: true      # Requires confirmation
   network: true
   sensitive: confirm  # always, never, confirm
 ```
 
-## Forge 配置
+## Forge Configuration
 
-### 加载 Forges
+### Loading Forges
 
 ```yaml
 forges:
@@ -149,9 +149,9 @@ forges:
     path: /path/to/forge
 ```
 
-## Yakit 集成
+## Yakit Integration
 
-### 引擎连接
+### Engine Connection
 
 ```yaml
 yakit:
@@ -160,20 +160,20 @@ yakit:
   log_level: info
 ```
 
-### UI 偏好
+### UI Preferences
 
 ```yaml
 yakit:
   ui:
     theme: dark
-    language: zh-Hans   # 或 en
+    language: en       # or zh-Hans
     show_traces: true
     auto_scroll: true
 ```
 
-## 环境变量
+## Environment Variables
 
-使用环境变量覆盖配置：
+Override configuration with environment variables:
 
 ```bash
 export MEMFIT_AI_PROVIDER=openai
@@ -182,17 +182,17 @@ export MEMFIT_AI_API_KEY=sk-xxxxx
 export MEMFIT_MAX_STEPS=30
 ```
 
-## 配置文件位置
+## Configuration File Location
 
-默认位置：
+Default locations:
 
-| 平台 | 路径 |
-|------|------|
+| Platform | Path |
+|----------|------|
 | macOS | `~/.config/memfit/config.yaml` |
 | Linux | `~/.config/memfit/config.yaml` |
 | Windows | `%APPDATA%\memfit\config.yaml` |
 
-## 完整配置示例
+## Example Complete Configuration
 
 ```yaml
 ai:

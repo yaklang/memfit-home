@@ -1,117 +1,117 @@
 ---
 sidebar_position: 2
-title: ReAct Loop
+title: ReAct 循环
 ---
 
-# ReAct Loop
+# ReAct 循环
 
-The ReAct Loop is the minimal execution unit in Memfit AI, driving the "Reasoning-Acting" cycle within an independent context.
+ReAct Loop 是 Memfit AI 中的最小执行单元，在独立上下文中驱动 "Reasoning-Acting" 循环。
 
-## Core Components
+## 核心组件
 
 ### LoopEngine
 
-The LoopEngine manages the state flow of each ReAct iteration:
-- Handles state transitions
-- Manages iteration limits
-- Tracks execution history
-- Coordinates with reliability mechanisms
+LoopEngine 管理每个 ReAct 迭代的状态流转：
+- 处理状态转换
+- 管理迭代限制
+- 跟踪执行历史
+- 与可靠性机制协调
 
 ### Action Registry
 
-The Action Registry maintains available actions:
-- Registers custom actions
-- Maps action names to implementations
-- Validates action parameters
-- Handles action lifecycle
+Action Registry 维护可用的动作：
+- 注册自定义动作
+- 将动作名称映射到实现
+- 验证动作参数
+- 处理动作生命周期
 
 ### Prompt Manager
 
-The Prompt Manager generates context for LLM:
-- Constructs system prompts
-- Injects tool descriptions
-- Adds memory context
-- Formats conversation history
+Prompt Manager 为 LLM 生成上下文：
+- 构建系统提示词
+- 注入工具描述
+- 添加记忆上下文
+- 格式化对话历史
 
-## Execution Cycle
+## 执行循环
 
-Each ReAct Loop follows this cycle:
+每个 ReAct Loop 遵循以下循环：
 
 ```
 ┌──────────────────────────────────────────┐
-│              OBSERVATION                  │
-│   Collect environment state & feedback    │
+│                观察                       │
+│       收集环境状态和反馈                   │
 └─────────────────────┬────────────────────┘
                       ↓
 ┌──────────────────────────────────────────┐
-│               THOUGHT                     │
-│      LLM reasoning & spin detection       │
+│                推理                       │
+│         LLM 推理和自旋检测                 │
 └─────────────────────┬────────────────────┘
                       ↓
 ┌──────────────────────────────────────────┐
-│               ACTION                      │
-│    Execute tool or request information    │
+│                行动                       │
+│          执行工具或请求信息                │
 └─────────────────────┬────────────────────┘
                       ↓
-                 (Next Iteration)
+                 (下一轮迭代)
 ```
 
-## Focus Mode
+## 专注模式
 
-Focus Mode allows defining specialized execution contexts:
+专注模式允许定义专门的执行上下文：
 
-### Use Cases
+### 使用场景
 
-- **Code Audit Mode** - Specialized for code analysis
-- **Vulnerability Scan Mode** - Optimized for security scanning
-- **Report Generation Mode** - Focused on documentation
+- **代码审计模式** - 专门用于代码分析
+- **漏洞扫描模式** - 优化用于安全扫描
+- **报告生成模式** - 专注于文档生成
 
-### Implementation
+### 实现方式
 
-A Loop can be encapsulated as an Action, allowing:
-- Push current context onto stack
-- Start a specialized sub-Loop
-- Complete focused task
-- Pop and return to parent context
+一个 Loop 可以被封装为 Action，允许：
+- 将当前上下文压栈
+- 启动专门的子 Loop
+- 完成专注任务
+- 弹出并返回父上下文
 
-## Dynamic Capabilities
+## 动态能力
 
-### Suspension & Escalation
+### 暂停与升级
 
-The ReAct Loop supports:
-- **Dynamic Suspension** - Pause for human input
-- **Help Requests** - Ask user for clarification
-- **Plan Triggering** - Escalate to Plan Engine for complex subtasks
+ReAct Loop 支持：
+- **动态暂停** - 暂停等待用户输入
+- **帮助请求** - 向用户请求澄清
+- **触发规划** - 对复杂子任务升级到 Plan 引擎
 
-### Mode Switching
+### 模式切换
 
-Seamless switching between:
-- Instant execution mode
-- Plan-execute mode
-- Focus mode
+在以下模式间无缝切换：
+- 即时执行模式
+- Plan-Execute 模式
+- 专注模式
 
-## Reliability Features
+## 可靠性特性
 
-### Built-in Protection
+### 内置保护
 
-- **Self-Reflection** - Analyzes failures within the loop
-- **Spin Detector** - Prevents infinite loops
-- **Step Limits** - Enforces maximum iterations
+- **自我反思** - 分析循环内的失败
+- **自旋检测** - 防止无限循环
+- **步数限制** - 强制最大迭代次数
 
-### Error Recovery
+### 错误恢复
 
-When errors occur:
-1. Capture error context
-2. Trigger self-reflection
-3. Generate correction plan
-4. Retry with enhanced awareness
+当发生错误时：
+1. 捕获错误上下文
+2. 触发自我反思
+3. 生成修正计划
+4. 以增强感知重试
 
-## Configuration Options
+## 配置选项
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `maxSteps` | Maximum iterations | 20 |
-| `spinThreshold` | Steps before spin detection | 3 |
-| `reflectionTrigger` | When to trigger reflection | On error |
-| `focusMode` | Specialized mode name | None |
+| 选项 | 描述 | 默认值 |
+|------|------|--------|
+| `maxSteps` | 最大迭代次数 | 20 |
+| `spinThreshold` | 自旋检测前的步数 | 3 |
+| `reflectionTrigger` | 何时触发反思 | 错误时 |
+| `focusMode` | 专门模式名称 | 无 |
 

@@ -1,130 +1,130 @@
 ---
 sidebar_position: 3
-title: Tools & Forges
+title: 工具与 Forges
 ---
 
-# Tools & Forges
+# 工具与 Forges
 
-Tools and Forges form the capability layer of Memfit AI, providing standardized atomic capabilities and scenario-based AI Blueprints.
+工具和 Forges 构成了 Memfit AI 的能力层，提供标准化的原子能力和场景化的 AI 蓝图。
 
-## Tools
+## 工具 (Tools)
 
-Tools are standardized atomic capabilities that the agent can invoke.
+工具是代理可以调用的标准化原子能力。
 
-### Tool Categories
+### 工具分类
 
-#### File System Tools
-- `ReadFile` - Read file contents
-- `WriteFile` - Write to files
-- `ListDirectory` - List directory contents
-- `DeleteFile` - Remove files
+#### 文件系统工具
+- `ReadFile` - 读取文件内容
+- `WriteFile` - 写入文件
+- `ListDirectory` - 列出目录内容
+- `DeleteFile` - 删除文件
 
-#### Execution Tools
-- `ShellExec` - Execute shell commands
-- `CodeExec` - Run code snippets
-- `ScriptRun` - Execute Yaklang scripts
+#### 执行工具
+- `ShellExec` - 执行 Shell 命令
+- `CodeExec` - 运行代码片段
+- `ScriptRun` - 执行 Yaklang 脚本
 
-#### Network Tools
-- `HttpRequest` - Make HTTP requests
-- `PortScan` - Scan network ports
-- `DnsLookup` - DNS resolution
+#### 网络工具
+- `HttpRequest` - 发起 HTTP 请求
+- `PortScan` - 扫描网络端口
+- `DnsLookup` - DNS 解析
 
-#### Analysis Tools
-- `CodeSearch` - Search code repositories
-- `VulnCheck` - Check for vulnerabilities
-- `FingerPrint` - Service fingerprinting
+#### 分析工具
+- `CodeSearch` - 搜索代码仓库
+- `VulnCheck` - 检查漏洞
+- `FingerPrint` - 服务指纹识别
 
-### Tool Protocols
+### 工具协议
 
-Memfit AI supports multiple tool protocols:
+Memfit AI 支持多种工具协议：
 
 #### MCP (Model Context Protocol)
-- Standard protocol for AI tool integration
-- Cross-platform compatibility
-- Structured input/output
+- AI 工具集成的标准协议
+- 跨平台兼容性
+- 结构化输入/输出
 
-#### Yaklang Native Tools
-- Built-in Yaklang capabilities
-- High-performance execution
-- Deep security integration
+#### Yaklang 原生工具
+- 内置 Yaklang 能力
+- 高性能执行
+- 深度安全集成
 
 #### Agentic Search
-- Runtime dynamic tool discovery
-- Automatic capability matching
-- On-demand tool loading
+- 运行时动态工具发现
+- 自动能力匹配
+- 按需工具加载
 
 ## Forges
 
-Forges are scenario-based capability modules (AI Blueprints) that combine prompts, tools, and logic for specific domains.
+Forges 是场景化能力模组（AI 蓝图），将提示词、工具和逻辑组合用于特定领域。
 
-### What is a Forge?
+### 什么是 Forge？
 
-A Forge encapsulates:
-- **Domain-specific prompts** - Tailored instructions
-- **Curated tool sets** - Relevant capabilities
-- **Execution logic** - Workflow definitions
-- **Best practices** - Accumulated expertise
+Forge 封装了：
+- **领域特定提示词** - 定制的指令
+- **精选工具集** - 相关能力
+- **执行逻辑** - 工作流定义
+- **最佳实践** - 积累的专业知识
 
-### Example Forges
+### Forge 示例
 
-#### Java Code Audit Forge
-- Specialized prompts for Java analysis
-- SAST tool integration
-- Common vulnerability patterns
-- Remediation suggestions
+#### Java 代码审计 Forge
+- 针对 Java 分析的专门提示词
+- SAST 工具集成
+- 常见漏洞模式
+- 修复建议
 
-#### Web Security Forge
-- Web application testing tools
-- OWASP methodology integration
-- Automated scanner orchestration
-- Report generation
+#### Web 安全 Forge
+- Web 应用测试工具
+- OWASP 方法论集成
+- 自动扫描器编排
+- 报告生成
 
-#### Infrastructure Audit Forge
-- Configuration analysis tools
-- Compliance checking
-- Hardening recommendations
-- Inventory management
+#### 基础设施审计 Forge
+- 配置分析工具
+- 合规性检查
+- 加固建议
+- 资产管理
 
-### Using Forges
+### 使用 Forges
 
-The Coordinator can instantiate a Forge as a subtask:
+Coordinator 可以将 Forge 实例化为子任务：
 
 ```
-User Request: "Audit the Java application"
+用户请求: "审计 Java 应用"
     ↓
-Coordinator detects domain: Java Code Audit
+Coordinator 检测领域: Java 代码审计
     ↓
-Instantiate: Java Code Audit Forge
+实例化: Java 代码审计 Forge
     ↓
-Execute with specialized context
+以专门上下文执行
     ↓
-Return domain-specific results
+返回领域特定结果
 ```
 
-### Creating Custom Forges
+### 创建自定义 Forges
 
-Forges are extensible - you can create custom Forges for:
-- Organization-specific workflows
-- Specialized security domains
-- Compliance frameworks
-- Internal tool integration
+Forges 是可扩展的 - 您可以为以下场景创建自定义 Forges：
+- 组织特定的工作流
+- 专业安全领域
+- 合规性框架
+- 内部工具集成
 
-## Tool Security
+## 工具安全
 
-### Permission Model
+### 权限模型
 
-Tools operate under a permission model:
-- **Read-only** - No system modification
-- **Write** - Can modify files
-- **Execute** - Can run commands
-- **Network** - Can access network
-- **Sensitive** - Requires confirmation
+工具在权限模型下运行：
+- **只读** - 不修改系统
+- **写入** - 可修改文件
+- **执行** - 可运行命令
+- **网络** - 可访问网络
+- **敏感** - 需要确认
 
-### Confirmation Flow
+### 确认流程
 
-Sensitive operations trigger user confirmation:
-1. Tool detects sensitive operation
-2. Request presented to user
-3. User approves or rejects
-4. Execution proceeds or aborts
+敏感操作触发用户确认：
+1. 工具检测到敏感操作
+2. 向用户呈现请求
+3. 用户批准或拒绝
+4. 执行继续或中止
 

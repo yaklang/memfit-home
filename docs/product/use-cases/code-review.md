@@ -1,141 +1,141 @@
 ---
 sidebar_position: 2
-title: Code Review
+title: 代码审计
 ---
 
-# Code Review Use Case
+# 代码审计使用场景
 
-Memfit AI provides intelligent code review capabilities, combining static analysis with AI-powered understanding to identify security vulnerabilities and code quality issues.
+Memfit AI 提供智能代码审计能力，结合静态分析与 AI 驱动的理解来识别安全漏洞和代码质量问题。
 
-## Overview
+## 概述
 
-Effective code review requires:
-- Understanding of code structure
-- Security vulnerability detection
-- Best practice validation
-- Contextual recommendations
+有效的代码审计需要：
+- 理解代码结构
+- 安全漏洞检测
+- 最佳实践验证
+- 上下文化建议
 
-Memfit AI leverages Yaklang's SSA (Static Single Assignment) analysis and SyntaxFlow for comprehensive code review.
+Memfit AI 利用 Yaklang 的 SSA（静态单赋值）分析和 SyntaxFlow 进行全面的代码审计。
 
-## Powered by Yaklang SSA
+## 由 Yaklang SSA 驱动
 
-### What is SSA?
+### 什么是 SSA？
 
-Static Single Assignment is a compiler intermediate representation that:
-- Simplifies data flow analysis
-- Enables precise vulnerability tracking
-- Supports cross-function analysis
-- Provides complete code coverage
+静态单赋值是一种编译器中间表示：
+- 简化数据流分析
+- 实现精确的漏洞追踪
+- 支持跨函数分析
+- 提供完整的代码覆盖
 
-### SyntaxFlow Integration
+### SyntaxFlow 集成
 
-SyntaxFlow is Yaklang's DSL for syntax pattern matching:
-- Define vulnerability signatures
-- Create custom detection rules
-- Match complex code patterns
-- Trace data flows
+SyntaxFlow 是 Yaklang 用于语法模式匹配的 DSL：
+- 定义漏洞签名
+- 创建自定义检测规则
+- 匹配复杂代码模式
+- 追踪数据流
 
-## Workflow Example
+## 工作流示例
 
-### User Request
+### 用户请求
 
 ```
-"Review the Java code in /project/src for security vulnerabilities"
+"审查 /project/src 中的 Java 代码的安全漏洞"
 ```
 
-### Execution Flow
+### 执行流程
 
-1. **Code Parsing** - Parse source code into SSA representation
-2. **Pattern Matching** - Apply SyntaxFlow rules
-3. **Data Flow Analysis** - Track user input to dangerous sinks
-4. **AI Analysis** - Contextual understanding of findings
-5. **Prioritization** - Risk-based ranking
-6. **Reporting** - Detailed findings with recommendations
+1. **代码解析** - 将源代码解析为 SSA 表示
+2. **模式匹配** - 应用 SyntaxFlow 规则
+3. **数据流分析** - 追踪用户输入到危险汇点
+4. **AI 分析** - 对发现进行上下文理解
+5. **优先级排序** - 基于风险的排名
+6. **报告** - 带建议的详细发现
 
-## Key Capabilities
+## 关键能力
 
-### Multi-Language Support
+### 多语言支持
 
-Memfit AI supports code review for:
+Memfit AI 支持以下语言的代码审计：
 - Java
 - JavaScript/TypeScript
 - Python
 - PHP
 - Go
-- And more...
+- 更多...
 
-### Vulnerability Categories
+### 漏洞类别
 
-Detects common vulnerability patterns:
+检测常见漏洞模式：
 
-| Category | Examples |
-|----------|----------|
-| Injection | SQL, Command, XSS, LDAP |
-| Authentication | Hardcoded credentials, weak crypto |
-| Access Control | Improper authorization |
-| Data Exposure | Sensitive data logging |
-| Configuration | Insecure defaults |
+| 类别 | 示例 |
+|------|------|
+| 注入 | SQL、命令、XSS、LDAP |
+| 认证 | 硬编码凭据、弱加密 |
+| 访问控制 | 不当授权 |
+| 数据暴露 | 敏感数据日志 |
+| 配置 | 不安全默认值 |
 
-### Focus Mode: Code Audit
+### 专注模式：代码审计
 
-The Code Audit Focus Mode provides:
-- Specialized prompts for code analysis
-- Automatic pattern library loading
-- Context-aware recommendations
-- Language-specific best practices
+代码审计专注模式提供：
+- 针对代码分析的专门提示词
+- 自动模式库加载
+- 上下文感知建议
+- 语言特定最佳实践
 
-## Example Session
+## 示例会话
 
 ```
-User: Review the authentication module in /src/auth
+用户: 审查 /src/auth 中的认证模块
 
-Memfit AI: I'll analyze the authentication module for security issues.
+Memfit AI: 我将分析认证模块的安全问题。
 
-[Parsing code into SSA representation]
-[Applying security patterns via SyntaxFlow]
+[将代码解析为 SSA 表示]
+[通过 SyntaxFlow 应用安全模式]
 
-Findings:
+发现:
 
-1. HIGH: SQL Injection (auth/UserDAO.java:45)
-   - User input flows directly to SQL query
-   - Recommendation: Use parameterized queries
+1. 高危: SQL 注入 (auth/UserDAO.java:45)
+   - 用户输入直接流入 SQL 查询
+   - 建议: 使用参数化查询
    
-2. MEDIUM: Weak Password Hashing (auth/PasswordService.java:23)
-   - Using MD5 for password hashing
-   - Recommendation: Use bcrypt or Argon2
+2. 中危: 弱密码哈希 (auth/PasswordService.java:23)
+   - 使用 MD5 进行密码哈希
+   - 建议: 使用 bcrypt 或 Argon2
    
-3. LOW: Verbose Error Messages (auth/LoginController.java:67)
-   - Stack traces exposed to users
-   - Recommendation: Use generic error messages
+3. 低危: 详细错误消息 (auth/LoginController.java:67)
+   - 堆栈跟踪暴露给用户
+   - 建议: 使用通用错误消息
 
-Would you like me to explain any finding in detail?
+需要我详细解释任何发现吗？
 ```
 
-## Integration with Forges
+## 与 Forges 集成
 
-### Java Code Audit Forge
+### Java 代码审计 Forge
 
-Specialized for Java applications:
-- Spring Security patterns
-- OWASP Java rules
-- Common Java pitfalls
-- Framework-specific checks
+专门用于 Java 应用：
+- Spring Security 模式
+- OWASP Java 规则
+- 常见 Java 陷阱
+- 框架特定检查
 
-### Custom Forge Creation
+### 自定义 Forge 创建
 
-Create organization-specific Forges:
-- Internal coding standards
-- Compliance requirements
-- Custom vulnerability patterns
-- Approved library usage
+创建组织特定的 Forges：
+- 内部编码标准
+- 合规性要求
+- 自定义漏洞模式
+- 批准的库使用
 
-## Benefits
+## 优势
 
-| Aspect | Benefit |
-|--------|---------|
-| Accuracy | SSA-based analysis reduces false positives |
-| Depth | Data flow tracking finds complex vulnerabilities |
-| Speed | Automated analysis accelerates review |
-| Learning | AI improves with codebase familiarity |
-| Customization | SyntaxFlow enables custom rules |
+| 方面 | 优势 |
+|------|------|
+| 准确性 | 基于 SSA 的分析减少误报 |
+| 深度 | 数据流追踪发现复杂漏洞 |
+| 速度 | 自动化分析加速审查 |
+| 学习 | AI 随着代码库熟悉而改进 |
+| 定制 | SyntaxFlow 支持自定义规则 |
 

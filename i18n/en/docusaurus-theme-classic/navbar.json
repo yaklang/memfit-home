@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Memfit AI",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Memfit AI Logo",
+    "description": "The alt text of logo image"
+  },
+  "item.label.产品 / 功能": {
+    "message": "Product / Feature",
+    "description": "Navbar item with label 产品 / 功能"
+  },
+  "item.label.文档 / 帮助": {
+    "message": "Docs / Help",
+    "description": "Navbar item with label 文档 / 帮助"
+  },
+  "item.label.下载": {
+    "message": "Downloads",
+    "description": "Navbar item with label 下载"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

@@ -1,137 +1,136 @@
 ---
 sidebar_position: 1
-title: Security Audit
+title: 安全审计
 ---
 
-# Security Audit Use Case
+# 安全审计使用场景
 
-Memfit AI excels at comprehensive security audits, leveraging its recursive dual-engine architecture to handle complex, multi-faceted security assessments.
+Memfit AI 擅长进行全面的安全审计，利用其递归双引擎架构处理复杂、多方面的安全评估。
 
-## Overview
+## 概述
 
-Security audits require:
-- Systematic methodology
-- Multiple tool orchestration
-- Deep analysis capabilities
-- Comprehensive reporting
+安全审计需要：
+- 系统化的方法论
+- 多工具编排
+- 深度分析能力
+- 全面的报告
 
-Memfit AI's Plan-Execute architecture naturally maps to these requirements.
+Memfit AI 的 Plan-Execute 架构自然映射到这些需求。
 
-## Workflow Example
+## 工作流示例
 
-### User Request
-
-```
-"Perform a comprehensive security audit of the web application at https://example.com"
-```
-
-### Plan Generation
-
-The Coordinator generates a structured task tree:
+### 用户请求
 
 ```
-Security Audit
-├── Reconnaissance
-│   ├── Domain enumeration
-│   ├── Technology fingerprinting
-│   └── Information gathering
-├── Vulnerability Assessment
-│   ├── Web application scanning
-│   ├── API security testing
-│   └── Authentication testing
-├── Deep Analysis
-│   ├── Business logic review
-│   ├── Session management
-│   └── Input validation
-└── Reporting
-    ├── Findings compilation
-    ├── Risk assessment
-    └── Remediation recommendations
+"对 https://example.com 的 Web 应用进行全面安全审计"
 ```
 
-### Execution Flow
+### 计划生成
 
-1. **Human-in-the-Loop Review** - User reviews and approves the plan
-2. **Parallel Reconnaissance** - Multiple ReAct loops gather information
-3. **Adaptive Assessment** - Findings inform subsequent tests
-4. **Deep Dives** - Complex issues trigger sub-planning
-5. **Comprehensive Report** - Results compiled and prioritized
-
-## Key Capabilities
-
-### Yaklang Integration
-
-Leverages Yaklang's security capabilities:
-- Port scanning with Yaklang
-- Web fuzzing with WebFuzzer
-- Traffic interception with MITM
-- Vulnerability detection with Nuclei
-
-### Intelligent Adaptation
-
-The ReAct engine adapts to findings:
-- Discovers new attack surface → Plans additional tests
-- Finds vulnerability → Deep analysis loop
-- Encounters protection → Tries alternative approaches
-
-### Memory-Enhanced Testing
-
-Previous audit experience improves current tests:
-- Similar vulnerability patterns recognized
-- Successful bypass techniques recalled
-- False positive patterns avoided
-
-## Example Session
+Coordinator 生成结构化的任务树：
 
 ```
-User: Audit the security of https://example.com
+安全审计
+├── 信息收集
+│   ├── 域名枚举
+│   ├── 技术指纹识别
+│   └── 信息搜集
+├── 漏洞评估
+│   ├── Web 应用扫描
+│   ├── API 安全测试
+│   └── 认证测试
+├── 深度分析
+│   ├── 业务逻辑审查
+│   ├── 会话管理
+│   └── 输入验证
+└── 报告
+    ├── 发现汇总
+    ├── 风险评估
+    └── 修复建议
+```
 
-Memfit AI: I'll perform a comprehensive security audit. Let me first 
-create a plan for your review.
+### 执行流程
 
-[Plan Generated]
-1. Reconnaissance Phase
-   - Subdomain enumeration
-   - Technology stack identification
-   - Public information gathering
+1. **人工审查** - 用户审查并批准计划
+2. **并行信息收集** - 多个 ReAct loops 收集信息
+3. **自适应评估** - 发现结果指导后续测试
+4. **深度挖掘** - 复杂问题触发子规划
+5. **全面报告** - 结果汇总并按优先级排列
+
+## 关键能力
+
+### Yaklang 集成
+
+利用 Yaklang 的安全能力：
+- 使用 Yaklang 进行端口扫描
+- 使用 WebFuzzer 进行 Web 模糊测试
+- 使用 MITM 进行流量拦截
+- 使用 Nuclei 进行漏洞检测
+
+### 智能适应
+
+ReAct 引擎根据发现进行适应：
+- 发现新的攻击面 → 规划额外测试
+- 找到漏洞 → 深度分析循环
+- 遇到防护 → 尝试替代方法
+
+### 记忆增强测试
+
+之前的审计经验改进当前测试：
+- 识别相似的漏洞模式
+- 回忆成功的绕过技术
+- 避免误报模式
+
+## 示例会话
+
+```
+用户: 审计 https://example.com 的安全性
+
+Memfit AI: 我将进行全面的安全审计。让我先创建一个计划供您审查。
+
+[计划已生成]
+1. 信息收集阶段
+   - 子域名枚举
+   - 技术栈识别
+   - 公开信息搜集
    
-2. Vulnerability Assessment
-   - Web application scanning
-   - API endpoint testing
-   - Authentication mechanism review
+2. 漏洞评估
+   - Web 应用扫描
+   - API 端点测试
+   - 认证机制审查
 
-3. Deep Analysis
-   - Business logic vulnerabilities
-   - Session management
-   - Access control testing
+3. 深度分析
+   - 业务逻辑漏洞
+   - 会话管理
+   - 访问控制测试
 
-4. Reporting
-   - Finding documentation
-   - Risk classification
-   - Remediation guidance
+4. 报告
+   - 发现文档
+   - 风险分类
+   - 修复指南
 
-Do you want to proceed with this plan?
+是否要执行此计划？
 
-User: Yes, proceed
+用户: 是，继续
 
-Memfit AI: Starting reconnaissance phase...
-[Executing multiple ReAct loops in parallel]
+Memfit AI: 开始信息收集阶段...
+[并行执行多个 ReAct loops]
 
-Found: 
-- 5 subdomains
-- Technology stack: React + Node.js + PostgreSQL
-- Exposed admin panel at /admin
+发现: 
+- 5 个子域名
+- 技术栈: React + Node.js + PostgreSQL
+- 暴露的管理面板在 /admin
 
-Proceeding to vulnerability assessment...
+继续进行漏洞评估...
 ```
 
-## Benefits
+## 优势
 
-| Aspect | Benefit |
-|--------|---------|
-| Thoroughness | Systematic plan ensures complete coverage |
-| Efficiency | Parallel execution accelerates testing |
-| Adaptability | Real-time adjustment based on findings |
-| Transparency | User reviews plan before execution |
-| Learning | Memory improves future audits |
+| 方面 | 优势 |
+|------|------|
+| 全面性 | 系统化计划确保完整覆盖 |
+| 效率 | 并行执行加速测试 |
+| 适应性 | 基于发现实时调整 |
+| 透明性 | 用户在执行前审查计划 |
+| 学习性 | 记忆改进未来审计 |
 
