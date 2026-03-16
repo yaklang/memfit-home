@@ -104,7 +104,8 @@ export function generateDownloadUrl(version: string, os: OSType, arch?: string):
  */
 export async function getCurrentSystemDownloadUrl(): Promise<string> {
   try {
-    const response = await fetch(VERSION_URL);
+    const timestamp = Date.now();
+    const response = await fetch(`${VERSION_URL}?t=${timestamp}`, { cache: 'no-store' });
     if (!response.ok) {
       return '/downloads';
     }
