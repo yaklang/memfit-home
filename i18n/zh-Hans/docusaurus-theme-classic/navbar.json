@@ -7,13 +7,13 @@
     "message": "Memfit AI Logo",
     "description": "The alt text of logo image"
   },
-  "item.label.Product / Feature": {
-    "message": "产品 / 功能",
-    "description": "Navbar item with label Product / Feature"
+  "item.label.技术架构": {
+    "message": "技术架构",
+    "description": "Navbar item with label 技术架构"
   },
-  "item.label.Docs / Help": {
-    "message": "文档 / 帮助",
-    "description": "Navbar item with label Docs / Help"
+  "item.label.使用手册": {
+    "message": "使用手册",
+    "description": "Navbar item with label 使用手册"
   },
   "item.label.Downloads": {
     "message": "下载",

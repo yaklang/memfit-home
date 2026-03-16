@@ -112,7 +112,7 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '产品',
+          title: '技术架构',
           items: [
             {
               label: '概览',
@@ -129,7 +129,7 @@ const config: Config = {
           ],
         },
         {
-          title: '帮助',
+          title: '使用手册',
           items: [
             {
               label: '快速开始',
