@@ -69,7 +69,7 @@ export interface LocaleContent {
 
 export const CONTENT: Record<Locale, LocaleContent> = {
   en: {
-    nav: { product: "Product", docs: "Docs", download: "Download" },
+    nav: { product: "Architecture", docs: "User Manual", download: "Download" },
     buttons: {
       downloadMac: "macOS version",
       downloadLinux: "Linux version",
@@ -217,7 +217,7 @@ export const CONTENT: Record<Locale, LocaleContent> = {
     ],
   },
   "zh-Hans": {
-    nav: { product: "产品", docs: "文档", download: "下载" },
+    nav: { product: "技术架构", docs: "使用手册", download: "下载" },
     buttons: {
       downloadMac: "下载 macOS 版本",
       downloadLinux: "下载 Linux 版本",

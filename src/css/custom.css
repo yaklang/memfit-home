@@ -70,16 +70,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* 导航栏半透明毛玻璃效果 */
-.navbar {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-[data-theme='dark'] .navbar {
-  background-color: rgba(0, 0, 0, 0.7);
-}
+/* navbar 已被 swizzle 替换为自定义组件，占位元素由内联样式控制 */
 
 /* 页脚紧凑化处理 */
 .footer {
