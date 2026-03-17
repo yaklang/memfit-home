@@ -57,7 +57,8 @@ function HomepageHeader() {
   useEffect(() => {
     const fetchVersion = async () => {
       try {
-        const response = await fetch(VERSION_URL);
+        const timestamp = Date.now();
+        const response = await fetch(`${VERSION_URL}?t=${timestamp}`, { cache: 'no-store' });
         if (!response.ok) {
           throw new Error(`Failed to fetch version: ${response.status}`);
         }
