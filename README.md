@@ -108,7 +108,7 @@ Memfit AI 突破了单一范式的局限，创新性地采用了 **ReAct 与 Pla
 
 ### 快速链接
 
-- [完整文档](https://memfit.ai/zh/docs/architecture)
+- [完整文档](https://memfit.ai/docs/product/overview)
 - [Yaklang](https://yaklang.com) - 驱动 Memfit AI 的底层语言
 - [SSA 分析平台](https://ssa.to) - 静态单赋值分析平台
 
