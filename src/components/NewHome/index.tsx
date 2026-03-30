@@ -6,7 +6,8 @@
  * @FilePath: \memfit-home\src\components\NewHome\index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { useState, useCallback, type ReactNode } from "react";
+import { useEffect, useState, useCallback, type ReactNode } from "react";
+import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { CONTENT, type Locale } from "./locales";
 import { ThemeContext, type Theme } from "./context/ThemeContext";
@@ -21,9 +22,20 @@ import {
   Footer,
 } from "./components";
 
+const resolveLocaleFromPathname = (pathname?: string, currentLocale?: string): Locale => {
+  if (pathname === "/en" || pathname?.startsWith("/en/")) {
+    return "en";
+  }
+
+  return currentLocale === "en" ? "en" : "zh-Hans";
+};
+
 export const NewHome = (): ReactNode => {
   const { i18n } = useDocusaurusContext();
-  const [locale, setLocale] = useState<Locale>("zh-Hans");
+  const location = useLocation();
+  const [locale, setLocale] = useState<Locale>(() =>
+    resolveLocaleFromPathname(location.pathname, i18n.currentLocale)
+  );
   const [theme, setTheme] = useState<Theme>(() => {
     // 从 sessionStorage 读取主题，默认为 light
     if (typeof window !== 'undefined') {
@@ -32,6 +44,10 @@ export const NewHome = (): ReactNode => {
     }
     return 'light';
   });
+
+  useEffect(() => {
+    setLocale(resolveLocaleFromPathname(location.pathname, i18n.currentLocale));
+  }, [location.pathname, i18n.currentLocale]);
 
   const handleToggleLocale = useCallback(() => {
     setLocale((prev) => (prev === "en" ? "zh-Hans" : "en"));
