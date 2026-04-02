@@ -59,7 +59,8 @@ Memfit AI breaks through the limitations of single paradigms by innovatively ado
 
 ### Quick Links
 
-- [Full Documentation](https://memfit.ai/docs/architecture)
+- [Documents](https://memfit.ai/docs/product/overview)
+- [Memfit AI Core Engine SourceCode](https://github.com/yaklang/yaklang/tree/main/common/ai/aid) - Memfit AI 基础设施与交互系统框架
 - [Yaklang](https://yaklang.com) - The underlying language powering Memfit AI
 - [SSA Analysis](https://ssa.to) - Static Single Assignment analysis platform
 
