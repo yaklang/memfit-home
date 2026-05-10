@@ -4,6 +4,54 @@ const OSS_BASE_URL = 'https://oss-qn.yaklang.com';
 const VERSION_URL = `${OSS_BASE_URL}/memfit/latest/yakit-version.txt`;
 
 export type OSType = 'darwin' | 'linux' | 'windows' | 'unknown';
+export type DownloadArch = 'arm64' | 'amd64' | 'x64';
+
+export interface DownloadItem {
+  platform: OSType;
+  arch: DownloadArch;
+  extension: string;
+  label: {
+    en: string;
+    'zh-Hans': string;
+  };
+}
+
+export interface DownloadOption extends DownloadItem {
+  url: string;
+}
+
+export const DOWNLOAD_ITEMS: DownloadItem[] = [
+  {
+    platform: 'darwin',
+    arch: 'arm64',
+    extension: 'dmg',
+    label: { en: 'Apple Silicon', 'zh-Hans': '苹果芯片' },
+  },
+  {
+    platform: 'darwin',
+    arch: 'x64',
+    extension: 'dmg',
+    label: { en: 'Intel', 'zh-Hans': 'Intel' },
+  },
+  {
+    platform: 'linux',
+    arch: 'amd64',
+    extension: 'AppImage',
+    label: { en: 'AMD64', 'zh-Hans': 'AMD64' },
+  },
+  {
+    platform: 'linux',
+    arch: 'arm64',
+    extension: 'AppImage',
+    label: { en: 'ARM64', 'zh-Hans': 'ARM64' },
+  },
+  {
+    platform: 'windows',
+    arch: 'amd64',
+    extension: 'exe',
+    label: { en: 'AMD64', 'zh-Hans': 'AMD64' },
+  },
+];
 
 /**
  * 检测当前操作系统
@@ -35,7 +83,7 @@ export function detectOS(): OSType {
 /**
  * 检测 CPU 架构
  */
-export function detectArch(): 'arm64' | 'amd64' | 'x64' {
+export function detectArch(): DownloadArch {
   if (typeof window === 'undefined') return 'amd64';
   
   const userAgent = window.navigator.userAgent.toLowerCase();
@@ -99,6 +147,18 @@ export function generateDownloadUrl(version: string, os: OSType, arch?: string):
   return `${OSS_BASE_URL}/memfit/${version}/MemfitAI-${version}-${platform}-${finalArch}.${extension}`;
 }
 
+export function generateDownloadItemUrl(version: string, item: DownloadItem): string {
+  if (!version || item.platform === 'unknown') return '/downloads';
+
+  return `${OSS_BASE_URL}/memfit/${version}/MemfitAI-${version}-${item.platform}-${item.arch}.${item.extension}`;
+}
+
+export function getDownloadItemsForOS(os: OSType): DownloadItem[] {
+  if (os === 'unknown') return [];
+
+  return DOWNLOAD_ITEMS.filter((item) => item.platform === os);
+}
+
 /**
  * 获取当前系统的下载链接
  */
@@ -117,6 +177,29 @@ export async function getCurrentSystemDownloadUrl(): Promise<string> {
   } catch (error) {
     console.error('Failed to get download URL:', error);
     return '/downloads';
+  }
+}
+
+/**
+ * 获取当前系统的全部架构下载链接
+ */
+export async function getCurrentSystemDownloadOptions(): Promise<DownloadOption[]> {
+  try {
+    const timestamp = Date.now();
+    const response = await fetch(`${VERSION_URL}?t=${timestamp}`, { cache: 'no-store' });
+    if (!response.ok) {
+      return [];
+    }
+    const version = (await response.text()).trim();
+    const os = detectOS();
+
+    return getDownloadItemsForOS(os).map((item) => ({
+      ...item,
+      url: generateDownloadItemUrl(version, item),
+    }));
+  } catch (error) {
+    console.error('Failed to get download options:', error);
+    return [];
   }
 }
 

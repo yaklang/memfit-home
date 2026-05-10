@@ -10,9 +10,13 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ locale }: HeroSectionProps) => {
   const content = CONTENT[locale];
-  const { downloadUrl, buttonText } = useDownload(locale);
+  const { downloadUrl, downloadOptions, buttonText } = useDownload(locale);
   const { theme } = useTheme();
   const highlightColor = theme === "light" ? "#4373BB" : "#66A2EB";
+  const downloadButtons = downloadOptions.length > 0 ? downloadOptions : [{
+    url: downloadUrl,
+    label: { en: "", "zh-Hans": "" },
+  }];
 
   // - 手机端（393px）: 852px
   // - iPad（744px）: 852px  
@@ -54,17 +58,25 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
           </p>
           
       
-          <div className="flex flex-col items-center mt-[100px] desktop:mt-[0px] justify-center gap-4 desktop:flex-row">
-            {/* 主按钮 - 白色实心 */}
-            <a
-              href={downloadUrl}
-              download
-              className="w-full h-[46px] flex-shrink-0  desktop:w-[171px] desktop:h-[36px] flex items-center justify-center gap-2 bg-white rounded-4 hover:brightness-110 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline text-[18px]  desktop:text-[14px] transition-all"
-              style={{ color: highlightColor }}
-            >
-              {buttonText}
-              <DownloadIcon className="w-5 h-5 " />
-            </a>
+          <div className="flex flex-col items-center mt-[100px] desktop:mt-[0px] justify-center gap-4 desktop:flex-row desktop:flex-wrap">
+            {/* 当前系统下载按钮 */}
+            {downloadButtons.map((item) => {
+              const archLabel = item.label[locale] || item.label.en;
+              const text = archLabel ? `${buttonText} ${archLabel}` : buttonText;
+
+              return (
+                <a
+                  key={`${item.url}-${archLabel}`}
+                  href={item.url}
+                  download
+                  className="w-full h-[46px] flex-shrink-0 desktop:w-auto desktop:min-w-[171px] desktop:px-4 desktop:h-[36px] flex items-center justify-center gap-2 bg-white rounded-4 hover:brightness-110 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline text-[18px] desktop:text-[14px] transition-all"
+                  style={{ color: highlightColor }}
+                >
+                  {text}
+                  <DownloadIcon className="w-5 h-5 " />
+                </a>
+              );
+            })}
             {/* 次按钮 - 手机/iPad纯文字，PC有边框 */}
             <Link
               to="/downloads"

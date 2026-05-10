@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { detectOS, getCurrentSystemDownloadUrl, type OSType } from "../utils/downloadHelper";
+import {
+  detectOS,
+  getCurrentSystemDownloadOptions,
+  type DownloadOption,
+  type OSType,
+} from "../utils/downloadHelper";
 import { CONTENT, type Locale } from "../locales";
 
 /**
@@ -8,6 +13,7 @@ import { CONTENT, type Locale } from "../locales";
 export function useDownload(locale: Locale) {
   const [os, setOs] = useState<OSType>('unknown');
   const [downloadUrl, setDownloadUrl] = useState<string>('/downloads');
+  const [downloadOptions, setDownloadOptions] = useState<DownloadOption[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const content = CONTENT[locale];
 
@@ -18,12 +24,14 @@ export function useDownload(locale: Locale) {
         const detectedOS = detectOS();
         setOs(detectedOS);
         
-        // 获取下载链接
-        const url = await getCurrentSystemDownloadUrl();
-        setDownloadUrl(url);
+        // 获取当前系统下的全部架构下载链接
+        const options = await getCurrentSystemDownloadOptions();
+        setDownloadOptions(options);
+        setDownloadUrl(options[0]?.url || '/downloads');
       } catch (error) {
         console.error('Failed to initialize download:', error);
         setDownloadUrl('/downloads');
+        setDownloadOptions([]);
       } finally {
         setIsLoading(false);
       }
@@ -49,6 +57,7 @@ export function useDownload(locale: Locale) {
   return {
     os,
     downloadUrl,
+    downloadOptions,
     isLoading,
     buttonText: getDownloadButtonText(),
   };
