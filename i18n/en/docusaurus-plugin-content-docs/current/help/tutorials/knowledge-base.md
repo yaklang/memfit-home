@@ -1,140 +1,111 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 title: Knowledge Base Tutorial
 ---
 
 # Knowledge Base Tutorial
 
-The knowledge base is one of Memfit's core systems. It enables AI to work not only with the model's built-in training knowledge but also with your professional domain materials, significantly improving AI accuracy and expertise in specific domains.
+Knowledge bases let Memfit work from your materials instead of relying only on model training data. Use them for product docs, team standards, vulnerability data, project notes, and reusable operational experience.
 
-## What is a Knowledge Base
+【Image: Knowledge base page overview, labeling list, create, import, and diagnostics】
 
-### Knowledge Base vs AI Model Built-in Knowledge
+## What to Store
 
-AI models (such as GPT-4, Claude) possess broad general knowledge but have the following limitations:
+| Content | Examples | Use Case |
+| --- | --- | --- |
+| Product docs | API docs, deployment docs, manuals | Answer based on product facts |
+| Security materials | CVEs, exploit notes, hardening baselines | Security analysis and reports |
+| Team standards | Coding, testing, delivery rules | Code review and document checks |
+| Project materials | Architecture, modules, changelogs | Onboarding and troubleshooting |
+| Experience notes | FAQs, runbooks, incident records | Reuse team experience |
 
-- **Timeliness Gap**: Model training data has a cutoff date and cannot cover the latest information
-- **Limited Domain Depth**: For specific industry or organizational expertise, models may lack sufficient depth
-- **Missing Private Data**: Models cannot access your internal documents, private vulnerability databases, etc.
+## Create a Knowledge Base
 
-Knowledge bases are designed to bridge these gaps. By importing professional materials into a knowledge base and mounting it to the AI Agent, you enable AI to reference these domain-specific professional materials when answering questions and executing tasks.
+Click **New Knowledge Base** and fill in:
 
-### Typical Use Cases
+| Field | Recommendation |
+| --- | --- |
+| **Name** | Use a clear name, such as “Web Security Baseline”. |
+| **Description** | State source, scope, and update time. |
+| **Type / Tags** | Use for filtering and management. |
+| **Length** | Controls entry length; keep default if unsure. |
 
-- **Vulnerability Database**: Import the latest CVE data and exploit information
-- **Coding Standards**: Import team coding standards and secure development guidelines
-- **Technical Documentation**: Import product docs, API docs, architecture design documents
-- **Industry Knowledge**: Import industry standards, compliance requirements, best practices
+【Image: Create knowledge base dialog】
 
-## Knowledge Base Building Technologies
+## Add Materials
 
-Memfit's knowledge base system supports multiple building technologies to ensure knowledge can be efficiently retrieved and utilized.
+- Drag files into Agent or the knowledge area for quick import.
+- Import documents from the knowledge base detail page.
+- Add manual entries for short rules, experience, or conclusions.
 
-### Document Chunking and Index Building
+```text
+Scenario: Node.js dependency audit
+Conclusion: Run tests and build before upgrading dependencies.
+Source: Team release process 2026
+```
 
-When you import documents into a knowledge base, the system automatically performs the following:
+【Image: Dragging files into a knowledge base】
 
-1. **Document Chunking**: Splits long documents into appropriately sized segments (chunks), each maintaining semantic completeness
-2. **Vector Encoding**: Uses embedding models to convert each segment into vector representations
-3. **Index Building**: Builds efficient vector indexes supporting semantic similarity retrieval
+## Build the Knowledge Base
 
-When AI needs to find relevant knowledge, the system quickly locates the most relevant knowledge segments through vector similarity search.
+After adding materials, build the knowledge base so Memfit can chunk, index, and retrieve the content.
 
-【配图：知识库索引构建流程的截图】
+| Parameter | Purpose |
+| --- | --- |
+| **chunk** | Controls chunking strategy. |
+| **entrylen** | Controls knowledge entry length. |
+| **concurrency** | Controls build concurrency. |
+| **disableERM** | Disables entity relationship modeling when enabled. |
 
-### Knowledge Graph Construction
+【Image: Build parameters panel】
 
-Beyond basic vector indexing, Memfit also supports knowledge graph construction:
+## Diagnose Availability
 
-- **Entity Extraction**: Automatically identifies key entities from documents (e.g., technical terms, tool names, vulnerability IDs)
-- **Relationship Building**: Identifies associations between entities
-- **Structured Storage**: Stores knowledge in graph form, supporting relational reasoning
+Use **Knowledge Base Availability Diagnostics** after building:
 
-Knowledge graphs enable AI to understand connections between pieces of knowledge, rather than just simple text matching.
+1. Confirm retrieval works.
+2. Check whether query results are relevant.
+3. Check chunk length quality.
+4. Verify the model can answer from retrieved materials.
 
-【配图：知识图谱可视化展示的截图】
+```text
+Based on this knowledge base, what security checks are required before launch?
+```
 
-## How to Create a Knowledge Base
+【Image: Knowledge base diagnostics result】
 
-### Creating in Memfit
+## Use in Agent
 
-1. Navigate to the knowledge base management page
-2. Click to create a new knowledge base
-3. Set the knowledge base name and description
-4. Select the building method
+1. Open the knowledge base resource area in Agent.
+2. Select or mount the target knowledge base.
+3. Ask Memfit to answer based on the mounted knowledge base.
 
-【配图：创建知识库操作界面的截图】
+```text
+Based on the mounted “Web Security Baseline” knowledge base, check whether this Nginx config meets the requirements.
+```
 
-### Adding Knowledge Content
+【Image: Selecting a knowledge base in Agent】
 
-Knowledge bases support multiple content addition methods:
+## Manage Knowledge Bases
 
-#### Manual Addition
+| Operation | When to Use |
+| --- | --- |
+| **Update materials** | Documents or rules changed. |
+| **Rebuild** | Many materials were added or removed. |
+| **Clear** | Source data is wrong or needs complete rebuild. |
+| **Query entries** | Check whether a fact entered the index. |
+| **Inspect entities / vectors** | Debug retrieval quality. |
 
-Create knowledge entries directly in the knowledge base, suitable for adding structured knowledge points and experience summaries.
+## Common Issues
 
-#### External Import
+If AI does not use knowledge base content, confirm it is built and mounted, and explicitly ask Memfit to answer based on it.
 
-Supports importing external documents in various formats:
+If retrieval is inaccurate, split unrelated materials into separate knowledge bases and improve titles and structure.
 
-- Text files (`.txt`, `.md`)
-- Code files (various programming languages)
-- Structured data (`.json`, `.csv`)
-
-【配图：知识库导入操作界面的截图】
-
-### Managing Knowledge Bases
-
-In the knowledge base management interface, you can:
-
-- View all entries in the knowledge base
-- Edit and update existing knowledge
-- Delete outdated knowledge entries
-- View index status and statistics
-
-【配图：知识库管理界面的截图】
-
-## How to Use Knowledge Bases
-
-### Mounting in AI Agent
-
-During AI Agent conversations, you can mount one or more knowledge bases:
-
-1. Find the knowledge base list in the resource panel of the chat interface
-2. Select the knowledge base to mount
-3. AI will automatically reference the mounted knowledge base content in subsequent answers and task execution
-
-【配图：知识库挂载操作的截图】
-
-### Knowledge Retrieval Process
-
-When you ask AI a question or assign a task, the knowledge retrieval process is as follows:
-
-1. **Query Analysis**: AI understands your question or task requirements
-2. **Knowledge Retrieval**: The system searches for the most relevant knowledge segments from mounted knowledge bases
-3. **Context Enhancement**: Retrieved knowledge is provided to AI as context
-4. **Answer Generation**: AI generates answers combining model knowledge and retrieved professional materials
-
-This process is transparent to you -- just have a normal conversation, and AI will automatically leverage information from the knowledge base.
-
-## Building Knowledge Bases Through AI Agent
-
-You can also help build knowledge base content through conversations with the AI Agent:
-
-1. Have AI analyze and summarize documents in the conversation
-2. Let AI distill key knowledge points
-3. Save AI's analysis results to the knowledge base
-
-This approach is particularly suitable for quickly extracting and organizing knowledge from large amounts of unstructured documents.
-
-## Best Practices
-
-1. **Topic Focus**: Each knowledge base should center around a specific topic, avoiding mixing unrelated content
-2. **Continuous Updates**: Regularly update knowledge base content to ensure timeliness
-3. **Mount on Demand**: Mount corresponding knowledge bases when executing different tasks to avoid irrelevant knowledge interference
-4. **Quality First**: Import high-quality, accurate knowledge content -- garbage in, garbage out
+If new imports do not take effect, rebuild or wait for build completion.
 
 ## Next Steps
 
-- [Memory Tutorial](/docs/help/tutorials/memory) - Understand AI's long-term memory mechanism
-- [Scene Optimization](/docs/help/tutorials/scene-optimization) - Strengthen your Agent for specific scenarios
+- [Agent Tutorial](/docs/help/tutorials/ai-agent)
+- [Loading and Using SKILLS](/docs/help/tutorials/skills)
+- [Advanced Usage](/docs/help/tutorials/advanced)

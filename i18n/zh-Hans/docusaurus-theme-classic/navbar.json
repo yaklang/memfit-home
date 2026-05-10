@@ -15,6 +15,10 @@
     "message": "使用手册",
     "description": "Navbar item with label 使用手册"
   },
+  "item.label.开发者指南": {
+    "message": "开发者指南",
+    "description": "Navbar item with label 开发者指南"
+  },
   "item.label.Downloads": {
     "message": "下载",
     "description": "Navbar item with label Downloads"

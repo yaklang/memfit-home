@@ -121,7 +121,7 @@ export const Footer = ({ locale }: FooterProps) => {
               Quick Start
             </Link>
             <Link
-              to="/docs/help/tutorials/configuration"
+              to="/docs/help/tutorials/ai-agent"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
                 theme === "light"
                   ? "text-[#353639]"

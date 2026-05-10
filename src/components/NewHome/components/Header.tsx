@@ -72,6 +72,16 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
               {content.nav.docs}
             </Link>
             <Link
+              to="/docs/help/focus-mode-dev/"
+              className={`text-[14px] font-medium transition-colors whitespace-nowrap ${
+                theme === "light"
+                  ? "text-[#353639] hover:text-[#4373BB]"
+                  : "text-[#C8D0DD] hover:text-[#66A2EB]"
+              }`}
+            >
+              {content.nav.developer}
+            </Link>
+            <Link
               to="/downloads"
               className={`text-[14px] font-medium transition-colors whitespace-nowrap ${
                 theme === "light"

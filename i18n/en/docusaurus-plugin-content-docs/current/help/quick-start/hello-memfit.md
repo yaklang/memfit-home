@@ -3,138 +3,83 @@ sidebar_position: 3
 title: Hello, Memfit!
 ---
 
-# Hello, World, Hello Memfit!
+# Hello, Memfit!
 
-After completing installation and AI configuration, let's officially start using Memfit. This section will guide you through your first interaction with the Memfit AI Agent and introduce its core interface and three major systems.
+This chapter is a basic orientation for Memfit. It does not explain every feature in depth; it gives you the first map: what the main interface contains, how to start your first task, and where to go next for knowledge bases, Skills, and advanced usage.
 
-## Enter AI Agent
+【Image: Memfit AI Agent homepage overview, labeling chat area, resources, model/usage entry, and settings entry】
 
-After launching Memfit, navigate to the AI Agent page. This is the main interface for interacting with Memfit.
+## What Memfit Is
 
-![image-20260316121517301](/img/help/image-20260316121517301.png)
+Memfit is an AI Agent workspace that can execute tasks. It can plan, call tools, request permissions, use context, and show the execution process instead of only returning a final answer.
 
-The interface consists of the following areas:
+| Capability | What You See | Learn More |
+| --- | --- | --- |
+| **Agent execution** | Chat, plans, tool calls, Review confirmations, results | [Agent Tutorial](/docs/help/tutorials/ai-agent) |
+| **Knowledge base** | Knowledge lists, document import, retrieval, mounting | [Knowledge Base Tutorial](/docs/help/tutorials/knowledge-base) |
+| **Skills** | Skill list, selection, parameter confirmation, import/export | [Loading and Using SKILLS](/docs/help/tutorials/skills) |
+| **Advanced usage** | Usage statistics, context pressure, model performance, custom tools | [Advanced Usage](/docs/help/tutorials/advanced) |
 
-- **Chat Area**: The central dialog box where you can input task descriptions or questions
-- **Homepage Recommendations**: The right side displays system-recommended tools, skills, and knowledge bases to help you get started quickly
-- **Knowledge Base / Skills / Tools Panel**: The lower-left management panel for viewing and managing loaded resources
+## First Look at the Main Interface
 
-## Send Your First Message
+| Area | Purpose |
+| --- | --- |
+| **Chat area** | Enter tasks, view replies, and follow execution. |
+| **Resource area** | Manage knowledge bases, Skills, tools, and other resources. |
+| **Model and usage entry** | View current models, context tokens, input/output usage, pressure, and speed. |
+| **Review panel** | Confirm plans, tool calls, or Skill execution. |
+| **Settings entry** | Adjust basic settings, permissions, AI model configuration, and calling mode. |
 
-Type your first message in the dialog box and say hello to Memfit:
+【Image: Main interface area labels】
 
-```
-Hello, please introduce yourself. What can you do?
-```
+## Send Your First Task
 
-Memfit will respond by introducing its capabilities and available tools. You can see the AI's thinking process and final answer.
+Try a small task:
 
-![image-20260316121603838](/img/help/image-20260316121603838.png)
-
-:::tip
-Memfit's chat input supports `Shift + Enter` for line breaks. Press `Enter` or click the send button to send a message.
-:::
-
-## Explore Homepage Recommendations
-
-On the right side of the AI Agent main interface, you'll see the **Homepage Recommendations** area, which displays three types of available resources:
-
-### Tools
-
-Tools are atomic operational capabilities that Memfit can invoke. Each tool performs a specific function, for example:
-
-- **SYN+TCP Fingerprint Scan**: Port scanning and service identification for targets
-- **TLS Certificate Check**: Inspect TLS/SSL certificate information of targets
-- **Cybersecurity Risk Output Tool**: Generate structured security risk reports
-
-You can click on recommended tools to trigger related tasks directly, or describe your needs naturally in the conversation, and Memfit will automatically select the appropriate tool.
-
-![image-20260316121732130](/img/help/image-20260316121732130.png)
-
-### Skills
-
-Skills are scenario-specific capability packages that integrate specialized prompts, tool combinations, and domain knowledge. For example:
-
-- **SyntaxFlow Rule Completion**: Assists in writing SyntaxFlow code audit rules
-- **XSS Vulnerability Detection**: Specialized XSS vulnerability detection capability
-
-Skills make Memfit perform like a domain expert in specific scenarios.
-
-![image-20260316121744542](/img/help/image-20260316121744542.png)
-
-### Knowledge Base
-
-Knowledge bases provide domain expertise support for the AI. You can mount different knowledge bases to let Memfit reference professional materials when answering questions and executing tasks.
-
-![image-20260316121810590](/img/help/image-20260316121810590.png)
-
-## Try a Real Task
-
-Now let's give Memfit a real task. You can describe it directly in the dialog box:
-
-```
-Check the TLS certificate information for example.com
+```text
+Hello, introduce what Memfit can help me do in three sentences.
 ```
 
-Observe Memfit's execution process -- it goes through a **Think, Act, Observe** loop:
+Watch whether Memfit answers directly, creates a plan, asks for Review, or references tools, knowledge bases, or Skills.
 
-1. **Think**: AI analyzes your request and determines which tool to use
-2. **Act**: Invokes the TLS certificate check tool to make the actual request
-3. **Observe**: Retrieves and analyzes the results
-4. **Respond**: Organizes findings into a clear report for you
+【Image: First message and reply】
 
-The entire process is visible in the interface -- this is Memfit's philosophy: **visible execution power**.
+## Understand the Execution Process
 
-![image-20260316122018721](/img/help/image-20260316122018721.png)
+| Event | Meaning | What You Do |
+| --- | --- | --- |
+| **Plan** | AI breaks down a complex task. | Check whether the direction is correct. |
+| **Tool call** | AI is preparing to use a tool or system capability. | Review the target, path, and parameters. |
+| **Observation** | A tool returns data and AI continues analysis. | Wait or add information if requested. |
+| **Final answer** | AI summarizes findings or outputs deliverables. | Validate and continue the task if needed. |
 
-## Understanding the Three Core Systems
+【Image: A task showing plan, tool call, observation, and final answer】
 
-In daily use, you'll frequently interact with Memfit's three core systems. Let's get to know each of them.
+## Which Tutorial to Read Next
 
-### AI Agent Execution Engine
+Read [Agent Tutorial](/docs/help/tutorials/ai-agent) if you want to execute tasks, attach files, approve Reviews, and understand results.
 
-This is the core of Memfit, driving AI to complete everything from simple queries to complex multi-step tasks.
+Read [Knowledge Base Tutorial](/docs/help/tutorials/knowledge-base) if you want AI to answer based on your documents, standards, vulnerability data, or internal materials.
 
-The execution engine supports two modes:
-- **Instant Execution**: For clear single-step tasks, AI directly enters the think-act-observe loop to complete them
-- **Plan Execution**: For complex tasks, AI first creates a plan, decomposes subtasks, and executes them step by step after your confirmation
+Read [Loading and Using SKILLS](/docs/help/tutorials/skills) if you want scenario-based workflows such as code audit, vulnerability analysis, or report generation.
 
-You don't need to manually select a mode -- Memfit automatically determines the appropriate one based on task complexity.
+Read [Advanced Usage](/docs/help/tutorials/advanced) if you want to inspect usage, tune cost and performance, or customize tools and SKILLs:
 
-![image-20260316122228340](/img/help/image-20260316122228340.png)
+- [Usage and Model Performance](/docs/help/tutorials/advanced/usage-and-model-performance): inspect token usage, cache hits, context pressure, speed, and jitter.
+- [Manual Intervention and Context Editing](/docs/help/tutorials/advanced/intervention-and-context): redirect execution, add constraints, and distinguish global context from local context.
+- [Custom Tools and Custom SKILLs](/docs/help/tutorials/advanced/custom-tools-and-skills): package team scripts, fixed workflows, and reusable capabilities.
 
-### Knowledge Base System
+## Recommended Learning Path
 
-The knowledge base system allows you to provide professional domain reference materials to the AI.
-
-![image-20260316122249104](/img/help/image-20260316122249104.png)
-
-You can:
-- **Manually add** knowledge entries
-- **Import** existing documents and data externally
-- **Manage and organize** knowledge bases by different topics
-- **Mount** specific knowledge bases during AI conversations to let AI reference these materials
-
-The knowledge base lets Memfit work with your professional materials rather than relying solely on the AI model's built-in knowledge.
-
-### Memory System
-
-The memory system is one of the key features that distinguishes Memfit from ordinary AI chat tools.
-
-![image-20260316122316802](/img/help/image-20260316122316802.png)
-
-Memory system features:
-- **Automatic Memory**: Memfit automatically distills and memorizes important information during interactions
-- **Long-term Retention**: Memories persist across sessions and won't be lost when conversations are closed
-- **Intelligent Recall**: In subsequent tasks, Memfit automatically associates relevant memories for more precise service
-- **Quality Assessment**: Each memory has a quality score, and the system automatically manages memory priorities
-
-Simply put, Memfit gets smarter the more you use it -- it remembers your preferences, operation history, and domain context, making each interaction more efficient.
+1. Finish [Installation](/docs/help/quick-start/installation).
+2. Finish [Basic Settings and Custom AI Configuration](/docs/help/quick-start/tier-ai).
+3. Read this chapter to understand the interface.
+4. Follow [Agent Tutorial](/docs/help/tutorials/ai-agent) to execute a real task.
+5. Continue with knowledge bases, Skills, and advanced usage as needed.
 
 ## Next Steps
 
-Congratulations on completing the Memfit quick start! Next you can:
-
-1. [Configuration Guide](/docs/help/tutorials/configuration) - Explore more advanced configuration options
-2. [Tool Reference](/docs/help/tutorials/tools) - Learn about all available tools
-3. [Skills Reference](/docs/help/tutorials/forges) - Learn about scenario-specific skill packages
+1. [Agent Tutorial](/docs/help/tutorials/ai-agent)
+2. [Knowledge Base Tutorial](/docs/help/tutorials/knowledge-base)
+3. [Loading and Using SKILLS](/docs/help/tutorials/skills)
+4. [Advanced Usage](/docs/help/tutorials/advanced)

@@ -15,6 +15,10 @@
     "message": "User Manual",
     "description": "Navbar item with label 使用手册"
   },
+  "item.label.开发者指南": {
+    "message": "Developer Guide",
+    "description": "Navbar item with label 开发者指南"
+  },
   "item.label.下载": {
     "message": "Downloads",
     "description": "Navbar item with label 下载"

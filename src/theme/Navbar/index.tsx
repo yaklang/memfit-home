@@ -99,6 +99,17 @@ function MobileMenu({
             {content.nav.docs}
           </Link>
           <Link
+            to="/docs/help/focus-mode-dev/"
+            onClick={onClose}
+            className={`px-4 py-3 rounded-lg text-base font-medium no-underline transition-colors ${
+              theme === 'light'
+                ? 'text-[#4a4a6a] hover:bg-slate-100'
+                : 'text-white/80 hover:bg-white/10'
+            }`}
+          >
+            {content.nav.developer}
+          </Link>
+          <Link
             to="/downloads"
             onClick={onClose}
             className={`px-4 py-3 rounded-lg text-base font-medium no-underline transition-colors ${
@@ -225,6 +236,9 @@ export default function Navbar() {
               </Link>
               <Link to="/docs/help/quick-start/installation" className={linkClass}>
                 {content.nav.docs}
+              </Link>
+              <Link to="/docs/help/focus-mode-dev/" className={linkClass}>
+                {content.nav.developer}
               </Link>
               <Link to="/downloads" className={linkClass}>
                 {content.nav.download}

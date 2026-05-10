@@ -1,136 +1,148 @@
 ---
 sidebar_position: 2
-title: Configure Tiered AI
+title: Basic Settings and Custom AI Configuration
 ---
 
-# Configure Tiered AI
+# Basic Settings and Custom AI Configuration
 
-Memfit uses a tiered AI architecture that allows you to configure different levels of AI models for different types of tasks, achieving the optimal balance between performance and cost.
+After installing and launching Memfit, configure two areas first:
 
-## Why Tiered AI
+1. **Basic settings**: control tool permissions, manual review, local file access, retries, and task limits.
+2. **Custom AI configuration**: add your own AI provider, model, API Key, BaseURL / Endpoint, and routing policy.
 
-In practice, not all tasks require the most powerful AI model:
+These settings determine whether Memfit can complete tasks safely and reliably. For first-time use, follow the recommended setup below, then adjust the details for your workflow.
 
-- Simple information classification and routing decisions can be completed quickly with lightweight models
-- Complex task planning and deep analysis need advanced reasoning models to ensure quality
-- Understanding image content requires models with vision capabilities
+【Image: Memfit settings entry, showing the configuration panel and AI model configuration entry】
 
-Tiered AI enables Memfit to intelligently select the right model for each task, avoiding overkill for simple tasks and underpowering for complex ones.
+## Open Settings
 
-## Three Model Tiers
+In the Memfit main interface:
 
-Memfit divides AI models into three tiers, each handling different responsibilities:
+1. Click **Settings** or the configuration button in the upper-right corner.
+2. Adjust basic settings in the chat configuration panel.
+3. Open **AI Model Configuration** to add or select models.
 
-### Intelligent Model
+If you want to start quickly, keep **Use default system AI configuration** enabled and review the permission controls. If you need to use your own API Key or private model service, continue with custom AI configuration.
 
-Advanced reasoning model for handling complex tasks that require deep thinking.
+## Basic Settings
 
-- **Typical Uses**: Task planning, security audit analysis, code auditing, complex problem reasoning
-- **Recommended Models**: GPT-4, Claude 3.5 Sonnet, DeepSeek R1, etc.
-- **Characteristics**: Strong reasoning ability, but higher invocation cost and slower response
+Basic settings control what the AI Agent can do, when it needs user approval, and how it retries failed tasks.
 
-### Lightweight Model
+### Permission Controls
 
-Fast-response model for handling simple and straightforward tasks.
+| Setting | Recommendation | Purpose |
+| --- | --- | --- |
+| **Enable system file operation permission** | Enable as needed | Allows AI to read task files and generate or modify files. Enable it for real project work; disable it for chat-only demos. |
+| **Disable Tools** | Keep disabled | When enabled, AI cannot call external tools and Memfit behaves like a pure chat assistant. |
+| **Disable tool runtime AI review** | Keep disabled | Skips AI review during tool execution. This can improve speed but reduces automatic risk checks. |
+| **Review rule** | Choose Manual first | Controls high-risk action review: `Manual` asks the user, `AI` lets AI decide, and `Yolo` favors automatic execution. |
+| **Risk threshold** | Default `0.5` | Actions below the threshold can be approved automatically; higher-risk actions are escalated to manual review. |
 
-- **Typical Uses**: Intent classification, information extraction, simple Q&A, task routing
-- **Recommended Models**: GPT-4o-mini, Claude 3.5 Haiku, DeepSeek V3, etc.
-- **Characteristics**: Fast response, low cost, suitable for high-frequency calls
+【Image: Basic settings panel, highlighting file permission, Review rule, risk threshold, and Disable Tools】
 
-### Vision Model
+### Human Interaction Controls
 
-Model with image understanding capabilities for handling tasks involving visual information.
+| Setting | Recommendation | Purpose |
+| --- | --- | --- |
+| **Disable human interaction** | Enabled by default | Prevents AI from repeatedly asking questions during execution. |
+| **Allow human interaction during planning** | Enabled by default | Allows AI to ask clarifying questions while preparing a task plan. |
+| **Planning interaction count** | Default `3` | Limits how many questions AI can ask during planning. |
+| **User interaction limit** | Configure as needed | Limits total user prompts during a task. |
 
-- **Typical Uses**: Screenshot analysis, CAPTCHA recognition, UI element understanding, chart interpretation
-- **Recommended Models**: GPT-4o, Claude 3.5 Sonnet, and other vision-capable models
-- **Characteristics**: Able to understand and analyze image content
+### Task and Context Limits
 
-## Configuration Steps
+| Setting | Default | Purpose |
+| --- | --- | --- |
+| **AI call retry count** | `3` | Retries unstable remote AI calls. |
+| **AI transaction retry count** | `5` | Retries poor-quality or failed task transactions. |
+| **ReAct iteration limit** | `100` | Prevents tasks from running indefinitely. |
+| **Timeline item limit** | `100` | Limits retained timeline entries. |
+| **Timeline content size** | `60 KB` | Limits timeline context size. |
+| **Token pressure threshold** | `40 K` | Warns or compresses context when token pressure is high. |
 
-### Access AI Configuration
+Keep defaults for everyday use. Increase the ReAct iteration limit only when complex tasks stop too early.
 
-In Memfit, navigate to **Settings -> AI Configuration** to find the tiered AI configuration section.
+## Custom AI Configuration
 
-![image-20260316122415332](/img/help/image-20260316122415332.png)
+Memfit organizes AI models by role:
 
-### Configure Intelligent Model
+| Model Type | Purpose | Suitable Models |
+| --- | --- | --- |
+| **High-quality model** | Planning, reasoning, code analysis, security analysis | Stronger reasoning models |
+| **Lightweight model** | Frequent low-cost classification, summarization, routing | Fast, low-cost models |
+| **Vision model** | Screenshots, UI, charts, images | Models with image input support |
 
-In the intelligent model configuration section, add your advanced AI model:
+### Add an AI Model
 
-1. Select an AI provider (e.g., OpenAI, Anthropic, or custom compatible endpoint)
-2. Enter the API Key
-3. Select a model (e.g., `gpt-4`, `claude-3-5-sonnet`)
-4. If needed, configure a custom API address (Base URL)
+In **AI Model Configuration**, click **Add** and fill in:
 
-![image-20260316122504453](/img/help/image-20260316122504453.png)
+| Field | How to Fill |
+| --- | --- |
+| **Provider** | Select a built-in provider or enter a custom OpenAI-compatible provider name. |
+| **Model type** | Choose **High-quality model**, **Lightweight model**, or **Vision model**. |
+| **APItype** | Select `chat_completions` or `responses`. |
+| **Model name** | Choose or enter a model name, such as `gpt-4o`, `gpt-4o-mini`, or `deepseek-chat`. |
+| **ApiKey** | Enter the provider API Key / Token. Some built-in free services may not require a real key. |
 
-### Configure Lightweight Model
+【Image: Add AI model modal, highlighting Provider, Model type, APItype, Model name, and ApiKey】
 
-Similar to the intelligent model configuration, you can select "Model Type" in the configuration panel to configure the lightweight model:
+### Configure BaseURL or Endpoint
 
-1. Select an AI provider
-2. Enter the API Key (can share the same provider as the intelligent model)
-3. Select a lightweight model (e.g., `gpt-4o-mini`, `claude-3-5-haiku`)
+For private deployments, proxy services, or OpenAI-compatible gateways, expand **Advanced Configuration**:
 
-![image-20260316122538263](/img/help/image-20260316122538263.png)
+| Advanced Setting | Use Case |
+| --- | --- |
+| **BaseURL** | Use for standard OpenAI-style paths, such as `https://api.openai.com/` or `https://api.example.com/v1`. |
+| **Enable Endpoint** | Enable when the service does not use standard OpenAI paths. |
+| **Endpoint** | Enter the full request URL, such as `https://api.example.com/v1/chat/completions`. |
+| **Proxy address** | Enter a proxy such as `http://127.0.0.1:7890` when required. |
+| **Header** | Add extra request headers required by an enterprise gateway. |
 
-### Configure Vision Model (Optional)
+【Image: Advanced AI model settings, highlighting BaseURL, Endpoint, proxy, and Header】
 
-If you need AI to handle image-related tasks, you can configure a vision model:
+### Select Active Models
 
-1. Select an AI provider that supports vision capabilities
-2. Select a model that supports image input (e.g., `gpt-4o`)
+After adding models:
 
-### Select Routing Policy
+1. Expand **High-quality model**, **Lightweight model**, or **Vision model**.
+2. Find the model you added.
+3. Select it as the active model.
+4. Configure at least one **High-quality model**. Add a **Lightweight model** to reduce high-frequency task cost.
 
-Memfit provides four model routing policies that determine how models are selected during task execution:
+### Choose Calling Mode
 
-| Policy | Description | Use Case |
-|--------|-------------|----------|
-| **Auto** | Automatically selects the appropriate model tier based on task characteristics | Recommended for most users |
-| **Performance** | Prioritizes intelligent models for best reasoning quality | High quality requirements, cost-insensitive |
-| **Cost** | Prioritizes lightweight models to reduce invocation costs | High-frequency use, limited budget |
-| **Balance** | Strikes a balance between performance and cost | General daily use |
+| Mode | Description | Best For |
+| --- | --- | --- |
+| **Auto** | Automatically selects a model by task content | Recommended default |
+| **Performance** | Prioritizes high-quality models | Quality-first reasoning |
+| **Cost** | Prioritizes lightweight models | High-frequency, budget-sensitive tasks |
+| **Balance** | Balances quality, speed, and cost | Everyday use |
 
-![image-20260316122704407](/img/help/image-20260316122704407.png)
+### Fallback Strategy
 
-### Test Configuration
+**Disable fallback** controls whether Memfit can switch models when the current model is unavailable:
 
-After configuration, it's recommended to test AI model connectivity to confirm the setup is correct:
+- Keep disabled: Memfit can try another tier, such as a lightweight model, when the high-quality model fails.
+- Enable it: model failure stops the task, suitable for strict audit or fixed-model workflows.
 
-1. Use the test function on the configuration page to verify the connection
-2. Confirm that each configured model tier responds normally
+## Recommended First Setup
 
-## Fallback Mechanism
+1. Enable **system file operation permission**.
+2. Set **Review rule** to `Manual`.
+3. Keep **Disable Tools** off.
+4. Keep **Use default system AI configuration** on, or add your own high-quality model.
+5. Set calling mode to **Auto**.
+6. Keep **Disable fallback** off.
 
-Memfit has a built-in intelligent fallback mechanism to ensure service continuity:
+Then return to the main interface and try:
 
-- When the intelligent model is unavailable (e.g., API timeout, quota exhausted), the system will automatically fall back to the lightweight model to continue executing tasks
-- If you don't want automatic fallback, you can disable this behavior in the configuration
+```text
+Summarize the current project structure and identify the main entry files.
+```
 
-This means that even if a model is temporarily unavailable, Memfit can maintain uninterrupted operation as much as possible.
-
-## Configuration Recommendations
-
-### Getting Started
-
-If you're just getting started, we recommend configuring one AI provider for both intelligent and lightweight models, and selecting the **Auto** routing policy:
-
-- Intelligent Model: `gpt-4` or `claude-3-5-sonnet`
-- Lightweight Model: `gpt-4o-mini` or `claude-3-5-haiku`
-- Routing Policy: Auto
-
-### Advanced Configuration
-
-As you use Memfit more, you can:
-
-- Configure different providers for different tiers for multi-source redundancy
-- Adjust routing policies based on actual usage patterns
-- Configure vision models to support image-related tasks
+If Memfit can create a plan, request permissions when needed, and produce a result, the basic settings and AI configuration are ready.
 
 ## Next Steps
 
-With AI configuration complete, you're ready to start using Memfit:
-
 1. [Hello, Memfit!](/docs/help/quick-start/hello-memfit) - Start your first AI Agent experience
-2. [Configuration Guide](/docs/help/tutorials/configuration) - More advanced configuration options
+2. [Advanced Usage](/docs/help/tutorials/advanced) - Inspect usage, control cost, and customize capabilities

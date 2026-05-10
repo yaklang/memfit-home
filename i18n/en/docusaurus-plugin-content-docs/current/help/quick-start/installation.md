@@ -84,5 +84,5 @@ In Memfit, you can conveniently manage the Yaklang engine:
 
 After installation, continue with the following:
 
-1. [Configure Tiered AI](/docs/help/quick-start/tier-ai) - Set up AI models for Memfit
+1. [Basic Settings and Custom AI Configuration](/docs/help/quick-start/tier-ai) - Configure permissions, task settings, and AI models
 2. [Hello, Memfit!](/docs/help/quick-start/hello-memfit) - Start your first AI Agent experience

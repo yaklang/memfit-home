@@ -1,143 +1,274 @@
 ---
-sidebar_position: 4
-title: AI Agent Tutorial
+sidebar_position: 1
+title: Agent Tutorial
 ---
 
-# AI Agent Tutorial
+# Agent Tutorial
 
-This tutorial provides a detailed guide on using Memfit's AI Agent features, including chat interaction, file management, skills usage, and terminal operations.
+AI Agent is Memfit's main workspace. It is not just a chat box; it can read context, call tools, enter focus modes, request Review, and execute tasks.
 
-## Entering the AI Agent Interface
+This chapter follows the normal usage order: configure permissions, enter tasks with `@` context, then specify tools, knowledge bases, SKILLs, and focus modes.
 
-After launching Memfit, click to enter the AI Agent page. AI Agent is Memfit's core interaction interface where all tasks begin.
+【Image: AI Agent workspace labeling input box, @ context entry, Review panel, resource panel, focus mode entry, and model/usage entry】
 
-【配图：AI Agent 完整界面布局的截图】
+## Understand Permissions First
 
-Main interface areas:
+What Agent can do depends on the permissions you give it. Before the first real task, complete permission control in [Basic Configuration and Custom AI Configuration](/docs/help/quick-start/tier-ai).
 
-| Area | Location | Function |
-|------|----------|----------|
-| Chat Area | Center | Input commands, view AI responses and execution process |
-| Homepage Recommendations | Right | Display recommended tools, skills, and knowledge bases |
-| Resource Panel | Lower-left | Manage knowledge bases, skills, and tools |
-| Model Selection | Bottom | Select the current AI model |
+| Setting | Meaning | Recommendation |
+| --- | --- | --- |
+| **Enable system file permissions** | Allow AI to read, create, or modify files in authorized areas. | Usually needed for real project analysis; disable it for chat-only use. |
+| **Disable Tools** | Prevent AI from calling tools. | Keep it off when you want Agent to execute tasks. |
+| **Review rule: Manual** | Plans, tool calls, and file operations require user confirmation. | Recommended for beginners and real projects. |
+| **Review rule: AI** | AI decides whether an operation can continue. | Good for low-risk repetitive tasks. |
+| **Review rule: Yolo** | Prefer automatic execution and fewer confirmations. | Use only in sandboxed, read-only, low-risk tasks. |
+| **Disable tool runtime AI review** | Skip AI review while tools are running. | Faster, but removes an extra risk check. |
+| **Risk threshold** | Controls which actions pass automatically and which require confirmation. | Looser thresholds mean more automatic execution. |
 
-## Chat Interaction
+【Image: Basic settings panel labeling file permission, Review rule, risk threshold, Disable Tools, and Disable tool runtime AI review】
 
-### Sending Messages
+### How to Configure Fully Automatic Execution
 
-Type your task description or question in the dialog box and press `Enter` to send. Use `Shift + Enter` for multi-line input.
+If you explicitly want Agent to run a task with minimal interruption:
 
-You can describe any task in natural language, for example:
+1. Enable **system file permissions**.
+2. Keep **Disable Tools** off.
+3. Set **Review rule** to `Yolo`.
+4. Raise **risk threshold** according to task risk.
+5. If you want fewer mid-run pauses, enable **Disable tool runtime AI review**.
 
+:::warning
+Fully automatic execution reduces human confirmation and risk blocking. Agent may read the wrong directory, call an unsuitable tool, create or modify unexpected files, or amplify mistakes during network requests, command execution, and batch file operations. Use it only in sandboxes, read-only tasks, demos, or scopes you fully understand.
+:::
+
+### Why Manual Review and AI Review Matter
+
+`Manual` is not just friction. It keeps critical decisions with you. Use it for:
+
+- File modification, deletion, overwrite, and batch generation.
+- Network access, scanning, and external requests.
+- Command execution, scripts, and toolchains.
+- Private files, customer data, credentials, and production environments.
+
+`AI` review is a middle ground between speed and safety. AI evaluates the tool name, parameters, context, and risk hints, but it cannot replace your understanding of real business boundaries.
+
+## Enter a Task
+
+Use natural language in the input box. You do not need a fixed command format. Agent decides whether to answer directly, create a plan, call tools, or ask for Review.
+
+A good task includes goal, scope, output format, and permission boundary:
+
+```text
+Read-only analyze the current project. Explain main directories, entry files, configuration, and startup commands.
+Output a Markdown guide for new developers. Do not modify files.
 ```
-Analyze the security configuration of target.com and check for common vulnerabilities
+
+【Image: Natural-language task in the input box, labeling goal, scope, output format, and permission boundary】
+
+For complex tasks, ask for a plan first:
+
+```text
+Do not run tools yet. First describe how you plan to analyze this project.
+Wait for my confirmation before continuing.
 ```
 
-### Multi-turn Conversations
+## Use @ to Add Context
 
-Memfit supports multi-turn conversations where AI remembers the current session context. You can follow up or adjust based on previous tasks:
+When entering a task, use the `@` system to attach files, knowledge bases, tools, SKILLs, or focus modes. `@` explicitly tells Agent what you want it to reference or use.
 
+| @ object | Use when | Example |
+| --- | --- | --- |
+| **@file / @directory** | Analyze specific files, logs, configs, or project folders. | "Analyze startup based on @README.md and @package.json." |
+| **@knowledge base** | Answer according to team rules, product docs, or vulnerability materials. | "Audit this authorization logic based on @TeamSecurityRules." |
+| **@tool** | Ask AI to use a specific tool for checking, querying, or conversion. | "Use @TLSCertificateChecker to inspect example.com." |
+| **@SKILL** | Apply a repeatable scenario workflow. | "Use @JavaCodeAuditSkill to analyze @src/main/java/auth." |
+| **@focus mode** | Enter an execution loop specialized for a task type. | "Use @CodeSecurityAuditFocusMode for this module." |
+
+【Image: @ menu in the input box showing file, knowledge base, tool, SKILL, and focus mode candidates】
+
+You can combine natural language with multiple `@` items:
+
+```text
+Based on @TeamSecureCodingRules, use @CodeSearchTool,
+read-only analyze @src/auth for authorization-bypass risks.
+Output severity, evidence path, trigger condition, and remediation.
 ```
-User: Scan the open ports on 192.168.1.1
-AI: [Executes scan and returns results...]
 
-User: For the discovered port 80, further check the web service security
-AI: [Based on the scan results above, continues deeper inspection...]
+## AI Can See Your User Space
+
+After system file permissions are enabled, Agent can read task-related files in authorized user space and perform file operations after Review approval. This lets it work on real projects without copying everything into chat.
+
+Common operations:
+
+- Read the current project and summarize structure.
+- Inspect a config file for problems.
+- Analyze logs and identify likely causes.
+- Audit a code directory in read-only mode.
+- Generate documents, scripts, or remediation files after confirmation.
+
+【Image: Selecting local files or directories as context, labeling user space, project directory, and read/write Review】
+
+For real files:
+
+1. Give a clear scope, such as "only inspect `src/auth`, skip `node_modules`".
+2. Keep `Manual Review` for write operations.
+3. Avoid accidentally attaching secrets, customer data, personal data, or production credentials.
+4. Ask Agent to include file paths and evidence locations.
+
+## Specify a Tool or Knowledge Base
+
+If you do not want Agent to choose freely, specify the tool or knowledge base with `@` and state the boundary in the task.
+
+Specify a knowledge base:
+
+```text
+Answer only based on @MemfitUserManual:
+How do I configure basic AI models and permission control?
+If the knowledge base does not contain the answer, say "not covered in the materials".
 ```
 
-### Understanding the Execution Process
+Specify a tool:
 
-When AI Agent executes tasks, you can see the complete execution trace in the interface:
+```text
+Use @TLSCertificateChecker to inspect the certificate expiration for example.com.
+Do not use other network scanning tools.
+```
 
-- **Thinking**: AI analyzes the task and decides the next action
-- **Action**: AI invokes specific tools to perform operations
-- **Observation**: AI reviews the results returned by tools
-- **Response**: AI organizes findings and replies to you
+Combine knowledge base and tool:
 
-【配图：AI Agent 执行过程中思考-行动-观察循环的截图】
+```text
+Based on @TeamSecurityRules, use @CodeSearchTool,
+check whether @src/auth contains unauthenticated access.
+Read-only analysis. Do not modify files.
+```
 
-## Adding Files
+【Image: @ knowledge base and @ tool in the input box, labeling specified use and limiting other tools】
 
-You can provide files to the AI as context, allowing AI to reference these file contents when executing tasks.
+If Agent still chooses an unsuitable tool, reject it in Review and add:
 
-### How to Add Files
+```text
+Reject this tool call. Use only the tool I @mentioned. Do not call other tools.
+```
 
-1. Find the file addition entry in the chat interface
-2. Select files to add (supports code files, configuration files, text files, etc.)
-3. File contents will be loaded into the current session context
+## Handle Plans and Review
 
-【配图：添加文件操作界面的截图】
+For complex tasks, Memfit may create a plan or task tree. Check:
 
-### Use Cases
+1. Whether the goal is understood correctly.
+2. Whether the scope is too broad.
+3. Whether sensitive paths may be accessed.
+4. Whether files may be modified or high-risk tools may run.
+5. Whether it uses the knowledge base, tool, SKILL, or focus mode you specified.
 
-- **Code Auditing**: Upload code files for AI to analyze security vulnerabilities
-- **Configuration Review**: Upload configuration files for AI to check security settings
-- **Log Analysis**: Upload log files for AI to identify anomalous behavior
-- **Document Understanding**: Upload technical documents for AI to answer questions based on them
+When Agent is about to run tools, operate on files, or execute a SKILL, Memfit triggers Review according to your settings.
 
-## Using Skills
+| Review type | What you see | Recommendation |
+| --- | --- | --- |
+| **Plan Review** | Steps, goal, execution approach | Confirm direction before continuing. |
+| **Tool Review** | Tool name, parameters, possible impact | Check target, path, parameters, and risk. |
+| **File Review** | File read, write, modification, or generation | Manually confirm write operations. |
+| **SKILL Review** | SKILL name, description, parameters | Confirm scenario and inputs. |
+| **Focus mode Review** | Focus mode and target | Confirm the mode fits the task. |
 
-Skills are Memfit's scenario-based capability enhancement mechanism. Each skill targets a specific scenario, integrating specialized prompts, tool combinations, and domain knowledge.
+【Image: Review panel labeling tool name, parameters, risk note, approve/reject/add-constraint controls】
 
-### Selecting and Activating Skills
+## What Is Focus Mode?
 
-In the AI Agent interface, you can use skills in the following ways:
+A focus mode is an Agent execution loop specialized for a task type. A normal Agent can plan freely; a focus mode preconfigures prompts, tools, actions, steps, and finalization for a specific scenario.
 
-1. **Homepage Recommendations**: Click on skills of interest directly in the right recommendation area
-2. **Resource Panel**: Browse and select skills in the lower-left skills library
-3. **Natural Description**: Describe your task in conversation, and Memfit will automatically match appropriate skills
+Think of it as Agent with a professional workflow.
 
-【配图：技能选择和激活界面的截图】
+Why focus modes matter:
 
-### How Skills Affect Agent Behavior
+- Constrain Agent's action space and reduce drift.
+- Provide stable steps for complex tasks.
+- Auto-load suitable tools and output format.
+- Avoid rewriting long prompts every time.
+- Improve consistency for security audits, traffic analysis, report generation, and similar scenarios.
 
-After activating a skill, the AI Agent's behavior changes:
+【Image: Focus mode selector labeling default, code security audit, knowledge-enhanced Q&A, report generation, and other modes】
 
-- **Expert Knowledge Injection**: AI receives specialized prompts and best practices for the domain
-- **Tool Combination Optimization**: Automatically loads the most relevant tool set for the scenario
-- **Execution Strategy Adjustment**: Executes tasks following the optimal workflow for the scenario
+## Useful Focus Modes
 
-### Skills Auto-Loading Mechanism
+Actual names may vary by version, but these types are common:
 
-Memfit has intelligent skill recommendation capabilities:
+| Focus mode | Good for | Use when |
+| --- | --- | --- |
+| **General ReAct / default** | General Q&A, light analysis, open exploration. | The task has no clear specialized domain. |
+| **Smart Q&A / knowledge-enhanced Q&A** | Answering from a knowledge base. | You need strict reference to docs, rules, or manuals. |
+| **Directory exploration** | Project structure, entry points, module relationships. | You are seeing a project for the first time. |
+| **Report generation** | Turning materials into structured reports. | You already have materials and need polished output. |
+| **Code security audit** | Authorization, injection, path traversal, secret exposure. | You want to inspect a code directory for security risks. |
+| **HTTP traffic analysis** | Requests, responses, API behavior, abnormal traffic. | You have HTTP flows or API records. |
+| **Infosec reconnaissance** | Multi-tool information collection. | You are doing authorized security testing or asset analysis. |
+| **SyntaxFlow rule writing** | Generate or debug SyntaxFlow rules. | You want to turn audit ideas into rules. |
+| **Yaklang / Python script generation** | Generate helper scripts. | You need automation scripts drafted by Agent. |
 
-- **Task Analysis**: When you input a task description, Memfit analyzes the task characteristics
-- **Auto Matching**: Automatically recommends the most suitable skills based on task type
-- **Dynamic Loading**: During execution, if additional skills are needed, Memfit will dynamically recommend them
-- **Homepage Recommendations**: Based on your usage history and common scenarios, the homepage recommends skills you're most likely to need
+Example:
 
-【配图：技能自动推荐机制展示的截图】
+```text
+Enter @CodeSecurityAuditFocusMode.
+Read-only analyze @src/auth for authorization-bypass risks.
+First produce a plan and wait for my confirmation.
+```
 
-## Using the Terminal
+For focus mode development and extension, read the top-level **Developer Guide**.
 
-Memfit's AI Agent has terminal operation capabilities, allowing command execution during task performance.
+## Observe Execution and Validate Results
 
-### Terminal Features
+During execution, the conversation shows plan, action, observation, interim summary, and final response.
 
-- AI can automatically invoke terminal commands during task execution
-- Supports common system commands and tool invocations
-- Terminal operation input/output is fully visible in the interface
+Validate:
 
-【配图：AI Agent 中终端使用界面的截图】
+1. Whether it followed your scope and permission boundary.
+2. Whether it used the files, knowledge bases, tools, or focus modes you `@mentioned`.
+3. Whether it included evidence paths, tool results, or knowledge-base sources.
+4. Whether the conclusions are actionable rather than generic.
 
-### Security Mechanisms
+Follow-up:
 
-Terminal operations are subject to security controls:
+```text
+Turn the findings into a remediation checklist for the development team.
+Keep evidence path and priority for each item.
+```
 
-- Sensitive commands require your confirmation before execution
-- Operation scope is limited by permission configurations
-- All command execution records are traceable
+## Common Task Templates
 
-## Best Practices
+### Project Understanding
 
-1. **Be Clear**: Describe your task goals and constraints as clearly as possible
-2. **Leverage Skills**: For professional scenario tasks, activate relevant skills for better results
-3. **Provide Context**: Supply sufficient background information through file additions or knowledge base mounting
-4. **Iterate**: Complex tasks can be approached step by step, gradually refining requirements
+```text
+Use @DirectoryExplorationFocusMode to read-only analyze @currentProject.
+Explain directory structure, entry points, configuration, and startup commands.
+Do not modify files.
+```
+
+### Code Audit
+
+```text
+Use @CodeSecurityAuditFocusMode, based on @TeamSecurityRules,
+read-only audit @src/auth.
+Focus on authentication, authorization, and sensitive data exposure.
+Output severity, evidence location, and remediation.
+```
+
+### Knowledge Base Q&A
+
+```text
+Answer only based on @MemfitUserManual:
+How do I configure permission control and custom AI models?
+Do not use information outside the knowledge base.
+```
+
+### Specific Tool Execution
+
+```text
+Use @TLSCertificateChecker to inspect example.com.
+Only output subject, issuer, expiration, days remaining, and risk notes.
+```
 
 ## Next Steps
 
-- [Knowledge Base Tutorial](/docs/help/tutorials/knowledge-base) - Learn how to build and use knowledge bases
-- [Memory Tutorial](/docs/help/tutorials/memory) - Understand AI's long-term memory mechanism
-- [Scene Optimization](/docs/help/tutorials/scene-optimization) - Strengthen your Agent for specific scenarios
+- [Knowledge Base Tutorial](/docs/help/tutorials/knowledge-base)
+- [Loading and Using SKILLS](/docs/help/tutorials/skills)
+- [Manual Intervention and Context Editing](/docs/help/tutorials/advanced/intervention-and-context)
+- [Advanced Usage](/docs/help/tutorials/advanced)

@@ -97,6 +97,12 @@ const config: Config = {
           label: '使用手册',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'developerSidebar',
+          position: 'left',
+          label: '开发者指南',
+        },
+        {
           to: '/downloads',
           position: 'left',
           label: '下载',
@@ -143,7 +149,11 @@ const config: Config = {
             },
             {
               label: '教程',
-              to: '/docs/help/tutorials/configuration',
+              to: '/docs/help/tutorials/ai-agent',
+            },
+            {
+              label: '开发者指南',
+              to: '/docs/help/focus-mode-dev/',
             },
           ],
         },
