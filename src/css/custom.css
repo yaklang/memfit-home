@@ -77,6 +77,226 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+/* 文档正文与截图版式 */
+.theme-doc-markdown,
+.markdown {
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.theme-doc-markdown p:has(> .memfit-doc-figure),
+.markdown p:has(> .memfit-doc-figure) {
+  margin: 0;
+}
+
+.memfit-doc-figure {
+  position: relative;
+  display: block;
+  width: min(100%, 880px);
+  margin: 32px auto 56px;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid #e9e5ff;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(80, 60, 180, 0.06);
+  appearance: none;
+  color: inherit;
+  cursor: zoom-in;
+  font: inherit;
+  text-align: inherit;
+}
+
+.memfit-doc-figure:hover {
+  box-shadow: 0 16px 48px rgba(80, 60, 180, 0.1);
+}
+
+.memfit-doc-figure:focus-visible {
+  outline: 3px solid rgba(67, 115, 187, 0.34);
+  outline-offset: 4px;
+}
+
+.memfit-doc-figure[data-layout='wide'] {
+  width: min(calc(100vw - 48px), 1080px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.memfit-doc-figure[data-layout='narrow'] {
+  width: min(100%, 680px);
+}
+
+.memfit-doc-figure[data-layout='tall'] {
+  width: min(100%, 760px);
+  max-height: 720px;
+}
+
+.memfit-doc-figure[data-layout='tall']::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  height: 120px;
+  pointer-events: none;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.96)
+  );
+}
+
+.memfit-doc-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.memfit-doc-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 24px;
+  overflow: auto;
+  background: rgba(12, 14, 20, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: zoom-out;
+}
+
+.memfit-doc-lightbox__image {
+  display: block;
+  width: auto;
+  max-width: min(1200px, calc(100vw - 48px));
+  max-height: calc(100vh - 96px);
+  height: auto;
+  margin: auto;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  cursor: default;
+}
+
+.memfit-doc-lightbox[data-layout='narrow'] .memfit-doc-lightbox__image {
+  max-width: min(760px, calc(100vw - 48px));
+}
+
+.memfit-doc-lightbox[data-layout='tall'] .memfit-doc-lightbox__image {
+  max-width: min(860px, calc(100vw - 48px));
+  max-height: none;
+}
+
+.memfit-doc-lightbox__close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.memfit-doc-lightbox__close:hover,
+.memfit-doc-lightbox__close:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+[data-theme='dark'] .memfit-doc-figure {
+  border-color: rgba(126, 148, 188, 0.28);
+  background: #1f232a;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme='dark'] .memfit-doc-figure[data-layout='tall']::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 35, 42, 0),
+    rgba(31, 35, 42, 0.96)
+  );
+}
+
+@media screen and (max-width: 996px) {
+  .theme-doc-markdown,
+  .markdown {
+    max-width: 880px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .memfit-doc-figure,
+  .memfit-doc-figure[data-layout='wide'],
+  .memfit-doc-figure[data-layout='narrow'],
+  .memfit-doc-figure[data-layout='tall'] {
+    width: 100%;
+    margin: 28px auto 44px;
+    padding: 8px;
+    border-radius: 14px;
+    transform: none;
+  }
+
+  .memfit-doc-image {
+    border-radius: 10px;
+  }
+
+  .memfit-doc-figure[data-layout='tall'] {
+    max-height: 640px;
+  }
+
+  .memfit-doc-figure[data-layout='tall']::after {
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    height: 96px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .memfit-doc-lightbox {
+    padding: 56px 16px 24px;
+  }
+
+  .memfit-doc-lightbox__image,
+  .memfit-doc-lightbox[data-layout='narrow'] .memfit-doc-lightbox__image,
+  .memfit-doc-lightbox[data-layout='tall'] .memfit-doc-lightbox__image {
+    max-width: calc(100vw - 32px);
+    border-radius: 12px;
+  }
+
+  .memfit-doc-lightbox__image {
+    max-height: calc(100vh - 80px);
+  }
+
+  .memfit-doc-lightbox[data-layout='tall'] .memfit-doc-lightbox__image {
+    max-height: none;
+  }
+
+  .memfit-doc-lightbox__close {
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
 /* navbar 已被 swizzle 替换为自定义组件，占位元素恢复 sticky 定位由 --ifm-navbar-height 控制高度 */
 
 /* 页脚紧凑化处理 */
