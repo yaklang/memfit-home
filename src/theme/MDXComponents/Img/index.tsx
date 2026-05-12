@@ -139,6 +139,12 @@ export default function MDXImg(props: Props): ReactNode {
           onLoad={handleLoad}
           className={clsx('memfit-doc-image', className)}
         />
+        {layout === 'tall' && (
+          <span className="memfit-doc-expand-hint" aria-hidden="true">
+            <span className="memfit-doc-expand-hint__text">内容已折叠</span>
+            <span className="memfit-doc-expand-hint__button">点击展开</span>
+          </span>
+        )}
       </button>
       {lightbox}
     </>
