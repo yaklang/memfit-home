@@ -3,51 +3,51 @@
 > Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，采用递归式双引擎（ReAct+Plan）架构，让 AI 拥有看得见的行动力。提供记忆/RAG、工具/Forges、自旋检测等能力，面向安全自动化与代码审计场景。
 
 ## 技术架构
-- [数据流与人机交互](https://memfit.ai/docs/product/architecture/data-flow): Memfit AI 的端到端数据流：从用户输入、记忆检索、工具执行到结果回流，以及人机交互与干预机制的设计。
-- [核心架构：递归式双引擎架构](https://memfit.ai/docs/product/architecture/recursive-dual-engine): 详解 Memfit AI 的递归式双引擎架构：ReAct 引擎实时推理与行动，Plan 引擎任务分解与规划，二者递归协作完成复杂安全任务。
-- [Agentic 可靠性保障](https://memfit.ai/docs/product/architecture/reliability): Memfit AI 的可靠性保障机制：自旋检测、记忆增强、反思决策等，确保 Agent 在长流程安全任务中稳定可控。
-- [协调器](https://memfit.ai/docs/product/features/coordinator): Memfit AI 协调器：负责任务调度与多 Agent 协作，编排递归式双引擎的执行流程与上下文管理。
-- [记忆与 RAG](https://memfit.ai/docs/product/features/memory-rag): Memfit AI 的记忆与 RAG 系统：持久化知识库、检索增强生成，让 AI Agent 记得住上下文、查得到证据。
-- [ReAct 循环](https://memfit.ai/docs/product/features/react-loop): Memfit AI 的 ReAct 循环引擎：推理（Reason）与行动（Act）交替执行，实时响应环境反馈完成安全任务。
-- [工具与 Forges](https://memfit.ai/docs/product/features/tools-forges): Memfit AI 的工具与 Forges 体系：可扩展的工具调用与 Forge 机制，连接 Yaklang 安全能力与外部系统。
-- [概览](https://memfit.ai/docs/product/overview): Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，采用递归式双引擎（ReAct+Plan）架构，面向安全自动化与代码审计场景。
-- [安全自动化](https://memfit.ai/docs/product/use-cases/automation): Memfit AI 实现智能安全自动化，将 AI 驱动的决策与 Yaklang 强大的脚本能力相结合。
-- [代码审计](https://memfit.ai/docs/product/use-cases/code-review): Memfit AI 提供智能代码审计能力，结合静态分析与 AI 驱动的理解来识别安全漏洞和代码质量问题。
-- [安全审计](https://memfit.ai/docs/product/use-cases/security-audit): Memfit AI 在安全审计场景的应用：自动化漏洞检测、代码审计与风险分析，提升安全团队的审计效率。
+- [数据流与人机交互](https://memfit.ai/docs/product/architecture/data-flow/): Memfit AI 的端到端数据流：从用户输入、记忆检索、工具执行到结果回流，以及人机交互与干预机制的设计。
+- [核心架构：递归式双引擎架构](https://memfit.ai/docs/product/architecture/recursive-dual-engine/): 详解 Memfit AI 的递归式双引擎架构：ReAct 引擎实时推理与行动，Plan 引擎任务分解与规划，二者递归协作完成复杂安全任务。
+- [Agentic 可靠性保障](https://memfit.ai/docs/product/architecture/reliability/): Memfit AI 的可靠性保障机制：自旋检测、记忆增强、反思决策等，确保 Agent 在长流程安全任务中稳定可控。
+- [协调器](https://memfit.ai/docs/product/features/coordinator/): Memfit AI 协调器：负责任务调度与多 Agent 协作，编排递归式双引擎的执行流程与上下文管理。
+- [记忆与 RAG](https://memfit.ai/docs/product/features/memory-rag/): Memfit AI 的记忆与 RAG 系统：持久化知识库、检索增强生成，让 AI Agent 记得住上下文、查得到证据。
+- [ReAct 循环](https://memfit.ai/docs/product/features/react-loop/): Memfit AI 的 ReAct 循环引擎：推理（Reason）与行动（Act）交替执行，实时响应环境反馈完成安全任务。
+- [工具与 Forges](https://memfit.ai/docs/product/features/tools-forges/): Memfit AI 的工具与 Forges 体系：可扩展的工具调用与 Forge 机制，连接 Yaklang 安全能力与外部系统。
+- [概览](https://memfit.ai/docs/product/overview/): Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，采用递归式双引擎（ReAct+Plan）架构，面向安全自动化与代码审计场景。
+- [安全自动化](https://memfit.ai/docs/product/use-cases/automation/): Memfit AI 实现智能安全自动化，将 AI 驱动的决策与 Yaklang 强大的脚本能力相结合。
+- [代码审计](https://memfit.ai/docs/product/use-cases/code-review/): Memfit AI 提供智能代码审计能力，结合静态分析与 AI 驱动的理解来识别安全漏洞和代码质量问题。
+- [安全审计](https://memfit.ai/docs/product/use-cases/security-audit/): Memfit AI 在安全审计场景的应用：自动化漏洞检测、代码审计与风险分析，提升安全团队的审计效率。
 
 ## 使用手册
-- [你好，Memfit！](https://memfit.ai/docs/help/quick-start/hello-memfit): 本章是 Memfit 的基础导览。它不会把每个功能都讲完，而是帮助你建立第一张地图：Memfit 的界面由哪些区域组成、第一次任务如何开始、遇到知识库和 Skills 时应该去读哪篇教程。
-- [认识与安装 Memfit AI](https://memfit.ai/docs/help/quick-start/installation): Memfit AI 快速开始：环境准备、macOS/Linux/Windows 安装步骤与首次运行，几分钟上手 Yaklang 官方 AI Agent 框架。
-- [基础配置与自定义 AI 配置](https://memfit.ai/docs/help/quick-start/tier-ai): Memfit AI 快速开始：权限控制与基础参数配置、自定义 AI 模型接入，安装后建议先完成的两类设置。
-- [高级使用](https://memfit.ai/docs/help/tutorials/advanced): 本章面向已经能完成基础任务的用户，介绍如何观察模型表现、排查缓存和上下文问题、主动干预执行过程，以及把团队能力沉淀为自定义工具和 SKILL。
-- [自定义工具与自定义 SKILL](https://memfit.ai/docs/help/tutorials/advanced/custom-tools-and-skills): 当你发现某个操作会反复出现，就应该把它从“每次都写提示词”升级为“可复用能力”。在 Memfit 中，工具负责原子动作，SKILL 负责场景流程。
-- [人工干预与上下文修改](https://memfit.ai/docs/help/tutorials/advanced/intervention-and-context): Memfit 的 Agent 执行过程不是黑盒。你可以在计划、工具调用、SKILL 执行、输出整理等阶段主动干预，让它停下来、改方向、补充约束，或调整后续上下文。
-- [用量与模型表现](https://memfit.ai/docs/help/tutorials/advanced/usage-and-model-performance): 当一次任务变贵、变慢或结果开始不稳定时，先看用量面板。Memfit 会把模型调用过程中的输入、输出、缓存、上下文压力和速度数据展示出来，帮助你判断问题发生在上下文、模型选择、网络连接，还是任务本身。
-- [Agent 使用教程](https://memfit.ai/docs/help/tutorials/ai-agent): Memfit AI Agent 完整上手教程：从创建 Agent、配置工具与技能，到执行安全任务的端到端实战示例。
-- [知识库系统教程](https://memfit.ai/docs/help/tutorials/knowledge-base): 知识库让 Memfit 能基于你的资料工作。它适合存放产品文档、团队规范、项目说明、安全资料、历史经验和需要长期复用的领域知识。
-- [如何加载和使用 SKILLS](https://memfit.ai/docs/help/tutorials/skills): Skills 是 Memfit 的场景化能力包。一个 Skill 通常会组合提示词、工具、参数表单和执行策略，让 Agent 在特定任务上更稳定。
+- [你好，Memfit！](https://memfit.ai/docs/help/quick-start/hello-memfit/): 本章是 Memfit 的基础导览。它不会把每个功能都讲完，而是帮助你建立第一张地图：Memfit 的界面由哪些区域组成、第一次任务如何开始、遇到知识库和 Skills 时应该去读哪篇教程。
+- [认识与安装 Memfit AI](https://memfit.ai/docs/help/quick-start/installation/): Memfit AI 快速开始：环境准备、macOS/Linux/Windows 安装步骤与首次运行，几分钟上手 Yaklang 官方 AI Agent 框架。
+- [基础配置与自定义 AI 配置](https://memfit.ai/docs/help/quick-start/tier-ai/): Memfit AI 快速开始：权限控制与基础参数配置、自定义 AI 模型接入，安装后建议先完成的两类设置。
+- [高级使用](https://memfit.ai/docs/help/tutorials/advanced/): 本章面向已经能完成基础任务的用户，介绍如何观察模型表现、排查缓存和上下文问题、主动干预执行过程，以及把团队能力沉淀为自定义工具和 SKILL。
+- [自定义工具与自定义 SKILL](https://memfit.ai/docs/help/tutorials/advanced/custom-tools-and-skills/): 当你发现某个操作会反复出现，就应该把它从“每次都写提示词”升级为“可复用能力”。在 Memfit 中，工具负责原子动作，SKILL 负责场景流程。
+- [人工干预与上下文修改](https://memfit.ai/docs/help/tutorials/advanced/intervention-and-context/): Memfit 的 Agent 执行过程不是黑盒。你可以在计划、工具调用、SKILL 执行、输出整理等阶段主动干预，让它停下来、改方向、补充约束，或调整后续上下文。
+- [用量与模型表现](https://memfit.ai/docs/help/tutorials/advanced/usage-and-model-performance/): 当一次任务变贵、变慢或结果开始不稳定时，先看用量面板。Memfit 会把模型调用过程中的输入、输出、缓存、上下文压力和速度数据展示出来，帮助你判断问题发生在上下文、模型选择、网络连接，还是任务本身。
+- [Agent 使用教程](https://memfit.ai/docs/help/tutorials/ai-agent/): Memfit AI Agent 完整上手教程：从创建 Agent、配置工具与技能，到执行安全任务的端到端实战示例。
+- [知识库系统教程](https://memfit.ai/docs/help/tutorials/knowledge-base/): 知识库让 Memfit 能基于你的资料工作。它适合存放产品文档、团队规范、项目说明、安全资料、历史经验和需要长期复用的领域知识。
+- [如何加载和使用 SKILLS](https://memfit.ai/docs/help/tutorials/skills/): Skills 是 Memfit 的场景化能力包。一个 Skill 通常会组合提示词、工具、参数表单和执行策略，让 Agent 在特定任务上更稳定。
 
 ## 开发者指南
-- [专注模式开发者总览](https://memfit.ai/docs/help/focus-mode-dev): 高度可定制化的 AI 原子任务执行系统：把 ReAct 的非确定性 LLM 推理与确定性的工程能力（Hook、LiteForge、验证门、自旋检测）拼成可组合的领域子循环。
-- [04. Action 体系](https://memfit.ai/docs/help/focus-mode-dev/actions): LoopAction 是专注模式的"原子动作单元"。这一章覆盖： 源码 action.go:13-27： type LoopAction struct { AsyncMode bool // 是否切到异步模式（plan / forge 经常
-- [01. 架构与执行流程](https://memfit.ai/docs/help/focus-mode-dev/architecture): 本章是理解整个系统的基础。读完后你应该能回答： ReActLoop 定义在 reactloop.go。它的字段非常多，但按职责可以分成 9 组： 详见 03-prompt-system.md。
-- [10. 端到端：从零构建一个 loop_xxx](https://memfit.ai/docs/help/focus-mode-dev/build-your-own-loop): 本章用 12 步从零构建一个完整的专注模式。我们要做的 loop 叫 loop_log_analyze：分析一段日志，找出异常事件并生成报告。
-- [09. Capabilities：能力体系与发现](https://memfit.ai/docs/help/focus-mode-dev/capabilities): reactloops 把所有"AI 可调用的资源"统一抽象为能力（Capability）： 本章讲清楚这套体系：发现、注入、调用、子 loop 即能力。
-- [11. 案例研究：17 个专注模式横向对比](https://memfit.ai/docs/help/focus-mode-dev/case-studies): reactloops 目录下当前已注册 17 个专注模式。本章给出横向对比表，并对其中 5 个最有学习价值的 loop 做深度拆解。
-- [12. 调试与可观测性](https://memfit.ai/docs/help/focus-mode-dev/debugging-and-observability): reactloops 内置了多层调试基础设施，让你可以事后查看每一轮的 prompt、action、感知、意图识别快照。本章梳理： 源码 workspace_debug.go:15-29： const ( envAIWorkspaceDeb
-- [08. 确定性四件套：感知 / 反思 / 自旋 / 验证门](https://memfit.ai/docs/help/focus-mode-dev/determinism-mechanisms): ReAct 主循环本质上是非确定的：LLM 推理 → 选 action → 执行 → 再推理。如果不加约束，循环可能： reactloops 通过四件套机制把"非确定 LLM"挤回"可承诺工程"： flowchart TD Action["
-- [06. Emitter 与流式输出](https://memfit.ai/docs/help/focus-mode-dev/emitter-and-streaming): Emitter 是专注模式与外部世界（前端 UI、CLI、日志）通信的唯一通道。本章讲清楚： 源码 common/ai/aid/aicommon/emitter.go:25-58： type BaseEmitter func(e *sche
-- [05. Hook 与生命周期](https://memfit.ai/docs/help/focus-mode-dev/hooks-and-lifecycle): Hook 是专注模式给"边界事件"留的扩展点。本章覆盖： sequenceDiagram autonumber participant Caller as 调用方 participant Factory as 工厂(LoopFactory)
-- [07. LiteForge：把不确定塞进确定的盒子](https://memfit.ai/docs/help/focus-mode-dev/liteforge): LiteForge 是 reactloops 把"非确定 LLM"变成"确定中间步骤"的关键武器。本章讲清楚： 源码 common/aiforge/liteforge.go:49-57 的注释说得很清楚： LiteForge 被设计只允许提
-- [02. Options 完整参考](https://memfit.ai/docs/help/focus-mode-dev/options-reference): 本章是 options.go 的"使用手册"。所有 With* 选项按职责分组，每个给出： func WithMaxIterations(maxIterations int) ReActLoopOption 设置 r.maxIteratio
-- [03. Prompt 系统](https://memfit.ai/docs/help/focus-mode-dev/prompt-system): 本章解释每一轮主循环 prompt 是怎么"长"出来的：模板长什么样、占位符从哪儿来、谁在两层渲染、如何防注入、如何调试。
-- [14. 流式输出与 UX 实战](https://memfit.ai/docs/help/focus-mode-dev/streaming-ux): 「能不能流出来」决定用户是否信任你的 Agent。 一个专注模式如果只在最后一刻砸出大段文字，用户的体感是「卡了 30 秒，然后弹了一坨」。 一个专注模式如果边算边流，用户的体感是「它在思考、它在写、它快好了」。 这两种体验对应同样的算力消
-- [13. Yak 专注模式（Yak Focus Mode）](https://memfit.ai/docs/help/focus-mode-dev/yak-focus-mode): 不能因为是 yak 脚本就阉割任何 ReActLoop 能力。
+- [专注模式开发者总览](https://memfit.ai/docs/help/focus-mode-dev/): 高度可定制化的 AI 原子任务执行系统：把 ReAct 的非确定性 LLM 推理与确定性的工程能力（Hook、LiteForge、验证门、自旋检测）拼成可组合的领域子循环。
+- [04. Action 体系](https://memfit.ai/docs/help/focus-mode-dev/actions/): LoopAction 是专注模式的原子动作单元。本章讲清 Action 的结构定义、注册方式、同步/异步模式与执行生命周期。
+- [01. 架构与执行流程](https://memfit.ai/docs/help/focus-mode-dev/architecture/): ReActLoop 主循环的完整执行流程：工厂创建、每轮"推理-行动-感知"迭代与终止条件，核心字段按职责分组解读。
+- [10. 端到端：从零构建一个 loop_xxx](https://memfit.ai/docs/help/focus-mode-dev/build-your-own-loop/): 12 步实战构建一个完整的专注模式 loop_log_analyze（日志异常分析与报告），可直接作为新 loop 的开发模板。
+- [09. Capabilities：能力体系与发现](https://memfit.ai/docs/help/focus-mode-dev/capabilities/): reactloops 把所有 AI 可调用的资源统一抽象为 Capability：能力的发现、注入与调用方式，以及"子 loop 即能力"的复用模型。
+- [11. 案例研究：17 个专注模式横向对比](https://memfit.ai/docs/help/focus-mode-dev/case-studies/): 对 reactloops 目录下已注册的 17 个专注模式做横向对比，并深度拆解其中 5 个最有学习价值的 loop。
+- [12. 调试与可观测性](https://memfit.ai/docs/help/focus-mode-dev/debugging-and-observability/): reactloops 内置的多层调试基础设施：如何事后查看每一轮的 prompt、action、感知与意图识别快照。
+- [08. 确定性四件套：感知 / 反思 / 自旋 / 验证门](https://memfit.ai/docs/help/focus-mode-dev/determinism-mechanisms/): 用感知、反思、自旋检测、验证门四个机制，把非确定的 LLM 循环约束为可承诺的确定性行为。
+- [06. Emitter 与流式输出](https://memfit.ai/docs/help/focus-mode-dev/emitter-and-streaming/): Emitter 是专注模式与外部世界（前端 UI、CLI、日志）通信的唯一通道：事件模型与流式输出实现。
+- [05. Hook 与生命周期](https://memfit.ai/docs/help/focus-mode-dev/hooks-and-lifecycle/): Hook 是专注模式为边界事件预留的扩展点：LoopFactory 的生命周期时序与各 Hook 的触发时机。
+- [07. LiteForge：把不确定塞进确定的盒子](https://memfit.ai/docs/help/focus-mode-dev/liteforge/): LiteForge 把非确定的 LLM 输出装进确定的中间步骤：受约束的提示词-解析-校验管线设计。
+- [02. Options 完整参考](https://memfit.ai/docs/help/focus-mode-dev/options-reference/): options.go 全部 With* 选项的使用手册，按职责分组并给出代码示例。
+- [03. Prompt 系统](https://memfit.ai/docs/help/focus-mode-dev/prompt-system/): 每轮主循环 prompt 的组装方式：模板结构、占位符来源、两层渲染机制、防注入与调试方法。
+- [14. 流式输出与 UX 实战](https://memfit.ai/docs/help/focus-mode-dev/streaming-ux/): 边算边流的体验设计：如何让专注模式逐步输出结果，建立用户对 Agent 执行过程的信任。
+- [13. Yak 专注模式（Yak Focus Mode）](https://memfit.ai/docs/help/focus-mode-dev/yak-focus-mode/): 在 Yak 脚本中运行完整 ReActLoop 能力的专注模式：不因脚本形态阉割任何 Agent 能力。
 
 ## English Docs
 - [Hello, Memfit!](https://memfit.ai/en/docs/help/quick-start/hello-memfit/): This chapter is a basic orientation for Memfit. It does not explain every feature in depth; it gives you the first map: what the main interface contains, how to start your first task, and where to go next for knowledge bases, Skills, and advanced usage.
 - [Getting Started with Memfit AI](https://memfit.ai/en/docs/help/quick-start/installation/): Quick start with Memfit AI — environment setup, installation on macOS/Linux/Windows, and first run. Get going with Yaklang's official AI Agent framework in minutes.
-- [Basic Settings and Custom AI Configuration](https://memfit.ai/en/docs/help/quick-start/tier-ai/): After installing and launching Memfit, configure two areas first:
+- [Basic Settings and Custom AI Configuration](https://memfit.ai/en/docs/help/quick-start/tier-ai/): Memfit AI quick start — tool permissions and basic parameters, plus custom AI provider and model setup; two recommended settings to complete right after installation.
 - [Advanced Usage](https://memfit.ai/en/docs/help/tutorials/advanced/): This chapter covers model usage inspection, cache and context diagnostics, manual intervention during execution, and custom tools or SKILLs for reusable team workflows.
 - [Custom Tools and Custom SKILLs](https://memfit.ai/en/docs/help/tutorials/advanced/custom-tools-and-skills/): When an operation repeats, turn it from "write the prompt again" into a reusable capability. In Memfit, tools are atomic actions, while SKILLs are scenario workflows.
 - [Manual Intervention and Context Editing](https://memfit.ai/en/docs/help/tutorials/advanced/intervention-and-context/): Memfit Agent execution is not a black box. During planning, tool calls, SKILL execution, and final reporting, you can pause, redirect, add constraints, or adjust context for later steps.
@@ -67,14 +67,35 @@
 - [Code Review](https://memfit.ai/en/docs/product/use-cases/code-review/): Memfit AI provides intelligent code review capabilities, combining static analysis with AI-powered understanding to identify security vulnerabilities and code quality issues.
 - [Security Audit](https://memfit.ai/en/docs/product/use-cases/security-audit/): Applying Memfit AI to security audits — automated vulnerability detection, code auditing, and risk analysis that boost security team efficiency.
 
+## Focus Mode Developer Guide (EN)
+- [Focus Mode Developer Overview](https://memfit.ai/en/docs/help/focus-mode-dev/): A highly customizable atomic-task execution system for AI: combining non-deterministic LLM reasoning with deterministic engineering capabilities (Hooks, LiteForge, validation gates, spin detection) into composable domain sub-loops.
+- [04. Action System](https://memfit.ai/en/docs/help/focus-mode-dev/actions/): LoopAction, the atomic action unit of focus modes — structure, registration, sync/async modes, and execution lifecycle.
+- [01. Architecture and Execution Flow](https://memfit.ai/en/docs/help/focus-mode-dev/architecture/): The complete ReActLoop main-loop execution flow: factory creation, per-iteration reason-act-perceive cycles, and termination conditions.
+- [10. End-to-End: Build a loop_xxx from Scratch](https://memfit.ai/en/docs/help/focus-mode-dev/build-your-own-loop/): A 12-step walkthrough building a complete focus mode (loop_log_analyze) that you can use as a template for new loops.
+- [09. Capabilities: Discovery and System](https://memfit.ai/en/docs/help/focus-mode-dev/capabilities/): How reactloops unifies all AI-callable resources as Capabilities: discovery, injection, invocation, and "sub-loop as capability".
+- [11. Case Study: 17 Focus Modes Compared](https://memfit.ai/en/docs/help/focus-mode-dev/case-studies/): A side-by-side comparison of the 17 registered focus modes, with deep dives into the 5 most instructive ones.
+- [12. Debugging and Observability](https://memfit.ai/en/docs/help/focus-mode-dev/debugging-and-observability/): The built-in multi-layer debugging infrastructure: inspecting per-iteration prompts, actions, perception, and intent-recognition snapshots.
+- [08. The Determinism Quartet: Perception / Reflection / Spin / Validation Gates](https://memfit.ai/en/docs/help/focus-mode-dev/determinism-mechanisms/): Four mechanisms that constrain the non-deterministic LLM loop into promisable, deterministic behavior.
+- [06. Emitter and Streaming Output](https://memfit.ai/en/docs/help/focus-mode-dev/emitter-and-streaming/): Emitter, the sole channel between focus modes and the outside world (frontend UI, CLI, logs): event model and streaming.
+- [05. Hooks and Lifecycle](https://memfit.ai/en/docs/help/focus-mode-dev/hooks-and-lifecycle/): Hooks as extension points for boundary events: LoopFactory lifecycle sequence and when each hook fires.
+- [07. LiteForge: Boxing Non-Determinism](https://memfit.ai/en/docs/help/focus-mode-dev/liteforge/): LiteForge packs non-deterministic LLM output into deterministic intermediate steps: a constrained prompt-parse-validate pipeline.
+- [02. Options Complete Reference](https://memfit.ai/en/docs/help/focus-mode-dev/options-reference/): A user manual for every With* option in options.go, grouped by responsibility with code examples.
+- [03. Prompt System](https://memfit.ai/en/docs/help/focus-mode-dev/prompt-system/): How each main-loop prompt is assembled: templates, placeholder sources, two-layer rendering, injection defense, and debugging.
+- [14. Streaming Output and UX in Practice](https://memfit.ai/en/docs/help/focus-mode-dev/streaming-ux/): Experience design for incremental output: how streaming builds user trust in agent execution.
+- [13. Yak Focus Mode](https://memfit.ai/en/docs/help/focus-mode-dev/yak-focus-mode/): Running the full ReActLoop capability inside Yak scripts, without any feature stripped.
+
 ## Optional
-- [关于](https://memfit.ai/about): Memfit AI 团队、Yaklang 生态归属与联系方式
-- [下载](https://memfit.ai/downloads): macOS / Windows / Linux 客户端安装包
-- [隐私政策](https://memfit.ai/privacy-policy): 数据处理与隐私说明
-- [使用条款](https://memfit.ai/terms): 服务使用条款
+- [关于](https://memfit.ai/about/): Memfit AI 团队、Yaklang 生态归属与联系方式
+- [下载](https://memfit.ai/downloads/): macOS / Windows / Linux 客户端安装包
+- [隐私政策](https://memfit.ai/privacy-policy/): 数据处理与隐私说明
+- [使用条款](https://memfit.ai/terms/): 服务使用条款
 - [英文版关于](https://memfit.ai/en/about/): About Memfit AI (English)
+- [English Homepage](https://memfit.ai/en/): Memfit AI official site in English — the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem
+- [Downloads (EN)](https://memfit.ai/en/downloads/): Download Memfit AI for macOS / Windows / Linux (.dmg / .exe / .AppImage)
+- [Privacy Policy (EN)](https://memfit.ai/en/privacy-policy/): How Memfit AI handles data and privacy (English)
+- [Terms of Service (EN)](https://memfit.ai/en/terms/): Terms of service for Memfit AI (English)
 - [完整文档 llms-full.txt](https://memfit.ai/llms-full.txt): 全部文档正文聚合（zh+en 72 篇，供 AI 一次性获取完整上下文）
 
 ## 链接
-- [官网](https://memfit.ai): Memfit AI 官方网站
+- [官网](https://memfit.ai/): Memfit AI 官方网站
 - [GitHub 组织](https://github.com/yaklang): Yaklang 开源组织（含本站仓库 memfit-home）

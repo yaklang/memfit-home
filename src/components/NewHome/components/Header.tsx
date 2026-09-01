@@ -82,7 +82,7 @@ export const Header = ({ locale, onToggleLocale }: HeaderProps) => {
               {content.nav.developer}
             </Link>
             <Link
-              to="/downloads"
+              to="/downloads/"
               className={`text-[14px] font-medium transition-colors whitespace-nowrap ${
                 theme === "light"
                   ? "text-[#353639] hover:text-[#4373BB]"

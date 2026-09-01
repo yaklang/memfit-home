@@ -21,6 +21,11 @@ export interface ComparisonItem {
   traditional: string;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface LocaleContent {
   nav: {
     product: string;
@@ -39,6 +44,8 @@ export interface LocaleContent {
   };
   hero: {
     slogan: string;
+    // GEO：sr-only H1 完整文案（含实体定位词，供 HeroSection 语义 H1 使用）
+    h1Text: string;
   };
   whatIs: {
     title: string;
@@ -55,6 +62,10 @@ export interface LocaleContent {
     traditionalSubtitle: string;
     traditionalTag: string;
     dimensionLabel: string;
+  };
+  faq: {
+    title: string;
+    items: FaqItem[];
   };
   navigation: {
     title: string;
@@ -82,13 +93,17 @@ export const CONTENT: Record<Locale, LocaleContent> = {
     },
     hero: {
       slogan: "Persistent Knowledge, Visible Action",
+      h1Text:
+        "Memfit AI - Open-Source Cybersecurity AI Agent Orchestration Framework: Persistent Knowledge, Visible Action",
     },
     whatIs: {
       title: "What is Memfit AI?",
       description:
-        "Memfit AI is an intelligent agent system designed for the cybersecurity domain, \n powered by the Yaklang ecosystem. ",
+        // GEO: aligned with the official positioning statement used in schema/meta description
+        "Memfit AI is the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem, built on a recursive dual-engine (ReAct + Plan) architecture for security automation and code auditing.",
       textOne: "Recursive Dual-Engine Architecture",
-      textTwo: "Memfit AI utilizes a professional recursive dual-engine architecture that deeply integrates ReAct dynamic reasoning with Plan-Execute strategic planning, achieving unprecedented task execution capabilities through recursive nesting techniques.",
+      // GEO: factual phrasing instead of "unprecedented" marketing claim
+      textTwo: "Memfit AI utilizes a professional recursive dual-engine architecture that deeply integrates ReAct dynamic reasoning with Plan-Execute strategic planning, enabling deterministic execution of complex tasks through recursive nesting.",
       textThree: "ReAct Real-Time Reasoning Engine: Think, act, and adjust simultaneously, dynamically responding to task changes.",
       textFour: "Plan-Execute Strategic Planning Engine: Global perspective, precise breakdown, systematic execution.",
       text5: 'Recursive Nesting Architecture: Intelligent decomposition of large tasks, precise execution of small tasks, progressively advancing towards the goal.',
@@ -98,8 +113,9 @@ export const CONTENT: Record<Locale, LocaleContent> = {
       text9: 'Adaptive Based on Task Goals and Environment',
     },
     problem: {
-      title: "Memfit Al VS Traditional Al Agent",
-      description: "A revolutionary breakthrough in next-generation intelligent agent systems",
+      title: "Memfit AI VS Traditional AI Agent",
+      // GEO: factual phrasing instead of marketing superlatives
+      description: "How the recursive dual-engine compares to single-engine agent architectures",
       memfitLabel: "Memfit AI",
       memfitSubtitle: "Omni-functional intelligent agent enterprise-level solutions",
       memfitTag: "Next-Gen",
@@ -107,6 +123,33 @@ export const CONTENT: Record<Locale, LocaleContent> = {
       traditionalSubtitle: "Basic tool-type limited scenario applications",
       traditionalTag: "Traditional Solutions",
       dimensionLabel: "Dimension",
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      // GEO: homepage Q&A structure + FAQPage schema; answers mirror the
+      // /docs/product/overview/ FAQ and installation docs (verified facts only)
+      items: [
+        {
+          question: "What is Memfit AI?",
+          answer:
+            "Memfit AI is the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem. Built on a recursive dual-engine (ReAct + Plan) architecture, it provides memory/RAG, tools/Forges and spin-detection capabilities for security automation and code auditing, with 30+ pages of bilingual documentation.",
+        },
+        {
+          question: "Which operating systems does Memfit AI support?",
+          answer:
+            "Memfit AI supports macOS (Intel and Apple Silicon), Windows and Linux, with installers in .dmg, .exe and .AppImage formats available from the official downloads page.",
+        },
+        {
+          question: "Is Memfit AI free and open source?",
+          answer:
+            "Yes. The Memfit AI client is free, and the engine is open source under the Apache-2.0 license, designed and maintained by the Yaklang team.",
+        },
+        {
+          question: "How does the recursive dual-engine work?",
+          answer:
+            "The Plan engine decomposes and schedules tasks while the ReAct engine reasons and acts in real time; the two recurse into each other — large tasks are decomposed intelligently, small tasks are executed precisely — with 17 built-in focus modes (deep research, fast execution, and more).",
+        },
+      ],
     },
     navigation: {
       title: "Five Pillars",
@@ -230,12 +273,15 @@ export const CONTENT: Record<Locale, LocaleContent> = {
     },
     hero: {
       slogan: "记得住的知识库，看得见的行动力",
+      h1Text: "Memfit AI — 开源网络安全 AI Agent 编排框架，记得住的知识库，看得见的行动力",
     },
     whatIs: {
       title: "什么是 Memfit AI？",
-      description: "Memfit AI 是一个具备战略战术执行，工具系统，知识系统，记忆系统的专业的智能代理平台，由 Yaklang 生态驱动。",
+      // GEO：与官方定位语（schema/meta description）保持一致，避免首页出现第三套定位口径
+      description: "Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，采用递归式双引擎（ReAct+Plan）架构，让 AI 拥有看得见的行动力。",
       textOne: "递归式双引擎架构",
-      textTwo: "Memfit AI 使用专业的递归式双引擎架构，将 ReAct 动态推理与 Plan-Execute 战略规划深度融合，通过递归嵌套技术实现前所未有的任务执行能力。",
+      // GEO：去掉「前所未有」类营销断言，改为事实性表述
+      textTwo: "Memfit AI 使用专业的递归式双引擎架构，将 ReAct 动态推理与 Plan-Execute 战略规划深度融合，通过递归嵌套技术实现高确定性的复杂任务执行。",
       textThree: "ReAct 实时推理引擎：边思考、边行动、边调整，动态响应任务变化。",
       textFour: "Plan-Execute 战略规划引擎：全局视野，精准拆解，系统化执行。",
       text5: '递归嵌套架构：大任务智能分解，小任务精准执行，层层递进直达目标。',
@@ -245,8 +291,9 @@ export const CONTENT: Record<Locale, LocaleContent> = {
       text9: '根据任务目标与环境自适应',
     },
     problem: {
-      title: "Memfit Al VS 传统 Al Agent",
-      description: "下一代智能体系统的革命性突破",
+      title: "Memfit AI VS 传统 AI Agent",
+      // GEO：营销断言降调为事实性描述，与文档页克制文风一致
+      description: "递归式双引擎与单一推理引擎在架构能力上的对比",
       memfitLabel: "Memfit AI",
       memfitSubtitle: "全能型智能体企业级解决方案",
       memfitTag: "第一代",
@@ -254,6 +301,33 @@ export const CONTENT: Record<Locale, LocaleContent> = {
       traditionalSubtitle: "基础工具型有限场景应用",
       traditionalTag: "传统方案",
       dimensionLabel: "维度",
+    },
+    faq: {
+      title: "常见问题",
+      // GEO：首页问答结构 + FAQPage schema；答案与 /docs/product/overview/ FAQ、
+      // 安装文档口径一致，仅使用站内已核实的真实事实（不编造指标）
+      items: [
+        {
+          question: "Memfit AI 是什么？",
+          answer:
+            "Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，采用递归式双引擎（ReAct+Plan）架构，提供记忆/RAG、工具/Forges、自旋检测等能力，面向安全自动化与代码审计场景，配有 30+ 篇中英双语文档。",
+        },
+        {
+          question: "Memfit AI 支持哪些操作系统？",
+          answer:
+            "Memfit AI 支持 macOS（Intel 与 Apple Silicon）、Windows 和 Linux，安装包格式包括 .dmg、.exe 和 .AppImage，可从官方网站下载页获取。",
+        },
+        {
+          question: "Memfit AI 是免费开源的吗？",
+          answer:
+            "是。Memfit AI 客户端免费，引擎基于 Apache-2.0 协议开源，由 Yaklang 团队设计与维护。",
+        },
+        {
+          question: "递归式双引擎是如何工作的？",
+          answer:
+            "Plan 引擎负责任务分解与规划，ReAct 引擎负责实时推理与行动，二者递归嵌套协作：大任务智能分解、小任务精准执行，并内置 17 个专注模式（深度研究、快速执行等）适配不同任务类型。",
+        },
+      ],
     },
     navigation: {
       title: "五大支柱",
@@ -334,7 +408,7 @@ export const CONTENT: Record<Locale, LocaleContent> = {
       {
         dimension: "任务分解",
         memfit: "智能递归分解，层层递进，子任务独立可控",
-        traditional: "线性任务链，无拆套能力",
+        traditional: "线性任务链，无拆解能力",
       },
       {
         dimension: "技能系统",
@@ -348,7 +422,7 @@ export const CONTENT: Record<Locale, LocaleContent> = {
       },
       {
         dimension: "执行模式",
-        memfit: "多种专注模式式(深度研究、快速执行、创意探索等)",
+        memfit: "多种专注模式(深度研究、快速执行、创意探索等)",
         traditional: "单一执行模式",
       },
       {
@@ -358,7 +432,7 @@ export const CONTENT: Record<Locale, LocaleContent> = {
       },
       {
         dimension: "透明性",
-        memfit: "完整的执行链路追溯，细定性日志",
+        memfit: "完整的执行链路追溯，确定性日志",
         traditional: "基础执行日志",
       },
     ],

@@ -11,7 +11,9 @@ import Head from '@docusaurus/Head';
 
 ## What is Memfit AI?
 
-Memfit AI is an intelligent agent system designed for the cybersecurity domain, powered by the **Yaklang** ecosystem. It goes beyond simple chatbots by implementing a **Recursive Dual-Engine Architecture** that combines strategic planning with tactical execution.
+Memfit AI is the open-source cybersecurity AI Agent orchestration framework of the **Yaklang** ecosystem, built on a **Recursive Dual-Engine Architecture** that combines strategic planning with tactical execution. It goes beyond simple chatbots: it ships **17 built-in focus modes** (deep research, fast execution, log analysis, and more) and **30+ pages of bilingual documentation** covering product docs and developer guides.
+
+Under the hood, it rests on five pillars — Plan engine, ReAct engine, Tools & Forges, Knowledge/RAG, and Memory — that together deliver end-to-end security automation.
 
 At its core, Memfit AI is a bridge between high-level human intent ("Audit this website") and low-level security operations (port scanning, vulnerability analysis). It achieves this by organically fusing:
 *   **Determinism:** Structured planning for complex workflows.
@@ -22,8 +24,8 @@ At its core, Memfit AI is a bridge between high-level human intent ("Audit this 
 ## What Problems Does It Solve?
 
 Traditional AI agents often face the "Single Paradigm Dilemma":
-*   **Pure ReAct Agents** easily get lost in long-horizon tasks, losing track of the original goal after many steps.
-*   **Pure Plan-Execute Agents** are too rigid, failing when the initial plan encounters unexpected obstacles or new information.
+*   **Pure [ReAct](https://arxiv.org/abs/2210.03629) agents** (the reasoning-and-acting paradigm, Yao et al., 2022) easily get lost in long-horizon tasks, losing track of the original goal after many steps.
+*   **Pure Plan-Execute agents** (the [Plan-and-Solve](https://arxiv.org/abs/2305.04091) paradigm, Wang et al., 2023) are too rigid, failing when the initial plan encounters unexpected obstacles or new information.
 
 Memfit AI solves this by **recursively coupling** these two paradigms. It creates a plan, executes it, and if a sub-task becomes too complex, it recursively triggers a new planning phase. This allows it to handle tasks of arbitrary complexity while adapting to real-time feedback.
 
@@ -56,6 +58,8 @@ The Plan Engine acts as the strategist. It breaks down vague, top-level user goa
 *   **Dependency Management:** Enforces temporal and logical execution order.
 *   **Recursive Triggering:** Can be invoked by the ReAct engine when a subtask is too complex.
 
+→ Further reading: [Recursive Dual-Engine Architecture](/docs/product/architecture/recursive-dual-engine), [Coordinator](/docs/product/features/coordinator)
+
 ### 2. ReAct Engine (Tactical Layer)
 
 **The Problem:**
@@ -69,6 +73,8 @@ The ReAct Engine handles the "Last Mile" of execution. For each atomic task in t
 *   **Spin Detection:** Prevents the agent from getting stuck in infinite loops (e.g., retrying a failed command endlessly).
 *   **Self-Reflection:** Analyzes failures to generate correction plans automatically.
 
+→ Further reading: [ReAct Loop](/docs/product/features/react-loop)
+
 ### 3. Tools & Forges (Capability Layer)
 
 **The Problem:**
@@ -80,8 +86,10 @@ An AI model is a "Brain in a Vat"—it cannot touch the network or files system 
 
 **Technical Architecture:**
 *   **Yaklang Integration:** Natively leverages Yaklang's powerful security libraries.
-*   **MCP Support:** Compatible with the Model Context Protocol for extensibility.
+*   **MCP Support:** Compatible with the [Model Context Protocol](https://modelcontextprotocol.io) for extensibility.
 *   **Focus Mode:** Allows instantiating specialized environments for specific subtasks.
+
+→ Further reading: [Tools & Forges](/docs/product/features/tools-forges)
 
 ### 4. Knowledge (RAG System)
 
@@ -89,11 +97,13 @@ An AI model is a "Brain in a Vat"—it cannot touch the network or files system 
 LLMs have a training cutoff and lack private or highly specific domain knowledge (e.g., the latest CVE details or internal API docs).
 
 **The Solution:**
-The RAG (Retrieval-Augmented Generation) System serves as an active "External Brain." It retrieves relevant documentation, past reports, and security knowledge to ground the AI's reasoning in fact.
+The RAG ([Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401), Lewis et al., 2020) system serves as an active "external brain." It retrieves relevant documentation, past reports, and security knowledge to ground the AI's reasoning in fact.
 
 **Technical Architecture:**
 *   **Hybrid Indexing:** Combines vector search (semantic) with keyword search (precision).
 *   **Agentic Retrieval:** The system actively decides *when* and *what* to search for, rather than just passively retrieving context.
+
+→ Further reading: [Memory & RAG](/docs/product/features/memory-rag)
 
 ### 5. Memory (Context Layer)
 
@@ -106,6 +116,8 @@ The Memory System acts as an "Intelligent Hippocampus." It doesn't just store lo
 **Technical Architecture:**
 *   **C.O.R.E. P.A.C.T. Framework:** A scoring system to determine which memories are worth keeping (Connectivity, Relevance, Actionability, etc.).
 *   **Vector Database:** Persists high-value memories for long-term recall across sessions.
+
+→ Further reading: [Agentic Reliability Guarantees](/docs/product/architecture/reliability)
 
 ## FAQ
 
@@ -138,6 +150,7 @@ A chatbot can only converse; Memfit AI understands tasks, creates plans, invokes
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "https://memfit.ai/en/docs/product/overview/#faq",
   "mainEntity": [
     {
       "@type": "Question",

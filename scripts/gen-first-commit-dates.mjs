@@ -9,7 +9,7 @@
  * 由 package.json build 链在 docusaurus build 之前调用。
  */
 import {readdirSync, writeFileSync, mkdirSync, existsSync} from 'fs';
-import {join, relative} from 'path';
+import {join, relative, dirname} from 'path';
 import {execSync} from 'child_process';
 import {fileURLToPath} from 'url';
 
@@ -20,10 +20,6 @@ const root = join(
 const DOCS = join(root, 'docs');
 const OUT_DIR = join(root, 'src', 'generated');
 const OUT = join(OUT_DIR, 'docFirstCommitDates.ts');
-
-function dirname(p) {
-  return p.slice(0, p.lastIndexOf('/'));
-}
 
 function walk(dir) {
   const out = [];
@@ -64,7 +60,7 @@ function firstCommitDate(file) {
 
 const map = {};
 for (const file of walk(DOCS)) {
-  const rel = relative(DOCS, file);
+  const rel = relative(DOCS, file).replace(/\\/g, '/');
   const seg = toPermalinkSegment(rel);
   const date = firstCommitDate(file);
   if (seg && date) map[`/docs/${seg}`] = date;

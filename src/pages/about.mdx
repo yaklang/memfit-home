@@ -1,21 +1,46 @@
 ---
 title: 关于 Memfit AI
-description: Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，由 Yaklang 团队维护。
+description: Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，由 Yaklang 团队设计与维护，以递归式双引擎（ReAct+Plan）面向安全自动化与代码审计场景。
 ---
 
 import Head from '@docusaurus/Head';
 
 <Head>
-  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"AboutPage","name":"关于 Memfit AI","url":"https://memfit.ai/about/","mainEntity":{"@type":"Organization","name":"Memfit AI","url":"https://memfit.ai","logo":"https://memfit.ai/img/logo.png","description":"Yaklang 生态的开源网络安全 AI Agent 编排框架，递归式双引擎（ReAct+Plan）让 AI 拥有看得见的行动力。","parentOrganization":{"@type":"Organization","name":"Yaklang","url":"https://yaklang.com"},"sameAs":["https://github.com/yaklang"]}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"AboutPage","name":"关于 Memfit AI","url":"https://memfit.ai/about/","mainEntity":{"@type":"Organization","@id":"https://memfit.ai/#organization","name":"Memfit AI","url":"https://memfit.ai/","logo":"https://memfit.ai/img/logo.png","description":"Yaklang 生态的开源网络安全 AI Agent 编排框架，递归式双引擎（ReAct+Plan）让 AI 拥有看得见的行动力。","parentOrganization":{"@type":"Organization","@id":"https://yaklang.com/#organization","name":"Yaklang","url":"https://yaklang.com"},"sameAs":["https://github.com/yaklang/memfit-home"]}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://memfit.ai/"},{"@type":"ListItem","position":2,"name":"关于 Memfit AI","item":"https://memfit.ai/about/"}]}`}</script>
 </Head>
 
 # 关于 Memfit AI
 
 **Memfit AI** 是 [Yaklang](https://yaklang.com) 生态的开源网络安全 AI Agent 编排框架。我们致力于用递归式双引擎（ReAct + Plan）架构，让 AI 在安全自动化与代码审计场景中拥有"看得见的行动力"。
 
+> 实体说明：本站所述的 Memfit AI 专指 Yaklang 生态的开源网络安全 AI Agent 编排框架（官网 memfit.ai），与网络上同名的记忆训练、健身等无关产品没有任何关系。
+
 ## 与 Yaklang 的关系
 
-Memfit AI 是 **Yaklang 官方项目**，由 Yaklang 团队设计与维护，与 Yaklang 核心安全能力深度协同，是 Yaklang 生态在 AI Agent 方向的官方落地。
+Memfit AI 是 **Yaklang 官方项目**，由 Yaklang 团队设计与维护，与 Yaklang 核心安全能力深度协同，是 Yaklang 生态在 AI Agent 方向的官方落地。Yaklang 是一个开源网络安全语言与平台，长期服务于安全自动化、漏洞检测与代码审计等场景；Memfit AI 在其之上补齐了 AI Agent 的编排、记忆与工具调用层，二者共享同一安全能力体系与工程实践。
+
+## 核心架构：五大支柱
+
+Memfit AI 的能力由五个相互协作的支柱构成：
+
+1. **Plan 引擎**：负责任务分解与规划，把高层目标拆解为可执行的子任务树。
+2. **ReAct 引擎**：负责实时推理与行动，在每一步观察—思考—行动的循环中调用工具并修正方向。
+3. **工具与 Forges**：安全能力体系，覆盖 WebFuzzer、MITM、Nuclei 集成等安全工具链。
+4. **知识 RAG**：将知识库检索增强生成纳入执行链路，让 Agent 的判断有据可依。
+5. **记忆**：基于评分机制的短期/长期记忆管理，跨会话保留关键上下文。
+
+两大引擎递归嵌套协作：Plan 引擎制定骨架，ReAct 引擎填充执行，执行结果又可触发新一轮规划——这也是"递归式双引擎"名称的由来。详见[核心架构概览](/docs/product/overview)。
+
+## 产品能力与场景
+
+Memfit AI 内置 17 个专注模式（深度研究、快速执行等），面向三类核心场景：
+
+- **[安全审计](/docs/product/use-cases/security-audit)**：从用户请求到 Coordinator 任务树，再到并行 ReAct 循环的完整审计工作流。
+- **[自动化](/docs/product/use-cases/automation)**：可编排的安全自动化任务执行。
+- **[代码评审](/docs/product/use-cases/code-review)**：结合知识库与工具调用的代码审查。
+
+可靠性方面，框架原生提供自旋检测、验证门与确定性机制等 Agentic 保障，强调可观测的执行过程而非黑盒输出。客户端覆盖 macOS（Apple Silicon / Intel）、Windows 与 Linux。
 
 ## 核心理念
 

@@ -12,16 +12,6 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
   const { whatIs } = CONTENT[locale];
   const { theme } = useTheme();
 
-  // 处理描述中的换行符
-  const renderDescription = (text: string) => {
-    return text.split("\n").map((line, index, array) => (
-      <span key={index}>
-        {line}
-        {index < array.length - 1 && <br />}
-      </span>
-    ));
-  };
-
   // 卡片组件 - 带四角装饰
   const FeatureCard = ({
     title,
@@ -118,12 +108,14 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
       className={`px-6 ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]"}`}
     >
       <div className="max-w-[1600px] mx-auto">
-      {/* 移动端布局 - 高度约1063px */}
-      <div className="tablet:hidden">
-        <div className="py-10 flex flex-col">
+      {/* GEO：单一响应式副本——桌面/移动共用一份 DOM（布局差异全部由断点类表达），
+          避免同一文案在 HTML 中被 AI 爬虫提取两遍 */}
+      <div className="py-10 tablet:py-12 tablet:px-6 tablet:mx-auto desktop:px-0 desktop:mx-0 desktop:py-16 2xl:py-20 flex flex-col desktop:min-h-[897px]">
+        {/* 顶部区域：移动端上下排布，桌面端左侧标题 + 右侧描述 */}
+        <div className="flex flex-col desktop:flex-row desktop:justify-between desktop:items-start desktop:mb-6">
           {/* 标题 */}
           <div
-            className={`mb-3 text-5xl font-dotgothic ${
+            className={`mb-3 tablet:mb-4 desktop:mb-0 text-5xl tablet:text-[48px] desktop:text-[48px] font-dotgothic ${
               theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
             }`}
           >
@@ -135,127 +127,67 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
 
           {/* 描述 */}
           <p
-            className={`text-[18px] leading-relaxed mb-5 font-dotgothic ${
-              theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
-            }`}
-          >
-            {whatIs.description}
-          </p>
-
-          {/* 点阵 */}
-          <DotStrip gap={1} className="mb-6" />
-
-          {/* 文字内容 */}
-          <LazyBackgroundImage
-            imageUrl={
-              theme === "light"
-                ? "/newImg/content-bg.png"
-                : "/newImg/content-bg-black.png"
-            }
-            className={`flex flex-col gap-4 p-4 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
-            style={{
-              backgroundSize: "16px 16px",
-              backgroundRepeat: "repeat",
-            }}
-            priority={true}
-          >
-            <div
-              className={`text-[32px] ${
-                theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-              } font-dotgothic`}
-            >
-              {whatIs.textOne}
-            </div>
-            <div
-              className={`text-[16px] leading-7 mb-0 ${
-                theme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"
-              }`}
-            >
-              {whatIs.textTwo}
-            </div>
-
-            <WhatIsBoldSplit text={whatIs.textThree} theme={theme} />
-
-            <WhatIsBoldSplit text={whatIs.textFour} theme={theme} />
-
-            <WhatIsBoldSplit text={whatIs.text5} theme={theme} />
-
-            {/* 图片区域 */}
-            <div className="flex-1 flex items-center justify-center mb-6">
-              <img
-                src={
-                  theme === "light"
-                    ? "/newImg/whatIs-content.png"
-                    : "/newImg/whatIs-content-black.png"
-                }
-                alt="Memfit AI Overview"
-                width={1796}
-                height={1280}
-                className="w-full max-w-[380px] h-auto"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            {/* 三点说明 */}
-            <div
-              className={`text-[18px] ${
-                theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-              }`}
-            >
-              {whatIs.text6}
-            </div>
-
-            <div className="flex flex-col gap-4 overflow-visible">
-              <FeatureCard title={whatIs.text7} />
-              <FeatureCard title={whatIs.text8} />
-              <FeatureCard title={whatIs.text9} variant="alt" />
-            </div>
-          </LazyBackgroundImage>
-        </div>
-      </div>
-
-      {/* 平板端布局 - 高度约1093px */}
-      <div className="hidden tablet:block desktop:hidden">
-        <div className="min-h-[1093px] py-12 flex flex-col px-6 mx-auto">
-          {/* 标题 */}
-          <div
-            className={`mb-4 text-[48px] font-dotgothic ${
-              theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-            }`}
-          >
-            <AnimatedTitle
-              title={whatIs.title}
-              highlightPattern={/(memfit|Memfit|MEMFIT)/gi}
-            />
-          </div>
-
-          {/* 描述 */}
-          <p
-            className={`text-[18px] leading-relaxed mb-6 ${
+            className={`text-[18px] leading-relaxed mb-5 tablet:mb-6 desktop:mb-0 desktop:max-w-[528px] desktop:text-right ${
               theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
             } font-dotgothic`}
           >
             {whatIs.description}
           </p>
+        </div>
 
-          {/* 点阵 */}
-          <DotStrip gap={2} className="mb-8" />
+        {/* 点阵 */}
+        <DotStrip gap={1} className="mb-6 tablet:mb-8 desktop:mb-10" />
 
-          {/* 文字内容 */}
-          <LazyBackgroundImage
-            imageUrl={
-              theme === "light"
-                ? "/newImg/content-bg.png"
-                : "/newImg/content-bg-black.png"
-            }
-            className={`flex flex-col gap-4 p-4 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
-            style={{
-              backgroundSize: "16px 16px",
-              backgroundRepeat: "repeat",
-            }}
-            priority={true}
-          >
+        {/* 主内容区：移动端纵向单列（文字 → 图 → 说明），桌面端两栏网格（左文字右图） */}
+        <LazyBackgroundImage
+          imageUrl={
+            theme === "light"
+              ? "/newImg/content-bg.png"
+              : "/newImg/content-bg-black.png"
+          }
+          className={`relative flex flex-col gap-4 p-4 desktop:flex-1 desktop:grid desktop:grid-cols-[372px_1fr] desktop:grid-rows-[auto_1fr] desktop:gap-0 xl:grid-cols-[530px_1fr] 2xl:gap-16 desktop:rounded-[4px] desktop:p-5 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
+          style={{
+            backgroundSize: "16px 16px",
+            backgroundRepeat: "repeat",
+          }}
+          priority={true}
+        >
+          {/* 桌面端四角刻度装饰（纯装饰、无文本，移动端隐藏） */}
+          <div
+            className="hidden desktop:block absolute left-0 -translate-x-1/2 -top-[6px] w-[1px] h-3"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+          <div
+            className="hidden desktop:block absolute left-0 -translate-x-1/2 top-0 w-3 h-[1px]"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+          <div
+            className="hidden desktop:block absolute right-0 translate-x-1/2 -top-[6px] w-[1px] h-3"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+          <div
+            className="hidden desktop:block absolute right-0 translate-x-1/2 top-0 w-3 h-[1px]"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+          <div
+            className="hidden desktop:block absolute left-0 -translate-x-1/2 -bottom-[6px] w-[1px] h-3"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+          <div
+            className="hidden desktop:block absolute left-0 -translate-x-1/2 bottom-0 w-3 h-[1px]"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+          <div
+            className="hidden desktop:block absolute right-0 translate-x-1/2 -bottom-[6px] w-[1px] h-3"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+          <div
+            className="hidden desktop:block absolute right-0 translate-x-1/2 bottom-0 w-3 h-[1px]"
+            style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }}
+          />
+
+          {/* 文字主体：桌面端左列第一行 */}
+          <div className="flex flex-col gap-4 desktop:col-start-1 desktop:row-start-1 desktop:gap-0">
             <div
               className={`text-[32px] ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
@@ -264,7 +196,7 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               {whatIs.textOne}
             </div>
             <div
-              className={`text-[16px] leading-7 mb-5 ${
+              className={`text-[16px] leading-7 mb-0 tablet:mb-5 desktop:mb-5 ${
                 theme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"
               }`}
             >
@@ -276,27 +208,29 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
             <WhatIsBoldSplit text={whatIs.textFour} theme={theme} />
 
             <WhatIsBoldSplit text={whatIs.text5} theme={theme} />
+          </div>
 
-            {/* 图片区域 */}
-            <div className="flex-1 flex items-center justify-center">
-              <img
-                src={
-                  theme === "light"
-                    ? "/newImg/whatIs-content.png"
-                    : "/newImg/whatIs-content-black.png"
-                }
-                alt="Memfit AI Overview"
-                width={1796}
-                height={1280}
-                className="w-full h-auto"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+          {/* 图片区域：移动端位于文字与说明之间，桌面端右列跨两行 */}
+          <div className="flex-1 flex items-center justify-center mb-6 tablet:mb-0 desktop:col-start-2 desktop:row-start-1 desktop:row-span-2">
+            <img
+              src={
+                theme === "light"
+                  ? "/newImg/whatIs-content.png"
+                  : "/newImg/whatIs-content-black.png"
+              }
+              alt="Memfit AI Overview"
+              width={1796}
+              height={1280}
+              className="w-full max-w-[380px] tablet:max-w-none desktop:max-w-[680px] xl:max-w-[870px] h-auto"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
 
-            {/* 三点说明 */}
+          {/* 底部说明与卡片：桌面端左列第二行贴底 */}
+          <div className="flex flex-col gap-4 desktop:col-start-1 desktop:row-start-2 desktop:self-end">
             <div
-              className={`text-[18px] ${
+              className={`text-[18px] desktop:mb-3 ${
                 theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
               }`}
             >
@@ -308,154 +242,8 @@ export const WhatIsSection = ({ locale }: WhatIsSectionProps) => {
               <FeatureCard title={whatIs.text8} />
               <FeatureCard title={whatIs.text9} variant="alt" />
             </div>
-          </LazyBackgroundImage>
-        </div>
-      </div>
-
-      {/* PC端布局 - 高度约897px */}
-      <div className="hidden desktop:block">
-        <div className="min-h-[897px] py-16 2xl:py-20 flex flex-col">
-          {/* 顶部区域：左侧标题，右侧描述 */}
-          <div className="flex justify-between items-start mb-6">
-            {/* 左上角标题 */}
-            <div
-              className={`flex-shrink-0 text-[48px] font-dotgothic ${
-                theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-              }`}
-            >
-              <AnimatedTitle
-                title={whatIs.title}
-                highlightPattern={/(memfit|Memfit|MEMFIT)/gi}
-              />
-            </div>
-
-            {/* 右上角描述文字 */}
-            <p
-              className={`max-w-[528px] text-[18px] text-right ${
-                theme === "light" ? "text-[#5A5D64]" : "text-[#BAC3D4]"
-              } font-dotgothic`}
-            >
-              {renderDescription(whatIs.description)}
-            </p>
           </div>
-
-          {/* 点阵 - 全宽 */}
-          <DotStrip gap={1} className="mb-10" />
-
-          {/* 主内容区：左右两栏 */}
-          <LazyBackgroundImage
-            imageUrl={
-              theme === "light"
-                ? "/newImg/content-bg.png"
-                : "/newImg/content-bg-black.png"
-            }
-            className={`relative flex-1 grid grid-cols-[372px_1fr] xl:grid-cols-[530px_1fr] 2xl:gap-16 rounded-[4px] p-5 border border-solid ${theme === 'light' ? "border-[#E6E8ED]" : "border-[#474A4F]"}`}
-            style={{
-              backgroundSize: "16px 16px",
-              backgroundRepeat: "repeat",
-            }}
-            priority={true}
-          >
-            {/* 左上 */}
-            <div 
-              className="absolute left-0 -translate-x-1/2 -top-[6px] w-[1px] h-3" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-            <div 
-              className="absolute left-0 -translate-x-1/2 top-0 w-3 h-[1px]" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-
-            {/* 右上 */}
-            <div 
-              className="absolute right-0 translate-x-1/2 -top-[6px] w-[1px] h-3" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-            <div 
-              className="absolute right-0 translate-x-1/2 top-0 w-3 h-[1px]" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-
-            {/* 左下 */}
-            <div 
-              className="absolute left-0 -translate-x-1/2 -bottom-[6px] w-[1px] h-3" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-            <div 
-              className="absolute left-0 -translate-x-1/2 bottom-0 w-3 h-[1px]" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-
-            {/* 右下 */}
-            <div 
-              className="absolute right-0 translate-x-1/2 -bottom-[6px] w-[1px] h-3" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-            <div 
-              className="absolute right-0 translate-x-1/2 bottom-0 w-3 h-[1px]" 
-              style={{ backgroundColor: theme === "light" ? "#868C97" : "#A6AFBF" }} 
-            />
-            
-            {/* 左侧内容 */}
-            <div className="flex flex-col">
-              {/* 文字内容 */}
-              <div
-                className={`text-[32px] ${
-                  theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-                } font-dotgothic`}
-              >
-                {whatIs.textOne}
-              </div>
-              <div
-                className={`text-[16px] leading-7 mb-5 ${
-                  theme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"
-                }`}
-              >
-                {whatIs.textTwo}
-              </div>
-
-              <WhatIsBoldSplit text={whatIs.textThree} theme={theme} />
-
-              <WhatIsBoldSplit text={whatIs.textFour} theme={theme} />
-
-              <WhatIsBoldSplit text={whatIs.text5} theme={theme} />
-
-              {/* 两点说明 - 推到底部 */}
-              <div className="mt-auto">
-                <div
-                  className={`text-[18px] mb-3 ${
-                    theme === "light" ? "text-[#353639]" : "text-[#C8D0DD]"
-                  }`}
-                >
-                  {whatIs.text6}
-                </div>
-
-                <div className="flex flex-col gap-4 overflow-visible">
-                  <FeatureCard title={whatIs.text7} />
-                  <FeatureCard title={whatIs.text8} />
-                  <FeatureCard title={whatIs.text9} variant="alt" />
-                </div>
-              </div>
-            </div>
-
-            {/* 右侧图片 */}
-            <div className="flex items-center justify-center">
-              <img
-                src={
-                  theme === "light"
-                    ? "/newImg/whatIs-content.png"
-                    : "/newImg/whatIs-content-black.png"
-                }
-                alt="Memfit AI Overview"
-                width={1796}
-                height={1280}
-                className="w-full max-w-[680px] xl:max-w-[870px] h-auto"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </LazyBackgroundImage>
-        </div>
+        </LazyBackgroundImage>
       </div>
       </div>
     </section>

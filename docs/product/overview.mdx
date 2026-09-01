@@ -11,7 +11,7 @@ import Head from '@docusaurus/Head';
 
 ## 什么是 Memfit AI？
 
-Memfit AI 是一个专为网络安全领域设计的智能代理系统，由 **Yaklang** 生态系统驱动。它超越了简单的聊天机器人，实现了一种 **递归式双引擎架构 (Recursive Dual-Engine Architecture)**，将宏观的战略规划与微观的战术执行完美结合。
+Memfit AI 是 **Yaklang** 生态的开源网络安全 AI Agent 编排框架，采用 **递归式双引擎架构 (Recursive Dual-Engine Architecture)**，将宏观的战略规划与微观的战术执行相结合。它超越了简单的聊天机器人：内置 **17 个专注模式**（深度研究、快速执行、日志分析等）、覆盖产品文档与开发者指南的 **30+ 篇中英双语文档**，并以五大支柱（Plan 引擎、ReAct 引擎、工具与 Forges、知识 RAG、记忆）支撑端到端的安全自动化。
 
 Memfit AI 的核心是作为高层人类意图（如“审计此网站”）与底层安全操作（如端口扫描、漏洞分析）之间的桥梁。它通过有机融合以下两点来实现这一目标：
 *   **确定性 (Determinism)：** 针对复杂工作流的结构化规划。
@@ -22,8 +22,8 @@ Memfit AI 的核心是作为高层人类意图（如“审计此网站”）与�
 ## 解决了什么问题？
 
 传统的 AI Agent 通常面临“单一范式困境”：
-*   **纯 ReAct Agent** 容易在长链路任务中迷失方向，在多步操作后忘记最初的目标。
-*   **纯 Plan-Execute Agent** 过于僵化，当初步计划遇到意外障碍或新信息时往往会失败。
+*   **纯 [ReAct](https://arxiv.org/abs/2210.03629) Agent**（推理+行动范式，Yao et al., 2022）容易在长链路任务中迷失方向，在多步操作后忘记最初的目标。
+*   **纯 Plan-Execute Agent**（[Plan-and-Solve](https://arxiv.org/abs/2305.04091) 范式，Wang et al., 2023）过于僵化，当初步计划遇到意外障碍或新信息时往往会失败。
 
 Memfit AI 通过 **递归耦合** 这两种范式解决了这个问题。它制定计划，执行计划，如果某个子任务变得过于复杂，它会递归地触发一个新的规划阶段。这使得它能够处理任意复杂度的任务，同时适应实时反馈。
 
@@ -56,6 +56,8 @@ Plan 引擎充当战略家。它将模糊的顶层用户目标拆解为结构化
 *   **依赖管理：** 强制执行时序和逻辑顺序。
 *   **递归触发：** 当子任务过于复杂时，可由 ReAct 引擎反向调用。
 
+→ 延伸阅读：[核心架构：递归式双引擎架构](/docs/product/architecture/recursive-dual-engine)、[协调器](/docs/product/features/coordinator)
+
 ### 2. ReAct 引擎 (战术层)
 
 **要解决的问题：**
@@ -69,6 +71,8 @@ ReAct 引擎处理执行的“最后一公里”。对于计划中的每个原�
 *   **自旋检测 (Spin Detection)：** 防止 Agent 陷入死循环（例如，无休止地重试失败的命令）。
 *   **自我反思 (Self-Reflection)：** 分析失败原因并自动生成修正计划。
 
+→ 延伸阅读：[ReAct 循环](/docs/product/features/react-loop)
+
 ### 3. 工具与 Forges (能力层)
 
 **要解决的问题：**
@@ -80,8 +84,10 @@ AI 模型是“缸中之脑”——它无法直接接触网络或文件系统�
 
 **技术架构：**
 *   **Yaklang 集成：** 原生利用 Yaklang 强大的安全库。
-*   **MCP 支持：** 兼容 Model Context Protocol 以实现扩展性。
+*   **MCP 支持：** 兼容 [Model Context Protocol](https://modelcontextprotocol.io) 以实现扩展性。
 *   **专注模式 (Focus Mode)：** 允许为特定子任务实例化专门的环境。
+
+→ 延伸阅读：[工具与 Forges](/docs/product/features/tools-forges)
 
 ### 4. 知识 (RAG 系统)
 
@@ -89,11 +95,13 @@ AI 模型是“缸中之脑”——它无法直接接触网络或文件系统�
 LLM 有训练截止日期，且缺乏私有或高度特定的领域知识（例如，最新的 CVE 详情或内部 API 文档）。
 
 **解决方案：**
-RAG（检索增强生成）系统充当主动的“外脑”。它检索相关的文档、过往报告和安全知识，使 AI 的推理基于事实。
+RAG（[检索增强生成](https://arxiv.org/abs/2005.11401)，Lewis et al., 2020）系统充当主动的“外脑”。它检索相关的文档、过往报告和安全知识，使 AI 的推理基于事实。
 
 **技术架构：**
 *   **混合索引：** 结合向量搜索（语义）和关键词搜索（精确）。
 *   **代理化检索：** 系统主动决定 *何时* 以及 *搜索什么*，而不仅仅是被动地检索上下文。
+
+→ 延伸阅读：[记忆与 RAG](/docs/product/features/memory-rag)
 
 ### 5. 记忆 (上下文层)
 
@@ -106,6 +114,8 @@ RAG（检索增强生成）系统充当主动的“外脑”。它检索相关�
 **技术架构：**
 *   **C.O.R.E. P.A.C.T. 框架：** 一个评分系统，用于确定哪些记忆值得保留（关联度、相关性、可操作性等）。
 *   **向量数据库：** 持久化高价值记忆，以便跨会话长期调用。
+
+→ 延伸阅读：[Agentic 可靠性保障](/docs/product/architecture/reliability)
 
 ## 常见问题
 
@@ -138,6 +148,7 @@ Plan 引擎负责战略规划（生成任务树），ReAct 引擎负责战术执
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "https://memfit.ai/docs/product/overview/#faq",
   "mainEntity": [
     {
       "@type": "Question",

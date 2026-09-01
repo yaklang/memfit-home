@@ -25,9 +25,10 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
 
   return (
     <section className={`relative -mt-[56px] h-[780px] desktop:h-[766px] xl:h-[1152px] flex flex-col overflow-hidden ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]" }`}>
-      {/* 语义化 H1：视觉标题由下方 SVG wordmark 呈现，此处为 SEO/可访问性提供语义锚点 */}
+      {/* 语义化 H1：视觉标题由下方 SVG wordmark 呈现，此处为 SEO/可访问性提供语义锚点
+          GEO：H1 携带实体定位词（网络安全 AI Agent 编排框架），强化实体识别 */}
       <h1 className="sr-only">
-        Memfit AI — {content.hero.slogan}
+        {content.hero.h1Text}
       </h1>
       {/* 背景图 - 蓝色渐变条纹背景 - 首屏关键资源，立即加载 */}
       <div className="absolute inset-0 z-0">
@@ -74,7 +75,9 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
                 <a
                   key={`${item.url}-${archLabel}`}
                   href={item.url}
-                  download
+                  /* 仅对真实安装包启用 download；版本接口失败回退到 /downloads/ 页面时，
+                     带 download 会把 HTML 页面当文件下载（SEO/UX 双损） */
+                  download={item.url.startsWith('https://')}
                   className="w-full h-[46px] flex-shrink-0 desktop:w-auto desktop:min-w-[171px] desktop:px-4 desktop:h-[36px] flex items-center justify-center gap-2 bg-white rounded-4 hover:brightness-110 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline text-[18px] desktop:text-[14px] transition-all"
                   style={{ color: highlightColor }}
                 >
@@ -85,7 +88,7 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
             })}
             {/* 次按钮 - 手机/iPad纯文字，PC有边框 */}
             <Link
-              to="/downloads"
+              to="/downloads/"
               className="w-full h-[46px] flex-shrink-0 desktop:w-[117px] desktop:h-[36px] flex items-center justify-center rounded-4 text-white hover:bg-white/10 hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)] hover:no-underline hover:text-[#ffffff] text-[18px]  desktop:text-[14px] transition-all" style={{border: '1px solid #A1B9DD'}}
             >
               {content.buttons.moreVersions}

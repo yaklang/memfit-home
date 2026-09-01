@@ -64,13 +64,14 @@ export const Footer = ({ locale }: FooterProps) => {
         </div>
         <div className="hidden desktop:grid grid-cols-2 tablet:grid-cols-4 gap-6 tablet:gap-8">
           <div className="flex flex-col gap-2 tablet:gap-3">
-            <h4
+            {/* GEO：footer 分组标签用 div 而非 h4，避免被 AI 抽取器当作内容分节标题 */}
+            <div
               className={`text-xs tablet:text-sm font-semibold uppercase tracking-wider mb-1 tablet:mb-2 ${
                 theme === "light" ? "text-[#868C97]" : "text-white/50"
               }`}
             >
               Products
-            </h4>
+            </div>
             <Link
               to="/docs/product/overview"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
@@ -103,13 +104,14 @@ export const Footer = ({ locale }: FooterProps) => {
             </Link>
           </div>
           <div className="flex flex-col gap-2 tablet:gap-3">
-            <h4
+            {/* GEO：footer 分组标签用 div 而非 h4，避免被 AI 抽取器当作内容分节标题 */}
+            <div
               className={`text-xs tablet:text-sm font-semibold uppercase tracking-wider mb-1 tablet:mb-2 ${
                 theme === "light" ? "text-[#868C97]" : "text-white/50"
               }`}
             >
               Help
-            </h4>
+            </div>
             <Link
               to="/docs/help/quick-start/installation"
               className={`text-sm tablet:text-[15px] no-underline transition-colors hover:no-underline ${
@@ -132,13 +134,14 @@ export const Footer = ({ locale }: FooterProps) => {
             </Link>
           </div>
           <div className="flex flex-col gap-2 tablet:gap-3">
-            <h4
+            {/* GEO：footer 分组标签用 div 而非 h4，避免被 AI 抽取器当作内容分节标题 */}
+            <div
               className={`text-xs tablet:text-sm font-semibold uppercase tracking-wider mb-1 tablet:mb-2 ${
                 theme === "light" ? "text-[#868C97]" : "text-white/50"
               }`}
             >
               Community
-            </h4>
+            </div>
             <a
               href="https://yaklang.com"
               target="_blank"
@@ -165,13 +168,14 @@ export const Footer = ({ locale }: FooterProps) => {
             </a>
           </div>
           <div className="flex flex-col gap-2 tablet:gap-3">
-            <h4
+            {/* GEO：footer 分组标签用 div 而非 h4，避免被 AI 抽取器当作内容分节标题 */}
+            <div
               className={`text-xs tablet:text-sm font-semibold uppercase tracking-wider mb-1 tablet:mb-2 ${
                 theme === "light" ? "text-[#868C97]" : "text-white/50"
               }`}
             >
               More
-            </h4>
+            </div>
             <a
               href="https://github.com/yaklang/memfit-home"
               target="_blank"

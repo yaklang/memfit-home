@@ -5,11 +5,13 @@ description: Memfit AI 快速开始：环境准备、macOS/Linux/Windows 安装�
 keywords: [安装 Memfit AI, 快速开始, macOS, Linux, Windows, Yaklang]
 ---
 
+import Head from '@docusaurus/Head';
+
 # 认识与安装 Memfit AI
 
 ## 什么是 Memfit AI
 
-Memfit AI 是一个通用 AI Agent 平台，赋予 AI 真正的行动力。它不只是对话，而是能够理解任务、制定计划、调用工具并交付结果的智能体系统。
+Memfit AI 是 Yaklang 生态的开源网络安全 AI Agent 编排框架，采用递归式双引擎（ReAct+Plan）架构，让 AI 拥有看得见的行动力。它不只是对话，而是能够理解任务、制定计划、调用工具并交付结果的智能体系统。
 
 Memfit AI 针对网络安全、代码审计等专业工业场景进行了深度优化，同时保持了通用 Agent 的灵活性，能够适应各类复杂任务。
 
@@ -43,24 +45,81 @@ Memfit AI 基于 [Yaklang](https://github.com/yaklang/yaklang) 开源引擎构�
 
 ### 获取 Memfit AI
 
-访问 Memfit AI 官方网站，下载适合您操作系统的安装包。
+前往官方[下载页面](https://memfit.ai/downloads/)，下载适合您操作系统与 CPU 架构的安装包。下载页会展示当前最新版本号，全部安装包免费。
 
 ![image-20260316123157042](/img/help/image-20260316123157042.png)
 
 ### 平台支持
 
-| 平台 | 安装包格式 |
-|------|-----------|
-| macOS (Intel) | `.dmg` |
-| macOS (Apple Silicon) | `.dmg` |
-| Windows | `.exe` |
-| Linux | `.AppImage` |
+| 平台 | 架构 | 安装包格式 |
+|------|------|-----------|
+| macOS (Apple Silicon) | `arm64` | `.dmg` |
+| macOS (Intel) | `x64` | `.dmg` |
+| Windows | `amd64` | `.exe` |
+| Linux | `amd64` / `arm64` | `.AppImage` |
+
+旧版本操作系统（Legacy）用户可在[下载页面](https://memfit.ai/downloads/)获取对应的 Legacy 构建安装包。
 
 ### 安装步骤
 
-1. 从官网下载对应平台的安装包
+1. 从[下载页面](https://memfit.ai/downloads/)获取对应平台的安装包
 2. 运行安装程序，按照提示完成安装
 3. 启动 Memfit AI
+
+### 各平台注意事项
+
+- **macOS**：若提示"无法验证开发者"，在"系统设置 → 隐私与安全性"中点击"仍要打开"即可；或右键安装包选择"打开"。
+- **Windows**：双击 `.exe` 安装；若 SmartScreen 拦截，点击"更多信息 → 仍要运行"。
+- **Linux**：`.AppImage` 无需安装，添加可执行权限后直接运行：`chmod +x Memfit-*.AppImage && ./Memfit-*.AppImage`。
+
+### 安装常见问题
+
+**安装 Memfit AI 需要付费吗？**
+
+不需要。Memfit AI 客户端免费使用，底层 Yaklang 引擎以 Apache-2.0 协议开源。
+
+**支持哪些操作系统？**
+
+支持 macOS（Apple Silicon / Intel）、Windows 与 Linux（AMD64 / ARM64），均可在[下载页面](https://memfit.ai/downloads/)获取对应安装包。
+
+**旧系统能安装吗？**
+
+可以。下载页提供 macOS / Windows / Linux 的 Legacy 构建，覆盖较旧版本的操作系统。
+
+<Head>
+  <script type="application/ld+json">{`
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "安装 Memfit AI 需要付费吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不需要。Memfit AI 客户端免费使用，底层 Yaklang 引擎以 Apache-2.0 协议开源。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Memfit AI 支持哪些操作系统？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持 macOS（Apple Silicon / Intel）、Windows 与 Linux（AMD64 / ARM64），均可在官网下载页获取对应安装包。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "旧系统能安装 Memfit AI 吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。官网下载页提供 macOS / Windows / Linux 的 Legacy 构建，覆盖较旧版本的操作系统。"
+      }
+    }
+  ]
+}
+  `}</script>
+</Head>
 
 ### 首次启动
 

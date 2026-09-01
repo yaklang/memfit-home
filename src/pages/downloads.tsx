@@ -98,18 +98,37 @@ export default function DownloadsPage(): ReactNode {
   const downloadSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
+    // 与首页 SoftwareApplication 共用同一 @id，实体消歧
+    '@id': 'https://memfit.ai/#software',
     name: 'Memfit AI',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'macOS, Windows, Linux',
     image: 'https://memfit.ai/img/memfit-ai-concept.jpg',
-    url: canonicalUrl,
+    url: 'https://memfit.ai/',
     downloadUrl: canonicalUrl,
+    // GEO：与首页同 @id 实体的 description 保持逐字一致，避免跨页实体定义冲突
+    description:
+      locale === 'zh-Hans'
+        ? 'Yaklang 生态的开源网络安全 AI Agent 编排框架，递归式双引擎（ReAct+Plan）让 AI 拥有看得见的行动力。'
+        : 'Memfit AI is the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem, built on a recursive dual-engine (ReAct + Plan) architecture for security automation and code auditing.',
+    license: 'https://www.apache.org/licenses/LICENSE-2.0',
+    isAccessibleForFree: true,
     offers: {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
     },
+  };
+  // GEO：BreadcrumbList（首页 › 下载），与文档页面包屑同级；首页 URL 随语言切 /en/
+  const homeUrl = `https://memfit.ai${locale === 'en' ? '/en/' : '/'}`;
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'en' ? 'Home' : '首页', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: locale === 'en' ? 'Downloads' : '下载', item: canonicalUrl },
+    ],
   };
 
   return (
@@ -123,6 +142,9 @@ export default function DownloadsPage(): ReactNode {
       <Head>
         <script type="application/ld+json">
           {JSON.stringify(downloadSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
         </script>
       </Head>
       <div className={styles.container}>

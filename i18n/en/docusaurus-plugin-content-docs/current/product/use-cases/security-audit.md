@@ -137,3 +137,11 @@ Proceeding to vulnerability assessment...
 | Transparency | User reviews plan before execution |
 | Learning | Memory improves future audits |
 
+## Methodology and References
+
+Memfit AI's audit workflow aligns with industry-standard methodologies:
+
+- Attack-surface mapping and technique coverage follow the [MITRE ATT&CK](https://attack.mitre.org/) knowledge base;
+- Web vulnerability checks align with the [OWASP Top 10](https://owasp.org/www-project-top-ten/) and the [OWASP Web Security Testing Guide (WSTG)](https://owasp.org/www-project-web-security-testing-guide/);
+- Vulnerability severity rating follows the [CVSS v3.1](https://www.first.org/cvss/) standard.
+

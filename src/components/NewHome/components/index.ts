@@ -3,6 +3,7 @@ export { MobileMenu } from './MobileMenu';
 export { HeroSection } from './HeroSection';
 export { WhatIsSection } from './WhatIsSection';
 export { ProblemSection } from './ProblemSection';
+export { FaqSection } from './FaqSection';
 export { ArchitectureSection } from './ArchitectureSection';
 export { FeatureSection } from './FeatureSection';
 export { NavigationBar } from './NavigationBar';

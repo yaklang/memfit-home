@@ -45,7 +45,7 @@ Allow: /
 Sitemap: https://memfit.ai/sitemap.xml
 
 # AI 内容偏好声明（contentsignals.org 草案）：允许训练 / 搜索 / 检索
-Content-Signal: ai-train=yes; search=yes; ai-retrieval=yes
+Content-Signal: ai-train=yes; search=yes; ai-retrieval=yes; ai-personalization=yes
 
 # LLM 内容清单（llms.txt 规范）
 # https://memfit.ai/llms.txt

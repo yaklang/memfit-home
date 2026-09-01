@@ -76,7 +76,11 @@ common/xlic/*.gzip
 **/__pycache__/
 .claude/settings.local.json
 
-# Claude Code / GEO tooling (local only, not part of the site)
+# Claude Code 工作区与 GEO 审计产物（本地工具，不入库）
 .claude/
-CLAUDE.md
+CLAUDE.local.md
 GEO-AUDIT-REPORT-*.md
+0901-*.md
+
+# 构建产物：首次提交时间映射（由 scripts/gen-first-commit-dates.mjs 在 build 前生成）
+src/generated/

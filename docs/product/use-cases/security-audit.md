@@ -136,3 +136,11 @@ Memfit AI: 开始信息收集阶段...
 | 透明性 | 用户在执行前审查计划 |
 | 学习性 | 记忆改进未来审计 |
 
+## 方法论与参考
+
+Memfit AI 的审计工作流与业界标准方法论对齐：
+
+- 攻击面梳理与技战术映射参考 [MITRE ATT&CK](https://attack.mitre.org/) 知识库；
+- Web 应用漏洞检测的检查口径对齐 [OWASP Top 10](https://owasp.org/www-project-top-ten/) 与 [OWASP WSTG（Web 安全测试指南）](https://owasp.org/www-project-web-security-testing-guide/)；
+- 漏洞定级参考 [CVSS v3.1](https://www.first.org/cvss/) 评分标准。
+

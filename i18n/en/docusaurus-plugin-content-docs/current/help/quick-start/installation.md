@@ -5,11 +5,13 @@ description: Quick start with Memfit AI — environment setup, installation on m
 keywords: [install Memfit AI, quick start, macOS, Linux, Windows, Yaklang]
 ---
 
+import Head from '@docusaurus/Head';
+
 # Getting Started with Memfit AI
 
 ## What is Memfit AI
 
-Memfit AI is a general-purpose AI Agent platform that gives AI real execution power. It goes beyond conversation -- it understands tasks, creates plans, invokes tools, and delivers results as an intelligent agent system.
+Memfit AI is the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem, built on a recursive dual-engine (ReAct + Plan) architecture that gives AI visible execution power. It goes beyond conversation -- it understands tasks, creates plans, invokes tools, and delivers results as an intelligent agent system.
 
 Memfit AI is deeply optimized for professional industrial scenarios such as cybersecurity and code auditing, while maintaining the flexibility of a general-purpose Agent capable of adapting to various complex tasks.
 
@@ -43,24 +45,81 @@ Memfit AI is built on the [Yaklang](https://github.com/yaklang/yaklang) open-sou
 
 ### Get Memfit AI
 
-Visit the Memfit AI official website to download the installer for your operating system.
+Go to the official [downloads page](https://memfit.ai/en/downloads/) and pick the installer matching your OS and CPU architecture. The page always shows the current version, and all installers are free.
 
 ![image-20260316123157042](/img/help/image-20260316123157042.png)
 
 ### Platform Support
 
-| Platform | Package Format |
-|----------|---------------|
-| macOS (Intel) | `.dmg` |
-| macOS (Apple Silicon) | `.dmg` |
-| Windows | `.exe` |
-| Linux | `.AppImage` |
+| Platform | Architecture | Package Format |
+|----------|--------------|----------------|
+| macOS (Apple Silicon) | `arm64` | `.dmg` |
+| macOS (Intel) | `x64` | `.dmg` |
+| Windows | `amd64` | `.exe` |
+| Linux | `amd64` / `arm64` | `.AppImage` |
+
+Users on older operating systems can find Legacy builds on the [downloads page](https://memfit.ai/en/downloads/).
 
 ### Installation Steps
 
-1. Download the installer for your platform from the official website
+1. Download the installer for your platform from the [downloads page](https://memfit.ai/en/downloads/)
 2. Run the installer and follow the prompts to complete installation
 3. Launch Memfit AI
+
+### Platform Notes
+
+- **macOS**: If macOS blocks the app with "cannot verify developer", open *System Settings → Privacy & Security* and click "Open Anyway"; or right-click the package and choose "Open".
+- **Windows**: Run the `.exe` installer. If SmartScreen appears, click "More info → Run anyway".
+- **Linux**: The `.AppImage` needs no installation — make it executable and run it: `chmod +x Memfit-*.AppImage && ./Memfit-*.AppImage`.
+
+### Installation FAQ
+
+**Is Memfit AI free to install?**
+
+Yes. The Memfit AI client is free, and the underlying Yaklang engine is open source under Apache-2.0.
+
+**Which operating systems are supported?**
+
+macOS (Apple Silicon / Intel), Windows, and Linux (AMD64 / ARM64). Installers for all of them are available on the [downloads page](https://memfit.ai/en/downloads/).
+
+**Does it work on older operating systems?**
+
+Yes. Legacy builds for macOS, Windows, and Linux are provided on the downloads page for older OS versions.
+
+<Head>
+  <script type="application/ld+json">{`
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Memfit AI free to install?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Memfit AI client is free, and the underlying Yaklang engine is open source under Apache-2.0."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which operating systems does Memfit AI support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "macOS (Apple Silicon / Intel), Windows, and Linux (AMD64 / ARM64). Installers for all of them are available on the official downloads page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Memfit AI work on older operating systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Legacy builds for macOS, Windows, and Linux are provided on the downloads page for older OS versions."
+      }
+    }
+  ]
+}
+  `}</script>
+</Head>
 
 ### First Launch
 

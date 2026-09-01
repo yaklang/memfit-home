@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 title: Basic Settings and Custom AI Configuration
+description: Memfit AI quick start — tool permissions and basic parameters, plus custom AI provider/model setup. Two recommended settings to complete right after installation.
+keywords: [Memfit AI settings, permissions, custom AI model, quick start]
 ---
 
 # Basic Settings and Custom AI Configuration

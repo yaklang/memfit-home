@@ -1,21 +1,48 @@
 ---
 title: About Memfit AI
-description: Memfit AI is the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem, maintained by the Yaklang team.
+description: Memfit AI is the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem, designed and maintained by the Yaklang team, built on a recursive dual-engine (ReAct + Plan) architecture for security automation and code auditing.
 ---
 
 import Head from '@docusaurus/Head';
 
 <Head>
-  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"AboutPage","name":"About Memfit AI","url":"https://memfit.ai/en/about/","mainEntity":{"@type":"Organization","name":"Memfit AI","url":"https://memfit.ai/","logo":"https://memfit.ai/img/logo.png","description":"The open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem, powered by a recursive dual-engine (ReAct + Plan) architecture.","parentOrganization":{"@type":"Organization","name":"Yaklang","url":"https://yaklang.com"},"sameAs":["https://github.com/yaklang"]}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"AboutPage","name":"About Memfit AI","url":"https://memfit.ai/en/about/","mainEntity":{"@type":"Organization","@id":"https://memfit.ai/#organization","name":"Memfit AI","url":"https://memfit.ai/","logo":"https://memfit.ai/img/logo.png","description":"The open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem, powered by a recursive dual-engine (ReAct + Plan) architecture.","parentOrganization":{"@type":"Organization","@id":"https://yaklang.com/#organization","name":"Yaklang","url":"https://yaklang.com"},"sameAs":["https://github.com/yaklang/memfit-home"]}}`}</script>
+  <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://memfit.ai/en/"},{"@type":"ListItem","position":2,"name":"About Memfit AI","item":"https://memfit.ai/en/about/"}]}`}</script>
 </Head>
 
 # About Memfit AI
 
 **Memfit AI** is the open-source cybersecurity AI Agent orchestration framework of the [Yaklang](https://yaklang.com) ecosystem. We are committed to giving AI visible agency in security automation and code auditing scenarios through the recursive dual-engine (ReAct + Plan) architecture.
 
+> Entity note: the Memfit AI described on this site refers exclusively to the open-source cybersecurity AI Agent orchestration framework of the Yaklang ecosystem (official website: memfit.ai). It is not related to any unrelated products that happen to share the "Memfit" name, such as memory-training or fitness apps.
+
 ## Relationship with Yaklang
 
-Memfit AI is an **official Yaklang project**, designed and maintained by the Yaklang team. It works closely with Yaklang's core security capabilities and represents the Yaklang ecosystem's official move into AI agents.
+Memfit AI is an **official Yaklang project**, designed and maintained by the Yaklang team. It works closely with Yaklang's core security capabilities and represents the Yaklang ecosystem's official move into AI agents. Yaklang is an open-source cybersecurity language and platform with a long track record in security automation, vulnerability detection, and code auditing; Memfit AI adds the AI-agent orchestration, memory, and tool-invocation layer on top of it, and both share the same security capability system and engineering practice.
+
+## Core Architecture: Five Pillars
+
+The capabilities of Memfit AI are built on five collaborating pillars:
+
+1. **Plan engine**: responsible for task decomposition and planning, breaking high-level goals into executable sub-task trees.
+2. **ReAct engine**: responsible for real-time reasoning and action, invoking tools and correcting course within each observe–think–act loop.
+3. **Tools and Forges**: the security capability system, covering WebFuzzer, MITM, Nuclei integration, and more of the security toolchain.
+4. **Knowledge RAG**: retrieval-augmented generation wired into the execution path, so the agent's judgments are grounded.
+5. **Memory**: score-based short-term/long-term memory management that retains key context across sessions.
+
+The two engines are nested recursively: the Plan engine lays out the skeleton, the ReAct engine fills in the execution, and execution results can trigger a new round of planning — hence the name "recursive dual-engine". See the [architecture overview](/en/docs/product/overview) for details.
+
+## Capabilities and Use Cases
+
+Memfit AI ships with 17 built-in focus modes (deep research, fast execution, and more) and targets three core scenarios:
+
+- **[Security auditing](/en/docs/product/use-cases/security-audit)**: a complete audit workflow from user request to Coordinator task tree to parallel ReAct loops.
+- **[Automation](/en/docs/product/use-cases/automation)**: orchestrable security automation task execution.
+- **[Code review](/en/docs/product/use-cases/code-review)**: code review combining the knowledge base and tool invocation.
+
+On the reliability side, the framework natively provides spin detection, verification gates, and determinism mechanisms as agentic guarantees, emphasizing observable execution over black-box output. The client covers macOS (Apple Silicon / Intel), Windows, and Linux.
+
+Beyond this site, the documentation includes quick-start guides, step-by-step tutorials (AI agents, knowledge bases, skills), and a fourteen-chapter developer guide covering the focus-mode development loop — actions, hooks and lifecycle, emitter streaming, debugging and observability, and determinism mechanisms. The case-studies chapter dissects all 17 registered focus modes in depth, with source-level references into the Yaklang repositories.
 
 ## Core Philosophy
 
@@ -25,7 +52,7 @@ Memfit AI is an **official Yaklang project**, designed and maintained by the Yak
 
 ## Operations and Maintenance
 
-Memfit AI is operated and maintained by the **Yaklang team**.
+Memfit AI is operated and maintained by the **Yaklang team**. Documentation is published bilingually (Simplified Chinese and English) and updated continuously — every documentation page shows its publication date and last-updated date, and the site provides a machine-readable `llms.txt` index for AI assistants and search engines.
 
 - Code repository: [github.com/yaklang/memfit-home](https://github.com/yaklang/memfit-home)
 - Issue feedback: [GitHub Issues](https://github.com/yaklang/memfit-home/issues)

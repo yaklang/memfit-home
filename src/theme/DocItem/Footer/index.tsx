@@ -18,6 +18,7 @@ import {DOC_FIRST_COMMIT_DATES} from '@site/src/generated/docFirstCommitDates';
 
 function TechArticleJsonLd(): ReactNode {
   const {metadata} = useDoc();
+  const {i18n} = useDocusaurusContext();
   const {title, description, permalink, lastUpdatedAt, lastUpdatedBy} =
     metadata;
 
@@ -34,10 +35,16 @@ function TechArticleJsonLd(): ReactNode {
     ? permalinkWithSlash
     : `${siteUrl}${permalinkWithSlash ?? ''}`;
 
+  // GEO：headline 带产品名前缀——「概览」这类短标题脱离页面上下文后对 AI 是零信息量
+  const headline = /memfit/i.test(title) ? title : `Memfit AI - ${title}`;
+
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
-    headline: title,
+    // GEO：@id 供其他实体引用挂入实体图；inLanguage 消歧 zh/en 双语版本
+    '@id': `${absoluteUrl}#article`,
+    inLanguage: i18n.currentLocale === 'en' ? 'en-US' : 'zh-CN',
+    headline,
     ...(description ? {description} : {}),
     url: absoluteUrl,
     mainEntityOfPage: {
@@ -47,6 +54,7 @@ function TechArticleJsonLd(): ReactNode {
     image: 'https://memfit.ai/img/memfit-ai-concept.jpg',
     publisher: {
       '@type': 'Organization',
+      '@id': 'https://memfit.ai/#organization',
       name: 'Memfit AI',
       url: 'https://memfit.ai',
       logo: {
@@ -54,9 +62,12 @@ function TechArticleJsonLd(): ReactNode {
         url: 'https://memfit.ai/img/logo.png',
       },
     },
-    // 作者使用组织实体（Yaklang 团队），而非个人 git handle
+    // 作者使用组织实体（Yaklang 团队），而非个人 git handle；
+    // GEO：author @id 与首页 parentOrganization 的外部实体 @id 统一为同一个，
+    // 避免同一实体在实体图中出现两个互不引用的悬空 @id
     author: {
       '@type': 'Organization',
+      '@id': 'https://yaklang.com/#organization',
       name: 'Yaklang Team',
       url: 'https://yaklang.com',
     },

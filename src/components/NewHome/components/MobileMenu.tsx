@@ -96,7 +96,7 @@ export const MobileMenu = ({
             {content.nav.developer}
           </Link>
           <Link
-            to="/downloads"
+            to="/downloads/"
             onClick={onClose}
             className={`px-4 py-3 rounded-lg text-base font-medium no-underline transition-colors ${
               theme === "light"

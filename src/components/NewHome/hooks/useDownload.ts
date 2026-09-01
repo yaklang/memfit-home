@@ -12,7 +12,7 @@ import { CONTENT, type Locale } from "../locales";
  */
 export function useDownload(locale: Locale) {
   const [os, setOs] = useState<OSType>('unknown');
-  const [downloadUrl, setDownloadUrl] = useState<string>('/downloads');
+  const [downloadUrl, setDownloadUrl] = useState<string>('/downloads/');
   const [downloadOptions, setDownloadOptions] = useState<DownloadOption[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const content = CONTENT[locale];
@@ -27,10 +27,10 @@ export function useDownload(locale: Locale) {
         // 获取当前系统下的全部架构下载链接
         const options = await getCurrentSystemDownloadOptions();
         setDownloadOptions(options);
-        setDownloadUrl(options[0]?.url || '/downloads');
+        setDownloadUrl(options[0]?.url || '/downloads/');
       } catch (error) {
         console.error('Failed to initialize download:', error);
-        setDownloadUrl('/downloads');
+        setDownloadUrl('/downloads/');
         setDownloadOptions([]);
       } finally {
         setIsLoading(false);

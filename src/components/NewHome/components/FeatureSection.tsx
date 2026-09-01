@@ -136,9 +136,10 @@ export const FeatureSection = ({
       }}
       id={section.id}
     >
-      {/* 移动端布局 - 高度约954px */}
-      <div className={`tablet:hidden relative z-10 h-auto ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]" }`}>
-        <div className="px-4 py-10 flex flex-col">
+      {/* 移动/平板端布局（GEO：原移动、平板两套副本合并为单份响应式 DOM；
+          桌面端规范副本由 NavigationBar 渲染，本组件桌面端不重复输出文案） */}
+      <div className={`desktop:hidden relative z-10 h-auto ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]" }`}>
+        <div className="px-4 tablet:px-6 py-10 tablet:py-12 flex flex-col">
           {/* 标题区 */}
           <div className="flex items-center gap-2 ">
             <span
@@ -167,7 +168,7 @@ export const FeatureSection = ({
           </div>
 
           {/* 截图卡片 */}
-          <div className="flex items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full py-[10px] px-[20px]">
+          <div className="flex items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full py-[10px] tablet:py-[80px] px-[20px] tablet:px-[30px] tablet:h-[468px]">
             {/* 背景装饰图 - 懒加载 */}
             <LazyBackgroundImage
               imageUrl={
@@ -175,63 +176,6 @@ export const FeatureSection = ({
                   ? bgImages[index]
                   : bgBlackImages[index] || bgBlackImages[0]
               }
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            />
-            <div className={`w-full relative z-10 overflow-hidden`}>
-              <img
-                src={theme === "light" ? `/newImg/content-${index + 1}.png`  : `/newImg/content-black-${index + 1}.png`}
-                alt={section.title}
-                width={1840}
-                height={[1256, 1224, 1256, 1256, 1292][index] ?? 1256}
-                className="w-full h-auto"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 平板端布局 - 高度约1062px */}
-      <div className={`hidden tablet:block desktop:hidden relative z-10 h-auto ${theme ==='light'? " bg-[#f8f9fa]": "bg-[#171717]" }`}>
-        <div className="px-6 py-12">
-          {/* 标题区 */}
-          <div className="flex items-center gap-2 ">
-            <span
-              className={`flex items-end ${
-                theme === "light" ? "stroke-[#4373BB]" : "stroke-[#66A2EB]"
-              }`}
-            >
-              {leftIcon[index]}
-            </span>
-            <span
-              className={`text-xl font-dotgothic ${
-                theme === "light" ? "text-[#4373BB]" : "text-[#66A2EB]"
-              }`}
-            >
-              {section.title} （{section.subtitle}）
-            </span>
-          </div>
-          <div
-            className={`text-base ${theme === "light" ? "text-[#868C97]" : "text-[#A6AFBF]"}`}
-          >
-            {section.description}
-          </div>
-          {/* 内容块 */}
-          <div className="flex flex-col mb-8 mt-4">
-            {section.features.map((feature) => renderTechList(feature, theme))}
-          </div>
-
-          {/* 截图卡片 */}
-          <div className="flex h-[468px] items-center justify-center rounded-xl overflow-hidden flex-shrink-0 relative w-full py-[80px] px-[30px]">
-            {/* 背景装饰图 - 懒加载 */}
-            <LazyBackgroundImage
-              imageUrl={bgImages[index] || bgImages[0]}
               className="absolute inset-0 pointer-events-none"
               style={{
                 backgroundSize: "cover",
